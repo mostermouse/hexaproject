@@ -239,6 +239,25 @@
       <artifactId>quartz-jobs</artifactId>
       <version>2.3.0</version>
     </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.13.3</version>
+    </dependency>
+
+    <!-- Jackson JDK8 Module -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jdk8</artifactId>
+      <version>2.13.3</version>
+    </dependency>
+
+    <!-- Jackson JavaTime Module -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jsr310</artifactId>
+      <version>2.13.3</version>
+    </dependency>
 
   </dependencies>
   <build>

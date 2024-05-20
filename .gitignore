@@ -21,7 +21,7 @@ local.properties
 
 # Ignore .rock files
 *.rock
-
+/target
 # Ignore .xml files
 /build
 *.probe

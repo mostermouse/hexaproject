@@ -100,6 +100,12 @@ CREATE SEQUENCE attendance_seq
     INCREMENT BY 1
     NOCACHE
   NOCYCLE;
+  
+  CREATE SEQUENCE vacation_seq
+    START WITH 1
+    INCREMENT BY 1
+    NOCACHE
+  NOCYCLE;
 
 
 -- 직원 정보를 저장하는 테이블
@@ -352,3 +358,16 @@ CREATE TABLE employee_salary_account (
                                          CONSTRAINT fk_account_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id)  -- 외래 키 제약 조건
 );
 */
+
+--휴가 테이블
+CREATE TABLE vacation(
+    vacation_id NUMBER PRIMARY KEY, --휴가 기록ID
+    employee_id NUMBER, --직원ID(외래 키)
+    vacation_item VARCHAR2(20), --휴가항목
+    total_vacation NUMBER, --전체휴가
+    used_vacation NUMBER,  --사용휴가
+    remaining_vacation NUMBER, --잔여휴가
+    CONSTRAINT fk_vacation_employee FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID)
+);
+
+

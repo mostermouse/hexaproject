@@ -5,5 +5,5 @@ import org.spring.domain.EmployeeEntity;
 import java.util.List;
 
 public interface EmployeeService {
-    public List<EmployeeEntity> getEmployee();
+    public List<EmployeeEntity> getAllEmployee();
 }

@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface EmpMapper {
 
-    public List<EmployeeEntity> getEmployee();
+    List<EmployeeEntity> getAllEmployee();
 }

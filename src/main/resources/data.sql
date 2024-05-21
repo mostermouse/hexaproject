@@ -363,10 +363,11 @@ CREATE TABLE employee_salary_account (
 CREATE TABLE vacation(
     vacation_id NUMBER PRIMARY KEY, --휴가 기록ID
     employee_id NUMBER, --직원ID(외래 키)
-    vacation_item, --휴가항목
+    vacation_item VARCHAR2(20), --휴가항목
     total_vacation NUMBER, --전체휴가
     used_vacation NUMBER,  --사용휴가
     remaining_vacation NUMBER, --잔여휴가
     CONSTRAINT fk_vacation_employee FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID)
 );
+
 

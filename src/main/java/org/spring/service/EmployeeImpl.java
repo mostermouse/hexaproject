@@ -20,6 +20,7 @@ public class EmployeeImpl implements EmployeeService{
 
     @Override
     public List<EmployeeEntity> getEmployee() {
+        //TODO 리팩토링 필요함
         log.info("getEmployee..........");
         return mapper.getEmployee();
     }

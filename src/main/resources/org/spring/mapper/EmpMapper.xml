@@ -3,11 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.mapper.EmpMapper">
-
-    <select id="getEmployee" resultType="org.spring.domain.EmployeeEntity">
-	<![CDATA[
-        select * from employee
-        ]]>
-	</select>
-
+    <select id="getAllEmployee" resultType="org.spring.domain.EmployeeEntity">
+        SELECT * FROM employee
+    </select>
 </mapper>

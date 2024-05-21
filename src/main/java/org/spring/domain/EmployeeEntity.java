@@ -3,12 +3,12 @@ package org.spring.domain;
 import lombok.*;
 import java.time.LocalDate;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class EmployeeEntity {
-    private Long employeeID;
+
+    private Long employeeId;
     private String employmentType;
     private String koreanName;
     private String englishName;

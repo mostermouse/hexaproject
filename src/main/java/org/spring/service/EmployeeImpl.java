@@ -19,9 +19,10 @@ public class EmployeeImpl implements EmployeeService{
     private EmpMapper mapper;
 
     @Override
-    public List<EmployeeEntity> getEmployee() {
+    public List<EmployeeEntity> getAllEmployee() {
+        //TODO 리팩토링 필요함
         log.info("getEmployee..........");
-        return mapper.getEmployee();
+        return mapper.getAllEmployee();
     }
 
 }

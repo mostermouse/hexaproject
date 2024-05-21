@@ -275,7 +275,7 @@ CREATE TABLE guarantor (
                            employee_id number,  -- 직원 ID (외래 키)
                            guarantor_name VARCHAR2(100),  -- 보증인 이름
                            guarantor_relationship VARCHAR2(100),  -- 보증인과의 관계
-                           guarantor_resident_registration_number VARCHAR2(20),  -- 보증인 주민등록번호
+                           guarantor_resident_number VARCHAR2(20),  -- 보증인 주민등록번호
                            guarantee_amount NUMBER,  -- 보증 금액
                            guarantee_date DATE,  -- 보증일
                            guarantee_expiration_date DATE,  -- 보증 만료일

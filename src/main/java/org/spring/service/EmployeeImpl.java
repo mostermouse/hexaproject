@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class EmployeeImpl implements EmployeeService{
 
-    @Autowired
+    @Setter(onMethod_ = @Autowired)
     private EmpMapper mapper;
 
     @Override

@@ -29,19 +29,7 @@
 
 	</beans:bean>
 
-	<!-- p150. multipart file 설정 -->
-<!--	<beans:bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<beans:property name="defaultEncoding" value="utf-8"></beans:property>
-		&lt;!&ndash; 1024 * 1024 * 10 bytes 10MB &ndash;&gt;
-		<beans:property name="maxUploadSize" value="104857560"></beans:property>
-		&lt;!&ndash; 1024 * 1024 * 2 bytes 2MB &ndash;&gt;
-		<beans:property name="maxUploadSizePerFile"
-			value="2097152"></beans:property>
-		<beans:property name="uploadTempDir"
-			value="file:/C:/upload/tmp"></beans:property>
-		<beans:property name="maxInMemorySize" value="10485756"></beans:property>
-	</beans:bean>-->
+
 
 	<context:component-scan
 		base-package="org.spring.controller" />

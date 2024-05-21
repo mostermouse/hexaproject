@@ -19,7 +19,7 @@ public class EmpController {
     public void list(Model model) {
         log.info("list");
         model.addAttribute("list", service.getAllEmployee());
-
+        log.info(model.toString());
     }
 
 

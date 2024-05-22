@@ -111,7 +111,7 @@
 	<img src="resources/images/payzon_16.jpg" width="1236" height="30" alt="">
 </div>
 
-<script src="resources/js/menu.js"></script>
+<script src="resources/js/main.js"></script>
 
 </body>
 </html>

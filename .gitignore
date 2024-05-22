@@ -26,7 +26,7 @@ local.properties
 /build
 *.probe
 *.idx
-*.js
+
 
 
 

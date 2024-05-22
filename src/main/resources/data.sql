@@ -1,3 +1,4 @@
+--drop foreign keys, sequences, tables
 ALTER TABLE dependents DROP CONSTRAINT fk_dependent_emplyee;
 ALTER TABLE degree DROP CONSTRAINT fk_degree_employee;
 ALTER TABLE career DROP CONSTRAINT fk_career_employee;
@@ -7,10 +8,6 @@ ALTER TABLE language_ability DROP CONSTRAINT fk_language_employee;
 ALTER TABLE training DROP CONSTRAINT fk_training_employee;
 ALTER TABLE reward_penalty DROP CONSTRAINT fk_reward_penalty_employee;
 ALTER TABLE appointment DROP CONSTRAINT fk_appointment_employee;
-ALTER TABLE appointment DROP CONSTRAINT fk_appointment_old_department;
-ALTER TABLE appointment DROP CONSTRAINT fk_appointment_old_position;
-ALTER TABLE appointment DROP CONSTRAINT fk_appointment_new_department;
-ALTER TABLE appointment DROP CONSTRAINT fk_appointment_new_position;
 ALTER TABLE referrer DROP CONSTRAINT fk_referrer_employee;
 ALTER TABLE insurance DROP CONSTRAINT fk_insurance_employee;
 ALTER TABLE guarantor DROP CONSTRAINT fk_guarantor_employee;
@@ -21,8 +18,8 @@ ALTER TABLE wage DROP CONSTRAINT fk_wage_type_id;
 ALTER TABLE attendance DROP CONSTRAINT fk_attendance_employee;
 ALTER TABLE attendance_type DROP CONSTRAINT fk_attendance_type_group;
 ALTER TABLE attendance_type DROP CONSTRAINT fk_attendance_type_vacation;
-ALTER TABLE vacation_value_per_epmloyee DROP CONSTRAINT fk_vacation_value_employee;
-ALTER TABLE vacation_value_per_epmloyee DROP CONSTRAINT fk_vacation_value_type;
+ALTER TABLE vacation_days DROP CONSTRAINT fk_vacation_days_employee;
+ALTER TABLE vacation_days DROP CONSTRAINT fk_vacation_days_type;
 ALTER TABLE employee DROP CONSTRAINT fk_employee_department;
 ALTER TABLE employee DROP CONSTRAINT fk_employee_position;
 
@@ -45,8 +42,8 @@ DROP TABLE wage_type;
 DROP TABLE attendance;
 DROP TABLE attendance_group;
 DROP TABLE attendance_type;
+DROP TABLE vacation_days;
 DROP TABLE vacation_type;
-DROP TABLE vacation_value_per_epmloyee;
 DROP TABLE employee;
 DROP TABLE department;
 DROP TABLE position;
@@ -72,9 +69,12 @@ DROP SEQUENCE attendance_seq;
 DROP SEQUENCE attendance_group_seq;
 DROP SEQUENCE attendance_type_seq;
 DROP SEQUENCE vacation_type_seq;
-DROP SEQUENCE vacation_value_per_epmloyee_seq;
+DROP SEQUENCE vacation_days_seq;
 DROP SEQUENCE department_seq;
 DROP SEQUENCE position_seq;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+--sequences
 
 CREATE SEQUENCE employee_seq
     START WITH 1
@@ -219,6 +219,9 @@ CREATE SEQUENCE position_seq
   INCREMENT BY 1
   NOCACHE
   NOCYCLE;
+  
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+--tables
 
 -- 부서
 CREATE TABLE department (
@@ -484,14 +487,15 @@ CREATE TABLE vacation_type(
                             --CONSTRAINT fk_vacation_type_value FOREIGN KEY (vacation_days_id) REFERENCES vacation_days(vacation_days_id) -- 외래키 제약조건(휴가 항목 당, 사원별 휴가 일수)
 );
 
+
 -- 휴가 항목 당, 사원별 휴가 일수
 CREATE TABLE vacation_days (
                             vacation_days_id NUMBER PRIMARY KEY, -- 휴가 항목 당, 사원별 휴가 일수 ID
                             vacation_type_id NUMBER, -- 휴가 항복(종류) ID (외래 키)
                             employee_id number, -- 직원 ID (외래 키)
                             vacation_value NUMBER, -- 휴가 일수
-                            CONSTRAINT fk_vacation_value_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id), --  외래키 제약조건
-                            CONSTRAINT fk_vacation_value_type FOREIGN KEY (vacation_type_id) REFERENCES vacation_type(vacation_type_id) -- 외래키 제약조건(휴가 항목(종류))
+                            CONSTRAINT fk_vacation_days_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id), --  외래키 제약조건
+                            CONSTRAINT fk_vacation_days_type FOREIGN KEY (vacation_type_id) REFERENCES vacation_type(vacation_type_id) -- 외래키 제약조건(휴가 항목(종류))
 );
 
 -- 근태 그룹
@@ -526,6 +530,9 @@ CREATE TABLE attendance_type(
                             CONSTRAINT fk_attendance_type_vacation FOREIGN KEY (vacation_type_id) REFERENCES vacation_type(vacation_type_id) -- 외래키 제약조건(휴가 공제)
 );
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+--basic datas
+
 -- 기본 급여 종류 입력하기
 INSERT INTO wage_type VALUES (wage_type_seq.nextval, '기본급', NULL, NULL, NULL, 'T');
 INSERT INTO wage_type VALUES (wage_type_seq.nextval, '식비', NULL, '일괄지급','200000', 'T');
@@ -544,37 +551,17 @@ INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '지각조퇴
 INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '특근');
 INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '기타');
 
--- 기본 근태 항목 종류 입력
-/*
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '연차', '일', '휴가', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '반차', '일', '휴가', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '지각', '시간', '지각조퇴', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '조퇴', '시간', '지각조퇴', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '외근', '시간', '기타', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '휴일근무', '시간', '연장근무', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '연장근무', '시간', '연장근무', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '포상휴가', '일', '휴가', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '야간근무', '시간', '연장근무', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '청원휴가', '일', '휴가', NULL, 'T');
-*/
-
-INSERT INTO attendance_type (attendance_type_id, attendance_type_name, unit, attandance_group_id, vacation_type_id, usage) 
-VALUES (attendance_type_seq.nextval, '정상출근', '시간', 1, 1, 'Y');
-
-INSERT INTO attendance_type (attendance_type_id, attendance_type_name, unit, attandance_group_id, vacation_type_id, usage) 
-VALUES (attendance_type_seq.nextval, '연차휴가', '일', 2, 2, 'Y');
-
-INSERT INTO attendance_type (attendance_type_id, attendance_type_name, unit, attandance_group_id, vacation_type_id, usage) 
-VALUES (attendance_type_seq.nextval, '병가', '일', 2, 3, 'Y');
-
-INSERT INTO attendance_type (attendance_type_id, attendance_type_name, unit, attandance_group_id, usage) 
-VALUES (attendance_type_seq.nextval, '지각', '시간', 1, 'Y');
-
-INSERT INTO attendance_type (attendance_type_id, attendance_type_name, unit, attandance_group_id, usage) 
-VALUES (attendance_type_seq.nextval, '조퇴', '시간', 1, 'Y');
-
-INSERT INTO attendance_type (attendance_type_id, attendance_type_name, unit, attandance_group_id, usage) 
-VALUES (attendance_type_seq.nextval, '외출', '시간', 1, 'Y');
+-- 기본 근태 항목(종류) 입력
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '연차', '일', '1', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '반차', '일', '1', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '지각', '시간', '3', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '조퇴', '시간', '3', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '외근', '시간', '5', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '휴일근무', '시간', '2', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '연장근무', '시간', '2', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '포상휴가', '일', '1', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '야간근무', '시간', '2', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '청원휴가', '일', '1', NULL, 'T');
 
 -- department 테이블에 값 삽입
 INSERT ALL
@@ -599,32 +586,3 @@ INTO position (position_id, position_name)VALUES (7, '대리')       -- 대리
 INTO position (position_id, position_name)VALUES (8, '주임')       -- 주임
 INTO position (position_id, position_name)VALUES (9, '사원')       -- 사원
 SELECT * FROM dual;
-
-
-ALTER TABLE dependents DROP CONSTRAINT fk_dependent_emplyee;
-ALTER TABLE degree DROP CONSTRAINT fk_degree_employee;
-ALTER TABLE career DROP CONSTRAINT fk_career_employee;
-ALTER TABLE military_service DROP CONSTRAINT fk_military_employee;
-ALTER TABLE certification DROP CONSTRAINT fk_certification_employee;
-ALTER TABLE language_ability DROP CONSTRAINT fk_language_employee;
-ALTER TABLE training DROP CONSTRAINT fk_training_employee;
-ALTER TABLE reward_penalty DROP CONSTRAINT fk_reward_penalty_employee;
-ALTER TABLE appointment DROP CONSTRAINT fk_appointment_employee;
-ALTER TABLE appointment DROP CONSTRAINT fk_appointment_old_department;
-ALTER TABLE appointment DROP CONSTRAINT fk_appointment_old_position;
-ALTER TABLE appointment DROP CONSTRAINT fk_appointment_new_department;
-ALTER TABLE appointment DROP CONSTRAINT fk_appointment_new_position;
-ALTER TABLE referrer DROP CONSTRAINT fk_referrer_employee;
-ALTER TABLE insurance DROP CONSTRAINT fk_insurance_employee;
-ALTER TABLE guarantor DROP CONSTRAINT fk_guarantor_employee;
-ALTER TABLE retirement DROP CONSTRAINT fk_retirement_employee;
-ALTER TABLE employee_salary_account DROP CONSTRAINT fk_account_employee;
-ALTER TABLE wage DROP CONSTRAINT fk_wage_employee;
-ALTER TABLE wage DROP CONSTRAINT fk_wage_type_id;
-ALTER TABLE attendance DROP CONSTRAINT fk_attendance_employee;
-ALTER TABLE attendance_type DROP CONSTRAINT fk_attendance_type_group;
-ALTER TABLE attendance_type DROP CONSTRAINT fk_attendance_type_vacation;
-ALTER TABLE vacation_value_per_epmloyee DROP CONSTRAINT fk_vacation_value_employee;
-ALTER TABLE vacation_value_per_epmloyee DROP CONSTRAINT fk_vacation_value_type;
-ALTER TABLE employee DROP CONSTRAINT fk_employee_department;
-ALTER TABLE employee DROP CONSTRAINT fk_employee_position;

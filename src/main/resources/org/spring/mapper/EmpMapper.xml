@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.mapper.EmpMapper">
 
-<<<<<<< HEAD
+
 	<!-- 전직원 정보  -->
 	<select id="getAllEmployee" resultType="org.spring.domain.EmployeeEntity">
 		SELECT * FROM employee
@@ -41,12 +41,7 @@
 	</select>
 	
 	
-	
-=======
-    <select id="getAllEmployee" resultType="org.spring.domain.EmployeeEntity">
-        SELECT * FROM employee
-    </select>
-    
+
     <select id="countByStatusEmployed" resultType="long">
         SELECT COUNT(*) FROM employee WHERE status = '재직'
     </select>
@@ -83,5 +78,5 @@
         SELECT COUNT(*) FROM employee
     </select>
     
->>>>>>> branch 'main' of https://github.com/mostermouse/hexaproject.git
+
 </mapper>

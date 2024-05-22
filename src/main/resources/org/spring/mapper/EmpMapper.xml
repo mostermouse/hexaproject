@@ -3,7 +3,42 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.mapper.EmpMapper">
-    <select id="getAllEmployee" resultType="org.spring.domain.EmployeeEntity">
-        SELECT * FROM employee
-    </select>
+
+	<!-- 전직원 정보  -->
+	<select id="getAllEmployee" resultType="org.spring.domain.EmployeeEntity">
+		SELECT * FROM employee
+	</select>
+
+	<!-- 급여정보 연도  -->
+	<select id="getYearWage" resultType="org.spring.domain.WageEntity">
+		SELECT * FROM wage WHERE TO_CHAR(wage_payment_date, 'YYYY') = #{year}
+	</select>
+
+	<!-- 전직원 인원수  -->
+	<select id="getTotalEmployeeCount" resultType="Long">
+		SELECT COUNT(*) FROM employee
+	</select>
+	
+	<!-- 정규직 인원수  -->
+	<select id="getFulltimeEmployeeCount" resultType="Long">
+		SELECT COUNT(*) FROM employee WHERE employee.employment_type = 'fulltimeEmployee'
+	</select>
+	
+	<!-- 계약직 인원수  -->
+	<select id="getContractEmployeeCount" resultType="Long">
+		SELECT COUNT(*) FROM employee WHERE employee.employment_type = 'contractEmployee'
+	</select>
+	
+	<!-- 임시직 인원수  -->
+	<select id="getTemporaryEmployeeCount" resultType="Long">
+		SELECT COUNT(*) FROM employee WHERE employee.employment_type = 'temporaryEmployee'
+	</select>
+	
+	<!-- 일용직 인원수  -->
+	<select id="getDailyWorkerCount" resultType="Long">
+		SELECT COUNT(*) FROM employee WHERE employee.employment_type = 'dailyWorker'
+	</select>
+	
+	
+	
 </mapper>

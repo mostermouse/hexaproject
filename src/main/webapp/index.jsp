@@ -3,9 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
+<%@ include file="/WEB-INF/views/includes/header.jsp"%>
 
-<html>
-<body>
 <h2>Hello World!</h2>
 </body>
 </html>

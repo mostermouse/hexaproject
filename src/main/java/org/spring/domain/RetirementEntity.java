@@ -15,6 +15,6 @@ public class RetirementEntity extends EmployeeEntity{
    private LocalDate retirementDate;
    private String retirementReason;
    private String contactAfterRetirement;
-   private Long retirementBenefits;
+   private Long retirementPay;
 
 }

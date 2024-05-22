@@ -16,7 +16,7 @@ public class MilitaryServiceEntity extends EmployeeEntity{
     private LocalDate servicePeriod1;
     private LocalDate servicePeriod2;
     private String finalRank;
-    private String division;
+    private String department;
     private String exemptionReason;
 
 }

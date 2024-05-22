@@ -1,7 +1,5 @@
 package org.spring.controller;
 
-import lombok.AllArgsConstructor;
-import lombok.extern.log4j.Log4j;
 import org.spring.service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,18 +7,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import lombok.AllArgsConstructor;
+
 @Controller
-@Log4j
 @AllArgsConstructor
 public class EmpController {
 
-    private EmployeeService service;
+    private EmployeeService employeeService;
 
     @GetMapping("/list")
-    public void list(Model model) {
-        log.info("list");
-        model.addAttribute("list", service.getAllEmployee());
-        log.info(model.toString());
+    public void getEmployees(Model model) {
+        model.addAttribute("list", employeeService.getAllEmployee());
+        model.addAttribute("employed", employeeService.countByStatusEmployed());
+        model.addAttribute("regular", employeeService.countByEmploymentTypeRegular());
+        model.addAttribute("contract", employeeService.countByEmploymentTypeContract());
+        model.addAttribute("temporary", employeeService.countByEmploymentTypeTemporary());
+        model.addAttribute("dispatched", employeeService.countByEmploymentTypeDispatched());
+        model.addAttribute("appointed", employeeService.countByEmploymentTypeAppointed());
+        model.addAttribute("daily", employeeService.countByEmploymentTypeDaily());
+        model.addAttribute("resigned", employeeService.countByStatusResigned());
+        model.addAttribute("allemployees", employeeService.countAllEmployees());
     }
 
     @RequestMapping("/header")

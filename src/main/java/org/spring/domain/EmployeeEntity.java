@@ -14,8 +14,8 @@ public class EmployeeEntity {
     private String englishName;
     private LocalDate hireDate;
     private LocalDate resignationDate;
-    private String department;
-    private String position;
+    private Long departmentId;
+    private Long positionId;
     private String foreignOrDomestic;
     private String residentNumber1;
     private String residentNumber2;

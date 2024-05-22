@@ -13,7 +13,7 @@ public class GuarantorEntity extends EmployeeEntity{
     private Long guarantorId;
     private String guarantorName;
     private String guarantorRelationship;
-    private String guarantorResidentRegistrationNumber;
+    private String guarantorResidentNumber;
     private Long guaranteeAmount;
     private LocalDate guaranteeDate;
     private LocalDate guaranteeExpirationDate;

@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class AttendanceEntity extends EmployeeEntity{
    private Long attendanceId;
    private LocalDate inputDate;
-   private String attendanceItem;
+   private String attendanceTypeId;
    private LocalDate startDate;
    private LocalDate endDate;
    private Long attendanceDays;

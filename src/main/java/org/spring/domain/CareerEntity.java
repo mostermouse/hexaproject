@@ -17,6 +17,6 @@ public class CareerEntity extends EmployeeEntity{
     private String employmentPeriod;
     private String finalPosition;
     private String responsibilities;
-    private String reasonForLeaving;
+    private String reasonForResignation;
 
 }

@@ -85,13 +85,59 @@ public class EmployeeImpl implements EmployeeService{
 
     @Override
     public List<EmployeeEntity> getAllEmployee() {
-        //TODO 리팩토링 필요함
         log.info("getEmployee..........");
         return mapper.getAllEmployee();
+    }
+    @Override
+    public long countByStatusEmployed() {
+        return mapper.countByStatusEmployed();
     }
 
 
 
 
 
+
 }
+
+    @Override
+    public long countByEmploymentTypeRegular() {
+        return mapper.countByEmploymentTypeRegular();
+    }
+
+    @Override
+    public long countByEmploymentTypeContract() {
+        return mapper.countByEmploymentTypeContract();
+    }
+
+    @Override
+    public long countByEmploymentTypeTemporary() {
+        return mapper.countByEmploymentTypeTemporary();
+    }
+
+    @Override
+    public long countByEmploymentTypeDispatched() {
+        return mapper.countByEmploymentTypeDispatched();
+    }
+
+    @Override
+    public long countByEmploymentTypeAppointed() {
+        return mapper.countByEmploymentTypeAppointed();
+    }
+
+    @Override
+    public long countByEmploymentTypeDaily() {
+        return mapper.countByEmploymentTypeDaily();
+    }
+
+    @Override
+    public long countByStatusResigned() {
+        return mapper.countByStatusResigned();
+    }
+
+    @Override
+    public long countAllEmployees() {
+        return mapper.countAllEmployees();
+    }
+}
+

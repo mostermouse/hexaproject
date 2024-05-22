@@ -6,6 +6,7 @@ import org.spring.domain.WageEntity;
 import java.util.List;
 
 public interface EmpMapper {
+<<<<<<< HEAD
 	//전직원 정보
     public List<EmployeeEntity> getAllEmployee();
     
@@ -23,4 +24,17 @@ public interface EmpMapper {
     //일용직 인원수
     public Long getDailyWorkerCount();
     
+=======
+
+    List<EmployeeEntity> getAllEmployee();
+    long countByStatusEmployed();
+    long countByEmploymentTypeRegular();
+    long countByEmploymentTypeContract();
+    long countByEmploymentTypeTemporary();
+    long countByEmploymentTypeDispatched();
+    long countByEmploymentTypeAppointed();
+    long countByEmploymentTypeDaily();
+    long countByStatusResigned();
+    long countAllEmployees();
+>>>>>>> branch 'main' of https://github.com/mostermouse/hexaproject.git
 }

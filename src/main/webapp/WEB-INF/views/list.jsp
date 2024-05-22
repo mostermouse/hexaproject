@@ -1,4 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
@@ -12,13 +13,17 @@
         <th>Name</th>
         <th>position</th>
     </tr>
-    <c:forEach items="${list}" var="employee">
-        <tr>
-            <td>${employee.employeeId}</td>
-            <td>${employee.koreanName}</td>
-            <td>${employee.position}</td>
-        </tr>
-    </c:forEach>
+    <tr>
+        <td>${employed}</td>
+        <td>${regular}</td>
+        <td>${contract}</td>
+        <td>${temporary}</td>
+        <td>${dispatched}</td>
+        <td>${appointed}</td>
+        <td>${daily}</td>
+        <td>${resigned}</td>
+        <td>${allemployees}</td>
+    </tr>
 </table>
 </body>
 </html>

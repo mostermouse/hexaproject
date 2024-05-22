@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.AllArgsConstructor;
+<<<<<<< HEAD
 import lombok.extern.log4j.Log4j;
 
-@Controller
 @Log4j
+@Controller
 @AllArgsConstructor
 public class EmpController {
 
@@ -26,11 +27,20 @@ public class EmpController {
     	log.info(model.toString());
     };
 
+    private EmployeeService employeeService;
+
     @GetMapping("/list")
-    public void list(Model model) {
-        log.info("list");
-        model.addAttribute("list", service.getAllEmployee());
-        log.info(model.toString());
+    public void getEmployees(Model model) {
+        model.addAttribute("list", employeeService.getAllEmployee());
+        model.addAttribute("employed", employeeService.countByStatusEmployed());
+        model.addAttribute("regular", employeeService.countByEmploymentTypeRegular());
+        model.addAttribute("contract", employeeService.countByEmploymentTypeContract());
+        model.addAttribute("temporary", employeeService.countByEmploymentTypeTemporary());
+        model.addAttribute("dispatched", employeeService.countByEmploymentTypeDispatched());
+        model.addAttribute("appointed", employeeService.countByEmploymentTypeAppointed());
+        model.addAttribute("daily", employeeService.countByEmploymentTypeDaily());
+        model.addAttribute("resigned", employeeService.countByStatusResigned());
+        model.addAttribute("allemployees", employeeService.countAllEmployees());
     }
 
     @RequestMapping("/header")

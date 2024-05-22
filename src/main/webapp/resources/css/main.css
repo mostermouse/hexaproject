@@ -1,0 +1,169 @@
+@charset "UTF-8";
+
+#payzon-01 {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 1920px;
+	height: 71px;
+}
+
+#payzon-02 {
+	position: absolute;
+	left: 0px;
+	top: 71px;
+	width: 97px;
+	height: 80px;
+}
+
+#payzon-03 {
+	position: absolute;
+	left: 97px;
+	top: 71px;
+	width: 91px;
+	height: 80px;
+}
+
+#payzon-04 {
+	position: absolute;
+	left: 188px;
+	top: 71px;
+	width: 102px;
+	height: 80px;
+}
+
+#payzon-05 {
+	position: absolute;
+	left: 290px;
+	top: 71px;
+	width: 124px;
+	height: 80px;
+}
+
+#payzon-06 {
+	position: absolute;
+	left: 414px;
+	top: 71px;
+	width: 99px;
+	height: 80px;
+}
+
+#payzon-07 {
+	position: absolute;
+	left: 513px;
+	top: 71px;
+	width: 117px;
+	height: 80px;
+}
+
+#payzon-08 {
+	position: absolute;
+	left: 630px;
+	top: 71px;
+	width: 139px;
+	height: 80px;
+}
+
+#payzon-09 {
+	position: absolute;
+	left: 769px;
+	top: 71px;
+	width: 103px;
+	height: 80px;
+}
+
+#payzon-10 {
+	position: absolute;
+	left: 872px;
+	top: 71px;
+	width: 122px;
+	height: 80px;
+}
+
+#payzon-11 {
+	position: absolute;
+	left: 994px;
+	top: 71px;
+	width: 926px;
+	height: 80px;
+}
+
+#payzon-12 {
+	position: absolute;
+	left: 0px;
+	top: 151px;
+	width: 171px;
+	height: 30px;
+}
+
+#payzon-13 {
+	position: absolute;
+	left: 171px;
+	top: 151px;
+	width: 171px;
+	height: 30px;
+}
+
+#payzon-14 {
+	position: absolute;
+	left: 342px;
+	top: 151px;
+	width: 171px;
+	height: 30px;
+}
+
+#payzon-15 {
+	position: absolute;
+	left: 513px;
+	top: 151px;
+	width: 171px;
+	height: 30px;
+}
+
+#payzon-16 {
+	position: absolute;
+	left: 684px;
+	top: 151px;
+	width: 1236px;
+	height: 30px;
+}
+
+.menu-item {
+	display: none;
+	position: absolute;
+	left: 0;
+}
+
+.menu-item img {
+	max-width: 100%;
+}
+/* 스타일 수정 */
+.payzon12, .payzon13, .payzon14, .payzon15 {
+	position: relative;
+}
+
+/* 추가 이미지의 위치 조정 */
+#payzon-17, #payzon-18, #payzon-19, #payzon-20 {
+	top: 30px;
+	left: 0;
+}
+
+#payzon-22, #payzon-24, #payzon-25 {
+	top: 60px;
+	left: 0;
+}
+
+#payzon-26, #payzon-27, #payzon-28 {
+	top: 90px;
+	left: 0;
+}
+
+#payzon-29, #payzon-30, #payzon-31 {
+	top: 120px;
+	left: 0;
+}
+
+#payzon-33, #payzon-34 {
+	top: 150px;
+	left: 0;
+}

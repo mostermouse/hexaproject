@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 #payzon-01 {
-	position: absolute;
+	position: fixed;
 	left: 0px;
 	top: 0px;
 	width: 1920px;
@@ -9,79 +9,108 @@
 }
 
 #payzon-02 {
-	position: absolute;
+	position: fixed;
 	left: 0px;
 	top: 71px;
 	width: 97px;
 	height: 80px;
+	cursor: pointer;
+}
+
+#payzon-02 img, #payzon-03 img, #payzon-04 img, #payzon-05 img,
+	#payzon-06 img, #payzon-07 img, #payzon-08 img, #payzon-09 img,
+	#payzon-10 img, #payzon-17 img, #payzon-18 img, #payzon-19 img,
+	#payzon-20 img, #payzon-22img, #payzon-24 img, #payzon-25 img,
+	#payzon-26 img, #payzon-27 img, #payzon-28 img, #payzon-29 img,
+	#payzon-30 img, #payzon-31 img, #payzon-33 img, #payzon-34 img {
+	transition: opacity 0.3s ease;
+}
+
+#payzon-02 img:hover, #payzon-03 img:hover, #payzon-04 img:hover,
+	#payzon-05 img:hover, #payzon-06 img:hover, #payzon-07 img:hover,
+	#payzon-08 img:hover, #payzon-09 img:hover, #payzon-10 img:hover,
+	#payzon-17 img:hover, #payzon-18 img:hover, #payzon-19 img:hover,
+	#payzon-20 img:hover, #payzon-22 img:hover, #payzon-24 img:hover,
+	#payzon-25 img:hover, #payzon-26 img:hover, #payzon-27 img:hover,
+	#payzon-28 img:hover, #payzon-29 img:hover, #payzon-30 img:hover,
+	#payzon-31 img:hover, #payzon-33 img:hover, #payzon-34 img:hover {
+	opacity: 0.5; /* 이미지가 더 어두워지도록 설정 */
 }
 
 #payzon-03 {
-	position: absolute;
+	position: fixed;
 	left: 97px;
 	top: 71px;
 	width: 91px;
 	height: 80px;
+	cursor: pointer;
 }
 
 #payzon-04 {
-	position: absolute;
+	position: fixed;
 	left: 188px;
 	top: 71px;
 	width: 102px;
 	height: 80px;
+	cursor: pointer;
 }
 
 #payzon-05 {
-	position: absolute;
+	position: fixed;
 	left: 290px;
 	top: 71px;
 	width: 124px;
 	height: 80px;
+	cursor: pointer;
 }
 
 #payzon-06 {
-	position: absolute;
+	position: fixed;
 	left: 414px;
 	top: 71px;
 	width: 99px;
 	height: 80px;
+	cursor: pointer;
 }
 
 #payzon-07 {
-	position: absolute;
+	position: fixed;
 	left: 513px;
 	top: 71px;
 	width: 117px;
 	height: 80px;
+	cursor: pointer;
 }
 
 #payzon-08 {
-	position: absolute;
+	position: fixed;
 	left: 630px;
 	top: 71px;
 	width: 139px;
 	height: 80px;
+	cursor: pointer;
 }
 
 #payzon-09 {
-	position: absolute;
+	position: fixed;
 	left: 769px;
 	top: 71px;
 	width: 103px;
 	height: 80px;
+	cursor: pointer;
 }
 
 #payzon-10 {
-	position: absolute;
+	position: fixed;
 	left: 872px;
 	top: 71px;
 	width: 122px;
 	height: 80px;
+	cursor: pointer;
 }
 
 #payzon-11 {
-	position: absolute;
+	position: fixed;
 	left: 994px;
 	top: 71px;
 	width: 926px;
@@ -89,39 +118,43 @@
 }
 
 #payzon-12 {
-	position: absolute;
+	position: fixed;
 	left: 0px;
 	top: 151px;
 	width: 171px;
 	height: 30px;
+	cursor: pointer;
 }
 
 #payzon-13 {
-	position: absolute;
+	position: fixed;
 	left: 171px;
 	top: 151px;
 	width: 171px;
 	height: 30px;
+	cursor: pointer;
 }
 
 #payzon-14 {
-	position: absolute;
+	position: fixed;
 	left: 342px;
 	top: 151px;
 	width: 171px;
 	height: 30px;
+	cursor: pointer;
 }
 
 #payzon-15 {
-	position: absolute;
+	position: fixed;
 	left: 513px;
 	top: 151px;
 	width: 171px;
 	height: 30px;
+	cursor: pointer;
 }
 
 #payzon-16 {
-	position: absolute;
+	position: fixed;
 	left: 684px;
 	top: 151px;
 	width: 1236px;
@@ -141,29 +174,33 @@
 .payzon12, .payzon13, .payzon14, .payzon15 {
 	position: relative;
 }
-
 /* 추가 이미지의 위치 조정 */
 #payzon-17, #payzon-18, #payzon-19, #payzon-20 {
 	top: 30px;
 	left: 0;
+	cursor: pointer;
 }
 
 #payzon-22, #payzon-24, #payzon-25 {
 	top: 60px;
 	left: 0;
+	cursor: pointer;
 }
 
 #payzon-26, #payzon-27, #payzon-28 {
 	top: 90px;
 	left: 0;
+	cursor: pointer;
 }
 
 #payzon-29, #payzon-30, #payzon-31 {
 	top: 120px;
 	left: 0;
+	cursor: pointer;
 }
 
 #payzon-33, #payzon-34 {
 	top: 150px;
 	left: 0;
+	cursor: pointer;
 }

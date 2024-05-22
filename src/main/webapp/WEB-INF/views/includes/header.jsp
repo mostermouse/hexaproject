@@ -1,4 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,103 +7,157 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>header</title>
 <link rel="stylesheet" href="resources/css/main.css">
+<link rel="stylesheet" href="resources/css/bodylocation.css">
 </head>
 <body>
+
 <div id="payzon-01">
 		<img src="resources/images/payzon_01.jpg" width="1920" height="71" alt="">
 	</div>
-	<div id="payzon-02">
+	<!-- home -->
+	<!-- index.jsp -->
+	<div id="payzon-02" onclick="window.location.href='/'">
 		<img src="resources/images/payzon_02.jpg" width="97" height="80" alt="">
 	</div>
-	<div id="payzon-03">
+	<!-- 사원등록 -->
+	<!-- employeeRegistration.jsp -->
+	<div id="payzon-03" onclick="window.location.href='/personnel/employeeIns'">
 		<img src="resources/images/payzon_03.jpg" width="91" height="80" alt="">
 	</div>
-	<div id="payzon-04">
+	<!-- 사원현황 -->
+	<!-- employeeMnt.jsp -->
+	<div id="payzon-04" onclick="window.location.href='/personnel/employeeMnt'">
 		<img src="resources/images/payzon_04.jpg" width="102" height="80" alt="">
 	</div>
-	<div id="payzon-05">
+	<!-- 근태기록/관리 -->
+	<!-- managementOfAttendance.jsp -->
+	<div id="payzon-05" onclick="window.location.href='/diligence/diligenceMnt'">
 		<img src="resources/images/payzon_05.jpg" width="124" height="80" alt="">
 	</div>
-	<div id="payzon-06">
+	<!-- 휴가조회 -->
+	<!-- holidaysSearchResult.jsp -->
+	<div id="payzon-06" onclick="window.location.href='/diligence/holidaysSearchResult'">
 		<img src="resources/images/payzon_06.jpg" width="99" height="80" alt="">
 	</div>
-	<div id="payzon-07">
+	<!-- 급여입력/관리 -->
+	<!-- paymentMnt.jsp -->
+	<div id="payzon-07" onclick="window.location.href='/payment/paymentMnt'">
 		<img src="resources/images/payzon_07.jpg" width="117" height="80" alt="">
 	</div>
-	<div id="payzon-08">
+	<!-- 급여입력/관리(일용직) -->
+	<!-- paymentMntDayWorker.jsp -->
+	<div id="payzon-08" onclick="window.location.href='/payment/paymentMntDayWorker'">
 		<img src="resources/images/payzon_08.jpg" width="139" height="80" alt="">
 	</div>
-	<div id="payzon-09">
+	<!-- 급여 대장 -->
+	<!-- paymentRegisterList.jsp -->
+	<div id="payzon-09" onclick="window.location.href='/payment/paymentRegisterList'">
 		<img src="resources/images/payzon_09.jpg" width="103" height="80" alt="">
 	</div>
-	<div id="payzon-10">
+	<!-- 사원별 급여내용 -->
+	<!-- paymentPayList.jsp -->
+	<div id="payzon-10" onclick="window.location.href='/payment/paymentPayList'">
 		<img src="resources/images/payzon_10.jpg" width="122" height="80" alt="">
 	</div>
 	<div id="payzon-11">
 		<img src="resources/images/payzon_11.jpg" width="926" height="80" alt="">
 	</div>
 
-<div id="payzon-12" class="payzon12">
+<!-- 기본 환경 설정 -->
+<!-- membersInfo.jsp -->
+<div id="payzon-12" class="payzon12" onclick="window.location.href='/config/membersInfo'">
     <img src="resources/images/payzon_12.jpg" width="171" height="30" alt="">
-    <!-- Additional images to display -->
-    <div class="menu-item" id="payzon-17">
+    <!-- 사용자 정보 -->
+    <!-- membersInfo.jsp -->
+    <div class="menu-item" id="payzon-17" onclick="window.location.href='/config/membersInfo'">
         <img src="resources/images/payzon_17.jpg" alt="Item 17">
     </div>
-    <div class="menu-item" id="payzon-22">
+    <!-- 사원 등록 -->
+    <!-- employeeRegistration.jsp -->
+    <div class="menu-item" id="payzon-22" onclick="window.location.href='/personnel/employeeIns'">
         <img src="resources/images/payzon_22.jpg" alt="Item 22">
     </div>
-    <div class="menu-item" id="payzon-26">
+    <!-- 휴가/근태설정 -->
+    <!-- dnLItemSet.jsp -->
+    <div class="menu-item" id="payzon-26" onclick="window.location.href='/config/dnLItemSet'">
         <img src="resources/images/payzon_26.jpg" alt="Item 26">
     </div>
-    <div class="menu-item" id="payzon-29">
+    <!-- 급여항목설정 -->
+    <!-- payItemSet.jsp -->
+    <div class="menu-item" id="payzon-29" onclick="window.location.href='/config/payItemSet'">
         <img src="resources/images/payzon_29.jpg" alt="Item 29">
     </div>
 </div>
 
-<div id="payzon-13" class="payzon13">
+<!-- 인사관리 -->
+<!-- employeeMnt.jsp -->
+<div id="payzon-13" class="payzon13" onclick="window.location.href='/personnel/employeeMnt'">
     <img src="resources/images/payzon_13.jpg" width="171" height="30" alt="">
-    <!-- Additional images to display -->
-    <div class="menu-item" id="payzon-18">
+    <!-- 사원현황관리 -->
+    <!-- employeeMnt.jsp -->
+    <div class="menu-item" id="payzon-18" onclick="window.location.href='/personnel/employeeMnt'">
         <img src="resources/images/payzon_18.jpg" alt="Item 18">
     </div>
 </div>
 
-<div id="payzon-14" class="payzon14">
+<!-- 근태 관리 -->
+<!-- managementOfAttendance.jsp -->
+<div id="payzon-14" class="payzon14" onclick="window.location.href='/diligence/diligenceMnt'">
     <img src="resources/images/payzon_14.jpg" width="171" height="30" alt="">
-    <!-- Additional images to display -->
-    <div class="menu-item" id="payzon-19">
+    <!-- 근태기록/관리 -->
+    <!-- managementOfAttendance.jsp -->
+    <div class="menu-item" id="payzon-19" onclick="window.location.href='/diligence/diligenceMnt'">
         <img src="resources/images/payzon_19.jpg" alt="Item 19">
     </div>
-    <div class="menu-item" id="payzon-24">
+    <!-- 근태 조회 -->
+    <!-- diligenceSearchMonth.jsp -->
+    <div class="menu-item" id="payzon-24" onclick="window.location.href='/diligence/diligenceSearchMonth'">
         <img src="resources/images/payzon_24.jpg" alt="Item 24">
     </div>
-    <div class="menu-item" id="payzon-27">
+    <!-- 휴가 조회 -->
+    <!-- holidaysSearchResult.jsp -->
+    <div class="menu-item" id="payzon-27" onclick="window.location.href='/diligence/holidaysSearchResult'">
         <img src="resources/images/payzon_27.jpg" alt="Item 27">
     </div>
-    <div class="menu-item" id="payzon-30">
+    <!-- 일용근무기록/관리 -->
+    <!-- dayWorkerMnt.jsp -->
+    <div class="menu-item" id="payzon-30" onclick="window.location.href='/diligence/dayWorkerMnt'">
         <img src="resources/images/payzon_30.jpg" alt="Item 30">
     </div>
-    <div class="menu-item" id="payzon-33">
+    <!-- 일용 근무 조회 -->
+    <!-- dayWorkerSearchMonth.jsp -->
+    <div class="menu-item" id="payzon-33" onclick="window.location.href='/diligence/dayWorkerSearchMonth'">
         <img src="resources/images/payzon_33.jpg" alt="Item 33">
     </div>
 </div>
 
-<div id="payzon-15" class="payzon15">
+<!-- 급여관리 -->
+<!-- paymentMnt.jsp -->
+<div id="payzon-15" class="payzon15" onclick="window.location.href='/payment/paymentMnt'">
     <img src="resources/images/payzon_15.jpg" width="171" height="30" alt="">
-    <!-- Additional images to display -->
-    <div class="menu-item" id="payzon-20">
+    <!-- 급여입력/관리 -->
+    <!-- paymentMnt.jsp -->
+    <div class="menu-item" id="payzon-20" onclick="window.location.href='/payment/paymentMnt'">
         <img src="resources/images/payzon_20.jpg" alt="Item 20">
     </div>
-    <div class="menu-item" id="payzon-25">
+    <!-- 급여입력/관리(일용직) -->
+    <!-- paymentMntDayWorker.jsp -->
+    <div class="menu-item" id="payzon-25" onclick="window.location.href='/payment/paymentMntDayWorker'">
         <img src="resources/images/payzon_25.jpg" alt="Item 25">
     </div>
-    <div class="menu-item" id="payzon-28">
+    <!-- 급여 대장 -->
+    <!-- paymentRegisterList.jsp -->
+    <div class="menu-item" id="payzon-28" onclick="window.location.href='/payment/paymentRegisterList'">
         <img src="resources/images/payzon_28.jpg" alt="Item 28">
     </div>
-    <div class="menu-item" id="payzon-31">
+    <!-- 사원별 급여내용 -->
+    <!-- paymentPayList.jsp -->
+    <div class="menu-item" id="payzon-31" onclick="window.location.href='/payment/paymentPayList'">
         <img src="resources/images/payzon_31.jpg" alt="Item 31">
     </div>
-    <div class="menu-item" id="payzon-34">
+    <!-- 항목별 조회 -->
+    <!-- paymentPayItemPart.jsp -->
+    <div class="menu-item" id="payzon-34" onclick="window.location.href='/payment/paymentPayItemPart'">
         <img src="resources/images/payzon_34.jpg" alt="Item 34">
     </div>
 </div>
@@ -113,5 +168,3 @@
 
 <script src="resources/js/main.js"></script>
 
-</body>
-</html>

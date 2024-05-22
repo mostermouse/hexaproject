@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 #payzon-01 {
-	position: absolute;
+	position: fixed;
 	left: 0px;
 	top: 0px;
 	width: 1920px;
@@ -9,7 +9,7 @@
 }
 
 #payzon-02 {
-	position: absolute;
+	position: fixed;
 	left: 0px;
 	top: 71px;
 	width: 97px;
@@ -38,7 +38,7 @@
 }
 
 #payzon-03 {
-	position: absolute;
+	position: fixed;
 	left: 97px;
 	top: 71px;
 	width: 91px;
@@ -47,7 +47,7 @@
 }
 
 #payzon-04 {
-	position: absolute;
+	position: fixed;
 	left: 188px;
 	top: 71px;
 	width: 102px;
@@ -56,7 +56,7 @@
 }
 
 #payzon-05 {
-	position: absolute;
+	position: fixed;
 	left: 290px;
 	top: 71px;
 	width: 124px;
@@ -65,7 +65,7 @@
 }
 
 #payzon-06 {
-	position: absolute;
+	position: fixed;
 	left: 414px;
 	top: 71px;
 	width: 99px;
@@ -74,7 +74,7 @@
 }
 
 #payzon-07 {
-	position: absolute;
+	position: fixed;
 	left: 513px;
 	top: 71px;
 	width: 117px;
@@ -83,7 +83,7 @@
 }
 
 #payzon-08 {
-	position: absolute;
+	position: fixed;
 	left: 630px;
 	top: 71px;
 	width: 139px;
@@ -92,7 +92,7 @@
 }
 
 #payzon-09 {
-	position: absolute;
+	position: fixed;
 	left: 769px;
 	top: 71px;
 	width: 103px;
@@ -101,7 +101,7 @@
 }
 
 #payzon-10 {
-	position: absolute;
+	position: fixed;
 	left: 872px;
 	top: 71px;
 	width: 122px;
@@ -110,7 +110,7 @@
 }
 
 #payzon-11 {
-	position: absolute;
+	position: fixed;
 	left: 994px;
 	top: 71px;
 	width: 926px;
@@ -118,7 +118,7 @@
 }
 
 #payzon-12 {
-	position: absolute;
+	position: fixed;
 	left: 0px;
 	top: 151px;
 	width: 171px;
@@ -127,7 +127,7 @@
 }
 
 #payzon-13 {
-	position: absolute;
+	position: fixed;
 	left: 171px;
 	top: 151px;
 	width: 171px;
@@ -136,7 +136,7 @@
 }
 
 #payzon-14 {
-	position: absolute;
+	position: fixed;
 	left: 342px;
 	top: 151px;
 	width: 171px;
@@ -145,7 +145,7 @@
 }
 
 #payzon-15 {
-	position: absolute;
+	position: fixed;
 	left: 513px;
 	top: 151px;
 	width: 171px;
@@ -154,7 +154,7 @@
 }
 
 #payzon-16 {
-	position: absolute;
+	position: fixed;
 	left: 684px;
 	top: 151px;
 	width: 1236px;

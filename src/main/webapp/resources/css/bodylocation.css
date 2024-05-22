@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+#content {
+    /* 예시 스타일 */
+    margin-top: 200px; /* 헤더 아래로 200px만큼 띄움 */
+    padding: 20px; /* 내부 여백 추가 */
+    background-color: #f0f0f0; /* 배경색 지정 */
+}

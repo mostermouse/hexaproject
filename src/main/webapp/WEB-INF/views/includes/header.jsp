@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>header</title>
 <link rel="stylesheet" href="resources/css/main.css">
+<link rel="stylesheet" href="resources/css/bodylocation.css">
 </head>
 <body>
 
@@ -89,12 +90,12 @@
 </div>
 
 <!-- 인사관리 -->
-<!-- list.jsp -->
-<div id="payzon-13" class="payzon13" onclick="window.location.href='/personnel/employeeMnt''">
+<!-- employeeMnt.jsp -->
+<div id="payzon-13" class="payzon13" onclick="window.location.href='/personnel/employeeMnt'">
     <img src="resources/images/payzon_13.jpg" width="171" height="30" alt="">
     <!-- 사원현황관리 -->
-    <!-- list.jsp -->
-    <div class="menu-item" id="payzon-18" onclick="window.location.href='/personnel/employeeMnt''">
+    <!-- employeeMnt.jsp -->
+    <div class="menu-item" id="payzon-18" onclick="window.location.href='/personnel/employeeMnt'">
         <img src="resources/images/payzon_18.jpg" alt="Item 18">
     </div>
 </div>

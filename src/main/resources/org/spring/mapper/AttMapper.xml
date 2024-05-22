@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.mapper.AttMapper">
-    <select id="getEmployeeAttendance" resultMap="EmployeeAttendanceResult">
+    <select id="getEmployeeAttendance" resultType="org.spring.domain.AttendanceEntity">
         SELECT 
             a.input_date,
             e.employment_type,

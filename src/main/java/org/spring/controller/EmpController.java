@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @Log4j
@@ -22,6 +23,11 @@ public class EmpController {
         log.info(model.toString());
     }
 
-
+    @RequestMapping("/header")
+    public ModelAndView showHeader() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("includes/header"); // "header"는 views/header.jsp를 의미합니다.
+        return modelAndView;
+    }
 
 }

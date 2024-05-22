@@ -98,7 +98,7 @@ public class EmployeeImpl implements EmployeeService{
 
 
 
-}
+
 
     @Override
     public long countByEmploymentTypeRegular() {

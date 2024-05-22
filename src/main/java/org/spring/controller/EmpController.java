@@ -1,6 +1,7 @@
 package org.spring.controller;
 
 import org.spring.service.EmployeeService;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.AllArgsConstructor;
-<<<<<<< HEAD
+
 import lombok.extern.log4j.Log4j;
 
 @Log4j

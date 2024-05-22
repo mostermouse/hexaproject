@@ -17,7 +17,7 @@
         <th>일용직</th>
         <th>퇴사자</th>
         <th>전체</th>
-        <th>asd</th>
+        
     </tr>
     <tr>
         <td>${employed}</td>

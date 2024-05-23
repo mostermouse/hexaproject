@@ -5,13 +5,13 @@
 <mapper namespace="org.spring.domain.employee.mapper.EmpMapper">
 
 	<!-- 전직원 정보  -->
-	<select id="getAllEmployee" resultType="org.spring.domain.Employee.model.EmployeeEntity">
+	<select id="getAllEmployee" resultType="org.spring.domain.employee.model.EmployeeEntity">
 		SELECT * FROM employee
 	</select>
 
 	<!-- 급여정보 연도 -->
 	<select id="getYearWage"
-		resultType="org.spring.domain.Employee.mapper.EmpMapper"> 
+		resultType="org.spring.domain.employee.mapper.EmpMapper">
 		SELECT * FROM wage WHERE TO_CHAR(wage_payment_date,'YYYY') = #{year}
 	</select>
 

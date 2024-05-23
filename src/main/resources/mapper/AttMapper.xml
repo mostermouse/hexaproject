@@ -21,5 +21,22 @@
         JOIN 
             attendance a ON e.employee_id = a.employee_id;
     </select>
-
+	
+	<select id="getDayWorkerList" resultType="org.spring.domain.employee.model.EmployeeEntity">
+		SELECT * FROM employee
+		<where>
+		<if test="value != null and value != ''"> 
+			employment_type = '일용직' 
+			AND employee_id LIKE '%' || #{srchKwrd} || '%' 
+			OR korean_name LIKE '%' || #{srchKwrd} || '%' 
+			OR department_id LIKE '%' || #{srchKwrd} || '%' 
+		</if>
+		</where>
+		ORDER BY employee_id DESC
+	</select>
+	
+	 <select id="selectAttendanceGroup" resultType="org.spring.domain.attendance.model.AttendanceGroupEntity">
+        SELECT * FROM attendance_group
+    </select>
+	
 </mapper>

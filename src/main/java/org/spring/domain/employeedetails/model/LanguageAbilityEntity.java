@@ -4,10 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.spring.domain.employee.model.EmployeeEntity;
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 
 import java.time.LocalDate;
 

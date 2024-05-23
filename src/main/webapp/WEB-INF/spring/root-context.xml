@@ -51,6 +51,7 @@
 	<mybatis-spring:scan base-package="org.spring.domain.employee.mapper" />
 	<mybatis-spring:scan base-package="org.spring.domain.vacation.mapper" />
 	<mybatis-spring:scan base-package="org.spring.domain.attendance.mapper" />
+	<mybatis-spring:scan base-package="org.spring.domain.wage.mapper" />
 
 
 
@@ -59,8 +60,8 @@
 	<context:component-scan base-package="org.spring.domain.attendance.service" />
 	<context:component-scan base-package="org.spring.domain.employeedetails.service" />
 	<context:component-scan base-package="org.spring.domain.employee.service" />
-
 	<context:component-scan base-package="org.spring.domain.wage.service" />
+
 
 	<!-- Annotation Config -->
 	<context:annotation-config />

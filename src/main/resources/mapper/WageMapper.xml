@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.domain.wage.mapper.WageMapper">
+    <select id="getWageList" resultType="org.spring.domain.wage.model.WageEntity">
+        SELECT
+         e.employment_type AS employmentType <!-- AS 고용형태 -->,
+         e.korean_name AS koreanName <!-- AS 이름 -->,
+         d.department_id AS departmentId <!-- AS 부서 -->,
+         SUM(w.wage_value) AS wageValue <!-- AS 지급총액 -->
+      FROM
+         employee e
+         LEFT JOIN
+         wage w ON e.employee_id = w.employee_id
+      JOIN
+         department d ON e.department_id = d.department_id
+      GROUP BY
+     	 e.employment_type,
+     	 e.korean_name,
+     	 d.department_id
+    </select>
+    
+    <select id="getWageTypeList" resultType="org.spring.domain.wage.model.WageEntity">
+        SELECT 
+        	e.employee_id,
+        	w.wage_value, 
+        	wt.wage_type_id
+		FROM 
+			employee e
+		JOIN 
+			wage w ON e.employee_id = w.employee_id
+		JOIN 
+			wage_type wt ON w.wage_type_id = wt.wage_type_id
+    </select>
+    
+    
+</mapper>

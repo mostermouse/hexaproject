@@ -2,11 +2,10 @@ package org.spring.domain.wage.model;
 
 import java.time.LocalDate;
 
-<<<<<<< Updated upstream
-=======
+
 import org.spring.domain.employee.model.EmployeeEntity;
 
->>>>>>> Stashed changes
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

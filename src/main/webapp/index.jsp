@@ -4,7 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
-<body>
-<h2>Hello World!</h2>
-</body>
-</html>
+
+
+
+
+<%@ include file="/WEB-INF/views/includes/footer.jsp"%>

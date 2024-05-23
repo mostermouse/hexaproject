@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
-<h1></h1>
 <div id="content">
     <h1>Employee List Test</h1>
     <div>
@@ -66,5 +65,4 @@
 </table>
 </div>
 </div>
-</body>
-</html>
+<%@ include file="/WEB-INF/views/includes/footer.jsp"%>

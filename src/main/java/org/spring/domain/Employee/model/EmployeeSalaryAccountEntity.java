@@ -1,9 +1,8 @@
-package org.spring.domain.salary.model;
+package org.spring.domain.Employee.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.spring.domain.Employee.model.EmployeeEntity;
 
 @Data
 @NoArgsConstructor

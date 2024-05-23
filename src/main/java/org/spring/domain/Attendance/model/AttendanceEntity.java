@@ -14,6 +14,7 @@ public class AttendanceEntity extends EmployeeEntity {
    private Long attendanceId;
    private LocalDate inputDate;
    private String attendanceTypeId;
+   private Long feildOrProjectIdLong;
    private LocalDate startDate;
    private LocalDate endDate;
    private Long attendanceDays;

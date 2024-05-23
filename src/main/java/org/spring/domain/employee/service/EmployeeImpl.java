@@ -6,10 +6,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.spring.domain.employee.mapper.EmpMapper;
+import org.spring.domain.employee.model.CareerEntity;
+import org.spring.domain.employee.model.DegreeEntity;
+import org.spring.domain.employee.model.DependentsEntity;
 import org.spring.domain.employee.model.EmployeeEntity;
+import org.spring.domain.employee.model.MilitaryServiceEntity;
 import org.spring.domain.wage.model.WageEntity;
 import org.spring.domain.wage.model.WageRecordRequest;
-import org.spring.domain.employee.mapper.EmpMapper;
+import org.spring.domain.wage.model.WageEntity;
+import org.spring.domain.wage.model.WageRecordRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -84,24 +90,16 @@ public class EmployeeImpl implements EmployeeService{
 		return wageRecordRequests;
 	}
 
+	// 사원현황판
     @Override
     public List<EmployeeEntity> getAllEmployee() {
         log.info("getEmployee..........");
         return mapper.getAllEmployee();
     }
-
-
     @Override
     public long countByStatusEmployed() {
         return mapper.countByStatusEmployed();
     }
-
-
-
-
-
-
-
 
     @Override
     public long countByEmploymentTypeRegular() {
@@ -141,6 +139,15 @@ public class EmployeeImpl implements EmployeeService{
     @Override
     public long countAllEmployees() {
         return mapper.countAllEmployees();
+    }
+    
+    // 사원등록 1페이지
+    public void registerEmployee(EmployeeEntity employeeEntity, 
+    		DependentsEntity dependentsEntity, 
+    		DegreeEntity degreeEntity, 
+    		CareerEntity careerEntity, 
+    		MilitaryServiceEntity militaryServiceEntity) {
+    	
     }
 }
 

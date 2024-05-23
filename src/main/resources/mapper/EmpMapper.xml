@@ -4,98 +4,130 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.domain.employee.mapper.EmpMapper">
 
-
-	<!-- 전직원 정보 -->
-	<select id="getAllEmployee"
-		resultType="org.spring.domain.employee.model.EmployeeEntity">
-
+	<!-- 전직원 정보  -->
+	<select id="getAllEmployee" resultType="org.spring.domain.employee.model.EmployeeEntity">
 		SELECT * FROM employee
 	</select>
 
-	<!-- 급여정보 연도 -->
-	<select id="getYearWage"
-		resultType="org.spring.domain.employee.mapper.EmpMapper">
 
-		SELECT * FROM wage WHERE TO_CHAR(wage_payment_date,'YYYY') = #{year}
-	</select>
-
-	<!-- 전직원 인원수 -->
+	<!-- 전직원 인원수  -->
 	<select id="getTotalEmployeeCount" resultType="Long">
-		SELECT COUNT(*)
-		FROM employee
+		SELECT COUNT(*) FROM employee
 	</select>
+	
+	<!-- 정규직 인원수  -->
+	<select id="getFulltimeEmployeeCount" resultType="Long">
+		SELECT COUNT(*) FROM employee WHERE employee.employment_type = 'fulltimeEmployee'
+	</select>
+	
+	<!-- 계약직 인원수  -->
+	<select id="getContractEmployeeCount" resultType="Long">
+		SELECT COUNT(*) FROM employee WHERE employee.employment_type = 'contractEmployee'
+	</select>
+	
+	<!-- 임시직 인원수  -->
+	<select id="getTemporaryEmployeeCount" resultType="Long">
+		SELECT COUNT(*) FROM employee WHERE employee.employment_type = 'temporaryEmployee'
+	</select>
+	
+	<!-- 일용직 인원수  -->
+	<select id="getDailyWorkerCount" resultType="Long">
+		SELECT COUNT(*) FROM employee WHERE employee.employment_type = 'dailyWorker'
+	</select>
+	
+	
+	<!-- 재직자 인원수 -->
+    <select id="countByStatusEmployed" resultType="long">
+        SELECT COUNT(*) FROM employee WHERE status = '재직'
+    </select>
 
 	<!-- 정규직 인원수 -->
-	<select id="getFulltimeEmployeeCount" resultType="Long">
-		SELECT COUNT(*)
-		FROM employee WHERE employee.employment_type = 'fulltimeEmployee'
-	</select>
+    <select id="countByEmploymentTypeRegular" resultType="long">
+        SELECT COUNT(*) FROM employee WHERE employment_type = '정규직'
+    </select>
 
 	<!-- 계약직 인원수 -->
-	<select id="getContractEmployeeCount" resultType="Long">
-		SELECT COUNT(*)
-		FROM employee WHERE employee.employment_type = 'contractEmployee'
-	</select>
+    <select id="countByEmploymentTypeContract" resultType="long">
+        SELECT COUNT(*) FROM employee WHERE employment_type = '계약직'
+    </select>
 
 	<!-- 임시직 인원수 -->
-	<select id="getTemporaryEmployeeCount" resultType="Long">
-		SELECT
-		COUNT(*) FROM employee WHERE employee.employment_type =
-		'temporaryEmployee'
-	</select>
+    <select id="countByEmploymentTypeTemporary" resultType="long">
+        SELECT COUNT(*) FROM employee WHERE employment_type = '임시직'
+    </select>
+
+	<!-- 파견직 인원수 -->
+    <select id="countByEmploymentTypeDispatched" resultType="long">
+        SELECT COUNT(*) FROM employee WHERE employment_type = '파견직'
+    </select>
+
+	<!-- 위촉직 인원수 -->
+    <select id="countByEmploymentTypeAppointed" resultType="long">
+        SELECT COUNT(*) FROM employee WHERE employment_type = '위촉직'
+    </select>
 
 	<!-- 일용직 인원수 -->
-	<select id="getDailyWorkerCount" resultType="Long">
-		SELECT COUNT(*) FROM
-		employee WHERE employee.employment_type = 'dailyWorker'
-	</select>
+    <select id="countByEmploymentTypeDaily" resultType="long">
+        SELECT COUNT(*) FROM employee WHERE employment_type = '일용직'
+    </select>
 
+	<!-- 퇴사자 인원수 -->
+    <select id="countByStatusResigned" resultType="long">
+        SELECT COUNT(*) FROM employee WHERE status = '퇴사'
+    </select>
 
+	<!-- 전체 인원수 -->
+    <select id="countAllEmployees" resultType="long">
+        SELECT COUNT(*) FROM employee
+    </select>
+	
+	
+	<!-- 사원등록 1페이지 -->
+	<!-- Insert employee -->
+    <insert id="insertEmployee" parameterType="org.spring.domain.employee.model.EmployeeEntity">
+        INSERT INTO employee (
+            employee_id, employment_type, korean_name, english_name, hire_date, resignation_date, department_id, position_id, 
+            foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile, email, sns, other_details, status
+        ) VALUES (
+            #{employeeId}, #{employmentType}, #{koreanName}, #{englishName}, #{hireDate}, #{resignationDate}, #{departmentId}, #{positionId}, 
+            #{foreignOrDomestic}, #{residentNumber1}, #{residentNumber2}, #{address}, #{telPhone}, #{mobile}, #{email}, #{sns}, #{otherDetails}, #{status}
+        )
+    </insert>
+    
+	<!-- Insert dependent -->
+    <insert id="insertDependent" parameterType="org.spring.domain.employee.model.DependentsEntity">
+        INSERT INTO dependents (
+            dependent_id, employee_id, relationship, parents_name, foreign_or_domestic, parents_number1, parents_number2
+        ) VALUES (
+            #{dependentId}, #{employeeId}, #{relationship}, #{parentsName}, #{foreignOrDomestic}, #{parentsNumber1}, #{parentsNumber2}
+        )
+    </insert>
 
-	<select id="countByStatusEmployed" resultType="long">
-		SELECT COUNT(*)
-		FROM employee WHERE status = '재직'
-	</select>
+    <!-- Insert degree -->
+    <insert id="insertDegree" parameterType="org.spring.domain.employee.model.DegreeEntity">
+        INSERT INTO degree (
+            education_id, employee_id, graduate, admission_date, graduation_date, school_name, major, completion
+        ) VALUES (
+            #{educationId}, #{employeeId}, #{graduate}, #{admissionDate}, #{graduationDate}, #{schoolName}, #{major}, #{completion}
+        )
+    </insert>
 
-	<select id="countByEmploymentTypeRegular" resultType="long">
-		SELECT
-		COUNT(*) FROM employee WHERE employment_type = '정규직'
-	</select>
+    <!-- Insert career -->
+    <insert id="insertCareer" parameterType="org.spring.domain.employee.model.CareerEntity">
+        INSERT INTO career (
+            career_id, employee_id, company_name, start_date, end_date, employment_period, final_position, responsibilities, reason_for_leaving
+        ) VALUES (
+            #{careerId}, #{employeeId}, #{companyName}, #{startDate}, #{endDate}, #{employmentPeriod}, #{finalPosition}, #{responsibilities}, #{reasonForLeaving}
+        )
+    </insert>
 
-	<select id="countByEmploymentTypeContract" resultType="long">
-		SELECT
-		COUNT(*) FROM employee WHERE employment_type = '계약직'
-	</select>
-
-	<select id="countByEmploymentTypeTemporary" resultType="long">
-		SELECT
-		COUNT(*) FROM employee WHERE employment_type = '임시직'
-	</select>
-
-	<select id="countByEmploymentTypeDispatched" resultType="long">
-		SELECT
-		COUNT(*) FROM employee WHERE employment_type = '파견직'
-	</select>
-
-	<select id="countByEmploymentTypeAppointed" resultType="long">
-		SELECT
-		COUNT(*) FROM employee WHERE employment_type = '위촉직'
-	</select>
-
-	<select id="countByEmploymentTypeDaily" resultType="long">
-		SELECT
-		COUNT(*) FROM employee WHERE employment_type = '일용직'
-	</select>
-
-	<select id="countByStatusResigned" resultType="long">
-		SELECT COUNT(*)
-		FROM employee WHERE status = '퇴사'
-	</select>
-
-	<select id="countAllEmployees" resultType="long">
-		SELECT COUNT(*) FROM
-		employee
-	</select>
-
-
+    <!-- Insert military service -->
+    <insert id="insertMilitaryService" parameterType="org.spring.domain.employee.model.MilitaryServiceEntity">
+        INSERT INTO military_service (
+            military_service_id, employee_id, service_type, branch, service_period1, service_period2, final_rank, military_class, exemption_reason
+        ) VALUES (
+            #{militaryServiceId}, #{employeeId}, #{serviceType}, #{branch}, #{servicePeriod1}, #{servicePeriod2}, #{finalRank}, #{militaryClass}, #{exemptionReason}
+        )
+    </insert>
+    
 </mapper>

@@ -60,7 +60,7 @@
 	<context:component-scan base-package="org.spring.domain.employeedetails.service" />
 	<context:component-scan base-package="org.spring.domain.Employee.service" />
 
-	<context:component-scan base-package="org.spring.domain.salary.service" />
+	<context:component-scan base-package="org.spring.domain.wage.service" />
 
 	<!-- Annotation Config -->
 	<context:annotation-config />

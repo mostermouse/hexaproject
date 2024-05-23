@@ -7,11 +7,3 @@
     padding: 20px; /* 내부 여백 추가 */
     background-color: #FFFFFF; /* 배경색 지정 */
 }
-
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999; /* 다른 요소 위에 놓이도록 설정 */
-}

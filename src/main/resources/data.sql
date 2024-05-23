@@ -1,3 +1,4 @@
+--수정 전 내용 지우기
 --drop foreign keys, sequences, tables
 ALTER TABLE dependents DROP CONSTRAINT fk_dependent_emplyee;
 ALTER TABLE degree DROP CONSTRAINT fk_degree_employee;
@@ -67,6 +68,85 @@ DROP SEQUENCE wage_seq;
 DROP SEQUENCE wage_type_seq;
 DROP SEQUENCE attendance_seq;
 DROP SEQUENCE attendance_group_seq;
+DROP SEQUENCE attendance_type_seq;
+DROP SEQUENCE vacation_type_seq;
+DROP SEQUENCE vacation_days_seq;
+DROP SEQUENCE department_seq;
+DROP SEQUENCE position_seq;
+
+--수정 후(일용직 현장/프로젝트 테이블 추가)
+--drop foreign keys, sequences, tables
+ALTER TABLE dependents DROP CONSTRAINT fk_dependent_emplyee;
+ALTER TABLE degree DROP CONSTRAINT fk_degree_employee;
+ALTER TABLE career DROP CONSTRAINT fk_career_employee;
+ALTER TABLE military_service DROP CONSTRAINT fk_military_employee;
+ALTER TABLE certification DROP CONSTRAINT fk_certification_employee;
+ALTER TABLE language_ability DROP CONSTRAINT fk_language_employee;
+ALTER TABLE training DROP CONSTRAINT fk_training_employee;
+ALTER TABLE reward_penalty DROP CONSTRAINT fk_reward_penalty_employee;
+ALTER TABLE appointment DROP CONSTRAINT fk_appointment_employee;
+ALTER TABLE referrer DROP CONSTRAINT fk_referrer_employee;
+ALTER TABLE insurance DROP CONSTRAINT fk_insurance_employee;
+ALTER TABLE guarantor DROP CONSTRAINT fk_guarantor_employee;
+ALTER TABLE retirement DROP CONSTRAINT fk_retirement_employee;
+ALTER TABLE employee_salary_account DROP CONSTRAINT fk_account_employee;
+ALTER TABLE wage DROP CONSTRAINT fk_wage_employee;
+ALTER TABLE wage DROP CONSTRAINT fk_wage_type_id;
+ALTER TABLE attendance DROP CONSTRAINT fk_attendance_employee;
+ALTER TABLE attendance DROP CONSTRAINT fk_attendance_feild;
+ALTER TABLE attendance_type DROP CONSTRAINT fk_attendance_type_group;
+ALTER TABLE attendance_type DROP CONSTRAINT fk_attendance_type_vacation;
+ALTER TABLE vacation_days DROP CONSTRAINT fk_vacation_days_employee;
+ALTER TABLE vacation_days DROP CONSTRAINT fk_vacation_days_type;
+ALTER TABLE employee DROP CONSTRAINT fk_employee_department;
+ALTER TABLE employee DROP CONSTRAINT fk_employee_position;
+
+DROP TABLE dependents;
+DROP TABLE degree;
+DROP TABLE career;
+DROP TABLE military_service;
+DROP TABLE certification;
+DROP TABLE language_ability;
+DROP TABLE training;
+DROP TABLE reward_penalty;
+DROP TABLE appointment;
+DROP TABLE referrer;
+DROP TABLE insurance;
+DROP TABLE guarantor;
+DROP TABLE retirement;
+DROP TABLE employee_salary_account;
+DROP TABLE wage;
+DROP TABLE wage_type;
+DROP TABLE attendance;
+DROP TABLE feild_or_project;
+DROP TABLE attendance_group;
+DROP TABLE attendance_type;
+DROP TABLE vacation_days;
+DROP TABLE vacation_type;
+DROP TABLE employee;
+DROP TABLE department;
+DROP TABLE position;
+
+DROP SEQUENCE employee_seq;
+DROP SEQUENCE dependents_seq;
+DROP SEQUENCE education_seq;
+DROP SEQUENCE career_seq;
+DROP SEQUENCE military_service_seq;
+DROP SEQUENCE certification_seq;
+DROP SEQUENCE language_ability_seq;
+DROP SEQUENCE training_seq;
+DROP SEQUENCE rewardPenalty_seq;
+DROP SEQUENCE appointment_seq;
+DROP SEQUENCE referrer_seq;
+DROP SEQUENCE insurance_seq;
+DROP SEQUENCE guarantor_seq;
+DROP SEQUENCE retirement_seq;
+DROP SEQUENCE issue_registry_seq;
+DROP SEQUENCE wage_seq;
+DROP SEQUENCE wage_type_seq;
+DROP SEQUENCE attendance_seq;
+DROP SEQUENCE attendance_group_seq;
+DROP SEQUENCE feild_or_project_seq;
 DROP SEQUENCE attendance_type_seq;
 DROP SEQUENCE vacation_type_seq;
 DROP SEQUENCE vacation_days_seq;
@@ -189,6 +269,12 @@ CREATE SEQUENCE attendance_group_seq
     INCREMENT BY 1
     NOCACHE
   NOCYCLE;
+  
+CREATE SEQUENCE feild_or_project_seq
+    START WITH 1
+    INCREMENT BY 1
+    NOCACHE
+  NOCYCLE;
 
 CREATE SEQUENCE attendance_type_seq
     START WITH 1
@@ -239,7 +325,7 @@ CREATE TABLE position (
 CREATE TABLE employee (
 
                           employee_id Number PRIMARY KEY,  -- 직원 ID
-                          employment_type VARCHAR2(100),  -- 고용 형태 (정규직, 계약직 등)
+                          employment_type VARCHAR2(100),  -- 고용 형태 (정규직 계약직 임시직 일용직)
                           korean_name VARCHAR2(100),  -- 한글 이름
                           english_name VARCHAR2(100),  -- 영문 이름
                           hire_date DATE,  -- 입사일
@@ -274,7 +360,7 @@ CREATE TABLE dependents (
 
 -- 직원의 학력 정보를 저장하는 테이블
 CREATE TABLE degree (
-                        education_id NUMBER PRIMARY KEY,  -- 교육 정보 ID
+                        degree_id NUMBER PRIMARY KEY,  -- 교육 정보 ID
                         employee_id Number,  -- 직원 ID (외래 키)
                         graduate VARCHAR2(100),  -- 최종학력
                         admission_date DATE,  -- 입학일
@@ -295,7 +381,7 @@ CREATE TABLE career (
                         employment_period VARCHAR2(100),  -- 근무 기간
                         final_position VARCHAR2(100),  -- 최종 직위
                         responsibilities VARCHAR2(4000),  -- 업무 내용
-                        reason_for_leaving VARCHAR2(4000),  -- 퇴사 사유
+                        reason_for_resignation VARCHAR2(4000),  -- 퇴사 사유
                         CONSTRAINT fk_career_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id)  -- 외래 키 제약 조건
 );
 
@@ -308,7 +394,7 @@ CREATE TABLE military_service (
                                   service_period1 DATE,  -- 복무 기간
                                   service_period2 DATE,  -- 복무 기간
                                   final_rank VARCHAR2(100),  -- 최종 계급
-                                military_class varchar2(100), --병과
+                                  department VARCHAR2(100), --병과
                                   exemption_reason VARCHAR2(4000),  -- 면제 사유
                                   CONSTRAINT fk_military_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id)  -- 외래 키 제약 조건
 );
@@ -426,7 +512,7 @@ CREATE TABLE retirement (
                             retirement_date DATE,  -- 퇴직일
                             retirement_reason VARCHAR2(4000),  -- 퇴직 사유
                             contact_after_retirement VARCHAR2(20),  -- 퇴직 후 연락 가능 여부
-                            retirement_benefits NUMBER,  -- 퇴직 수당
+                            retirement_pay NUMBER,  -- 퇴직 수당
                             CONSTRAINT fk_retirement_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id)  -- 외래 키 제약 조건
 );
 
@@ -504,18 +590,26 @@ CREATE TABLE attendance_group(
                             attandance_group_name VARCHAR2(50) -- 근태 그룹 이름
 );
 
+-- 일용직 근무처(현장/프로젝트)
+CREATE TABLE feild_or_project(
+                            feild_or_project_id NUMBER PRIMARY KEY, -- ID
+                            name VARCHAR2(100) -- 현장/프젝 이름
+);
+
 -- 근태 및 기록 정보를 관리하는 테이블
 CREATE TABLE attendance (
                             attendance_id NUMBER PRIMARY KEY,  -- 근태 기록 ID
                             employee_id number,  -- 직원 ID (외래 키)
                             input_date DATE,  -- 입력일자
                             attendance_type_id NUMBER,  -- 근태항목(외래 키)
+                            feild_or_project_id NUMBER, -- 일용직 현장/프젝 이름
                             start_date DATE,  -- 기간 시작일
                             end_date DATE,  -- 기간 종료일
                             attendance_days NUMBER,  -- 근태일수
                             amount NUMBER,  -- 금액
                             summary VARCHAR2(4000),  -- 적요
-                            CONSTRAINT fk_attendance_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id)  -- 직원 테이블의 외래 키 제약 조건
+                            CONSTRAINT fk_attendance_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id),  -- 직원 테이블의 외래 키 제약 조건
+                            CONSTRAINT fk_attendance_feild FOREIGN KEY (feild_or_project_id) REFERENCES feild_or_project(feild_or_project_id) -- 외래키 제약조건(휴가 공제)
 );
 
 -- 근태 항목(종류)
@@ -529,60 +623,3 @@ CREATE TABLE attendance_type(
                             CONSTRAINT fk_attendance_type_group FOREIGN KEY (attandance_group_id) REFERENCES attendance_group(attandance_group_id), -- 외래키 제약조건(근태 그룹)
                             CONSTRAINT fk_attendance_type_vacation FOREIGN KEY (vacation_type_id) REFERENCES vacation_type(vacation_type_id) -- 외래키 제약조건(휴가 공제)
 );
-
------------------------------------------------------------------------------------------------------------------------------------------------------
---basic datas
-
--- 기본 급여 종류 입력하기
-INSERT INTO wage_type VALUES (wage_type_seq.nextval, '기본급', NULL, NULL, NULL, 'T');
-INSERT INTO wage_type VALUES (wage_type_seq.nextval, '식비', NULL, '일괄지급','200000', 'T');
-INSERT INTO wage_type VALUES (wage_type_seq.nextval, '보육수당', NULL, NULL, NULL, 'T');
-INSERT INTO wage_type VALUES (wage_type_seq.nextval, '직책수당', NULL, NULL, NULL, 'T');
-INSERT INTO wage_type VALUES (wage_type_seq.nextval, '차량유지비', NULL, NULL, NULL, 'T');
-INSERT INTO wage_type VALUES (wage_type_seq.nextval, '근속수당', NULL, NULL, NULL, 'T');
-INSERT INTO wage_type VALUES (wage_type_seq.nextval, '당직수당', NULL, '근태연결', '연장근무', 'T');
-INSERT INTO wage_type VALUES (wage_type_seq.nextval, '상여금', NULL, NULL, NULL, 'T');
-INSERT INTO wage_type VALUES (wage_type_seq.nextval, '휴일수당', NULL, '근태연결', '휴일근무', 'T');
-
--- 기본 근태 그룹 종류 입력
-INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '휴가');
-INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '연장근무');
-INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '지각조퇴');
-INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '특근');
-INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '기타');
-
--- 기본 근태 항목(종류) 입력
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '연차', '일', '1', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '반차', '일', '1', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '지각', '시간', '3', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '조퇴', '시간', '3', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '외근', '시간', '5', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '휴일근무', '시간', '2', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '연장근무', '시간', '2', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '포상휴가', '일', '1', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '야간근무', '시간', '2', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '청원휴가', '일', '1', NULL, 'T');
-
--- department 테이블에 값 삽입
-INSERT ALL
-INTO department (department_id, department_name)VALUES (5, '디자인부')          -- 디자인부
-INTO department (department_id, department_name)VALUES (3, '콘텐츠부')        -- 콘텐츠부
-INTO department (department_id, department_name)VALUES (4, '업무지원부')          -- 업무지원부
-INTO department (department_id, department_name)VALUES (7, '기획전략부')          -- 기획전략부
-INTO department (department_id, department_name)VALUES (6, '관리부')              -- 관리부
-INTO department (department_id, department_name)VALUES (1, '사장실')              -- 사장실
-INTO department (department_id, department_name)VALUES (2, '개발부')              -- 개발부
-SELECT * FROM dual;
-
--- position 테이블에 값 삽입
-INSERT ALL
-INTO position (position_id, position_name)VALUES (1, '사장')     -- 사장
-INTO position (position_id, position_name)VALUES (2, '이사')     -- 이사
-INTO position (position_id, position_name)VALUES (3, '실장')       -- 실장
-INTO position (position_id, position_name)VALUES  (4, '부장')       -- 부장
-INTO position (position_id, position_name)VALUES (5, '차장')       -- 차장
-INTO position (position_id, position_name)VALUES (6, '과장')       -- 과장
-INTO position (position_id, position_name)VALUES (7, '대리')       -- 대리
-INTO position (position_id, position_name)VALUES (8, '주임')       -- 주임
-INTO position (position_id, position_name)VALUES (9, '사원')       -- 사원
-SELECT * FROM dual;

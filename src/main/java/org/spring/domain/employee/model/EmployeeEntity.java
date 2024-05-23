@@ -1,6 +1,15 @@
 package org.spring.domain.employee.model;
 
+
 import java.time.LocalDate;
+
+
+import lombok.*;
+
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 
 public class EmployeeEntity {
 
@@ -23,4 +32,8 @@ public class EmployeeEntity {
     private String otherDetails;
     private String  status;
 
+
 }
+
+
+

@@ -8,7 +8,7 @@
  <div class="container">
         <h2>휴가조회</h2>
         <p>전체 사원 휴가현황을 한 번에 보실 수 있습니다. 사원별 상세 휴가내역도 확인할 수 있습니다.</p>
-        <form method="get" action="${pageContext.request.contextPath}/holidaysSearchResult">
+        <form method="get" action="${pageContext.request.contextPath}/holiday">
             <div class="filters">
         <select name="vacationTypeName" id="vacationTypeName">
                 <option value="">휴가항목 선택</option>

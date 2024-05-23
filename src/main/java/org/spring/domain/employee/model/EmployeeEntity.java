@@ -1,11 +1,7 @@
 package org.spring.domain.employee.model;
 
-import lombok.*;
 import java.time.LocalDate;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class EmployeeEntity {
 
     private Long employeeId;

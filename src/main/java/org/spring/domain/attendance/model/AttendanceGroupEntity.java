@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AttendanceGroupEntity {
 
-	private Long attandanceGroupId;
-	private String attandanceGroupName;
-	
+    private Long attandanceGroupId;
+    private String attandanceGroupName;
+
 }

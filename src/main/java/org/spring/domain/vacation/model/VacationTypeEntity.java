@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.spring.domain.employee.model.EmployeeEntity;
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

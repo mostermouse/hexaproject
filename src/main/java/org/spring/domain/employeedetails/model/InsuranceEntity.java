@@ -10,7 +10,8 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class InsuranceEntity extends EmployeeEntity {
+public class InsuranceEntity extends EmployeeEntity
+{
     private Long insuranceId;
     private String insuranceAgency;
     private String insuranceNumber;

@@ -36,7 +36,7 @@
 	</div>
 	<!-- 휴가조회 -->
 	<!-- holidaysSearchResult.jsp -->
-	<div id="payzon-06" onclick="window.location.href='/diligence/holidaysSearchResult'">
+	<div id="payzon-06" onclick="window.location.href='/holidaysSearchResult'">
 		<img src="resources/images/payzon_06.jpg" width="99" height="80" alt="">
 	</div>
 	<!-- 급여입력/관리 -->

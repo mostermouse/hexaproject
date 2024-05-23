@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.spring.domain.Employee.model.EmployeeEntity;
-import org.spring.domain.Employee.model.WageEntity;
+import org.spring.domain.wage.model.WageEntity;
+import org.spring.domain.wage.model.WageRecordRequest;
 import org.spring.domain.Employee.mapper.EmpMapper;
-import org.spring.domain.Employee.model.WageRecordRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

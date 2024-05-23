@@ -1,4 +1,4 @@
-package org.spring.domain.Employee.model;
+package org.spring.domain.wage.model;
 
 import java.time.LocalDate;
 

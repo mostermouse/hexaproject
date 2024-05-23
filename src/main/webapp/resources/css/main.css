@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+
 #payzon-01 {
 	position: fixed;
 	left: 0px;

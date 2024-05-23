@@ -1,9 +1,149 @@
 @charset "UTF-8";
 
 #content {
-    /* 예시 스타일 */
-    margin-top: 200px; /* 헤더 아래로 200px만큼 띄움 */
-    margin-bottom: 200px; /* footer와의 거리를 설정합니다. */
-    padding: 20px; /* 내부 여백 추가 */
-    background-color: #FFFFFF; /* 배경색 지정 */
+	margin-top: 200px;
+	margin-bottom: 200px;
+	padding: 20px;
+	background-color: #FFFFFF;
+	text-align: center;
+}
+
+.divtitle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.divtitle h3 {
+	margin-right: 230px;
+}
+
+.divtitle form {
+	margin-left: 230px;
+}
+
+.title-container {
+	position: relative;
+	display: inline-block;
+}
+
+.table-container {
+	position: relative;
+	display: inline-block;
+	text-align: left;
+}
+
+/* 재직자 */
+.tg .tg-jc02 {
+	background-color: #efefef;
+	border-color: #ffffff;
+	text-align: center;
+	vertical-align: middle
+}
+
+.tg .tg-ev56 {
+	background-color: #ea5d89;
+	border-color: #ffffff;
+	color: #ffffff;
+	font-size: 20px;
+	text-align: center;
+	vertical-align: middle
+}
+/* 인원별 */
+.tg {
+	border-collapse: collapse;
+	border-spacing: 0;
+	display: inline-block;
+}
+
+.tg td {
+	border-color: black;
+	border-style: solid;
+	border-width: 1px;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	overflow: hidden;
+	padding: 10px 5px;
+	word-break: normal;
+	width: 160px;
+	height: 60px;
+}
+
+.tg th {
+	border-color: black;
+	border-style: solid;
+	border-width: 1px;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	overflow: hidden;
+	padding: 10px 5px;
+	word-break: normal;
+	width: 160px;
+	height: 60px;
+}
+
+.tg .tg-jc02 {
+	background-color: #efefef;
+	border-color: #ffffff;
+	text-align: center;
+	vertical-align: middle
+}
+
+.tg .tg-c5zh {
+	background-color: #70b5e2;
+	border-color: #ffffff;
+	color: #ffffff;
+	font-size: 20px;
+	text-align: center;
+	vertical-align: middle
+}
+
+/* 급여현황 */
+.pay {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.pay td {
+	border-color: black;
+	border-style: solid;
+	border-width: 1px;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	overflow: hidden;
+	padding: 10px 5px;
+	word-break: normal;
+}
+
+.pay th {
+	border-color: black;
+	border-style: solid;
+	border-width: 1px;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	overflow: hidden;
+	padding: 10px 5px;
+	word-break: normal;
+}
+
+.pay .pay-head {
+	background-color: #dff3fa;
+	border-color: #c0c0c0;
+	font-size: 20px;
+	text-align: center;
+	vertical-align: middle
+}
+
+.pay .pay-body {
+	border-color: #c0c0c0;
+	text-align: center;
+	vertical-align: middle
+}
+
+.pay .pay-total {
+	border-color: #c0c0c0;
+	text-align: right;
+	vertical-align: middle
 }

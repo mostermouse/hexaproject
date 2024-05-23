@@ -32,7 +32,21 @@
 
 
 	<context:component-scan
-		base-package="org.spring.controller" />
+		base-package="org.spring.domain.Employee.controller" />
+
+	<context:component-scan
+			base-package="org.spring.domain.Attendance.controller" />
+
+
+	<context:component-scan
+			base-package="org.spring.domain.employeedetails.controller" />
+
+	<context:component-scan
+			base-package="org.spring.domain.salary.controller" />
+
+	<context:component-scan
+			base-package="org.spring.domain.vacation.controller" />
+
 
 
 

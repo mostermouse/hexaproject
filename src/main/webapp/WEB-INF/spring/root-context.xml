@@ -36,6 +36,8 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:mybatis-config.xml" />
+		<!-- mapper 인터페이스를 스캔하여 등록 -->
+		<property name="mapperLocations" value="classpath*:mapper/*.xml" />
 	</bean>
 
 	<!-- Transaction Manager 설정 -->
@@ -46,10 +48,19 @@
 	<tx:annotation-driven />
 
 	<!-- Mapper 스캔 -->
-	<mybatis-spring:scan base-package="org.spring.mapper" />
+	<mybatis-spring:scan base-package="org.spring.domain.Employee.mapper" />
+	<mybatis-spring:scan base-package="org.spring.domain.vacation.mapper" />
+	<mybatis-spring:scan base-package="org.spring.domain.Attendance.mapper" />
+
+
 
 	<!-- Component Scan -->
-	<context:component-scan base-package="org.spring.service" />
+	<context:component-scan base-package="org.spring.domain.vacation.service" />
+	<context:component-scan base-package="org.spring.domain.Attendance.service" />
+	<context:component-scan base-package="org.spring.domain.employeedetails.service" />
+	<context:component-scan base-package="org.spring.domain.Employee.service" />
+
+	<context:component-scan base-package="org.spring.domain.salary.service" />
 
 	<!-- Annotation Config -->
 	<context:annotation-config />

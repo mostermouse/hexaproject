@@ -21,7 +21,7 @@ public class VacationController {
 	 @Autowired
 	    private VacationService service;
 
-	    @GetMapping("/diligence/holidaysSearchResult")
+	    @GetMapping("/holidaysSearchResult")
 	    public String vacList( @RequestParam(value = "status", required = false) String status,
 	            @RequestParam(value = "employmentType", required = false) String employmentType,
 	            @RequestParam(value = "departmentId", required = false) Long departmentId,
@@ -42,7 +42,7 @@ public class VacationController {
 	    }
 	    
 	    
-	    @GetMapping("/diligence/holidaysSearchResult/filter")
+	    @GetMapping("/holidaysSearchResult/filter")
 	    public String filterVacations(
 	            @RequestParam(value = "status", required = false) String status,
 	            @RequestParam(value = "employmentType", required = false) String employmentType,

@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div id="content">
-	<h2>휴가조회</h2>
+
+ <div class="container">
+        <h2>휴가조회</h2>
         <p>전체 사원 휴가현황을 한 번에 보실 수 있습니다. 사원별 상세 휴가내역도 확인할 수 있습니다.</p>
-        <form method="get" action="${pageContext.request.contextPath}/diligence/holidaysSearchResult">
+        <form method="get" action="${pageContext.request.contextPath}/holidaysSearchResult">
             <div class="filters">
         <select name="vacationTypeName" id="vacationTypeName">
                 <option value="">휴가항목 선택</option>
@@ -79,8 +82,18 @@
             <button>이전페이지</button>
             <span>1</span>
             <button>다음페이지</button>
-
         </div>
+    </div>
+
+
+
+    <script>
+        document.getElementById('vacationTypeSelect').addEventListener('change', function() {
+            if (this.value === 'setting') {
+                window.location.href = '/vacationSettingPage'; // Change this to the actual URL of the vacation setting page
+            }
+        });
+    </script>
 
 </div>
 

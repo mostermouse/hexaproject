@@ -18,24 +18,25 @@
 }
 
 #payzon-02 img, #payzon-03 img, #payzon-04 img, #payzon-05 img,
-	#payzon-06 img, #payzon-07 img, #payzon-08 img, #payzon-09 img,
-	#payzon-10 img, #payzon-17 img, #payzon-18 img, #payzon-19 img,
-	#payzon-20 img, #payzon-22img, #payzon-24 img, #payzon-25 img,
-	#payzon-26 img, #payzon-27 img, #payzon-28 img, #payzon-29 img,
-	#payzon-30 img, #payzon-31 img, #payzon-33 img, #payzon-34 img {
-	transition: opacity 0.3s ease;
+#payzon-06 img, #payzon-07 img, #payzon-08 img, #payzon-09 img,
+#payzon-10 img, #payzon-17 img, #payzon-18 img, #payzon-19 img,
+#payzon-20 img, #payzon-22 img, #payzon-24 img, #payzon-25 img,
+#payzon-26 img, #payzon-27 img, #payzon-28 img, #payzon-29 img,
+#payzon-30 img, #payzon-31 img, #payzon-33 img, #payzon-34 img {
+    transition: filter 0.3s ease;
 }
 
 #payzon-02 img:hover, #payzon-03 img:hover, #payzon-04 img:hover,
-	#payzon-05 img:hover, #payzon-06 img:hover, #payzon-07 img:hover,
-	#payzon-08 img:hover, #payzon-09 img:hover, #payzon-10 img:hover,
-	#payzon-17 img:hover, #payzon-18 img:hover, #payzon-19 img:hover,
-	#payzon-20 img:hover, #payzon-22 img:hover, #payzon-24 img:hover,
-	#payzon-25 img:hover, #payzon-26 img:hover, #payzon-27 img:hover,
-	#payzon-28 img:hover, #payzon-29 img:hover, #payzon-30 img:hover,
-	#payzon-31 img:hover, #payzon-33 img:hover, #payzon-34 img:hover {
-	opacity: 0.5; /* 이미지가 더 어두워지도록 설정 */
+#payzon-05 img:hover, #payzon-06 img:hover, #payzon-07 img:hover,
+#payzon-08 img:hover, #payzon-09 img:hover, #payzon-10 img:hover,
+#payzon-17 img:hover, #payzon-18 img:hover, #payzon-19 img:hover,
+#payzon-20 img:hover, #payzon-22 img:hover, #payzon-24 img:hover,
+#payzon-25 img:hover, #payzon-26 img:hover, #payzon-27 img:hover,
+#payzon-28 img:hover, #payzon-29 img:hover, #payzon-30 img:hover,
+#payzon-31 img:hover, #payzon-33 img:hover, #payzon-34 img:hover {
+    filter: brightness(1.3); /* 이미지가 밝아지도록 설정 */
 }
+
 
 #payzon-03 {
 	position: fixed;

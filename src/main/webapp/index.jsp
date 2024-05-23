@@ -5,7 +5,9 @@
 
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
 
+<div id="content">
 
+</div>
 
 
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>

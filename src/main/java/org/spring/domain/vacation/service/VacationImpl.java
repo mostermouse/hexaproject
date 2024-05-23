@@ -18,7 +18,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @Service
 @AllArgsConstructor
-public class VacationImple implements VacationService {
+public class VacationImpl implements VacationService {
 
 	  @Setter(onMethod_ = @Autowired)
 	    private VacationMapper vacMapper;

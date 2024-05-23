@@ -1,9 +1,9 @@
-package org.spring.domain.Attendance.service;
+package org.spring.domain.attendance.service;
 
 import java.util.List;
 
-import org.spring.domain.Attendance.model.AttendanceEntity;
-import org.spring.domain.Attendance.mapper.AttMapper;
+import org.spring.domain.attendance.model.AttendanceEntity;
+import org.spring.domain.attendance.mapper.AttMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -3,8 +3,8 @@ package org.spring.domain.vacation.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
-import org.spring.domain.Employee.model.DepartmentEntity;
-import org.spring.domain.Employee.model.PositionEntity;
+import org.spring.domain.employee.model.DepartmentEntity;
+import org.spring.domain.employee.model.PositionEntity;
 import org.spring.domain.vacation.model.VacationDaysEntity;
 import org.spring.domain.vacation.model.VacationDetailsEntity;
 import org.spring.domain.vacation.model.VacationTypeEntity;

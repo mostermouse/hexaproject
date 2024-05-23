@@ -55,11 +55,11 @@
         SELECT DISTINCT employment_type FROM employee
     </select>
 
-    <select id="getAllDepartments" resultType="org.spring.domain.Employee.model.DepartmentEntity">
+    <select id="getAllDepartments" resultType="org.spring.domain.employee.model.DepartmentEntity">
         SELECT * FROM department
     </select>
 
-    <select id="getAllPositions" resultType="org.spring.domain.Employee.model.PositionEntity">
+    <select id="getAllPositions" resultType="org.spring.domain.employee.model.PositionEntity">
         SELECT * FROM position
     </select>
    
@@ -77,12 +77,12 @@
              FROM vacation_days vd2
              WHERE vd2.employee_id = e.employee_id
                AND vd2.vacation_type_id = vt.vacation_type_id
-               AND vd2.vacation_value < 0) AS usedVacationDays,
+               AND vd2.vacation_value > 0) AS usedVacationDays,
             (vd.vacation_value - (SELECT NVL(SUM(vd2.vacation_value), 0)
                                   FROM vacation_days vd2
                                   WHERE vd2.employee_id = e.employee_id
                                     AND vd2.vacation_type_id = vt.vacation_type_id
-                                    AND vd2.vacation_value < 0)) AS remainingVacationDays
+                                    AND vd2.vacation_value > 0)) AS remainingVacationDays
         FROM 
             vacation_days vd
         JOIN 

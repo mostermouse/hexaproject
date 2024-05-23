@@ -2,8 +2,8 @@ package org.spring.domain.vacation.service;
 
 import java.util.List;
 
-import org.spring.domain.Employee.model.DepartmentEntity;
-import org.spring.domain.Employee.model.PositionEntity;
+import org.spring.domain.employee.model.DepartmentEntity;
+import org.spring.domain.employee.model.PositionEntity;
 import org.spring.domain.vacation.model.VacationDaysEntity;
 import org.spring.domain.vacation.model.VacationDetailsEntity;
 import org.spring.domain.vacation.model.VacationTypeEntity;

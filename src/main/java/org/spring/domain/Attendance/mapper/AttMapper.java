@@ -1,6 +1,6 @@
-package org.spring.domain.Attendance.mapper;
+package org.spring.domain.attendance.mapper;
 
-import org.spring.domain.Attendance.model.AttendanceEntity;
+import org.spring.domain.attendance.model.AttendanceEntity;
 
 import java.util.List;
 

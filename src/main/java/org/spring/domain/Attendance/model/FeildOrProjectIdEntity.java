@@ -1,4 +1,4 @@
-package org.spring.domain.Attendance.model;
+package org.spring.domain.attendance.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

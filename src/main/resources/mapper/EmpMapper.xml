@@ -2,11 +2,10 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.spring.domain.Employee.mapper.EmpMapper">
+<mapper namespace="org.spring.domain.employee.mapper.EmpMapper">
 
-	<!-- 전직원 정보 -->
-	<select id="getAllEmployee"
-		resultType="org.spring.domain.Employee.model.EmployeeEntity">
+	<!-- 전직원 정보  -->
+	<select id="getAllEmployee" resultType="org.spring.domain.Employee.model.EmployeeEntity">
 		SELECT * FROM employee
 	</select>
 

@@ -1,6 +1,6 @@
-package org.spring.domain.Employee.mapper;
+package org.spring.domain.employee.mapper;
 
-import org.spring.domain.Employee.model.EmployeeEntity;
+import org.spring.domain.employee.model.EmployeeEntity;
 import org.spring.domain.wage.model.WageEntity;
 
 import java.util.List;

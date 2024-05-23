@@ -1,4 +1,4 @@
-package org.spring.domain.Employee.service;
+package org.spring.domain.employee.service;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.spring.domain.Employee.model.EmployeeEntity;
+import org.spring.domain.employee.model.EmployeeEntity;
 import org.spring.domain.wage.model.WageEntity;
 import org.spring.domain.wage.model.WageRecordRequest;
-import org.spring.domain.Employee.mapper.EmpMapper;
+import org.spring.domain.employee.mapper.EmpMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

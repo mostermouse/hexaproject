@@ -1,9 +1,9 @@
-package org.spring.domain.Attendance.model;
+package org.spring.domain.attendance.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.spring.domain.Employee.model.EmployeeEntity;
+import org.spring.domain.employee.model.EmployeeEntity;
 
 import java.time.LocalDate;
 

@@ -1,6 +1,6 @@
-package org.spring.domain.Employee.controller;
+package org.spring.domain.employee.controller;
 
-import org.spring.domain.Employee.service.EmployeeService;
+import org.spring.domain.employee.service.EmployeeService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

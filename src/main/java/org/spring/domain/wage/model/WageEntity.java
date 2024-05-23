@@ -2,7 +2,7 @@ package org.spring.domain.wage.model;
 
 import java.time.LocalDate;
 
-import org.spring.domain.Employee.model.EmployeeEntity;
+import org.spring.domain.employee.model.EmployeeEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

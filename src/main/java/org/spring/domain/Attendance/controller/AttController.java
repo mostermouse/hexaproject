@@ -1,4 +1,4 @@
-package org.spring.domain.Attendance.controller;
+package org.spring.domain.attendance.controller;
 
 public class AttController {
 }

@@ -1,4 +1,4 @@
-package org.spring.domain.Employee.model;
+package org.spring.domain.employee.model;
 
 import lombok.*;
 import java.time.LocalDate;

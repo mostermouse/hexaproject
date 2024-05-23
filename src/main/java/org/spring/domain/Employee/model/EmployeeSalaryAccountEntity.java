@@ -1,4 +1,4 @@
-package org.spring.domain.Employee.model;
+package org.spring.domain.employee.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,6 +1,6 @@
-package org.spring.domain.Employee.service;
+package org.spring.domain.employee.service;
 
-import org.spring.domain.Employee.model.EmployeeEntity;
+import org.spring.domain.employee.model.EmployeeEntity;
 import org.spring.domain.wage.model.WageRecordRequest;
 
 import java.util.List;

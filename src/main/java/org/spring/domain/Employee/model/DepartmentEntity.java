@@ -1,6 +1,4 @@
-package org.spring.domain.Employee.model;
-
-import org.spring.domain.vacation.model.VacationDaysEntity;
+package org.spring.domain.employee.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

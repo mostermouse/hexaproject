@@ -4,42 +4,100 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.domain.wage.mapper.WageMapper">
 
-    <select id="getWageList" resultType="org.spring.domain.wage.model.WageEntity">
-        SELECT
-         e.employment_type AS employmentType <!-- AS 고용형태 -->,
-         e.korean_name AS koreanName <!-- AS 이름 -->,
-         d.department_id AS departmentId <!-- AS 부서 -->,
-         SUM(w.wage_value) AS wageValue <!-- AS 지급총액 -->
+   <!-- 고용형태, 이름, 부서, 지급총액을 불러 오는 쿼리 -->
+   <select id="getWageList"
+      resultType="org.spring.domain.wage.model.WageEntity">
+      SELECT
+      e.employee_id AS employeeId,
+      e.employment_type AS
+      employmentType,
+      e.korean_name AS koreanName,
+      d.department_id AS
+      departmentId,
+      SUM(w.wage_value) AS wageValue
       FROM
-         employee e
-         LEFT JOIN
-         wage w ON e.employee_id = w.employee_id
+      employee e
+      LEFT JOIN
+      wage w ON e.employee_id = w.employee_id
       JOIN
-         department d ON e.department_id = d.department_id
+      department d ON
+      e.department_id = d.department_id
       GROUP BY
-     	 e.employment_type,
-     	 e.korean_name,
-     	 d.department_id
-    </select>
-    
-    <select id="getWageTypeList" resultType="org.spring.domain.wage.model.WageEntity">
-        SELECT 
-        	e.employee_id,
-        	w.wage_value, 
-        	wt.wage_type_id
-		FROM 
-			employee e
-		JOIN 
-			wage w ON e.employee_id = w.employee_id
-		JOIN 
-			wage_type wt ON w.wage_type_id = wt.wage_type_id
-    </select>
-    
-    <!-- 급여대장 출력  -->
-	<!-- 급여정보 연도   -->
-	<select id="getYearWage" resultType="org.spring.domain.wage.model.WageEntity"> 
-		SELECT * FROM wage WHERE TO_CHAR(wage_payment_date, 'YYYY') = #{year} 
-	</select>
-    
-    
+      e.employee_id,
+      e.employment_type,
+      e.korean_name,
+      d.department_id
+   </select>
+
+
+
+   <!-- 이름, 급여, 급여유형을 불러 오는 쿼리 -->
+   <select id="getWageTypeList"
+      resultType="org.spring.domain.wage.model.WageEntity">
+      SELECT
+      e.employee_id,
+      e.korean_name,
+      w.wage_value,
+      wt.wage_type_id
+      FROM
+      employee e
+      JOIN
+      wage w ON e.employee_id =
+      w.employee_id
+      JOIN
+      wage_type wt ON w.wage_type_id = wt.wage_type_id
+   </select>
+
+
+   <!-- employee_id로 한국이름을 찾는쿼리 -->
+   <select id="getNamebyId" parameterType="long"
+      resultType="string">
+      select KOREAN_NAME
+      from employee
+      where employee_id =
+      #{employee_id};
+   </select>
+
+
+   <!-- departmentId로 departmentName을 가져오는 쿼리 -->
+
+   <select id="getDepartmentNameById" parameterType="long"
+      resultType="string">
+      SELECT
+      department_name
+      FROM
+      department
+      WHERE
+      department_id =
+      #{departmentId}
+   </select>
+
+
+
+   <!-- wageTypeId로 wageTypeName을 가져오는 쿼리 -->
+
+   <select id="getWageTypeNameById" parameterType="long"
+      resultType="string">
+      SELECT
+      wage_type_name
+      FROM
+      wage_type
+      WHERE
+      wage_type_id =
+      #{wageTypeId}
+   </select>
+
+
+   <!-- 급여를 업데이트하는 쿼리문 -->
+   <update id="updateWage">
+      UPDATE wage
+      SET wage_value =
+      CASE wage_type_id
+      <foreach item='value' collection="wageTypeNames" index="key">
+         <if test="key != null">WHEN #{key} THEN #{value}</if>
+      </foreach>
+      WHERE employee_id = #{employeeId}
+   </update>
+
+
 </mapper>

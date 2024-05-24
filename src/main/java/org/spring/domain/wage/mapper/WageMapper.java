@@ -7,11 +7,13 @@ import org.spring.domain.wage.model.WageEntity;
 
 public interface WageMapper {
 
-	public List<WageEntity> getWageList();
+	List<WageEntity> getWageList();
 
-	public List<WageEntity> getWageTypeList();
+	List<WageEntity> getWageTypeList();
+
+//	String getNamebyId(Long employeeId);
 	
-    //연도별 급여정보
-    public List<WageEntity> getYearWage(Long year);
-    
+	String getDepartmentNameById(Long departmentId);
+
+	String getWageTypeNameById(Long wageTypeId);
 }

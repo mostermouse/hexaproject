@@ -320,30 +320,33 @@ CREATE TABLE position (
     position_id NUMBER PRIMARY KEY , -- 직위 코드
     position_name VARCHAR2(100)  -- 직위명
 );
+-- Department 테이블에 데이터 삽입
 
 -- 직원 정보를 저장하는 테이블
 CREATE TABLE employee (
-                          employee_id NUMBER PRIMARY KEY,
-                          employment_type VARCHAR2(100),
-                          korean_name VARCHAR2(100),
-                          english_name VARCHAR2(100),
-                          hire_date DATE,
-                          resignation_date DATE,
-                          department_id NUMBER,
-                          position_id NUMBER,
-                          foreign_or_domestic VARCHAR2(20),
-                          resident_number1 VARCHAR2(20),
-                          resident_number2 VARCHAR2(20),
-                          address VARCHAR2(200),
-                          tel_phone VARCHAR2(20),
-                          mobile VARCHAR2(20),
-                          email VARCHAR2(100),
-                          sns VARCHAR2(100),
-                          other_details VARCHAR2(4000),
-                          status VARCHAR2(20),
-                          CONSTRAINT fk_employee_department FOREIGN KEY (department_id) REFERENCES department(department_id) DEFERRABLE INITIALLY DEFERRED,
-                          CONSTRAINT fk_employee_position FOREIGN KEY (position_id) REFERENCES position(position_id) DEFERRABLE INITIALLY DEFERRED
+
+                          employee_id Number PRIMARY KEY,  -- 직원 ID
+                          employment_type VARCHAR2(100),  -- 고용 형태 (정규직 계약직 임시직 일용직)
+                          korean_name VARCHAR2(100),  -- 한글 이름
+                          english_name VARCHAR2(100),  -- 영문 이름
+                          hire_date DATE,  -- 입사일
+                          resignation_date DATE,  -- 퇴사일
+                          department_id NUMBER,  -- 소속 부서(외래 키)
+                          position_id NUMBER,  -- 직급 또는 직책(외래 키)
+                          foreign_or_domestic VARCHAR2(20),  -- 국내 또는 외국인
+                          resident_number1 VARCHAR2(20),  -- 주민등록번호
+                          resident_number2 VARCHAR2(20),  -- 주민등록번호
+                          address VARCHAR2(200),  -- 주소
+                          tel_phone VARCHAR2(20),  -- 전화번호
+                          mobile VARCHAR2(20),  -- 휴대전화번호
+                          email VARCHAR2(100),  -- 이메일 주소
+                          sns VARCHAR2(100),  -- SNS 계정
+                          other_details VARCHAR2(4000),  -- 기타 상세 정보
+                          status VARCHAR2(20),  -- 상태 (재직중, 퇴사) true/false로 할까?
+                          CONSTRAINT fk_employee_department FOREIGN KEY (department_id) REFERENCES department(department_id), -- 외래 키 제약 조건
+                          CONSTRAINT fk_employee_position FOREIGN KEY (position_id) REFERENCES position(position_id) -- 외래 키 제약 조건
 );
+
 -- 직원의 부양 가족 정보를 저장하는 테이블
 CREATE TABLE dependents (
                             dependent_id NUMBER PRIMARY KEY,  -- 부양 가족 ID

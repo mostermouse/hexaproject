@@ -79,7 +79,7 @@ public class EmpController {
                 militaryServiceEntity);
 
 
-        return "redirect:/employeeList";
+        return "redirect:/index";
     }
 
 

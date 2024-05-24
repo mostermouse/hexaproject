@@ -8,6 +8,16 @@
 	text-align: center;
 }
 
+.header-container {
+    display: flex;
+    align-items: center; /* 이미지와 텍스트를 세로 방향으로 가운데 정렬 */
+}
+
+.header-container img {
+    margin-right: 10px; /* 이미지와 텍스트 사이의 간격 조절 */
+}
+
+
 .divtitle {
 	display: flex;
 	justify-content: center;
@@ -146,4 +156,76 @@
 	border-color: #c0c0c0;
 	text-align: right;
 	vertical-align: middle
+}
+
+/* 사원등록페이지 */
+.empRegister {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.empRegister td {
+	border-color: black;
+	border-style: solid;
+	border-width: 1px;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	overflow: hidden;
+	padding: 10px 5px;
+	word-break: normal;
+}
+
+.empRegister th {
+	border-color: black;
+	border-style: solid;
+	border-width: 1px;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	overflow: hidden;
+	padding: 10px 5px;
+	word-break: normal;
+}
+
+.empRegister .empRegister-body {
+	border-color: #c0c0c0;
+	text-align: left;
+}
+
+.empRegister .empRegister-head1 {
+	background-color: #dff3fa;
+	border-color: #c0c0c0;
+	text-align: center;
+	vertical-align: middle
+}
+
+.empRegister .empRegister-head2 {
+	background-color: #fbfbfb;
+	border-color: #c0c0c0;
+	text-align: center;
+	vertical-align: middle
+}
+
+.reginput {
+    border: none;
+}
+
+.reginputhide {
+    border: none;
+    width: 95%;
+}
+
+.reginput:focus {
+    border: 1px solid black;
+}
+
+.reginput-select {
+    border: 1px solid #c0c0c0;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+.reginput-select:focus {
+    outline: none;
+    border-color: #696969;
 }

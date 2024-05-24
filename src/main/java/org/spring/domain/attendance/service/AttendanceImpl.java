@@ -1,11 +1,14 @@
 package org.spring.domain.attendance.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.spring.domain.attendance.controller.AttendanceEntityRequest;
 import org.spring.domain.attendance.mapper.AttMapper;
 import org.spring.domain.attendance.model.AttendanceEntity;
 import org.spring.domain.attendance.model.AttendanceGroupEntity;
+import org.spring.domain.attendance.model.FeildOrProjectIdEntity;
 import org.spring.domain.employee.model.EmployeeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,26 +25,41 @@ public class AttendanceImpl implements AttendanceService {
     private AttMapper mapper;
 
     @Override
-    public List<AttendanceEntity> getEmployeeAttendanceList() {
-        log.info("Fetching employee attendance list");
-        return mapper.getEmployeeAttendanceList();
-    }
-
-    @Override
-    public List<AttendanceEntityRequest> getEmployeeAttendance() {
-        log.info("Fetching employee attendance");
+    public List<AttendanceEntity> getEmployeeAttendance() {
+        log.info("getEmployeeAttendance..........");
+        
+        
         return mapper.getEmployeeAttendance();
     }
 
     @Override
-    public List<EmployeeEntity> getDayWorkerList(String srchKwrd) {
-        log.info("Fetching day worker list: srchKwrd=" + srchKwrd);
-        return mapper.getDayWorkerList(srchKwrd);
+	public List<EmployeeEntity> getDayWorkerList(Map<String, Object> params) {
+    
+    	
+    	
+		 
+		 
+		// List<EmployeeEntity> vo = mapper.getDayWorkerList(keyword);
+		 
+		 return mapper.getDayWorkerList(params);
+	}
+
+	@Override
+	 public List<FeildOrProjectIdEntity> getFeildOrProject() {
+        System.out.println("Fetching attendance groups: " + mapper.selectFeildOrProject());
+        
+        return mapper.selectFeildOrProject();
     }
 
-    @Override
-    public List<AttendanceGroupEntity> getAttendanceGroup() {
-        log.info("Fetching attendance groups");
-        return mapper.selectAttendanceGroup();
-    }
+	/*
+	 * @Override public List<EmployeeEntity> getDayWorkerStatusList(String status) {
+	 * // TODO Auto-generated method stub return mapper.getEmployeeStatus(status); }
+	 */
+	@Override
+	public List<EmployeeEntity> getStatusList() {
+		// TODO Auto-generated method stub
+		return mapper.getDayWorkertatus();
+	}	
+
+
 }

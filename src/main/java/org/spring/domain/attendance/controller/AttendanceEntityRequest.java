@@ -17,3 +17,4 @@ public class AttendanceEntityRequest extends AttendanceEntity{
     private String departmentName;
     private String  positionName;
 }
+

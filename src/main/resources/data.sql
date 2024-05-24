@@ -309,19 +309,6 @@ CREATE SEQUENCE position_seq
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 --tables
 
--- 부서
-CREATE TABLE department (
-    department_id NUMBER PRIMARY KEY , -- 부서 코드
-    department_name VARCHAR2(100) -- 부서명
-);
-
--- 직위
-CREATE TABLE position (
-    position_id NUMBER PRIMARY KEY , -- 직위 코드
-    position_name VARCHAR2(100)  -- 직위명
-);
--- Department 테이블에 데이터 삽입
-
 -- 직원 정보를 저장하는 테이블
 CREATE TABLE employee (
 
@@ -342,9 +329,7 @@ CREATE TABLE employee (
                           email VARCHAR2(100),  -- 이메일 주소
                           sns VARCHAR2(100),  -- SNS 계정
                           other_details VARCHAR2(4000),  -- 기타 상세 정보
-                          status VARCHAR2(20),  -- 상태 (재직중, 퇴사) true/false로 할까?
-                          CONSTRAINT fk_employee_department FOREIGN KEY (department_id) REFERENCES department(department_id), -- 외래 키 제약 조건
-                          CONSTRAINT fk_employee_position FOREIGN KEY (position_id) REFERENCES position(position_id) -- 외래 키 제약 조건
+                          status VARCHAR2(20)  -- 상태 (재직중, 퇴사) true/false로 할까?
 );
 
 -- 직원의 부양 가족 정보를 저장하는 테이블
@@ -425,7 +410,7 @@ CREATE TABLE language_ability (
                                   speaking_ability VARCHAR2(20),  -- 말하기 능력
                                   CONSTRAINT fk_language_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id)  -- 외래 키 제약 조건
 );
------------------------------------------------------------------------------------------------------------------------------------------------------
+
 -- 교육훈련 정보 저장
 CREATE TABLE training (
                           training_id NUMBER PRIMARY KEY,  -- 훈련 정보 ID
@@ -517,6 +502,16 @@ CREATE TABLE retirement (
                             CONSTRAINT fk_retirement_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id)  -- 외래 키 제약 조건
 );
 
+-- 사원등록 할때 기본급여/계좌 입력받는 테이블
+CREATE TABLE employee_salary_account (
+                                         account_id NUMBER PRIMARY KEY,  -- 계좌 정보 ID
+                                         employee_id NUMBER(20),  -- 직원 ID (외래 키)
+                                         bank_name VARCHAR2(100),  -- 은행 이름
+                                         account_number VARCHAR2(100),  -- 계좌 번호
+                                         basic_salary NUMBER, -- 기본 급여
+                                         CONSTRAINT fk_account_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id)  -- 외래 키 제약 조건
+);
+
 /* 안함
 -- 발급대장
 CREATE TABLE issue_registry (
@@ -529,15 +524,6 @@ CREATE TABLE issue_registry (
 );
 */
 -----------------------------------------------------------------------------------------------------------------------------------------------------
--- 사원등록 할때 기본급여/계좌 입력받는 테이블
-CREATE TABLE employee_salary_account (
-                                         account_id NUMBER PRIMARY KEY,  -- 계좌 정보 ID
-                                         employee_id NUMBER(20),  -- 직원 ID (외래 키)
-                                         bank_name VARCHAR2(100),  -- 은행 이름
-                                         account_number VARCHAR2(100),  -- 계좌 번호
-                                         basic_salary NUMBER, -- 기본 급여
-                                         CONSTRAINT fk_account_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id)  -- 외래 키 제약 조건
-);
 
 -- 급여 종류
 CREATE TABLE wage_type (
@@ -624,3 +610,94 @@ CREATE TABLE attendance_type(
                             CONSTRAINT fk_attendance_type_group FOREIGN KEY (attandance_group_id) REFERENCES attendance_group(attandance_group_id), -- 외래키 제약조건(근태 그룹)
                             CONSTRAINT fk_attendance_type_vacation FOREIGN KEY (vacation_type_id) REFERENCES vacation_type(vacation_type_id) -- 외래키 제약조건(휴가 공제)
 );
+
+-- 부서
+CREATE TABLE department (
+    department_id NUMBER PRIMARY KEY , -- 부서 코드
+    department_name VARCHAR2(100) -- 부서명
+);
+
+-- 직위
+CREATE TABLE position (
+    position_id NUMBER PRIMARY KEY , -- 직위 코드
+    position_name VARCHAR2(100)  -- 직위명
+);
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+--basic datas
+
+-- 기본 급여 종류 입력하기
+INSERT INTO wage_type VALUES (wage_type_seq.nextval, '기본급', NULL, NULL, NULL, 'T');
+INSERT INTO wage_type VALUES (wage_type_seq.nextval, '식비', NULL, '일괄지급','200000', 'T');
+INSERT INTO wage_type VALUES (wage_type_seq.nextval, '보육수당', NULL, NULL, NULL, 'T');
+INSERT INTO wage_type VALUES (wage_type_seq.nextval, '직책수당', NULL, NULL, NULL, 'T');
+INSERT INTO wage_type VALUES (wage_type_seq.nextval, '차량유지비', NULL, NULL, NULL, 'T');
+INSERT INTO wage_type VALUES (wage_type_seq.nextval, '근속수당', NULL, NULL, NULL, 'T');
+INSERT INTO wage_type VALUES (wage_type_seq.nextval, '당직수당', NULL, '근태연결', '연장근무', 'T');
+INSERT INTO wage_type VALUES (wage_type_seq.nextval, '상여금', NULL, NULL, NULL, 'T');
+INSERT INTO wage_type VALUES (wage_type_seq.nextval, '휴일수당', NULL, '근태연결', '휴일근무', 'T');
+
+-- 기본 근태 그룹 종류 입력
+INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '휴가');
+INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '연장근무');
+INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '지각조퇴');
+INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '특근');
+INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '기타');
+
+-- 기본 근태 항목(종류) 입력
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '연차', '일', '1', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '반차', '일', '1', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '지각', '시간', '3', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '조퇴', '시간', '3', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '외근', '시간', '5', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '휴일근무', '시간', '2', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '연장근무', '시간', '2', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '포상휴가', '일', '1', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '야간근무', '시간', '2', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '청원휴가', '일', '1', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '외근', '시간', '5', '1', 'T');
+
+-- department 테이블에 값 삽입
+INSERT ALL
+INTO department (department_id, department_name)VALUES (5, '디자인부')          -- 디자인부
+INTO department (department_id, department_name)VALUES (3, '콘텐츠부')        -- 콘텐츠부
+INTO department (department_id, department_name)VALUES (4, '업무지원부')          -- 업무지원부
+INTO department (department_id, department_name)VALUES (7, '기획전략부')          -- 기획전략부
+INTO department (department_id, department_name)VALUES (6, '관리부')              -- 관리부
+INTO department (department_id, department_name)VALUES (1, '사장실')              -- 사장실
+INTO department (department_id, department_name)VALUES (2, '개발부')              -- 개발부
+SELECT * FROM dual;
+
+-- position 테이블에 값 삽입
+INSERT ALL
+INTO position (position_id, position_name)VALUES (1, '사장')     -- 사장
+INTO position (position_id, position_name)VALUES (2, '이사')     -- 이사
+INTO position (position_id, position_name)VALUES (3, '실장')       -- 실장
+INTO position (position_id, position_name)VALUES  (4, '부장')       -- 부장
+INTO position (position_id, position_name)VALUES (5, '차장')       -- 차장
+INTO position (position_id, position_name)VALUES (6, '과장')       -- 과장
+INTO position (position_id, position_name)VALUES (7, '대리')       -- 대리
+INTO position (position_id, position_name)VALUES (8, '주임')       -- 주임
+INTO position (position_id, position_name)VALUES (9, '사원')       -- 사원
+SELECT * FROM dual;
+
+-- feild 테이블에 값 삽입
+INSERT ALL
+INTO feild_or_project VALUES (1, '개발프로젝트')
+INTO feild_or_project VALUES (2, '연구소')
+INTO feild_or_project VALUES (3, '공장1')
+INTO feild_or_project VALUES (4, '현장1')
+INTO feild_or_project VALUES (5, '현장2')
+SELECT * FROM dual;
+
+-- 휴가 항목 테이블에 값 삽입
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2015연차', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2016연차', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2017연차', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2018연차', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2019연차', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2020연차', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2021연차', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2022연차', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2023연차', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2024연차', '20240101','20241231','Y');

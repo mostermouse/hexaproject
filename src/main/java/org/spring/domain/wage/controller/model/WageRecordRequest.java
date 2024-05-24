@@ -1,4 +1,4 @@
-package org.spring.domain.wage.model;
+package org.spring.domain.wage.controller.model;
 
 import java.time.LocalDate;
 

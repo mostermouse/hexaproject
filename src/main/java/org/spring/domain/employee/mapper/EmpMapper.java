@@ -11,20 +11,6 @@ import org.spring.domain.wage.model.WageEntity;
 
 public interface EmpMapper {
 
-    //연도 급여정보
-    public List<WageEntity> getYearWage(Long year);
-    
-    //전직원 인원수
-    public Long getTotalEmployeeCount();
-    //정규직 인원수
-    public Long getFulltimeEmployeeCount();
-    //계약직 인원수
-    public Long getContractEmployeeCount();
-    //임시직 인원수
-    public Long getTemporaryEmployeeCount();
-    //일용직 인원수
-    public Long getDailyWorkerCount();
-    
     // 사원현황판
     List<EmployeeEntity> getAllEmployee();
     long countByStatusEmployed();
@@ -36,6 +22,9 @@ public interface EmpMapper {
     long countByEmploymentTypeDaily();
     long countByStatusResigned();
     long countAllEmployees();
+    
+    //연도 급여정보
+    public List<WageEntity> getYearWage(Long year);
     
     // 사원등록 1페이지
     public void insertEmployee(EmployeeEntity employeeEntity, 

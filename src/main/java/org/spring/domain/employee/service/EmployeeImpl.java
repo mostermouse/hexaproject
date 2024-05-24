@@ -2,10 +2,9 @@ package org.spring.domain.employee.service;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import org.spring.domain.employee.controller.model.WageRecordRequest;
 import org.spring.domain.employee.mapper.EmpMapper;
 import org.spring.domain.employee.model.CareerEntity;
 import org.spring.domain.employee.model.DegreeEntity;
@@ -13,7 +12,6 @@ import org.spring.domain.employee.model.DependentsEntity;
 import org.spring.domain.employee.model.EmployeeEntity;
 import org.spring.domain.employee.model.MilitaryServiceEntity;
 import org.spring.domain.wage.model.WageEntity;
-import org.spring.domain.employee.controller.model.WageRecordRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,22 +26,6 @@ public class EmployeeImpl implements EmployeeService{
 
     @Setter(onMethod_ = @Autowired)
     private EmpMapper mapper;
-
-    //사원현황 인원수
-	@Override
-	public Map<String, Long> getEmployeeCount() {
-
-		log.info("getEmployeeCount..........");
-		
-		Map<String, Long> counts = new HashMap<>();
-		counts.put("TotalEmployeeCount", mapper.getTotalEmployeeCount());
-		counts.put("FulltimeEmployeeCount", mapper.getFulltimeEmployeeCount());
-		counts.put("contractEmployeeCount", mapper.getContractEmployeeCount());
-		counts.put("temporaryEmployeeCount", mapper.getTemporaryEmployeeCount());
-		counts.put("dailyWorkerCount", mapper.getDailyWorkerCount());
-		
-		return counts;
-	}
 	
 	//급여현황
 	@Override

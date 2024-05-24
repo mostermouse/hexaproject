@@ -42,12 +42,12 @@ public class EmpController {
         log.info("getEmployess...........");
         
         //급여대장
-    	model.addAllAttributes(employeeService.getEmployeeCount());
     	model.addAttribute("listWageRecord", employeeService.listWageRecord(year));
     	log.info("getWageList...........");
     	
         return "index";
     }
+    
     // 사원등록 1페이지
     @GetMapping("/employeeRegistration")
     public String showRegistrationForm(Model model) {

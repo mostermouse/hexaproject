@@ -69,7 +69,7 @@
 		</form>
 	</div>
 
-	<%-- 급여 현황 표시 --%>
+	<%-- 급여 대장  --%>
 	<div class="table-container">
 		<table class="pay">
 			<thead>

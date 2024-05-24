@@ -8,7 +8,7 @@
 <div id="content">
 
 	<%-- 사원 숫자 표시 --%>
-	<div class="table-container">
+	<div class="table-container1">
 		<h3>Employee Count</h3>
 		<table class="tg">
 			<thead>

@@ -18,7 +18,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td class="tg-jc02">${TotalEmployeeCount}</td>
+					<td class="tg-jc02">${employed}</td>
 				</tr>
 			</tbody>
 		</table>
@@ -29,15 +29,24 @@
 					<th class="tg-c5zh">정규직</th>
 					<th class="tg-c5zh">계약직</th>
 					<th class="tg-c5zh">임시직</th>
+					<th class="tg-c5zh">파견직</th>
+					<th class="tg-c5zh">위촉직</th>
 					<th class="tg-c5zh">일용직</th>
+					<th class="tg-c5zh">퇴사자</th>
+					<th class="tg-c5zh">전체</th>
+
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td class="tg-jc02">${FulltimeEmployeeCount}</td>
-					<td class="tg-jc02">${contractEmployeeCount}</td>
-					<td class="tg-jc02">${temporaryEmployeeCount}</td>
-					<td class="tg-jc02">${dailyWorkerCount}</td>
+					<td class="tg-jc02">${regular}</td>
+					<td class="tg-jc02">${contract}</td>
+					<td class="tg-jc02">${temporary}</td>
+					<td class="tg-jc02">${dispatched}</td>
+					<td class="tg-jc02">${appointed}</td>
+					<td class="tg-jc02">${daily}</td>
+					<td class="tg-jc02">${resigned}</td>
+					<td class="tg-jc02">${allemployees}</td>
 				</tr>
 			</tbody>
 		</table>

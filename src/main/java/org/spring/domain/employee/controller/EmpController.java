@@ -37,7 +37,7 @@ public class EmpController {
 
 
     // 사원현황판
-    @GetMapping("/employeeMnt")
+    @GetMapping("/")
     public String getEmployees(Model model) {
         model.addAttribute("list", employeeService.getAllEmployee());
         model.addAttribute("employed", employeeService.countByStatusEmployed());
@@ -49,9 +49,9 @@ public class EmpController {
         model.addAttribute("daily", employeeService.countByEmploymentTypeDaily());
         model.addAttribute("resigned", employeeService.countByStatusResigned());
         model.addAttribute("allemployees", employeeService.countAllEmployees());
-        return "hrManagement/employeeMnt";
+        log.info("getEmployess...........");
+        return "index";
     }
-
     // 사원등록 1페이지
     @GetMapping("/employeeRegistration")
     public String showRegistrationForm(Model model) {

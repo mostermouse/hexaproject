@@ -49,7 +49,7 @@ public class EmpController {
     }
     
     // 사원등록 1페이지
-    @GetMapping("/employeeRegistration")
+    @GetMapping("/personnel/employeeIns")
     public String showRegistrationForm(Model model) {
         model.addAttribute("employee", new EmployeeEntity());
         model.addAttribute("dependents", new DependentsEntity());

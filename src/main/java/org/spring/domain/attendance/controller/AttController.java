@@ -13,7 +13,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @AllArgsConstructor
 public class AttController {
-	
+
 private AttendanceService service;
 	@GetMapping("/dayWorkerMnt")
 	public String dayWorkerList(
@@ -27,8 +27,22 @@ private AttendanceService service;
         log.info(service.getDayWorkerList(srchKwrd));
         System.out.println("테스트테스트" + model.toString());
         
-        return "dayWorkerMnt";
+        return "managementOfAtt/dayWorkerMnt";
 	}
+	
+
+	@GetMapping("/attTest")
+	public String att(Model model){
+		model.addAttribute("att" , service.getEmployeeAttendance());
+		log.info("att..........");
+		model.addAttribute("att1", service.getEmployeeAttendanceList());
+		
+		
+		return "attTest";
+		
+		
+	}
+	
 	/*
 	 * @GetMapping("/dayWorkerMnt") public void addendanceGroup(Model model) { //
 	 * List<AttendanceEntity> attlist = service.getAttendanceGroup();

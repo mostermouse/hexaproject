@@ -3,40 +3,76 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.domain.attendance.mapper.AttMapper">
-    <select id="getEmployeeAttendance" resultType="org.spring.domain.attendance.model.AttendanceEntity">
-        SELECT 
-            a.input_date,
-            e.employment_type,
-            e.korean_name,
-            e.department_id,
-            e.position_id,
-            a.attendance_type_id,
-            a.start_date,
-            a.end_date,
-            a.attendance_days,
-            a.amount,
-            a.summary
-        FROM 
-            employee e
-        JOIN 
-            attendance a ON e.employee_id = a.employee_id;
-    </select>
+    <select id="getEmployeeAttendance" resultType="org.spring.domain.attendance.controller.AttendanceEntityRequest">
+       SELECT
+		    ad.input_date AS input_date,
+		    ep.employment_type AS employment_type,
+		    ep.korean_name AS korean_name,
+		    dp.department_name AS department_name,
+		    po.position_name AS position_name,
+		    adt.attendance_type_name AS attendance_type_name,
+		    ad.start_date AS start_date,
+		    ad.end_date AS end_date,
+		    ad.attendance_days AS attendance_days,
+		    ad.amount AS amount,
+		    ad.summary AS summary
+		FROM
+		    attendance ad
+		JOIN
+		    employee ep ON ad.employee_id = ep.employee_id
+		JOIN
+		    attendance_type adt ON ad.attendance_type_id = adt.attendance_type_id
 	
-	<select id="getDayWorkerList" resultType="org.spring.domain.employee.model.EmployeeEntity">
-		SELECT * FROM employee
-		<where>
-		<if test="value != null and value != ''"> 
-			employment_type = '일용직' 
-			AND employee_id LIKE '%' || #{srchKwrd} || '%' 
-			OR korean_name LIKE '%' || #{srchKwrd} || '%' 
-			OR department_id LIKE '%' || #{srchKwrd} || '%' 
-		</if>
-		</where>
-		ORDER BY employee_id DESC
+		JOIN
+		    department dp ON ep.department_id = dp.department_id
+		JOIN
+		    position po ON ep.position_id = po.position_id
+		    
+		 <where>
+            <if test="inputDate != null">
+                AND ad.input_date = #{inputDate}
+            </if>
+            <if test="startDate != null and endDate != null">
+                AND ad.start_date BETWEEN #{startDate} AND #{endDate}
+            </if>
+            <if test="departmentName != null and departmentName != ''">
+                AND dp.department_name = #{departmentName}
+            </if>
+            <if test="koreanName != null and koreanName != ''">
+                AND ep.korean_name = #{koreanName}
+            </if>
+            <if test="attendanceTypeName != null and attendanceTypeName != ''">
+                AND adt.attendance_type_name = #{attendanceTypeName}
+            </if>
+            <if test="vacationTypeName != null and vacationTypeName != ''">
+                AND vt.vacation_type_name = #{vacationTypeName}
+            </if>
+            <if test="attendanceGroupName != null and attendanceGroupName != ''">
+                AND ag.attendance_group_name = #{attendanceGroupName}
+            </if>
+            <if test="summary != null and summary != ''">
+                AND ad.summary = #{summary}
+            </if>
+        </where>
+		    
+    </select>
+    <select id="getEmployeeAttendanceList" resultType="org.spring.domain.attendance.model.AttendanceEntity">
+		SELECT 
+		    a.input_date,
+		    e.employment_type,
+		    e.korean_name,
+		    e.department_id,
+		    e.position_id,
+		    a.attendance_type_id,
+		    a.start_date,
+		    a.end_date,
+		    a.attendance_days,
+		    a.amount,
+		    a.summary
+		FROM 
+		    employee e
+		JOIN 
+		    attendance a ON e.employee_id = a.employee_id
 	</select>
-	
-	 <select id="selectAttendanceGroup" resultType="org.spring.domain.attendance.model.AttendanceGroupEntity">
-        SELECT * FROM attendance_group
-    </select>
 	
 </mapper>

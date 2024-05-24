@@ -116,7 +116,7 @@
     </div>
     <!-- 휴가 조회 -->
     <!-- holidaysSearchResult.jsp -->
-    <div class="menu-item" id="payzon-27" onclick="window.location.href='/diligence/holidaysSearchResult'">
+    <div class="menu-item" id="payzon-27" onclick="window.location.href='/holidaysSearchResult'">
         <img src="resources/images/payzon_27.jpg" alt="Item 27">
     </div>
     <!-- 일용근무기록/관리 -->

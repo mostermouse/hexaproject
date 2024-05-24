@@ -16,11 +16,11 @@ import java.util.Map;
 
 public interface AttMapper {
 	// 근태 상세조회 리스트
-    List<AttendanceEntityRequest> getEmployeeAttendance(
+    List<AttendanceEntity> getEmployeeAttendance(
         
     );
     // 근태 리스트
-    List<AttendanceEntity> getEmployeeAttendanceList();
+    List<AttendanceEntityRequest> getEmployeeAttendanceList();
 	
 
     // 일용직 리스트

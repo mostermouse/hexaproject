@@ -22,6 +22,7 @@ body {
 	top: 0px;
 	width: 1920px;
 	height: 71px;
+	z-index: 999;
 }
 
 #payzon-02 {
@@ -31,6 +32,7 @@ body {
 	width: 97px;
 	height: 80px;
 	cursor: pointer;
+	z-index: 999;
 }
 
 #payzon-02 img, #payzon-03 img, #payzon-04 img, #payzon-05 img,
@@ -61,6 +63,7 @@ body {
 	width: 91px;
 	height: 80px;
 	cursor: pointer;
+	z-index: 999;
 }
 
 #payzon-04 {
@@ -70,6 +73,7 @@ body {
 	width: 102px;
 	height: 80px;
 	cursor: pointer;
+	z-index: 999;
 }
 
 #payzon-05 {
@@ -79,6 +83,7 @@ body {
 	width: 124px;
 	height: 80px;
 	cursor: pointer;
+	z-index: 999;
 }
 
 #payzon-06 {
@@ -88,6 +93,7 @@ body {
 	width: 99px;
 	height: 80px;
 	cursor: pointer;
+	z-index: 999;
 }
 
 #payzon-07 {
@@ -97,6 +103,7 @@ body {
 	width: 117px;
 	height: 80px;
 	cursor: pointer;
+	z-index: 999;
 }
 
 #payzon-08 {
@@ -106,6 +113,7 @@ body {
 	width: 139px;
 	height: 80px;
 	cursor: pointer;
+	z-index: 999;
 }
 
 #payzon-09 {
@@ -115,6 +123,7 @@ body {
 	width: 103px;
 	height: 80px;
 	cursor: pointer;
+	z-index: 999;
 }
 
 #payzon-10 {
@@ -124,6 +133,7 @@ body {
 	width: 122px;
 	height: 80px;
 	cursor: pointer;
+	z-index: 999;
 }
 
 #payzon-11 {
@@ -132,6 +142,7 @@ body {
 	top: 71px;
 	width: 926px;
 	height: 80px;
+	z-index: 999;
 }
 
 #payzon-12 {
@@ -141,6 +152,7 @@ body {
 	width: 171px;
 	height: 30px;
 	cursor: pointer;
+	z-index: 999;
 }
 
 #payzon-13 {
@@ -150,6 +162,7 @@ body {
 	width: 171px;
 	height: 30px;
 	cursor: pointer;
+	z-index: 999;
 }
 
 #payzon-14 {
@@ -159,6 +172,7 @@ body {
 	width: 171px;
 	height: 30px;
 	cursor: pointer;
+	z-index: 999;
 }
 
 #payzon-15 {
@@ -168,6 +182,7 @@ body {
 	width: 171px;
 	height: 30px;
 	cursor: pointer;
+	z-index: 999;
 }
 
 #payzon-16 {
@@ -176,6 +191,7 @@ body {
 	top: 151px;
 	width: 1236px;
 	height: 30px;
+	z-index: 999;
 }
 
 .menu-item {
@@ -196,36 +212,33 @@ body {
 	top: 30px;
 	left: 0;
 	cursor: pointer;
+	z-index: 999;
 }
 
 #payzon-22, #payzon-24, #payzon-25 {
 	top: 60px;
 	left: 0;
 	cursor: pointer;
+	z-index: 999;
 }
 
 #payzon-26, #payzon-27, #payzon-28 {
 	top: 90px;
 	left: 0;
 	cursor: pointer;
+	z-index: 999;
 }
 
 #payzon-29, #payzon-30, #payzon-31 {
 	top: 120px;
 	left: 0;
 	cursor: pointer;
+	z-index: 999;
 }
 
 #payzon-33, #payzon-34 {
 	top: 150px;
 	left: 0;
 	cursor: pointer;
-}
-
-footer {
-    position: relative;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999; /* 다른 요소 위에 놓이도록 설정 */
+	z-index: 999;
 }

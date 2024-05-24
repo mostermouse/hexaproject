@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.domain.wage.mapper.WageMapper">
+
     <select id="getWageList" resultType="org.spring.domain.wage.model.WageEntity">
         SELECT
          e.employment_type AS employmentType <!-- AS 고용형태 -->,
@@ -33,6 +34,12 @@
 		JOIN 
 			wage_type wt ON w.wage_type_id = wt.wage_type_id
     </select>
+    
+    <!-- 급여대장 출력  -->
+	<!-- 급여정보 연도   -->
+	<select id="getYearWage" resultType="org.spring.domain.wage.model.WageEntity"> 
+		SELECT * FROM wage WHERE TO_CHAR(wage_payment_date, 'YYYY') = #{year} 
+	</select>
     
     
 </mapper>

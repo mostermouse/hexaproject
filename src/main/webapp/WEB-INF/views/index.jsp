@@ -57,7 +57,7 @@
 	<div class="divtitle">
 		<h3>Wage Records for Year ${param.year}</h3>
 		<%-- 년도 선택 창 --%>
-		<form action="/home" method="get">
+		<form action="/" method="get">
 			<label for="year">Select Year:</label> <select name="year" id="year">
 				<%-- 2010년부터 현재 연도까지의 년도를 선택할 수 있도록 --%>
 				<c:forEach var="y" begin="2010"
@@ -69,7 +69,7 @@
 		</form>
 	</div>
 
-	<%-- 급여 현황 표시 --%>
+	<%-- 급여 대장  --%>
 	<div class="table-container">
 		<table class="pay">
 			<thead>

@@ -6,16 +6,12 @@ import org.spring.domain.employee.model.DependentsEntity;
 import org.spring.domain.employee.model.EmployeeEntity;
 import org.spring.domain.employee.model.MilitaryServiceEntity;
 import org.spring.domain.employee.service.EmployeeService;
-import org.spring.domain.employee.model.EmployeeEntity;
-import org.spring.domain.employee.service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -27,18 +23,12 @@ public class EmpController {
 
     private EmployeeService employeeService;
 
-    @GetMapping("/home")
-    public void home(@RequestParam(name="year", required =  false, defaultValue = "2024") Long year, Model model) {
-    	log.info("home");
-    	model.addAllAttributes(employeeService.getEmployeeCount());
-    	model.addAttribute("listWageRecord", employeeService.listWageRecord(year));
-    	log.info(model.toString());
-    };
-
-
-    // 사원현황판
+    // 사원현황판, 급여대장
     @GetMapping("/")
-    public String getEmployees(Model model) {
+    public String getEmployees(@RequestParam(name="year", required =  false, defaultValue = "2024") Long year, Model model) {
+    	log.info("index");
+    	
+    	//사원현황판
         model.addAttribute("list", employeeService.getAllEmployee());
         model.addAttribute("employed", employeeService.countByStatusEmployed());
         model.addAttribute("regular", employeeService.countByEmploymentTypeRegular());
@@ -50,8 +40,14 @@ public class EmpController {
         model.addAttribute("resigned", employeeService.countByStatusResigned());
         model.addAttribute("allemployees", employeeService.countAllEmployees());
         log.info("getEmployess...........");
+        
+        //급여대장
+    	model.addAttribute("listWageRecord", employeeService.listWageRecord(year));
+    	log.info("getWageList...........");
+    	
         return "index";
     }
+    
     // 사원등록 1페이지
     @GetMapping("/employeeRegistration")
     public String showRegistrationForm(Model model) {

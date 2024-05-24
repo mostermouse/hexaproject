@@ -24,22 +24,25 @@ public class VacationTypeController {
     public String getAllVacationType(Model model) {
         List<VacationTypeEntity> vacationTypes = vacationTypeService.getAllVacationType();
         model.addAttribute("vacationTypes", vacationTypes); // 속성 이름을 "vacationTypes"로 변경
+        
+        System.out.println(vacationTypes);
         return "defaultPreferences/dnLItemSet"; // 접두사와 접미사를 제거하여 뷰 이름만 반환
+       
     }
 
-    @PostMapping("/add")
+    @PostMapping("/addDnlItem")
     public String createVacationType(@ModelAttribute VacationTypeEntity vacationType, Model model) {
         vacationTypeService.createVacationType(vacationType);
         return "redirect:/dnLItemSet"; // 리다이렉트를 통해 GET 요청으로 리턴
     }
 
-    @PostMapping("/update")
+    @PostMapping("/updateDnlItem")
     public String updateVacationType(@ModelAttribute VacationTypeEntity vacationType, Model model) {
         vacationTypeService.updateVacationType(vacationType);
         return "redirect:/dnLItemSet"; // 리다이렉트를 통해 GET 요청으로 리턴
     }
 
-    @PostMapping("/delete")
+    @PostMapping("/deleteDnlItem")
     public String deleteVacationType(@RequestParam Long vacationTypeId, Model model) {
         vacationTypeService.deleteVacationType(vacationTypeId);
         return "redirect:/dnLItemSet"; // 리다이렉트를 통해 GET 요청으로 리턴

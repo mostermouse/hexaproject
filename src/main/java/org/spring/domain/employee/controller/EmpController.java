@@ -38,7 +38,7 @@ public class EmpController {
 
     // 사원현황판
     @GetMapping("/employeeMnt")
-    public void getEmployees(Model model) {
+    public String getEmployees(Model model) {
         model.addAttribute("list", employeeService.getAllEmployee());
         model.addAttribute("employed", employeeService.countByStatusEmployed());
         model.addAttribute("regular", employeeService.countByEmploymentTypeRegular());
@@ -49,38 +49,38 @@ public class EmpController {
         model.addAttribute("daily", employeeService.countByEmploymentTypeDaily());
         model.addAttribute("resigned", employeeService.countByStatusResigned());
         model.addAttribute("allemployees", employeeService.countAllEmployees());
+        return "hrManagement/employeeMnt";
     }
 
     // 사원등록 1페이지
     @GetMapping("/employeeRegistration")
-    public void showRegistrationForm(Model model) {
-    	model.addAttribute("employee", new EmployeeEntity());
-    	model.addAttribute("dependents", new DependentsEntity());
-    	model.addAttribute("degree", new DegreeEntity());
-    	model.addAttribute("career", new CareerEntity());
-    	model.addAttribute("militaryservice", new MilitaryServiceEntity());
+    public String showRegistrationForm(Model model) {
+        model.addAttribute("employee", new EmployeeEntity());
+        model.addAttribute("dependents", new DependentsEntity());
+        model.addAttribute("degree", new DegreeEntity());
+        model.addAttribute("career", new CareerEntity());
+        model.addAttribute("militaryservice", new MilitaryServiceEntity());
+        return "defaultPreferences/employeeRegistration";
     }
+
     @PostMapping("/employeeRegistration")
-    public void registerEmployee(@ModelAttribute
-    		EmployeeEntity employeeEntity,
-    		DependentsEntity dependentsEntity,
-    		DegreeEntity degreeentity,
-    		CareerEntity careerEntity,
-    		MilitaryServiceEntity militaryServiceEntity,
-    		Model model) {
-    	employeeService.registerEmployee(employeeEntity,
-    			dependentsEntity,
-    			degreeentity,
-    			careerEntity,
-    			militaryServiceEntity);
-    }
+    public String registerEmployee(
+            @ModelAttribute EmployeeEntity employeeEntity,
+            @ModelAttribute DependentsEntity dependentsEntity,
+            @ModelAttribute DegreeEntity degreeEntity,
+            @ModelAttribute CareerEntity careerEntity,
+            @ModelAttribute MilitaryServiceEntity militaryServiceEntity,
+            Model model) {
+
+        employeeService.registerEmployee(employeeEntity,
+                dependentsEntity,
+                degreeEntity,
+                careerEntity,
+                militaryServiceEntity);
 
 
-    @RequestMapping("/header")
-    public ModelAndView showHeader() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("includes/header"); // "header"는 views/header.jsp를 의미합니다.
-        return modelAndView;
+        return "redirect:/employeeList";
     }
+
 
 }

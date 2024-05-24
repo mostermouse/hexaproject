@@ -38,7 +38,7 @@ public class VacationController {
 	        model.addAttribute("departmentList", service.getAllDepartments());
 	        model.addAttribute("positionList", service.getAllPositions());
 	        log.info("Vacation details: " + model.toString());
-	        return "holidaysSearchResult"; 
+	        return "managementOfAtt/holidaysSearchResult";
 	    }
 	    
 	    

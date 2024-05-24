@@ -56,23 +56,43 @@
         </where>
 		    
     </select>
-    <select id="getEmployeeAttendanceList" resultType="org.spring.domain.attendance.model.AttendanceEntity">
-		SELECT 
-		    a.input_date,
-		    e.employment_type,
-		    e.korean_name,
-		    e.department_id,
-		    e.position_id,
-		    a.attendance_type_id,
-		    a.start_date,
-		    a.end_date,
-		    a.attendance_days,
-		    a.amount,
-		    a.summary
-		FROM 
-		    employee e
-		JOIN 
-		    attendance a ON e.employee_id = a.employee_id
+	
+	<select id="getDayWorkerList" parameterType="map" resultType="org.spring.domain.employee.model.EmployeeEntity">
+		SELECT * FROM employee
+        <where>
+            employment_type = '일용직'
+            <if test="status != null and status != ''">
+                AND status = #{status}
+            </if>
+            <if test="srchKwrd != null and srchKwrd != ''">
+                AND (
+                    employee_id LIKE '%' || #{srchKwrd} || '%'
+                    OR korean_name LIKE '%' || #{srchKwrd} || '%'
+                    OR department_id LIKE '%' || #{srchKwrd} || '%'
+                )
+            </if>
+        </where>
+        ORDER BY employee_id DESC
 	</select>
 	
+	<select id="selectFeildOrProject" resultType="org.spring.domain.attendance.model.FeildOrProjectIdEntity">
+        SELECT * FROM feild_or_project
+    </select>
+   <!--  
+    <select id="getEmployeeStatus" parameterType="string" resultType="org.spring.domain.employee.model.EmployeeEntity">
+    	SELECT * FROM employee 
+    	WHERE employment_type = '일용직'
+    	<if test="value != null and value != ''">
+            AND status = #{status}
+        </if>
+        ORDER BY employee_id DESC
+    </select>
+	 -->
+	<select id="getDayWorkertatus" resultType="org.spring.domain.employee.model.EmployeeEntity">
+		SELECT status FROM employee WHERE employment_type = '일용직'
+	</select>
+	
+	<update id="updateFeildOrProject">
+		
+	</update>
 </mapper>

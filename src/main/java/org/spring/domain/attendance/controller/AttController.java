@@ -1,5 +1,8 @@
 package org.spring.domain.attendance.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.spring.domain.attendance.service.AttendanceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,31 +21,22 @@ private AttendanceService service;
 	@GetMapping("/dayWorkerMnt")
 	public String dayWorkerList(
 			@RequestParam(value = "srchKwrd", required = false) String srchKwrd, 
-			@RequestParam(value = "attandanceGroupId", required = false) Long attandanceGroupId,
-			@RequestParam(value = "attandanceGroupName", required = false) Long attandanceGroupName,
+			@RequestParam(value = "status" , required = false) String status,
 			Model model) {
 		log.info("getDayWorkerList: srchKwrd=" + srchKwrd);
-        model.addAttribute("list", service.getDayWorkerList(srchKwrd));
-        model.addAttribute("attlist", service.getAttendanceGroup());
-        log.info(service.getDayWorkerList(srchKwrd));
+		 Map<String, Object> params = new HashMap<>();
+        params.put("srchKwrd", srchKwrd);
+        params.put("status", status);
+		
+        model.addAttribute("list", service.getDayWorkerList(params));
+        model.addAttribute("feildOrProjectList", service.getFeildOrProject());
+        model.addAttribute("statuslist", service.getStatusList());
+		/* model.addAttribute("list", service.getDayWorkerStatusList(status)); */
+        
         System.out.println("테스트테스트" + model.toString());
         
         return "managementOfAtt/dayWorkerMnt";
 	}
-	
-
-	@GetMapping("/attTest")
-	public String att(Model model){
-		model.addAttribute("att" , service.getEmployeeAttendance());
-		log.info("att..........");
-		model.addAttribute("att1", service.getEmployeeAttendanceList());
-		
-		
-		return "attTest";
-		
-		
-	}
-	
 	/*
 	 * @GetMapping("/dayWorkerMnt") public void addendanceGroup(Model model) { //
 	 * List<AttendanceEntity> attlist = service.getAttendanceGroup();

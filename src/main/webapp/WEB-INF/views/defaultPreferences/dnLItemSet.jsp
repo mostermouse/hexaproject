@@ -13,10 +13,17 @@
 #content>div {
     width: 45%;
 }
+
+.table-row {
+    cursor: pointer;
+}
+
+.table-row:hover {
+    background-color: #f0f0f0;
+}
 </style>
 
 <div id="content">
-
     <div>
         <h2>휴가항목 설정</h2>
         <table border="1">
@@ -29,12 +36,19 @@
             </thead>
             <tbody>
                 <c:forEach var="vacationType" items="${vacationTypes}">
-                    <tr>
+                    <tr class="table-row" 
+                        data-id="${vacationType.vacationTypeId}" 
+                        data-name="${vacationType.vacationTypeName}"
+                        data-period1="${vacationType.applyPeriod1}" 
+                        data-period2="${vacationType.applyPeriod2}" 
+                        data-usage="${vacationType.usage}">
                         <td>${vacationType.vacationTypeName}</td>
-                        <td><fmt:formatDate value="${vacationType.applyPeriod1}" pattern="yyyy-MM-dd" /> ~ <fmt:formatDate value="${vacationType.applyPeriod2}" pattern="yyyy-MM-dd" /></td>
+                        <fmt:parseDate value="${vacationType.applyPeriod1}" pattern="yyyy-MM-dd" var="vacationPeriod1" type="date"/>
+                        <fmt:parseDate value="${vacationType.applyPeriod2}" pattern="yyyy-MM-dd" var="vacationPeriod2" type="date"/>
+                        <td><fmt:formatDate value="${vacationPeriod1}" pattern="yyyy-MM-dd" /> ~ <fmt:formatDate value="${vacationPeriod2}" pattern="yyyy-MM-dd" /></td>
                         <td><c:choose>
-                                <c:when test="${vacationType.usage == 'Y'}">사용</c:when>
-                                <c:otherwise>사용안함</c:otherwise>
+                                <c:when test="${vacationType.usage.equals('Y')}">O</c:when>
+                                <c:otherwise>X</c:otherwise>
                             </c:choose></td>
                     </tr>
                 </c:forEach>
@@ -43,8 +57,9 @@
     </div>
 
     <div>
-        </br> </br> </br> </br>
-        <form action="/dnLItemSet/add" method="post">
+        <br><br><br><br>
+        <form id="vacationForm" method="post">
+            <input type="hidden" id="vacationTypeId" name="vacationTypeId">
             <label for="vacationTypeName">휴가항목</label>
             <input type="text" id="vacationTypeName" name="vacationTypeName" required> <br>
             <label for="applyPeriod1">적용기간</label>
@@ -55,12 +70,35 @@
                 <option value="Y">사용</option>
                 <option value="N">사용안함</option>
             </select> <br>
-            <button type="submit" formaction="/dnLItemSet/add">추가</button>
+            <button type="submit" onclick="submitForm('/addDnlItem')">추가</button>
+            <button type="submit" onclick="submitForm('/updateDnlItem')">수정</button>
+            <button type="submit" onclick="submitForm('/deleteDnlItem')">삭제</button>
             <button type="reset">내용 지우기</button>
         </form>
     </div>
 </div>
-<div id="content">
+
+<script>
+function submitForm(action) {
+    var form = document.getElementById('vacationForm');
+    form.action = action;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    var rows = document.querySelectorAll('.table-row');
+    rows.forEach(function(row) {
+        row.addEventListener('click', function() {
+            document.getElementById('vacationTypeId').value = this.getAttribute('data-id');
+            document.getElementById('vacationTypeName').value = this.getAttribute('data-name');
+            document.getElementById('applyPeriod1').value = this.getAttribute('data-period1');
+            document.getElementById('applyPeriod2').value = this.getAttribute('data-period2');
+            document.getElementById('usage').value = this.getAttribute('data-usage');
+        });
+    });
+});
+</script>
+</script>
+<%-- <div id="content">
 	<div>
 		<h2>근태항목 설정</h2>
 		<table border="1">
@@ -145,6 +183,6 @@
 	</div>
 
 
-</div>
+</div> --%>
 
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>

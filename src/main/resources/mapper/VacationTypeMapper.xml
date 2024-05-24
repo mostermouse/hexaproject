@@ -28,9 +28,9 @@
 
 	<insert id="createVacationType"
 		parameterType="org.spring.domain.vacation.model.VacationTypeEntity">
-		INSERT INTO vacation_type (vacation_type_name, apply_period1, apply_period2,
+		INSERT INTO vacation_type (vacation_type_id, vacation_type_name, apply_period1, apply_period2,
 		usage)
-		VALUES (#{vacationTypeName}, #{applyPeriod1}, #{applyPeriod2}, #{usage})
+		VALUES (vacation_type_seq.nextval, #{vacationTypeName}, #{applyPeriod1}, #{applyPeriod2}, #{usage})
 	</insert>
 
 	<update id="updateVacationType"

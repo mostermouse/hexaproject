@@ -143,7 +143,7 @@
 					<td class="empRegister-body"><select id="status" name="status"
 						class="reginput-select">
 							<option value="재직">재직</option>
-							<option value="퇴직">퇴직</option>
+							<option value="퇴사">퇴사</option>
 					</select></td>
 				</tr>
 			</table>

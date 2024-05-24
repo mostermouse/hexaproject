@@ -8,7 +8,11 @@
 	<select id="getAllEmployee" resultType="org.spring.domain.employee.model.EmployeeEntity">
 		SELECT * FROM employee
 	</select>
-
+	
+	<!--  급여정보 연도   -->
+	<select id="getYearWage" resultType="org.spring.domain.wage.model.WageEntity"> 
+		SELECT * FROM wage WHERE TO_CHAR(wage_payment_date, 'YYYY') = #{year} 
+	</select>
 
 	<!-- 전직원 인원수  -->
 	<select id="getTotalEmployeeCount" resultType="Long">

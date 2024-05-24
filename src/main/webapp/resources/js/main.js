@@ -32,3 +32,24 @@ payzon14.addEventListener('mouseleave', () => hideItems(menuItems14));
 
 payzon15.addEventListener('mouseenter', () => showItems(menuItems15));
 payzon15.addEventListener('mouseleave', () => hideItems(menuItems15));
+
+function validateForm() {
+	var employmentType = document.getElementById("employmentType").value;
+	var hireDate = document.getElementById("hireDate").value;
+	var relationship = document.getElementById("relationship").value;
+	var parentsName = document.getElementById("parentsName").value;
+	if (employmentType === "") {
+		alert("기본 정보의 고용 형태를 선택해주세요.");
+		document.getElementById("employmentType").focus(); // 기본 정보의 고용 형태에 돌아감
+		return false;
+	} else if (hireDate === "") {
+		alert("기본 정보의 입사일을 선택해주세요.");
+		document.getElementById("hireDate").focus(); // 기본 정보의 입사일에 돌아감
+		return false;
+	}
+	return true;
+}
+
+function scrollToSection(sectionId) {
+    document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+}

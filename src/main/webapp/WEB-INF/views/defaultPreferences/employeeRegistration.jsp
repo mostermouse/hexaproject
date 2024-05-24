@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
 
-<script>
+<!-- <script>
 	function validateForm() {
 		var employmentType = document.getElementById("employmentType").value;
 		var hireDate = document.getElementById("hireDate").value;
@@ -19,10 +19,51 @@
 		}
 		return true;
 	}
-</script>
+</script> -->
 
 <div id="content">
+
+	<div class="floating-container">
+		<table class="floating-table">
+			<thead>
+				<tr>
+					<th class="head">사원번호</th>
+					<th class="body"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="head">성명</td>
+					<td class="body"></td>
+				</tr>
+				<tr>
+					<td class="head">부서</td>
+					<td class="body"></td>
+				</tr>
+				<tr>
+					<td class="head">직위</td>
+					<td class="body"></td>
+				</tr>
+				<tr>
+					<td class="head">입사일</td>
+					<td class="body"></td>
+				</tr>
+			</tbody>
+		</table>
+			<h3 style="text-align: left;">사원정보1</h3>
+		<div class="button-container">
+			<button onclick="scrollToSection('section1')">부양가족</button>
+			<button onclick="scrollToSection('section2')">학력</button>
+			<button onclick="scrollToSection('section3')">경력</button>
+			<button onclick="scrollToSection('section4')">병력</button>
+			<hr>
+		</div>
+	</div>
 	<div class="table-container">
+
+
+
+
 		<div class="header-container">
 			<img
 				src="<%=request.getContextPath()%>/resources/images/contentimages/head_01.jpg"
@@ -158,7 +199,7 @@
 			<div class="table-container">
 				<div class="header-container">
 					<!-- Dependents Table -->
-					<h3>부양 가족</h3>
+					<h3 id="section1">부양 가족</h3>
 				</div>
 				<table class="empRegister1">
 					<thead>
@@ -207,7 +248,7 @@
 					</tbody>
 				</table>
 				<!-- Degree Table -->
-				<h3>학력</h3>
+				<h3 id="section2">학력</h3>
 
 				<table class="empRegister1">
 					<thead>
@@ -255,7 +296,7 @@
 
 
 				<!-- Career Table -->
-				<h3>경력</h3>
+				<h3 id="section3">경력</h3>
 
 				<table class="empRegister1">
 					<thead>
@@ -293,7 +334,7 @@
 				</table>
 
 				<!-- MilitaryService Table -->
-				<h3>병역</h3>
+				<h3 id="section4">병역</h3>
 
 				<table class="empRegister1">
 					<thead>

@@ -13,9 +13,7 @@ import org.spring.domain.employee.model.DependentsEntity;
 import org.spring.domain.employee.model.EmployeeEntity;
 import org.spring.domain.employee.model.MilitaryServiceEntity;
 import org.spring.domain.wage.model.WageEntity;
-import org.spring.domain.wage.model.WageRecordRequest;
-import org.spring.domain.wage.model.WageEntity;
-import org.spring.domain.wage.model.WageRecordRequest;
+import org.spring.domain.employee.controller.model.WageRecordRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

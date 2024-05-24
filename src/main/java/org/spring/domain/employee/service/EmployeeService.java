@@ -8,7 +8,7 @@ import org.spring.domain.employee.model.DegreeEntity;
 import org.spring.domain.employee.model.DependentsEntity;
 import org.spring.domain.employee.model.EmployeeEntity;
 import org.spring.domain.employee.model.MilitaryServiceEntity;
-import org.spring.domain.wage.model.WageRecordRequest;
+import org.spring.domain.employee.controller.model.WageRecordRequest;
 
 
 public interface EmployeeService {

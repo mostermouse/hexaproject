@@ -23,11 +23,12 @@ public class EmpController {
 
     private EmployeeService employeeService;
 
-    // 사원현황판
+    // 사원현황판, 급여대장
     @GetMapping("/")
     public String getEmployees(@RequestParam(name="year", required =  false, defaultValue = "2024") Long year, Model model) {
     	log.info("index");
     	
+    	//사원현황판
         model.addAttribute("list", employeeService.getAllEmployee());
         model.addAttribute("employed", employeeService.countByStatusEmployed());
         model.addAttribute("regular", employeeService.countByEmploymentTypeRegular());
@@ -40,6 +41,7 @@ public class EmpController {
         model.addAttribute("allemployees", employeeService.countAllEmployees());
         log.info("getEmployess...........");
         
+        //급여대장
     	model.addAllAttributes(employeeService.getEmployeeCount());
     	model.addAttribute("listWageRecord", employeeService.listWageRecord(year));
     	log.info("getWageList...........");

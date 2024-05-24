@@ -65,8 +65,8 @@
 
 <!-- 기본 환경 설정 -->
 <!-- membersInfo.jsp -->
-<div id="payzon-12" class="payzon12" onclick="window.location.href='/config/membersInfo'">
-    <img src="resources/images/payzon_12.jpg" width="171" height="30" alt="">
+<div id="payzon-12" class="payzon12">
+    <img src="resources/images/payzon_12.jpg" width="171" height="30" alt="" onclick="window.location.href='/config/membersInfo'">
     <!-- 사용자 정보 -->
     <!-- membersInfo.jsp -->
     <div class="menu-item" id="payzon-17" onclick="window.location.href='/config/membersInfo'">
@@ -91,8 +91,8 @@
 
 <!-- 인사관리 -->
 <!-- employeeMnt.jsp -->
-<div id="payzon-13" class="payzon13" onclick="window.location.href='/personnel/employeeMnt'">
-    <img src="resources/images/payzon_13.jpg" width="171" height="30" alt="">
+<div id="payzon-13" class="payzon13">
+    <img src="resources/images/payzon_13.jpg" width="171" height="30" alt="" onclick="window.location.href='/personnel/employeeMnt'">
     <!-- 사원현황관리 -->
     <!-- employeeMnt.jsp -->
     <div class="menu-item" id="payzon-18" onclick="window.location.href='/personnel/employeeMnt'">
@@ -102,8 +102,8 @@
 
 <!-- 근태 관리 -->
 <!-- managementOfAttendance.jsp -->
-<div id="payzon-14" class="payzon14" onclick="window.location.href='/diligence/diligenceMnt'">
-    <img src="resources/images/payzon_14.jpg" width="171" height="30" alt="">
+<div id="payzon-14" class="payzon14">
+    <img src="resources/images/payzon_14.jpg" width="171" height="30" alt="" onclick="window.location.href='/diligence/diligenceMnt'">
     <!-- 근태기록/관리 -->
     <!-- managementOfAttendance.jsp -->
     <div class="menu-item" id="payzon-19" onclick="window.location.href='/diligence/diligenceMnt'">
@@ -133,8 +133,8 @@
 
 <!-- 급여관리 -->
 <!-- paymentMnt.jsp -->
-<div id="payzon-15" class="payzon15" onclick="window.location.href='/payment/paymentMnt'">
-    <img src="resources/images/payzon_15.jpg" width="171" height="30" alt="">
+<div id="payzon-15" class="payzon15">
+    <img src="resources/images/payzon_15.jpg" width="171" height="30" alt="" onclick="window.location.href='/payment/paymentMnt'">
     <!-- 급여입력/관리 -->
     <!-- paymentMnt.jsp -->
     <div class="menu-item" id="payzon-20" onclick="window.location.href='/payment/paymentMnt'">

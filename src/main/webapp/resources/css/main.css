@@ -7,11 +7,12 @@ body {
     overflow: auto;
 }
 
+
+
 #footer {
     position: relative;
     left: 0;
     bottom: 0;
-    z-index: 999;
     margin: 0;
     padding: 0;
 }
@@ -22,7 +23,6 @@ body {
 	top: 0px;
 	width: 1920px;
 	height: 71px;
-	z-index: 999;
 }
 
 #payzon-02 {
@@ -32,7 +32,6 @@ body {
 	width: 97px;
 	height: 80px;
 	cursor: pointer;
-	z-index: 999;
 }
 
 #payzon-02 img, #payzon-03 img, #payzon-04 img, #payzon-05 img,
@@ -63,7 +62,6 @@ body {
 	width: 91px;
 	height: 80px;
 	cursor: pointer;
-	z-index: 999;
 }
 
 #payzon-04 {
@@ -73,7 +71,6 @@ body {
 	width: 102px;
 	height: 80px;
 	cursor: pointer;
-	z-index: 999;
 }
 
 #payzon-05 {
@@ -83,7 +80,6 @@ body {
 	width: 124px;
 	height: 80px;
 	cursor: pointer;
-	z-index: 999;
 }
 
 #payzon-06 {
@@ -93,7 +89,6 @@ body {
 	width: 99px;
 	height: 80px;
 	cursor: pointer;
-	z-index: 999;
 }
 
 #payzon-07 {
@@ -103,7 +98,6 @@ body {
 	width: 117px;
 	height: 80px;
 	cursor: pointer;
-	z-index: 999;
 }
 
 #payzon-08 {
@@ -113,7 +107,6 @@ body {
 	width: 139px;
 	height: 80px;
 	cursor: pointer;
-	z-index: 999;
 }
 
 #payzon-09 {
@@ -123,7 +116,6 @@ body {
 	width: 103px;
 	height: 80px;
 	cursor: pointer;
-	z-index: 999;
 }
 
 #payzon-10 {
@@ -133,7 +125,6 @@ body {
 	width: 122px;
 	height: 80px;
 	cursor: pointer;
-	z-index: 999;
 }
 
 #payzon-11 {
@@ -142,7 +133,6 @@ body {
 	top: 71px;
 	width: 926px;
 	height: 80px;
-	z-index: 999;
 }
 
 #payzon-12 {
@@ -152,7 +142,6 @@ body {
 	width: 171px;
 	height: 30px;
 	cursor: pointer;
-	z-index: 999;
 }
 
 #payzon-13 {
@@ -162,7 +151,6 @@ body {
 	width: 171px;
 	height: 30px;
 	cursor: pointer;
-	z-index: 999;
 }
 
 #payzon-14 {
@@ -172,7 +160,6 @@ body {
 	width: 171px;
 	height: 30px;
 	cursor: pointer;
-	z-index: 999;
 }
 
 #payzon-15 {
@@ -182,7 +169,6 @@ body {
 	width: 171px;
 	height: 30px;
 	cursor: pointer;
-	z-index: 999;
 }
 
 #payzon-16 {
@@ -191,7 +177,6 @@ body {
 	top: 151px;
 	width: 1236px;
 	height: 30px;
-	z-index: 999;
 }
 
 .menu-item {
@@ -209,36 +194,41 @@ body {
 }
 
 #payzon-17, #payzon-18, #payzon-19, #payzon-20 {
+	position: absolute !important;
 	top: 30px;
 	left: 0;
 	cursor: pointer;
-	z-index: 999;
+	z-index: 999 !important;
 }
 
 #payzon-22, #payzon-24, #payzon-25 {
+	position: absolute !important;
 	top: 60px;
 	left: 0;
 	cursor: pointer;
-	z-index: 999;
+	z-index: 999 !important;
 }
 
 #payzon-26, #payzon-27, #payzon-28 {
+	position: absolute !important;
 	top: 90px;
 	left: 0;
 	cursor: pointer;
-	z-index: 999;
+	z-index: 999 !important;
 }
 
 #payzon-29, #payzon-30, #payzon-31 {
+	position: absolute !important;
 	top: 120px;
 	left: 0;
 	cursor: pointer;
-	z-index: 999;
+	z-index: 999 !important;
 }
 
 #payzon-33, #payzon-34 {
+	position: absolute !important;
 	top: 150px;
 	left: 0;
 	cursor: pointer;
-	z-index: 999;
+	z-index: 999 !important;
 }

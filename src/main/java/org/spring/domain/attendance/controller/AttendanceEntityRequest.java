@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AttendanceEntityRequest extends AttendanceEntity{
-    private AttendanceTypeEntity attendanceTypeName;
-    private DepartmentEntity departmentName;
-    private PositionEntity positionName;
+    private String  attendanceTypeName;
+    private String departmentName;
+    private String  positionName;
 }

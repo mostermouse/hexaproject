@@ -35,7 +35,7 @@ public String dayWorkerList(
     model.addAttribute("list", service.getDayWorkerList(departmentEntity));
     model.addAttribute("feildOrProjectList", service.getFeildOrProject());
     model.addAttribute("statuslist", service.getStatusList());
-    
+    //TODO log.info test
     System.out.println("테스트테스트" + model.toString());
     
     return "managementOfAtt/dayWorkerMnt";

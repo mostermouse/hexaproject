@@ -24,7 +24,7 @@ public String dayWorkerList(
         @RequestParam(value = "korean_name" ,required = false) String koreanName,
         @RequestParam(value = "department_name" , required = false) String departmentName,
         Model model) {
-    log.info("getDayWorkerList: employeeId=" + employeeId);
+    log.info("getDayWorkerList: employeeId........................");
     
     DepartmentEntity departmentEntity = new DepartmentEntity();
     departmentEntity.setEmployeeId(employeeId);
@@ -36,7 +36,7 @@ public String dayWorkerList(
     model.addAttribute("feildOrProjectList", service.getFeildOrProject());
     model.addAttribute("statuslist", service.getStatusList());
     //TODO log.info test
-    System.out.println("테스트테스트" + model.toString());
+    log.info("테스트테스트................................................." + model.toString());
     
     return "managementOfAtt/dayWorkerMnt";
 }

@@ -102,11 +102,11 @@ tr.selected {
 		});
 
 		$("#Search").click(function() {
-			var srchKwrd = $('#srchKwrd');
-			if (srchKwrd.val() === '검색어 입력') {
-				srchKwrd.val('');
+			var searchKeyword = $('#korea_name');
+			if (searchKeyword.val() === '검색어 입력') {
+				searchKeyword.val('');
 			}
-			if (srchKwrd.val().trim() === '') {
+			if (searchKeyword.val().trim() === '') {
 				alert("검색어를 입력해주세요.");
 				return false;
 			}
@@ -170,7 +170,7 @@ tr.selected {
 
 		<div class="search-container">
 			<form action="/dayWorkerMnt">
-				<input name="srchKwrd" id="srchKwrd" type="text" value="검색어 입력"
+				<input name="searchKeyword" id="searchKeyword" type="text" value="검색어 입력"
 					onfocus="if (this.value == '검색어 입력') { this.value = ''; }">
 				<button style="background-color: transparent; border: none;"
 					id="searchButton" type="submit">
@@ -202,17 +202,16 @@ tr.selected {
 					<th>부서</th>
 					<th>근무기록</th>
 				</tr>
-				<%--  <c:forEach items="${list}" var="dayWorker"> --%>
-				<tr>
-					<td><input type="checkbox" name="selectedWorkers"
-						value="${dayWorker.employeeId}"></td>
-					<td>${dayWorker.employmentType}123</td>
-					<td>${dayWorker.employeeId}123</td>
-					<td>${dayWorker.koreanName}123</td>
-					<td>${dayWorker.positionId}123</td>
-					<td><button class="manage-button" type="button">관리</button></td>
-				</tr>
-				<%-- </c:forEach> --%>
+				<c:forEach items="${list}" var="dayWorker"> 
+    <tr onclick="toggleCheckbox(this)">
+        <td><input type="checkbox" name="selectedWorkers" value="${dayWorker.employeeId}"></td>
+        <td onclick="toggleCheckbox(this)">${dayWorker.employmentType}</td>
+        <td onclick="toggleCheckbox(this)">${dayWorker.employeeId}</td>
+        <td onclick="toggleCheckbox(this)">${dayWorker.koreanName}</td>
+        <td onclick="toggleCheckbox(this)">${dayWorker.departmentName}</td>
+        <td onclick="toggleCheckbox(this)"><input type="image" src="your-image-path" alt="관리"></td>
+    </tr>
+</c:forEach> 
 			</table>
 			
 			<form action="/ifrmDayWorker">

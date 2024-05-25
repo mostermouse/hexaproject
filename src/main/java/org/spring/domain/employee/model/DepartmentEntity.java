@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DepartmentEntity {
+public class DepartmentEntity extends PositionEntity{
 	private Long departmentId;
 	private String departmentName;
 }

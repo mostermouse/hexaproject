@@ -46,6 +46,12 @@
     transition: box-shadow 0.2s;
 }
 
+tr.selected {
+    background-color: #1C59A5; /* 배경색 변경 */
+    color: white; /* 글자색 변경 */
+}
+
+
 .li_table {
     border: 1px solid black; /* 바깥선 */
     display: inline-block; /* 내용물에 맞게 크기 조절 */
@@ -120,41 +126,54 @@
 		
 		 // 전체 선택 체크박스의 클릭 이벤트 처리
 	    function toggleAll(source) {
-	        var checkboxes = document.getElementsByName('selectedWorkers');
-	        for(var i=0, n=checkboxes.length;i<n;i++) {
-	            checkboxes[i].checked = source.checked;
+	    	 var checkboxes = document.getElementsByName('selectedWorkers');
+	    	    for (var i = 0, n = checkboxes.length; i < n; i++) {
+	    	        checkboxes[i].checked = source.checked;
+	    	        if (checkboxes[i].checked) {
+	    	            checkboxes[i].parentNode.parentNode.classList.add('selected'); // 체크된 행의 배경색 변경
+	    	        } else {
+	    	            checkboxes[i].parentNode.parentNode.classList.remove('selected'); // 체크가 해제된 경우 배경색 초기화
+	    	        }
+	    	    }
+	    }
+		 
+	 	// 개별 체크박스의 클릭 이벤트 처리
+	    function toggleSingle(checkbox) {
+	        if (checkbox.checked) {
+	            checkbox.parentNode.parentNode.classList.add('selected'); // 체크된 행의 배경색 변경
+	        } else {
+	            checkbox.parentNode.parentNode.classList.remove('selected'); // 체크가 해제된 경우 배경색 초기화
 	        }
 	    }
+		 
 		
 		function filterByStatus() {
 			var status = document.getElementById("statusSelect").value;
 			window.location.href = "/dayWorkerMnt?status=" + status;
 		}
 		
-		function updateFeildOrProject(button) {
-		    var buttonText = button.innerText;
-		    var span = button.parentElement.previousElementSibling;
-		    var name = span.innerText;
-
-		    if (buttonText === '수정') {
-		        var input = document.createElement("input");
-		        input.type = "text";
-		        input.value = name;
-		        span.innerHTML = "";
-		        span.appendChild(input);
-
-		        button.innerText = '저장';
-		        alert('수정을 완료하려면 "저장"을 클릭하세요.');
-		    } else if (buttonText === '저장') {
-		        var newName = span.firstChild.value;
-		        span.innerHTML = newName;
-
-		        button.innerText = '수정';
-		        alert('저장되었습니다: ' + newName);
-		    }
-		}
-
+	      function updateFeildOrProject(button) {
+	          var buttonText = button.innerText;
+	          var span = button.closest('li').querySelector('.project-name');
+	          var name = span.innerText;
 	
+	          if (buttonText === '수정') {
+	              var input = document.createElement("input");
+	              input.type = "text";
+	              input.value = name;
+	              span.innerHTML = "";
+	              span.appendChild(input);
+	
+	              button.innerText = '저장';
+	              alert('수정을 완료하려면 "저장"을 클릭하세요.');
+	          } else if (buttonText === '저장') {
+	              var newName = span.firstChild.value;
+	              span.innerHTML = newName;
+	
+	              button.innerText = '수정';
+	              alert('저장되었습니다: ' + newName);
+	          }
+	      }
 	</script>
 	<h1 style="text-align: left;">일용직 근무기록/관리</h1>
 	<div style="display: flex; width: 100%">
@@ -185,7 +204,7 @@
 				</tr>
 				<c:forEach items="${list}" var="dayWorker">
 					<tr>
-					<td><input type="checkbox" name="selectedWorkers" value="${dayWorker.employeeId}"></td>
+					<td><input type="checkbox" name="selectedWorkers" value="${dayWorker.employeeId}" onclick="toggleSingle(this)"></td>
 					<td>${dayWorker.employmentType}</td>
 					<td>${dayWorker.employeeId}</td>
 					<td>${dayWorker.koreanName}</td>
@@ -229,28 +248,28 @@
 		</div>
 	</div>
 <!--모달 팝업-->
-	<div class="modal">
-		<div class="modal_popup">
-			<h3>현장/프로젝트 관리</h3>
-			<div class="li_table">
-				<ul>
-					<c:forEach var="feildOrProject" items="${feildOrProjectList}">
-						<li>
-							<span>${feildOrProject.name}</span>
-							<a href="#none" onclick="updateFeildOrProject(this)">수정</a>|
-							<a href="#none" onclick="deleteFeildOrProject(this)">삭제</a>
-						</li>
-					</c:forEach>
-				</ul>
-				<ul style="background-color: #a6a6a6;">
-					<li >
-						<a>추가하기</a>
-					</li>
-				</ul>	
-			</div>	
-			<button type="button" class="close_btn">닫기</button>
-		</div>
-	</div>
+	   <div class="modal">
+       <div class="modal_popup">
+           <h3>현장/프로젝트 관리</h3>
+           <div class="li_table">
+               <ul>
+                   <c:forEach var="feildOrProject" items="${feildOrProjectList}">
+                       <li>
+                           <span class="project-name">${feildOrProject.name}</span>
+                           <a href="#none" onclick="updateFeildOrProject(this)">수정</a> |
+                           <a href="#none" onclick="deleteFeildOrProject(this)">삭제</a>
+                       </li>
+                   </c:forEach>
+               </ul>
+               <ul style="background-color: #a6a6a6;">
+                   <li>
+                       <a>추가하기</a>
+                   </li>
+               </ul>    
+           </div>    
+           <button type="button" class="close_btn">닫기</button>
+       </div>
+   </div>
 </div>
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>
 

@@ -1,8 +1,11 @@
 package org.spring.domain.attendance.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+
 import java.util.HashMap;
 import java.util.Map;
 
+import org.spring.domain.attendance.model.AttendanceEntity;
 import org.spring.domain.attendance.service.AttendanceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,13 +40,12 @@ private AttendanceService service;
         
         return "managementOfAtt/dayWorkerMnt";
 	}
-	/*
-	 * @GetMapping("/dayWorkerMnt") public void addendanceGroup(Model model) { //
-	 * List<AttendanceEntity> attlist = service.getAttendanceGroup();
-	 * model.addAttribute("attlist", service.getAttendanceGroup());
-	 * 
-	 * log.info(service.getAttendanceGroup()); }
-	 */
+	
+	@GetMapping("/dayWorkerRegistry")
+	public String insertDayWorkerRegistry(AttendanceEntity entity) {
+		service.insertDayWorkerRegistry(entity);
+		return "managementOfAtt/dayWorkerMnt";
+	}
 }
 
 

@@ -1,26 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
-
-<!-- <script>
-	function validateForm() {
-		var employmentType = document.getElementById("employmentType").value;
-		var hireDate = document.getElementById("hireDate").value;
-		var relationship = document.getElementById("relationship").value;
-		var parentsName = document.getElementById("parentsName").value;
-		if (employmentType === "") {
-			alert("기본 정보의 고용 형태를 선택해주세요.");
-			document.getElementById("employmentType").focus(); // 기본 정보의 고용 형태에 돌아감
-			return false;
-		} else if (hireDate === "") {
-			alert("기본 정보의 입사일을 선택해주세요.");
-			document.getElementById("hireDate").focus(); // 기본 정보의 입사일에 돌아감
-			return false;
-		}
-		return true;
-	}
-</script> -->
-
 <div id="content">
 
 	<div class="floating-container">
@@ -50,25 +30,33 @@
 				</tr>
 			</tbody>
 		</table>
-			<h3 style="text-align: left;">사원정보1</h3>
+		<h3 style="text-align: left;">사원정보1</h3>
 		<div class="button-container">
-			<button onclick="scrollToSection('section1')">부양가족</button>
-			<button onclick="scrollToSection('section2')">학력</button>
-			<button onclick="scrollToSection('section3')">경력</button>
-			<button onclick="scrollToSection('section4')">병력</button>
-			<hr>
+			<button onclick="scrollToSection('section1')">기본정보</button>
+			<button onclick="scrollToSection('section2')">부양가족</button>
+			<button onclick="scrollToSection('section3')">학력</button>
+			<button onclick="scrollToSection('section4')">경력</button>
+			<button onclick="scrollToSection('section5')">병력</button>
+			<button style="background-color: #f3f3f3; cursor: default;"></button>
+		</div>
+		<hr>
+		<h3 style="text-align: left;">사원정보2</h3>
+		<div class="button-container">
+			<button
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns2?scrollToSection=section6'">자격면허</button>
+			<button onclick="scrollToSection('section5')">교육훈련</button>
+			<button onclick="scrollToSection('section5')">상벌</button>
+			<button onclick="scrollToSection('section5')">발령</button>
+			<button onclick="scrollToSection('section5')">추천신원보증</button>
+			<button onclick="scrollToSection('section5')">퇴직</button>
 		</div>
 	</div>
 	<div class="table-container">
-
-
-
-
 		<div class="header-container">
 			<img
 				src="<%=request.getContextPath()%>/resources/images/contentimages/head_01.jpg"
 				alt="">
-			<h1>사원 등록</h1>
+			<h1 id="section1">사원 등록</h1>
 		</div>
 		<h4>사원정보를 등록하는 메뉴입니다. 해당되는 항목만 입력하시면 됩니다. (* 표시는 필수 입력사항)</h4>
 		<hr>
@@ -199,7 +187,7 @@
 			<div class="table-container">
 				<div class="header-container">
 					<!-- Dependents Table -->
-					<h3 id="section1">부양 가족</h3>
+					<h3 id="section2">부양 가족</h3>
 				</div>
 				<table class="empRegister1">
 					<thead>
@@ -248,7 +236,7 @@
 					</tbody>
 				</table>
 				<!-- Degree Table -->
-				<h3 id="section2">학력</h3>
+				<h3 id="section3">학력</h3>
 
 				<table class="empRegister1">
 					<thead>
@@ -296,7 +284,7 @@
 
 
 				<!-- Career Table -->
-				<h3 id="section3">경력</h3>
+				<h3 id="section4">경력</h3>
 
 				<table class="empRegister1">
 					<thead>
@@ -334,7 +322,7 @@
 				</table>
 
 				<!-- MilitaryService Table -->
-				<h3 id="section4">병역</h3>
+				<h3 id="section5">병역</h3>
 
 				<table class="empRegister1">
 					<thead>

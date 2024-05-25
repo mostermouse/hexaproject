@@ -97,7 +97,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
-</script>
 <%-- <div id="content">
 	<div>
 		<h2>근태항목 설정</h2>

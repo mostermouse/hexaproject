@@ -50,6 +50,25 @@ function validateForm() {
 	return true;
 }
 
+//사원등록 1페이지
 function scrollToSection(sectionId) {
     document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+}
+
+//2페이지
+const urlParams = new URLSearchParams(window.location.search);
+
+if (scrollToSection) {
+	const element = document.getElementById(scrollToSection);
+	if (element) {
+		element.scrollIntoView({
+			behavior : 'smooth'
+		});
+	}
+}
+
+//tr클릭시 체크박스
+function toggleCheckbox(row) {
+    var checkbox = row.querySelector('input[type="checkbox"]');
+    checkbox.checked = !checkbox.checked;
 }

@@ -3,33 +3,49 @@
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
 
 <div id="content">
-    <h1>Employee List Test</h1>
-    <div>
-        <table border="1">
-            <tr>
-                <th>재직자</th>
-                <th>정규직</th>
-                <th>계약직</th>
-                <th>임시직</th>
-                <th>파견직</th>
-                <th>위촉직</th>
-                <th>일용직</th>
-                <th>퇴사자</th>
-                <th>전체</th>
-            </tr>
-            <tr>
-                <td>${employed}</td>
-                <td>${regular}</td>
-                <td>${contract}</td>
-                <td>${temporary}</td>
-                <td>${dispatched}</td>
-                <td>${appointed}</td>
-                <td>${daily}</td>
-                <td>${resigned}</td>
-                <td>${allemployees}</td>
-            </tr>
-        </table>
-    </div>
+    <div class="table-container1">
+		<h3>Employee Count</h3>
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-ev56">재직자</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-jc02">${employed}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-c5zh">정규직</th>
+					<th class="tg-c5zh">계약직</th>
+					<th class="tg-c5zh">임시직</th>
+					<th class="tg-c5zh">파견직</th>
+					<th class="tg-c5zh">위촉직</th>
+					<th class="tg-c5zh">일용직</th>
+					<th class="tg-c5zh">퇴사자</th>
+					<th class="tg-c5zh">전체</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-jc02">${regular}</td>
+					<td class="tg-jc02">${contract}</td>
+					<td class="tg-jc02">${temporary}</td>
+					<td class="tg-jc02">${dispatched}</td>
+					<td class="tg-jc02">${appointed}</td>
+					<td class="tg-jc02">${daily}</td>
+					<td class="tg-jc02">${resigned}</td>
+					<td class="tg-jc02">${allemployees}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
     <div>
         <table border="1">
             <tr>

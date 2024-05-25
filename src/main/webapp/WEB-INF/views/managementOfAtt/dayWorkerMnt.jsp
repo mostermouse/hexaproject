@@ -7,7 +7,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<!-- <style>
+<style>
 /*모달 팝업 영역 스타일링*/
 .modal {
 	/*팝업 배경*/
@@ -90,7 +90,7 @@ tr.selected {
 	text-decoration: none; /* 링크 밑줄 제거 */
 	color: blue; /* 링크 색상 지정 */
 }
-</style> -->
+</style>
 
 
 
@@ -172,8 +172,11 @@ tr.selected {
 			<form action="/dayWorkerMnt">
 				<input name="srchKwrd" id="srchKwrd" type="text" value="검색어 입력"
 					onfocus="if (this.value == '검색어 입력') { this.value = ''; }">
-				<button style="background-color: transparent; border: none;" id="searchButton" type="submit">
-					<img src="<%= request.getContextPath() %>/resources/images/contentimages/search_25.jpg" alt="Search">
+				<button style="background-color: transparent; border: none;"
+					id="searchButton" type="submit">
+					<img
+						src="<%=request.getContextPath()%>/resources/images/contentimages/search_25.jpg"
+						alt="Search">
 				</button>
 
 			</form>
@@ -200,44 +203,48 @@ tr.selected {
 					<th>근무기록</th>
 				</tr>
 				<%--  <c:forEach items="${list}" var="dayWorker"> --%>
-				<tr onclick="toggleCheckbox(this)">
+				<tr>
 					<td><input type="checkbox" name="selectedWorkers"
 						value="${dayWorker.employeeId}"></td>
-					<td onclick="toggleCheckbox(this)">${dayWorker.employmentType}123</td>
-					<td onclick="toggleCheckbox(this)">${dayWorker.employeeId}123</td>
-					<td onclick="toggleCheckbox(this)">${dayWorker.koreanName}123</td>
-					<td onclick="toggleCheckbox(this)">${dayWorker.positionId}123</td>
-					<td onclick="toggleCheckbox(this)"><input type="image" src="your-image-path" alt="관리"></td>
+					<td>${dayWorker.employmentType}123</td>
+					<td>${dayWorker.employeeId}123</td>
+					<td>${dayWorker.koreanName}123</td>
+					<td>${dayWorker.positionId}123</td>
+					<td><button class="manage-button" type="button">관리</button></td>
 				</tr>
 				<%-- </c:forEach> --%>
 			</table>
+			
 			<form action="/ifrmDayWorker">
-				<table class="day-worker-form-table" border="1">
+				<table class="day-worker-form-table">
 					<tr>
 						<td>근무일자</td>
 						<td><input type="text" id="workDate" class="input-field"></td>
 					</tr>
 					<tr>
 						<td>현장/프로젝트</td>
-						<td colspan="2"><select name="inputFeildOrProject"
+						<td colspan="2">
+							<div class="button-container1">
+							<select name="inputFeildOrProject"
 							id="inputFeildOrProject" class="select-field">
 								<option>선택하세요.</option>
 								<c:forEach var="feildOrProject" items="${feildOrProjectList}">
 									<option value="${feildOrProject.name}">${feildOrProject.name}</option>
 								</c:forEach>
-						</select>
-							<button type="button" class="modal_btn">목록관리</button></td>
+							</select>
+							<button id="modal_btn" type="button" class="all-button">목록관리</button>
+							</div>
+						</td>
 					</tr>
 					<tr>
 						<td>일당</td>
 						<td><input type="text" class="input-field"></td>
 					</tr>
-					<tr>
-						<td colspan="2" align="center"><input type="submit"
-							value="저장" class="submit-button"> <input type="button"
-							value="내용 지우기" class="reset-button"></td>
-					</tr>
 				</table>
+				<div class="button-container1">
+					<input class="all-button" type="submit" value="저장">
+					<input class="all-button1" type="reset" value="내용 지우기">
+				</div>
 			</form>
 		</div>
 
@@ -270,7 +277,7 @@ tr.selected {
 	document.addEventListener('DOMContentLoaded', function() {
 		/* modal  */
 		const modal = document.querySelector('.modal');
-		const modalOpen = document.querySelector('.modal_btn');
+		const modalOpen = document.querySelector('#modal_btn');
 		const modalClose = document.querySelector('.close_btn');
 
 		//열기 버튼을 눌렀을 때 모달팝업이 열림

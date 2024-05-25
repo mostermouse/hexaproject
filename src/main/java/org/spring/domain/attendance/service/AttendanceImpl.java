@@ -28,18 +28,11 @@ public class AttendanceImpl implements AttendanceService {
     public List<AttendanceEntity> getEmployeeAttendance() {
         log.info("getEmployeeAttendance..........");
         
-        
         return mapper.getEmployeeAttendance();
     }
 
     @Override
 	public List<EmployeeEntity> getDayWorkerList(Map<String, Object> params) {
-    
-    	
-    	
-		 
-		 
-		// List<EmployeeEntity> vo = mapper.getDayWorkerList(keyword);
 		 
 		 return mapper.getDayWorkerList(params);
 	}
@@ -51,14 +44,18 @@ public class AttendanceImpl implements AttendanceService {
         return mapper.selectFeildOrProject();
     }
 
-	/*
-	 * @Override public List<EmployeeEntity> getDayWorkerStatusList(String status) {
-	 * // TODO Auto-generated method stub return mapper.getEmployeeStatus(status); }
-	 */
+	
 	@Override
 	public List<EmployeeEntity> getStatusList() {
 		// TODO Auto-generated method stub
 		return mapper.getDayWorkertatus();
+	}
+
+	@Override
+	public void insertDayWorkerRegistry(AttendanceEntity entity) {
+		// TODO Auto-generated method stub
+		mapper.insertDayWorkerRegistry(entity);
+		
 	}	
 
 

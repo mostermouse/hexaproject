@@ -7,11 +7,9 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.spring.domain.attendance.controller.AttendanceEntityRequest;
 import org.spring.domain.attendance.model.AttendanceEntity;
-import org.spring.domain.attendance.model.AttendanceGroupEntity;
 import org.spring.domain.attendance.model.FeildOrProjectIdEntity;
 import org.spring.domain.employee.model.EmployeeEntity;
 
-import java.util.List;
 import java.util.Map;
 
 public interface AttMapper {
@@ -33,5 +31,8 @@ public interface AttMapper {
 	List<EmployeeEntity> getDayWorkertatus();
 
 	List<EmployeeEntity> getDayWorkerList(Map<String, Object> params);
+	
+	// 일용직 근무 기록 insert
+	void insertDayWorkerRegistry(AttendanceEntity entity);
 
 }

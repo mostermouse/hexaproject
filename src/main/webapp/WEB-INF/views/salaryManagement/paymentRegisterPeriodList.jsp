@@ -3,6 +3,7 @@
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
+
 <!-- table의 한 줄 전체에 링크를 걸기 위한 CSS -->
 <style>
 table {
@@ -11,17 +12,16 @@ table {
 }
 
 tr {
-	position: relative;
+	cursor: pointer;
 }
 
-tr a {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	text-decoration: none;
-	color: inherit;
+tr:hover {
+	background-color: #f0f0f0;
+}
+
+td, th {
+	border: 1px solid #ddd;
+	padding: 8px;
 }
 </style>
 
@@ -64,14 +64,30 @@ tr a {
 							${record.settlementPeriodEndDate}</td>
 						<td class="pay-body">${record.wagePaymentDate}</td>
 						<td class="pay-body">${record.paidEmployeeCount}</td>
-						<td class="pay-total"><a
-							href="/payment/paymentRegisterPeriodList?yearMonth=${record.yearMonth}&wagePeriod=${record.wagePeriod}"></a>${record.totalPaidWage}</td>
+						<td class="pay-total">${record.totalPaidWage}</td>
 					</tr>
+					<form id="hiddenForm" method="get" style="display: none;">
+						<input type="hidden" name="yearMonth" id="yearMonth"
+							value="${record.yearMonth}"> <input type="hidden"
+							name="wagePeriod" id="wagePeriod" value="${record.wagePeriod}">
+					</form>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
 
 </div>
+1231231231
+<!-- table의 한 줄 전체에 링크를 걸기 위한  JavaScript -->
+<script>
+	function submitForm(url) {
+		const form = document.getElementById('hiddenForm');
+		form.action = url;
+		form.submit();
+	}
+</script>
+
+
+
 
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>

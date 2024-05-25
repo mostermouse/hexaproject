@@ -101,11 +101,40 @@
 
 
 	<!-- 급여대장 출력 -->
+	<!-- 급여정보 연도,차수 -->
+	<select id="getYearMonthPeriodWage" 
+		resultType="org.spring.domain.wage.controller.model.WageRecordDetailsRequest">
+	    SELECT
+		e.employee_id as employee_id,
+		e.employment_type as employment_type,
+		e.korean_name as korean_name,
+		e.hire_date as hire_date,
+		e.department_id as department_id,
+		d.department_name as department_name,
+		p.position_id as position_id,
+		p.position_name as position_name,
+		w.wage_id as wage_id,
+		w.wage_period as wage_period,
+		w.wage_type_id as wage_type_id,
+		wt.wage_type_name as wage_type_name,
+		w.wage_value as wage_value,
+		w.settlement_period_start_date as settlement_period_start_date,
+		w.settlement_period_end_date as settlement_period_end_date,
+		w.wage_payment_date as wage_payment_date
+	    FROM wage w
+	    JOIN employee e ON e.employee_id = w.employee_id
+	    JOIN wage_type wt ON wt.wage_type_id = w.wage_type_id
+	    JOIN department d ON d.department_id = e.department_id
+	    JOIN position p ON p.position_id = e.position_id
+	    WHERE TO_CHAR(wage_payment_date, 'YYYYMM') = #{yearMonth}
+	    AND wage_period = #{wagePeriod}
+	</select>
+	
 	<!-- 급여정보 연도 -->
 	<select id="getYearWage"
 		resultType="org.spring.domain.wage.model.WageEntity">
-		SELECT * FROM wage WHERE TO_CHAR(wage_payment_date, 'YYYY') = #{year}
+		SELECT * FROM wage WHERE TO_CHAR(wage_payment_date, 'YYYY')
+		= #{year}
 	</select>
-
 
 </mapper>

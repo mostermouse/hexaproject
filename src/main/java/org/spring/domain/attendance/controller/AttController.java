@@ -20,32 +20,26 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class AttController {
 
-private AttendanceService service;
+	private AttendanceService service;
+
 	@GetMapping("/dayWorkerMnt")
 	public String dayWorkerList(
-			@RequestParam(value = "srchKwrd", required = false) String srchKwrd, 
-			@RequestParam(value = "status" , required = false) String status,
+			@RequestParam(value = "srchKwrd", required = false) String srchKwrd,
+			@RequestParam(value = "status", required = false) String status,
 			Model model) {
 		log.info("getDayWorkerList: srchKwrd=" + srchKwrd);
-		 Map<String, Object> params = new HashMap<>();
-        params.put("srchKwrd", srchKwrd);
-        params.put("status", status);
-		
-        model.addAttribute("list", service.getDayWorkerList(params));
-        model.addAttribute("feildOrProjectList", service.getFeildOrProject());
-        model.addAttribute("statuslist", service.getStatusList());
+		Map<String, Object> params = new HashMap<>();
+		params.put("srchKwrd", srchKwrd);
+		params.put("status", status);
+
+		model.addAttribute("list", service.getDayWorkerList(params));
+		model.addAttribute("feildOrProjectList", service.getFeildOrProject());
+		model.addAttribute("statuslist", service.getStatusList());
 		/* model.addAttribute("list", service.getDayWorkerStatusList(status)); */
-        
-        System.out.println("테스트테스트" + model.toString());
-        
-        return "managementOfAtt/dayWorkerMnt";
-	}
-	
-	@GetMapping("/dayWorkerRegistry")
-	public String insertDayWorkerRegistry(AttendanceEntity entity) {
-		service.insertDayWorkerRegistry(entity);
+
+		System.out.println("테스트테스트" + model.toString());
+
 		return "managementOfAtt/dayWorkerMnt";
 	}
 }
-
 

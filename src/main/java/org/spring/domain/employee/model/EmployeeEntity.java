@@ -10,7 +10,7 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Builder
 public class EmployeeEntity {
 
     private Long employeeId;

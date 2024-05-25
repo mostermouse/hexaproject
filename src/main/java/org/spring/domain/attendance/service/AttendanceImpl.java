@@ -1,13 +1,10 @@
 package org.spring.domain.attendance.service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.spring.domain.attendance.controller.AttendanceEntityRequest;
 import org.spring.domain.attendance.mapper.AttMapper;
 import org.spring.domain.attendance.model.AttendanceEntity;
-import org.spring.domain.attendance.model.AttendanceGroupEntity;
 import org.spring.domain.attendance.model.FeildOrProjectIdEntity;
 import org.spring.domain.employee.model.EmployeeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +20,7 @@ public class AttendanceImpl implements AttendanceService {
 
     @Autowired
     private AttMapper mapper;
+
 
     @Override
     public List<AttendanceEntity> getEmployeeAttendance() {

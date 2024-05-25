@@ -54,8 +54,8 @@
 	<div class="table-container">
 		<div class="header-container">
 			<img
-				src="<%=request.getContextPath()%>/resources/images/contentimages/head_01.jpg"
-				alt="">
+				src="<%=request.getContextPath()%>/resources/images/contentimages/employeeMnt.png"
+				alt="" width="50" height="50">
 			<h1 id="section1">사원 등록</h1>
 		</div>
 		<h4>사원정보를 등록하는 메뉴입니다. 해당되는 항목만 입력하시면 됩니다. (* 표시는 필수 입력사항)</h4>

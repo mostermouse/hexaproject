@@ -202,13 +202,13 @@
 	border-color: black;
 	border-style: solid;
 	border-width: 1px;
-	font-family: Arial, sans-serif;
-	font-size: 14px;
+	font-family: Comic Sans MS;
+	font-size: 25px;
 	overflow: hidden;
 	padding: 10px 5px;
 	word-break: normal;
-	width: 160px;
-	height: 60px;
+	width: 131px;
+	height: 40px;
 }
 
 .tg th {
@@ -221,8 +221,8 @@
 	overflow: hidden;
 	padding: 10px 5px;
 	word-break: normal;
-	width: 160px;
-	height: 60px;
+	width: 131px;
+	height: 40px;
 }
 
 .tg .tg-jc02 {

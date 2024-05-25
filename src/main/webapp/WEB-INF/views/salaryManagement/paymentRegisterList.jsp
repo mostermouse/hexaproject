@@ -9,7 +9,7 @@
 	<div class="divtitle">
 		<h3>Wage Records for Year ${param.year}</h3>
 		<%-- 년도 선택 창 --%>
-		<form action="/paymentRegisterList" method="get">
+		<form action="/payment/paymentRegisterList" method="get">
 			<label for="year">Select Year:</label> <select name="year" id="year">
 				<%-- 2010년부터 현재 연도까지의 년도를 선택할 수 있도록 --%>
 				<c:forEach var="y" begin="2010"

@@ -97,10 +97,20 @@
 	border-radius: 10px;
 	cursor: pointer;
 	transition: background-color 0.3s;
+	margin: 0 30px;
 }
 
 .divbtn button:hover {
 	background-color: #0056b3;
+}
+
+.divbtn .cancel-btn {
+	background-color: #6c757d; /* 회색 배경 */
+	color: #fff;
+}
+
+.divbtn .cancel-btn:hover {
+	background-color: #5a6268; /* hover 시 어두운 회색 */
 }
 
 .divtitle {
@@ -418,7 +428,13 @@
 
 .search-container {
 	display: flex;
-	gap: 10px; /* 간격 설정 */
+	gap: 40px; /* 간격 설정 */
+}
+
+.title-table-left {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 }
 
 .dayWorker-container {

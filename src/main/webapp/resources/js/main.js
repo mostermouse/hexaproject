@@ -72,3 +72,4 @@ function toggleCheckbox(row) {
     var checkbox = row.querySelector('input[type="checkbox"]');
     checkbox.checked = !checkbox.checked;
 }
+

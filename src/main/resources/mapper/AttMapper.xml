@@ -3,6 +3,35 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.domain.attendance.mapper.AttMapper">
+
+ 	<resultMap id="DepartmentResultMap" type="org.spring.domain.employee.model.DepartmentEntity">
+        <result property="departmentId" column="department_id"/>
+        <result property="departmentName" column="department_name"/>
+    </resultMap>
+
+  <resultMap id="EmployeeResultMap" type="org.spring.domain.employee.model.EmployeeEntity">
+    <id property="employeeId" column="employee_id"/>
+    <result property="employmentType" column="employment_type"/>
+    <result property="koreanName" column="korean_name"/>
+    <result property="englishName" column="english_name"/>
+    <result property="hireDate" column="hire_date"/>
+    <result property="resignationDate" column="resignation_date"/>
+    <result property="foreignOrDomestic" column="foreign_or_domestic"/>
+    <result property="residentNumber1" column="resident_number1"/>
+    <result property="residentNumber2" column="resident_number2"/>
+    <result property="address" column="address"/>
+    <result property="telPhone" column="tel_phone"/>
+    <result property="mobile" column="mobile"/>
+    <result property="email" column="email"/>
+    <result property="sns" column="sns"/>
+    <result property="otherDetails" column="other_details"/>
+    <result property="status" column="status"/>
+    <!-- Join하여 가져온 departmentName과 positionName을 직접 매핑 -->
+    <result property="department.departmentName" column="department_name"/>
+    <result property="position.positionName" column="position_name"/>
+</resultMap>
+
+
     <select id="getEmployeeAttendance" resultType="org.spring.domain.attendance.controller.AttendanceEntityRequest">
        SELECT
 		    ad.input_date AS input_date,
@@ -57,23 +86,33 @@
 		    
     </select>
 	
-	<select id="getDayWorkerList" parameterType="map" resultType="org.spring.domain.employee.model.EmployeeEntity">
-		SELECT * FROM employee
-        <where>
-            employment_type = '일용직'
-            <if test="status != null and status != ''">
-                AND status = #{status}
-            </if>
-            <if test="srchKwrd != null and srchKwrd != ''">
-                AND (
-                    employee_id LIKE '%' || #{srchKwrd} || '%'
-                    OR korean_name LIKE '%' || #{srchKwrd} || '%'
-                    OR department_id LIKE '%' || #{srchKwrd} || '%'
-                )
-            </if>
-        </where>
-        ORDER BY employee_id DESC
-	</select>
+	<select id="getDayWorkerList" parameterType="map" resultType="org.spring.domain.employee.model.DepartmentEntity">
+    SELECT e.employee_id, e.employment_type, e.korean_name, e.english_name, e.hire_date, e.resignation_date, e.department_id, e.position_id, e.foreign_or_domestic, e.resident_number1, e.resident_number2, e.address, e.tel_phone, e.mobile, e.email, e.sns, e.other_details, e.status, d.department_name
+    FROM employee e
+    JOIN department d ON e.department_id = d.department_id
+    <where>
+        e.employment_type = '일용직'
+        <if test="status != null and status != ''">
+            AND e.status = #{status}
+        </if>
+        <if test="employeeId != null and employeeId != ''">
+            AND (
+                e.employee_id LIKE CONCAT('%', #{employeeId}, '%')
+                OR e.korean_name LIKE CONCAT('%', #{koreanName}, '%')
+                OR d.department_name LIKE CONCAT('%', #{departmentName}, '%')
+            )
+        </if>
+        <!-- 널 값 검사를 추가 -->
+        <if test="koreanName != null and koreanName != ''">
+            AND e.korean_name LIKE CONCAT('%', #{koreanName}, '%')
+        </if>
+        <if test="departmentName != null and departmentName != ''">
+            AND d.department_name LIKE CONCAT('%', #{departmentName}, '%')
+        </if>
+    </where>
+    ORDER BY e.employee_id DESC
+</select>
+
 	
 	<select id="selectFeildOrProject" resultType="org.spring.domain.attendance.model.FeildOrProjectIdEntity">
         SELECT * FROM feild_or_project
@@ -92,7 +131,11 @@
 		SELECT status FROM employee WHERE employment_type = '일용직'
 	</select>
 	
-	<update id="updateFeildOrProject">
+	<!-- <update id="updateFeildOrProject">
 		
 	</update>
+	
+	<inert id="insertDayWorkerRegistry" >
+		INSERT INTO  () VALUES 
+	</inert> -->
 </mapper>

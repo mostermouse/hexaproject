@@ -1,11 +1,11 @@
 package org.spring.domain.attendance.service;
 
 import java.util.List;
-import java.util.Map;
 
+import org.spring.domain.attendance.controller.AttendanceEntityRequest;
 import org.spring.domain.attendance.mapper.AttMapper;
-import org.spring.domain.attendance.model.AttendanceEntity;
 import org.spring.domain.attendance.model.FeildOrProjectIdEntity;
+import org.spring.domain.employee.model.DepartmentEntity;
 import org.spring.domain.employee.model.EmployeeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,19 +21,19 @@ public class AttendanceImpl implements AttendanceService {
     @Autowired
     private AttMapper mapper;
 
-
     @Override
-    public List<AttendanceEntity> getEmployeeAttendance() {
+    public List<AttendanceEntityRequest> getEmployeeAttendance() {
         log.info("getEmployeeAttendance..........");
+        
         
         return mapper.getEmployeeAttendance();
     }
 
+   
     @Override
-	public List<EmployeeEntity> getDayWorkerList(Map<String, Object> params) {
-		 
-		 return mapper.getDayWorkerList(params);
-	}
+    public List<EmployeeEntity> getDayWorkerList(DepartmentEntity departmentEntity) {
+        return mapper.getDayWorkerList(departmentEntity);
+    }
 
 	@Override
 	 public List<FeildOrProjectIdEntity> getFeildOrProject() {
@@ -42,18 +42,14 @@ public class AttendanceImpl implements AttendanceService {
         return mapper.selectFeildOrProject();
     }
 
-	
+	/*
+	 * @Override public List<EmployeeEntity> getDayWorkerStatusList(String status) {
+	 * // TODO Auto-generated method stub return mapper.getEmployeeStatus(status); }
+	 */
 	@Override
 	public List<EmployeeEntity> getStatusList() {
 		// TODO Auto-generated method stub
 		return mapper.getDayWorkertatus();
-	}
-
-	@Override
-	public void insertDayWorkerRegistry(AttendanceEntity entity) {
-		// TODO Auto-generated method stub
-		mapper.insertDayWorkerRegistry(entity);
-		
 	}	
 
 

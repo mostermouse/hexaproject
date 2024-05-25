@@ -1,12 +1,7 @@
 package org.spring.domain.attendance.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import org.spring.domain.attendance.model.AttendanceEntity;
 import org.spring.domain.attendance.service.AttendanceService;
+import org.spring.domain.employee.model.DepartmentEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,26 +15,34 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class AttController {
 
-	private AttendanceService service;
+private AttendanceService service;
 
-	@GetMapping("/dayWorkerMnt")
-	public String dayWorkerList(
-			@RequestParam(value = "srchKwrd", required = false) String srchKwrd,
-			@RequestParam(value = "status", required = false) String status,
-			Model model) {
-		log.info("getDayWorkerList: srchKwrd=" + srchKwrd);
-		Map<String, Object> params = new HashMap<>();
-		params.put("srchKwrd", srchKwrd);
-		params.put("status", status);
+@GetMapping("/dayWorkerMnt")
+public String dayWorkerList(
+        @RequestParam(value = "employee_id", required = false) Long employeeId,
+        @RequestParam(value = "status", required = false) String status,
+        @RequestParam(value = "korean_name" ,required = false) String koreanName,
+        @RequestParam(value = "department_name" , required = false) String departmentName,
+        Model model) {
+    log.info("getDayWorkerList: employeeId=" + employeeId);
+    
+    DepartmentEntity departmentEntity = new DepartmentEntity();
+    departmentEntity.setEmployeeId(employeeId);
+    departmentEntity.setStatus(status);
+    departmentEntity.setKoreanName(koreanName);
+    departmentEntity.setDepartmentName(departmentName);
 
-		model.addAttribute("list", service.getDayWorkerList(params));
-		model.addAttribute("feildOrProjectList", service.getFeildOrProject());
-		model.addAttribute("statuslist", service.getStatusList());
-		/* model.addAttribute("list", service.getDayWorkerStatusList(status)); */
-
-		System.out.println("테스트테스트" + model.toString());
-
-		return "managementOfAtt/dayWorkerMnt";
-	}
+    model.addAttribute("list", service.getDayWorkerList(departmentEntity));
+    model.addAttribute("feildOrProjectList", service.getFeildOrProject());
+    model.addAttribute("statuslist", service.getStatusList());
+    
+    System.out.println("테스트테스트" + model.toString());
+    
+    return "managementOfAtt/dayWorkerMnt";
 }
+
+
+	
+}
+
 

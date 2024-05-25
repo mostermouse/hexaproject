@@ -3,8 +3,10 @@ package org.spring.domain.employee.model;
 
 import java.time.LocalDate;
 
-
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Data

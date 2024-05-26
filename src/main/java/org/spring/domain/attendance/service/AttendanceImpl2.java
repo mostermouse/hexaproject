@@ -5,6 +5,7 @@ import java.util.List;
 import org.spring.domain.attendance.mapper.AttMapper;
 import org.spring.domain.attendance.mapper.AttendanceMapper;
 import org.spring.domain.attendance.model.AttendanceEntity;
+import org.spring.domain.attendance.model.AttendanceTypeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,11 +26,11 @@ public class AttendanceImpl2 implements AttendanceService2{
 		return mapper.getAllAttendance();
 	}
 
-	@Override
-	public AttendanceEntity getAttendanceById(Long AttendanceById) {
-		
-		return mapper.getAttendanceById(AttendanceById);
-	}
+	/*
+	 * @Override public AttendanceEntity getAttendanceById(Long AttendanceById) {
+	 * 
+	 * return mapper.getAttendanceById(AttendanceById); }
+	 */
 
 	@Override
 	public void createAttendance(AttendanceEntity attendance) {
@@ -37,16 +38,22 @@ public class AttendanceImpl2 implements AttendanceService2{
 		
 	}
 
-	@Override
-	public void updateAttendance(Long ID) {
-		mapper.updateAttendance(ID);
-		
-	}
+	/*
+	 * @Override public void updateAttendance(Long ID) {
+	 * mapper.updateAttendance(ID);
+	 * 
+	 * }
+	 * 
+	 * @Override public void deleteAttendance(Long AttendanceById) {
+	 * mapper.deleteAttendance(AttendanceById);
+	 * 
+	 * }
+	 */
 
 	@Override
-	public void deleteAttendance(Long AttendanceById) {
-		mapper.deleteAttendance(AttendanceById);
-		
+	public List<AttendanceTypeEntity> getAllAttendanceType() {
+		// TODO Auto-generated method stub
+		return mapper.getAllAttendanceType();
 	}
 
 	

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.spring.domain.employee.model.EmployeeEntity;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -15,7 +16,9 @@ public class AttendanceEntity extends EmployeeEntity {
     private LocalDate inputDate;
     private String attendanceTypeId;
     private Long feildOrProjectIdLong;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")	
     private LocalDate startDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")	
     private LocalDate endDate;
     private Long attendanceDays;
     private Long amount;

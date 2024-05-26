@@ -3,91 +3,38 @@
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-
-<!-- table의 한 줄 전체에 링크를 걸기 위한 CSS -->
 <style>
 table {
 	width: 100%;
 	border-collapse: collapse;
 }
 
-tr {
-	cursor: pointer;
-}
-
-tr:hover {
-	background-color: #f0f0f0;
-}
-
-td, th {
-	border: 1px solid #ddd;
+th, td {
+	border: 1px solid black;
 	padding: 8px;
+	text-align: left;
+}
+
+th {
+	background-color: #f2f2f2;
 }
 </style>
 
 <div id="content">
 
-	<div class="divtitle">
-		<h3>Wage Records for Year ${param.year}</h3>
-		<%-- 년도 선택 창 --%>
-		<form action="/payment/paymentRegisterList" method="get">
-			<label for="year">Select Year:</label> <select name="year" id="year">
-				<%-- 2010년부터 현재 연도까지의 년도를 선택할 수 있도록 --%>
-				<c:forEach var="y" begin="2010"
-					end="<%=java.time.LocalDate.now().getYear()%>">
-					<option value="${y}"
-						<c:if test="${y eq param.year}">selected</c:if>>${y}</option>
-				</c:forEach>
-			</select> <input type="submit" value="Submit">
-		</form>
-	</div>
-
-	<%-- 급여 대장 표시 --%>
-	<div class="table-container">
-		<table class="pay">
-			<thead>
+	<h1>Payment Register Period List</h1>
+	<table>
+		<tbody>
+			<c:forEach var="row" items="${listWageRecordYMP}">
 				<tr>
-					<th class="pay-head">귀속연월</th>
-					<th class="pay-head">급여차수</th>
-					<th class="pay-head">정산기간</th>
-					<th class="pay-head">지급일</th>
-					<th class="pay-head">인원</th>
-					<th class="pay-head">총지급액</th>
+					<c:forEach var="cell" items="${row}">
+						<td>${cell}</td>
+					</c:forEach>
 				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${listWageRecord}" var="record">
-					<tr onclick="submitForm('/payment/paymentRegisterPeriodList')">
-						<td class="pay-body">${record.yearMonth}</td>
-						<td class="pay-body">${record.wagePeriod}</td>
-						<td class="pay-body">${record.settlementPeriodStartDate}~
-							${record.settlementPeriodEndDate}</td>
-						<td class="pay-body">${record.wagePaymentDate}</td>
-						<td class="pay-body">${record.paidEmployeeCount}</td>
-						<td class="pay-total">${record.totalPaidWage}</td>
-					</tr>
-					<form id="hiddenForm" method="get" style="display: none;">
-						<input type="hidden" name="yearMonth" id="yearMonth"
-							value="${record.yearMonth}"> <input type="hidden"
-							name="wagePeriod" id="wagePeriod" value="${record.wagePeriod}">
-					</form>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
+			</c:forEach>
+		</tbody>
+	</table>
 
 </div>
-1231231231
-<!-- table의 한 줄 전체에 링크를 걸기 위한  JavaScript -->
-<script>
-	function submitForm(url) {
-		const form = document.getElementById('hiddenForm');
-		form.action = url;
-		form.submit();
-	}
-</script>
-
-
-
 
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>

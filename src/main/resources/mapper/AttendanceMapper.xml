@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.domain.attendance.mapper.AttendanceMapper">
+	<select id="getAllAttendance" resultType="org.spring.domain.attendance.model.AttendanceEntity">
+	SELECT 
+    emp.employment_type,
+    emp.employee_id,
+    emp.korean_name,
+    dept.department_name,
+    pos.position_name,
+    att.attendance_id
+FROM 
+    employee emp
+JOIN 
+    attendance att ON emp.employee_id = att.employee_id
+JOIN 
+    department dept ON emp.department_id = dept.department_id
+JOIN 
+    position pos ON emp.position_id = pos.position_id
+    </select>
+</mapper>

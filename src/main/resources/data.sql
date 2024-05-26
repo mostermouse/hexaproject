@@ -701,3 +701,25 @@ INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2021연차', '2024
 INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2022연차', '20240101','20241231','N');
 INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2023연차', '20240101','20241231','N');
 INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2024연차', '20240101','20241231','Y');
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- 급여 대장 기능 테스트를 위한 더미데이터 코드
+-- 2022년도로 설정하고, 클릭해보면, 콘솔에 데이터 표시.
+INSERT INTO wage (wage_id, employee_id, wage_period, wage_type_id, wage_value, settlement_period_start_date, settlement_period_end_date, wage_payment_date)
+SELECT 
+    wage_seq.nextval,
+    MOD(wage_seq.currval - 1, 4) + 1, -- 1부터 4까지의 순차적인 employee_id 할당
+    '1', -- wage_period: 고정값 1
+    MOD(wage_seq.currval - 1, 9) + 1, -- 1부터 9까지의 순차적인 wage_type_id 할당
+    ROUND(DBMS_RANDOM.VALUE(100000, 3000000), -3), -- wage_value: 100000부터 3000000까지 최소 1000원 단위로 랜덤으로 선택
+    TO_DATE('20220202', 'YYYYMMDD'), -- settlement_period_start_date: 고정값 '2022-02-02'
+    TO_DATE('20220203', 'YYYYMMDD'), -- settlement_period_end_date: 고정값 '2022-02-03'
+    TO_DATE('20220204', 'YYYYMMDD') -- wage_payment_date: 고정값 '2022-02-04'
+FROM
+    dual
+CONNECT BY
+    level <= 36; -- 4 (employee_id 개수) * 9 (wage_type_id 개수)
+
+insert into employee values (employee_seq.nextval,'1','1','1','20220202','20220203','1','1','1','1','1','1','1','1','1','1','1','1');

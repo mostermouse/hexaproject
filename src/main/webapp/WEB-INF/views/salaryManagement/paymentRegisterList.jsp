@@ -1,8 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+<!-- table의 한 줄 전체에 링크를 걸기 위한 CSS -->
+<style>
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+tr {
+	position: relative;
+}
+
+tr a {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-decoration: none;
+	color: inherit;
+}
+</style>
 
 <div id="content">
 
@@ -36,14 +57,15 @@
 			</thead>
 			<tbody>
 				<c:forEach items="${listWageRecord}" var="record">
-					<tr>
+					<tr onclick="submitForm('/payment/paymentRegisterPeriodList')">
 						<td class="pay-body">${record.yearMonth}</td>
 						<td class="pay-body">${record.wagePeriod}</td>
 						<td class="pay-body">${record.settlementPeriodStartDate}~
 							${record.settlementPeriodEndDate}</td>
 						<td class="pay-body">${record.wagePaymentDate}</td>
 						<td class="pay-body">${record.paidEmployeeCount}</td>
-						<td class="pay-total">${record.totalPaidWage}</td>
+						<td class="pay-total"><a
+							href="/payment/paymentRegisterPeriodList?yearMonth=${record.yearMonth}&wagePeriod=${record.wagePeriod}"></a>${record.totalPaidWage}</td>
 					</tr>
 				</c:forEach>
 			</tbody>

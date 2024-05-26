@@ -50,25 +50,47 @@ function validateForm() {
 	return true;
 }
 
-//사원등록 1페이지
-function scrollToSection(sectionId) {
-    document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-}
+//url에 scrollToSection이 있으면 해당하는 section의 id값부분으로 이동
+document.addEventListener("DOMContentLoaded", function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const scrollToSection = urlParams.get('scrollToSection');
+    
+    if (scrollToSection) {
+        const sectionElement = document.getElementById(scrollToSection);
+        if (sectionElement) {
+            sectionElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+});
 
-//2페이지
-const urlParams = new URLSearchParams(window.location.search);
-
-if (scrollToSection) {
-	const element = document.getElementById(scrollToSection);
-	if (element) {
-		element.scrollIntoView({
-			behavior : 'smooth'
-		});
-	}
-}
 
 //tr클릭시 체크박스
 function toggleCheckbox(row) {
     var checkbox = row.querySelector('input[type="checkbox"]');
     checkbox.checked = !checkbox.checked;
 }
+
+// select 요소를 참조합니다.
+var select = document.getElementById(".monthSelect");
+
+// 1월부터 12월까지의 옵션을 생성합니다.
+for (var i = 1; i <= 12; i++) {
+    var option = document.createElement("option");
+    option.text = i + "월";
+    option.value = i;
+    select.appendChild(option);
+}
+
+// 숫자를 쉼표로 구분된 형식으로 변환하는 함수
+function numberWithCommas(x) {
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
+}
+
+var cells = document.querySelectorAll(".empRegister-body");
+cells.forEach(function(cell) {
+    var number = parseFloat(cell.textContent.replace(/,/g, ""));
+    cell.textContent = numberWithCommas(number.toFixed(3));
+});
+

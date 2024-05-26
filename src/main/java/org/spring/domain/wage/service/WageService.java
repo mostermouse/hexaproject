@@ -19,4 +19,6 @@ public interface WageService {
 	
 	//급여대장목록 분류 및 반환
 	public List<WageRecordRequest> listWageRecord(Long year);
+	
+	public List<List<String>> listWageRecordYMP(Long yearMonth, Long wagePeriod);
 }

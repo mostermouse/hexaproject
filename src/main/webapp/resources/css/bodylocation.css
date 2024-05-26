@@ -656,3 +656,79 @@
 	cursor: pointer; /* 커서 포인터로 변경 */
 	border-radius: 5px; /* 둥근 모서리 */
 }
+
+.form-container {
+	display: flex;
+}
+
+.red-box, .grey-box {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 7px;
+	padding-right: 7px;
+	display: flex;
+	align-items: center;
+}
+
+.red-box {
+	background-color: red;
+	color: white;
+}
+
+.grey-box {
+	background-color: #a6a6a6;
+	color: black;
+}
+
+.red-box label, .grey-box label {
+	margin-right: 10px;
+}
+
+.red-box select, .grey-box input, .grey-box select {
+	margin-right: 10px;
+}
+
+/* 급여 종합 정보 사각형 */
+.rectangle-container {
+    display: flex;
+}
+
+.rectangle {
+    width: calc(25% - 15px);
+    height: 50px;
+    margin-right: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    border-radius: 10px;
+}
+
+.gray {
+    background-color: gray;
+    color: white;
+}
+
+.sky-blue {
+    background-color: #9dd6ee;
+    color: white;
+}
+
+.orange {
+    background-color: #ff7594;
+    color: white;
+}
+
+.dark-gray {
+    background-color: darkgray;
+    color: white;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+

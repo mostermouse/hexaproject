@@ -50,22 +50,19 @@ function validateForm() {
 	return true;
 }
 
-//사원등록 1페이지
-function scrollToSection(sectionId) {
-    document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-}
+//url에 scrollToSection이 있으면 해당하는 section의 id값부분으로 이동
+document.addEventListener("DOMContentLoaded", function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const scrollToSection = urlParams.get('scrollToSection');
+    
+    if (scrollToSection) {
+        const sectionElement = document.getElementById(scrollToSection);
+        if (sectionElement) {
+            sectionElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+});
 
-//2페이지
-const urlParams = new URLSearchParams(window.location.search);
-
-if (scrollToSection) {
-	const element = document.getElementById(scrollToSection);
-	if (element) {
-		element.scrollIntoView({
-			behavior : 'smooth'
-		});
-	}
-}
 
 //tr클릭시 체크박스
 function toggleCheckbox(row) {

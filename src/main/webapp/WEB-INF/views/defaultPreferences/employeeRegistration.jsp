@@ -32,11 +32,16 @@
 		</table>
 		<h3 style="text-align: left;">사원정보1</h3>
 		<div class="button-container">
-			<button onclick="scrollToSection('section1')">기본정보</button>
-			<button onclick="scrollToSection('section2')">부양가족</button>
-			<button onclick="scrollToSection('section3')">학력</button>
-			<button onclick="scrollToSection('section4')">경력</button>
-			<button onclick="scrollToSection('section5')">병력</button>
+			<button
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns?scrollToSection=section1'">기본정보</button>
+			<button
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns?scrollToSection=section2'">부양가족</button>
+			<button
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns?scrollToSection=section3'">학력</button>
+			<button
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns?scrollToSection=section4'">경력</button>
+			<button
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns?scrollToSection=section5'">병력</button>
 			<button style="background-color: #f3f3f3; cursor: default;"></button>
 		</div>
 		<hr>
@@ -44,11 +49,16 @@
 		<div class="button-container">
 			<button
 				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns2?scrollToSection=section6'">자격면허</button>
-			<button onclick="scrollToSection('section5')">교육훈련</button>
-			<button onclick="scrollToSection('section5')">상벌</button>
-			<button onclick="scrollToSection('section5')">발령</button>
-			<button onclick="scrollToSection('section5')">추천신원보증</button>
-			<button onclick="scrollToSection('section5')">퇴직</button>
+			<button
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns2?scrollToSection=section7'">교육훈련</button>
+			<button
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns2?scrollToSection=section8'">상벌</button>
+			<button
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns2?scrollToSection=section9'">발령</button>
+			<button
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns2?scrollToSection=section10'">추천신원보증</button>
+			<button
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns2?scrollToSection=section11'">퇴직</button>
 		</div>
 	</div>
 	<div class="table-container">

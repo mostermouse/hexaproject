@@ -1,39 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper
-	namespace="org.spring.domain.attendance.mapper.AttendanceMapper">
-	<select id="getAllAttendance"
-		resultType="org.spring.domain.attendance.model.AttendanceEntity">
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.domain.attendance.mapper.AttendanceMapper">
+	<select id="getAllAttendance" resultType="org.spring.domain.employee.model.DepartmentEntity">
 		SELECT
-		emp.employment_type,
-		emp.employee_id,
-		emp.korean_name,
-		dept.department_name,
-		pos.position_name,
-		att.attendance_id
+			emp.employment_type,
+			emp.employee_id,
+			emp.korean_name,
+			dept.department_name,
+			pos.position_name,
+			att.attendance_id
 		FROM
-		employee emp
-		JOIN
-		attendance att ON emp.employee_id = att.employee_id
-		JOIN
-		department dept ON emp.department_id = dept.department_id
-		JOIN
-		position pos ON emp.position_id = pos.position_id
+			employee emp
+				JOIN
+			attendance att ON emp.employee_id = att.employee_id
+				JOIN
+			department dept ON emp.department_id = dept.department_id
+				JOIN
+			position pos ON emp.position_id = pos.position_id
 	</select>
 
-	<select id="getAllAttendanceType"
-		resultType="org.spring.domain.attendance.model.AttendanceTypeEntity">
-		select * from attendance_type
+	<select id="getAllAttendanceType" resultType="org.spring.domain.attendance.model.AttendanceTypeEntity">
+		SELECT * FROM attendance_type
 	</select>
 
-	<insert id="createAttendance"
-		parameterType="org.spring.domain.attendance.model.AttendanceEntity">
-		INSERT INTO attendance (attendance_id, employee_id,
-		input_date, attendance_type_id,
-		feild_or_project_id,start_date,end_date,attendance_days,amount,summary)
-		VALUES (#{attendanceId}, #{employeeId}, #{inputDate},
-		#{attendanceTypeId}, #{amount}, #{summary})
+	<insert id="createAttendance" parameterType="org.spring.domain.attendance.model.AttendanceEntity">
+		<selectKey keyProperty="attendanceId" resultType="Long" order="BEFORE">
+			SELECT attendance_seq.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO attendance (attendance_id, employee_id, input_date, attendance_type_id, feild_or_project_id, start_date, end_date, attendance_days, amount, summary)
+		VALUES (#{attendanceId}, #{employeeId}, #{inputDate}, #{attendanceTypeId}, #{feildOrProjectIdLong}, #{startDate}, #{endDate}, #{attendanceDays}, #{amount}, #{summary})
 	</insert>
 </mapper>

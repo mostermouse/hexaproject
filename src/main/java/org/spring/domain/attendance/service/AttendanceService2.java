@@ -4,16 +4,11 @@ import java.util.List;
 
 import org.spring.domain.attendance.model.AttendanceEntity;
 import org.spring.domain.attendance.model.AttendanceTypeEntity;
+import org.spring.domain.employee.model.DepartmentEntity;
 
 public interface AttendanceService2 {
 
-	public List<AttendanceEntity> getAllAttendance();
-	/* public AttendanceEntity getAttendanceById(Long AttendanceById); */
-	
-	public List<AttendanceTypeEntity> getAllAttendanceType();
-	public void createAttendance(AttendanceEntity attendance);
-	/*
-	 * public void updateAttendance(Long ID); public void deleteAttendance(Long
-	 * AttendanceById);
-	 */
+	List<DepartmentEntity> getAllAttendance();
+	List<AttendanceTypeEntity> getAllAttendanceType();
+	void createAttendance(AttendanceEntity attendance);
 }

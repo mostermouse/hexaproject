@@ -4,13 +4,14 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.spring.domain.attendance.model.AttendanceEntity;
 import org.spring.domain.attendance.model.AttendanceTypeEntity;
+import org.spring.domain.employee.model.DepartmentEntity;
+
 public interface AttendanceMapper {
-	
-	public List<AttendanceEntity> getAllAttendance();
-	public AttendanceEntity getAttendanceById(Long AttendanceById);
-	
-	public List<AttendanceTypeEntity> getAllAttendanceType();
-	public void createAttendance(AttendanceEntity attendance);
-	public void updateAttendance(Long ID);
-	public void deleteAttendance(Long AttendanceById);
+
+	List<DepartmentEntity> getAllAttendance();
+	AttendanceEntity getAttendanceById(Long attendanceId);
+	List<AttendanceTypeEntity> getAllAttendanceType();
+	void createAttendance(AttendanceEntity attendance);
+	void updateAttendance(Long id);
+	void deleteAttendance(Long attendanceId);
 }

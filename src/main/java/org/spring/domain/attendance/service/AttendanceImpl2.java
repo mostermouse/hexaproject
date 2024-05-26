@@ -6,6 +6,7 @@ import org.spring.domain.attendance.mapper.AttMapper;
 import org.spring.domain.attendance.mapper.AttendanceMapper;
 import org.spring.domain.attendance.model.AttendanceEntity;
 import org.spring.domain.attendance.model.AttendanceTypeEntity;
+import org.spring.domain.employee.model.DepartmentEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,42 +20,22 @@ public class AttendanceImpl2 implements AttendanceService2{
 	
 	@Autowired
     private AttendanceMapper mapper;
-	
+
 	@Override
-	public List<AttendanceEntity> getAllAttendance() {
-		
-		return mapper.getAllAttendance();
+	public List<DepartmentEntity> getAllAttendance() {
+		List<DepartmentEntity> attendanceList = mapper.getAllAttendance();
+		log.info("Attendance List: " + attendanceList);
+		return attendanceList;
 	}
 
-	/*
-	 * @Override public AttendanceEntity getAttendanceById(Long AttendanceById) {
-	 * 
-	 * return mapper.getAttendanceById(AttendanceById); }
-	 */
+	@Override
+	public List<AttendanceTypeEntity> getAllAttendanceType() {
+		return mapper.getAllAttendanceType();
+	}
 
 	@Override
 	public void createAttendance(AttendanceEntity attendance) {
 		mapper.createAttendance(attendance);
-		
 	}
-
-	/*
-	 * @Override public void updateAttendance(Long ID) {
-	 * mapper.updateAttendance(ID);
-	 * 
-	 * }
-	 * 
-	 * @Override public void deleteAttendance(Long AttendanceById) {
-	 * mapper.deleteAttendance(AttendanceById);
-	 * 
-	 * }
-	 */
-
-	@Override
-	public List<AttendanceTypeEntity> getAllAttendanceType() {
-		// TODO Auto-generated method stub
-		return mapper.getAllAttendanceType();
-	}
-
 	
 }

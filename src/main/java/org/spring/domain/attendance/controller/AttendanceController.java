@@ -5,6 +5,7 @@ import java.util.List;
 import org.spring.domain.attendance.model.AttendanceEntity;
 import org.spring.domain.attendance.model.AttendanceTypeEntity;
 import org.spring.domain.attendance.service.AttendanceService2;
+import org.spring.domain.employee.model.DepartmentEntity;
 import org.spring.domain.employee.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,23 +20,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 @Log4j
 @Controller
 @AllArgsConstructor
-@RequestMapping("/diligence") 
 public class AttendanceController {
 
     @Autowired
     private AttendanceService2 attendanceService2;
 
     // 모든 출석 정보를 조회합니다.
-    @GetMapping("/diligenceMnt")
-    public String getAllAttendance(Model model) {
-    	System.out.println("동작중");
-        List<AttendanceEntity> attendanceList = attendanceService2.getAllAttendance();
-        model.addAttribute("attendancelist", attendanceList);
-        model.addAttribute("attendanceTypeList", attendanceService2.getAllAttendanceType());
-        System.out.println("리스트: " + model.toString());
-        return "managementOfAtt/managementOfAttendance";
-    }
-    
+	@GetMapping("/diligenceMnt")
+	public String getAllAttendance(Model model) {
+		List<DepartmentEntity> attendanceList = attendanceService2.getAllAttendance();
+		model.addAttribute("attendancelist", attendanceList);
+		log.info("Attendance List Model: " + model.toString());
+		return "managementOfAtt/managementOfAttendance";
+	}
     
 
     
@@ -49,11 +46,11 @@ public class AttendanceController {
     
     // 새로운 출석 정보를 생성합니다.
     @PostMapping("/addDiligenceMnt")
-    public String createAttendance(@ModelAttribute AttendanceEntity attendance) {
-    	System.out.println("생성중1");
+    public String createAttendance(@ModelAttribute AttendanceEntity attendance , Model model) {
+
         attendanceService2.createAttendance(attendance);
-        System.out.println("생성중2");
-        return "redirect:/diligence/diligenceMnt"; 
+		log.info("Attendance created: " + model.toString());
+        return "redirect:/diligenceMnt";
     }
 
 	/*

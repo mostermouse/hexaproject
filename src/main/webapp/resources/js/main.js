@@ -73,3 +73,27 @@ function toggleCheckbox(row) {
     checkbox.checked = !checkbox.checked;
 }
 
+// select 요소를 참조합니다.
+var select = document.getElementById(".monthSelect");
+
+// 1월부터 12월까지의 옵션을 생성합니다.
+for (var i = 1; i <= 12; i++) {
+    var option = document.createElement("option");
+    option.text = i + "월";
+    option.value = i;
+    select.appendChild(option);
+}
+
+// 숫자를 쉼표로 구분된 형식으로 변환하는 함수
+function numberWithCommas(x) {
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
+}
+
+var cells = document.querySelectorAll(".empRegister-body");
+cells.forEach(function(cell) {
+    var number = parseFloat(cell.textContent.replace(/,/g, ""));
+    cell.textContent = numberWithCommas(number.toFixed(3));
+});
+

@@ -36,19 +36,19 @@
 	<div class="table-container">
 		<div class="header-container">
 			<img src="<%=request.getContextPath()%>/resources/images/contentimages/membersInfo.png" width="50" height="50">
-			<h1>사용자 정보</h1>
+			<h1>ユーザー情報</h1>
 		</div>
 		<hr>
 
 		<div class="search-container">
 			<div class="title-table-left">
-				<h3>회사정보</h3>
+				<h3>会社情報</h3>
 				<table style="max-width: 800px" class="empRegister1">
 					<thead>
 						<tr>
-							<th class="empRegister-head1">상호</th>
+							<th class="empRegister-head1">相互名</th>
 							<th class="empRegister-body"><input class="reginputhide"></th>
-							<th class="empRegister-head1">대표자직급/대표자</th>
+							<th class="empRegister-head1">代表者職級/代表者</th>
 							<th class="empRegister-body">
 								<select class="reginput-select"></select>/<input class="reginput">
 							</th>
@@ -56,31 +56,31 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td class="empRegister-head1">사업자번호</td>
+							<td class="empRegister-head1">事業者番号</td>
 							<td class="empRegister-body"><input class="reginputhide"></td>
-							<td class="empRegister-head1">법인등록번호</td>
-							<td class="empRegister-body"><input class="reginputhide"></td>
-						</tr>
-						<tr>
-							<td class="empRegister-head1">설립일</td>
-							<td class="empRegister-body"><input class="reginputhide"></td>
-							<td class="empRegister-head1">홈페이지</td>
+							<td class="empRegister-head1">法人登録番号</td>
 							<td class="empRegister-body"><input class="reginputhide"></td>
 						</tr>
 						<tr>
-							<td class="empRegister-head1">사업장 주소</td>
+							<td class="empRegister-head1">設立日</td>
+							<td class="empRegister-body"><input class="reginputhide"></td>
+							<td class="empRegister-head1">ホームページ</td>
+							<td class="empRegister-body"><input class="reginputhide"></td>
+						</tr>
+						<tr>
+							<td class="empRegister-head1">事業所の住所</td>
 							<td colspan="3" class="empRegister-body"><input class="reginputhide"></td>
 						</tr>
 						<tr>
-							<td class="empRegister-head1">전화번호</td>
+							<td class="empRegister-head1">電話番号</td>
 							<td class="empRegister-body"><input class="reginputhide"></td>
-							<td class="empRegister-head1">팩스번호</td>
+							<td class="empRegister-head1">ファックス番号</td>
 							<td class="empRegister-body"><input class="reginputhide"></td>
 						</tr>
 						<tr>
-							<td class="empRegister-head1">업태</td>
+							<td class="empRegister-head1">業態</td>
 							<td class="empRegister-body"><input class="reginputhide"></td>
-							<td class="empRegister-head1">종목</td>
+							<td class="empRegister-head1">種目</td>
 							<td class="empRegister-body"><input class="reginputhide"></td>
 						</tr>
 					</tbody>
@@ -88,33 +88,33 @@
 			</div>
 
 			<div class="title-table-left">
-				<h3>담당자정보</h3>
+				<h3>担当者情報</h3>
 				<table style="max-width: 320px" class="empRegister1">
 					<thead>
 						<tr>
-							<th class="empRegister-head1">성명</th>
+							<th class="empRegister-head1">氏名</th>
 							<th class="empRegister-body"><input class="reginputhide"></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td class="empRegister-head1">부서</td>
+							<td class="empRegister-head1">部署</td>
 							<td class="empRegister-body"><select class="reginput-select"></select></td>
 						</tr>
 						<tr>
-							<td class="empRegister-head1">직위</td>
+							<td class="empRegister-head1">役職</td>
 							<td class="empRegister-body"><select class="reginput-select"></select></td>
 						</tr>
 						<tr>
-							<td class="empRegister-head1">전화번호</td>
+							<td class="empRegister-head1">電話番号</td>
 							<td class="empRegister-body"><input class="reginputhide"></td>
 						</tr>
 						<tr>
-							<td class="empRegister-head1">휴대폰번호</td>
+							<td class="empRegister-head1">携帯電話番号</td>
 							<td class="empRegister-body"><input class="reginputhide"></td>
 						</tr>
 						<tr>
-							<td class="empRegister-head1">이메일</td>
+							<td class="empRegister-head1">Eメール</td>
 							<td class="empRegister-body"><input class="reginputhide"></td>
 						</tr>
 					</tbody>
@@ -125,48 +125,48 @@
 		<br><br><br>
 		<div class="search-container">
 			<div class="title-table-left">
-				<h3>급여지급정보</h3>
+				<h3>給与支払情報</h3>
 				<table style="max-width: 800px" class="empRegister1">
 					<thead>
 						<tr>
-							<th class="empRegister-head1">급여 산정기간</th>
+							<th class="empRegister-head1">給与計算期間</th>
 							<th class="empRegister-body" colspan="2" style="width: 300px;">
 								<select class="reginput-select">
-									<option value="">선택</option>
-									<option value="">당월</option>
-									<option value="">전월</option>
+									<option value="">選択</option>
+									<option value="">当月</option>
+									<option value="">前月</option>
 								</select>
 								<select class="reginput-select">
-									<option value="">선택</option>
+									<option value="">選択</option>
 								</select>
 								~
 								<select class="reginput-select">
-									<option value="">선택</option>
-									<option value="">당월</option>
-									<option value="">전월</option>
+									<option value="">選択</option>
+									<option value="">当月</option>
+									<option value="">前月</option>
 								</select>
 								<select class="reginput-select">
-									<option value="">선택</option>
+									<option value="">選択</option>
 								</select>
 							</th>
-							<th class="empRegister-head1">급여지급일</th>
+							<th class="empRegister-head1">給与支払日</th>
 							<th class="empRegister-body" colspan="2"><select class="reginput-select">
-									<option value="">선택</option>
-									<option value="">당월</option>
-									<option value="">익월</option>
+									<option value="">選択</option>
+									<option value="">当月</option>
+									<option value="">前月</option>
 								</select>
 								<select class="reginput-select">
-									<option value="">선택</option>
-								</select>일</th>
+									<option value="">選択</option>
+								</select>日</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td class="empRegister-head1">금융기관</td>
+							<td class="empRegister-head1">金融機関</td>
 							<td class="empRegister-body"><input class="reginputhide"></td>
-							<td class="empRegister-head1">계좌번호</td>
+							<td class="empRegister-head1">口座番号</td>
 							<td class="empRegister-body"><input class="reginputhide"></td>
-							<td class="empRegister-head1">예금주</td>
+							<td class="empRegister-head1">預金株</td>
 							<td class="empRegister-body"><input class="reginputhide"></td>
 						</tr>
 					</tbody>
@@ -176,8 +176,8 @@
 
 		<br><br>
 		<div class="divbtn">
-			<button type="submit">저장</button>
-			<button type="submit" class="cancel-btn">취소</button>
+			<button type="submit">保存</button>
+			<button type="submit" class="cancel-btn">キャンセル</button>
 		</div>
 	</div>
 </div>

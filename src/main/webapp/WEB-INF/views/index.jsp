@@ -9,11 +9,11 @@
 
 	<%-- 사원 숫자 표시 --%>
 	<div class="table-container1">
-		<h3>Employee Count</h3>
+
 		<table class="tg">
 			<thead>
 				<tr>
-					<th class="tg-ev56">재직자</th>
+					<th class="tg-ev56">在職者</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -26,14 +26,14 @@
 		<table class="tg">
 			<thead>
 				<tr>
-					<th class="tg-c5zh">정규직</th>
-					<th class="tg-c5zh">계약직</th>
-					<th class="tg-c5zh">임시직</th>
-					<th class="tg-c5zh">파견직</th>
-					<th class="tg-c5zh">위촉직</th>
-					<th class="tg-c5zh">일용직</th>
-					<th class="tg-c5zh">퇴사자</th>
-					<th class="tg-c5zh">전체</th>
+					<th class="tg-c5zh">正社員</th>
+					<th class="tg-c5zh">契約職</th>
+					<th class="tg-c5zh">臨時職</th>
+					<th class="tg-c5zh">派遣職</th>
+					<th class="tg-c5zh">委嘱職</th>
+					<th class="tg-c5zh">日雇い</th>
+					<th class="tg-c5zh">退社者</th>
+					<th class="tg-c5zh">全体</th>
 
 				</tr>
 			</thead>
@@ -55,17 +55,17 @@
 	<hr>
 
 	<div class="divtitle">
-		<h3>Wage Records for Year ${param.year}</h3>
+
 		<%-- 년도 선택 창 --%>
 		<form action="/" method="get">
-			<label for="year">Select Year:</label> <select name="year" id="year">
+			<label for="year">選択年:</label> <select name="year" id="year">
 				<%-- 2010년부터 현재 연도까지의 년도를 선택할 수 있도록 --%>
 				<c:forEach var="y" begin="2010"
 					end="<%=java.time.LocalDate.now().getYear()%>">
 					<option value="${y}"
 						<c:if test="${y eq param.year}">selected</c:if>>${y}</option>
 				</c:forEach>
-			</select> <input type="submit" value="Submit">
+			</select> <input type="submit" value="照会">
 		</form>
 	</div>
 
@@ -74,12 +74,12 @@
 		<table class="pay">
 			<thead>
 				<tr>
-					<th class="pay-head">귀속연월</th>
-					<th class="pay-head">급여차수</th>
-					<th class="pay-head">정산기간</th>
-					<th class="pay-head">지급일</th>
-					<th class="pay-head">인원</th>
-					<th class="pay-head">총지급액</th>
+					<th class="pay-head">帰属年月</th>
+					<th class="pay-head">給与次数</th>
+					<th class="pay-head">精算期間</th>
+					<th class="pay-head">支払日</th>
+					<th class="pay-head">人員</th>
+					<th class="pay-head">総支払額</th>
 				</tr>
 			</thead>
 			<tbody>

@@ -191,11 +191,11 @@ span.updown span.down {
 
 				$("#searchButton").click(function() {
 					var searchKeyword = $('#searchKeyword').val();
-					if (searchKeyword === '검색어 입력') {
+					if (searchKeyword === '検索語入力') {
 						searchKeyword = '';
 					}
 					if (searchKeyword.trim() === '') {
-						alert("검색어를 입력해주세요.");
+						alert("検索語を入力してください。");
 						return false;
 					}
 					return true;
@@ -234,7 +234,7 @@ span.updown span.down {
 					var selectedEmployeeIds = [];
 					$('input[name="employeeId"]:checked').each(function() {
 						var employeeId = $(this).val();
-						if (employeeId && employeeId !== '선택하세요.') {
+						if (employeeId && employeeId !== '選択してください。') {
 							selectedEmployeeIds.push(employeeId);
 						}
 					});
@@ -242,7 +242,7 @@ span.updown span.down {
 					console.log(selectedEmployeeIds); // 선택된 employeeId 값들을 콘솔에 출력
 
 					if (selectedEmployeeIds.length === 0) {
-						alert("유효한 사원을 선택해주세요.");
+						alert("有効な社員を選択してください。");
 						return;
 					}
 
@@ -270,18 +270,18 @@ span.updown span.down {
 		var span = button.parentElement.previousElementSibling;
 		var name = span.innerText;
 
-		if (buttonText === '수정') {
+		if (buttonText === '修整') {
 			var input = document.createElement("input");
 			input.type = "text";
 			input.value = name;
 			span.innerHTML = "";
 			span.appendChild(input);
-			button.innerText = '저장';
-			alert('수정을 완료하려면 "저장"을 클릭하세요.');
-		} else if (buttonText === '저장') {
+			button.innerText = '保存';
+			alert('修正を完了するには、[保存] をクリックしてください。');
+		} else if (buttonText === '保存') {
 			var newName = span.firstChild.value;
 			span.innerHTML = newName;
-			button.innerText = '수정';
+			button.innerText = '修整';
 			alert('저장되었습니다: ' + newName);
 		}
 	}
@@ -301,17 +301,14 @@ span.updown span.down {
 <div id="content">
 	<div class="table-container">
 		<div class="header-container">
-			<img
-				src="<%=request.getContextPath()%>/resources/images/contentimages/dayWorkerMnt.png"
-				width="50" height="50">
-			<h1>일용직 근무기록/관리</h1>
+			<h1>日雇い勤務記録/管理</h1>
 		</div>
 		<hr>
 
 		<div class="search-container" style="margin-top: 50px;">
 			<form action="/dayWorkerMnt" method="get" style="display: flex;">
 				<input name="searchKeyword" id="searchKeyword" type="text"
-					placeholder="검색어 입력">
+					placeholder="検索語入力">
 				<button style="background-color: transparent; border: none;"
 					id="searchButton" type="submit">
 					<img
@@ -319,10 +316,10 @@ span.updown span.down {
 						alt="Search">
 				</button>
 			</form>
-			<input name="btnSrchAll" id="btnSrchAll" type="button" value="전체보기"
+			<input name="btnSrchAll" id="btnSrchAll" type="button" value="全体表示"
 				class="all-button"> <select id="statusSelect"
 				onchange="filterByStatus()" class="reginput-select">
-				<option>상태별</option>
+				<option>状態別</option>
 				<c:forEach var="status" items="${statuslist}">
 					<option value="${status.status}">${status.status}</option>
 				</c:forEach>
@@ -334,11 +331,11 @@ span.updown span.down {
 				<table class="day-worker-table" border="1">
 					<tr class="empRegister-head">
 						<th style="width: 20px;"><input type="checkbox" id="checkAll"></th>
-						<th>구분</th>
-						<th>사원번호</th>
-						<th>성명</th>
-						<th>부서</th>
-						<th>근무기록</th>
+						<th>区分</th>
+						<th>社員番号</th>
+						<th>氏名</th>
+						<th>部署</th>
+						<th>勤務記録</th>
 					</tr>
 					<c:forEach items="${list}" var="dayWorker">
 						<tr>
@@ -352,12 +349,78 @@ span.updown span.down {
 						</tr>
 					</c:forEach>
 				</table>
+		</form>
+		<div class="title-table-right">
+			<form style="margin-top: 60px;">
+				<table class="empRegisterblack"
+					style="margin-bottom: 20px; width: 400px;">
+					<thead>
+						<tr>
+							<th style="width: 20px;"><input type="checkbox"></th>
+							<th style="width: 80px;">入力日</th>
+							<th style="width: 200px;"><input type="date"
+								class="reginput-select"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="checkbox"></td>
+							<td>勤怠期間</td>
+							<td style="height: 20px;"><input style="height: 20px;"
+								type="date" class="reginput-select"><span>~</span><input
+								style="height: 20px;" type="date" class="reginput-select"></td>
+						</tr>
+						<tr>
+							<td><input type="checkbox"></td>
+							<td>部署</td>
+							<td><select class="reginput-select">
+									<option value="">選択してください。</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td><input type="checkbox"></td>
+							<td>氏名</td>
+							<td><input class="reginputhide1" placeholder="氏名を入力してください。"></td>
+						</tr>
+						<tr>
+							<td><input type="checkbox"></td>
+							<td>勤怠グループ</td>
+							<td><select class="reginput-select">
+									<option value="">選択してください。</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td><input type="checkbox"></td>
+							<td>勤怠項目</td>
+							<td><select class="reginput-select">
+									<option value="">選択してください。</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td><input type="checkbox"></td>
+							<td>休暇項目</td>
+							<td><select class="reginput-select">
+									<option value="">選択してください。</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td><input type="checkbox"></td>
+							<td>摘要</td>
+							<td><input type="text" class="reginputhide1"
+								placeholder="摘要があれば入力してください。"></td>
+						</tr>
+					</tbody>
+				</table>
 			</form>
-			<div class="title-table-right">
-				<form>
-					<table class="empRegisterblack"
-						style="margin-bottom: 20px; width: 400px;">
-						<tr style="height: 20px;">
+			<div class=divbtnsml style="margin-right: 120px;">
+				<button>検索</button>
+				<button class="cancel-btn">全体表示</button>
+			</div>
+		</div>
+	</div>
+</div>
+<%-- <table class="day-worker-form-table" style="width: 600px;">
+	                    <tr style="height: 20px;">
 	                        <td style="width: 110px;">근무일자</td>
 	                        <td><input type="date" name="inputDate" id="workDate"
 	                            class="reginput-select"></td>
@@ -403,7 +466,7 @@ span.updown span.down {
 		<!-- 모달 내용 -->
 		<div class="w_219">
 			<ul class="title">
-				<li>현장/프로젝트 관리</li>
+				<li>現場/プロジェクト管理</li>
 			</ul>
 			<!-- 현장/프로젝트 목록 -->
 			<div id="displayContent" class="displayContent">
@@ -419,8 +482,8 @@ span.updown span.down {
 								</a>
 							</span>
 						</span> <span class="fpname p_t5"> ${feildOrProject.name}</span> <span
-							class="m_d p_t5 p_r5"> <a onclick="$.fn.modifyButton()">수정</a>
-								| <a onclick="$.fn.deleteButton()">삭제</a>
+							class="m_d p_t5 p_r5"> <a onclick="$.fn.modifyButton()">修整</a>
+								| <a onclick="$.fn.deleteButton()">削除</a>
 						</span>
 						</li>
 					</c:forEach>
@@ -428,13 +491,13 @@ span.updown span.down {
 			</div>
 
 			<ul class="last">
-				<li><img src=""> <a href="" onclick="$.fn.addButton()">추가하기</a>
+				<li><img src=""> <a href="" onclick="$.fn.addButton()">追加する</a>
 				</li>
 			</ul>
 			<ul>
-				<li>* 설정하신 순서대로 반영됩니다.</li>
+				<li>* 設定した順に反映されます。</li>
 				<li class="footer c"><span id="resetButton" class="anchor">
-						<button style="width: 87px; height: 30px;">초기화</button>
+						<button style="width: 87px; height: 30px;">初期化</button>
 				</span></li>
 			</ul>
 		</div>

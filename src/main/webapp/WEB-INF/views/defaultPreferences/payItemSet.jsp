@@ -9,26 +9,26 @@
 			<img
 				src="<%=request.getContextPath()%>/resources/images/contentimages/payItemSet.png"
 				width="50" height="50">
-			<h1>급여항목 설정</h1>
+			<h1>給与項目の設定</h1>
 		</div>
 		<hr>
 		<div class="search-container">
 			<div class="title-table-left">
-				<h3>지급항목 설정</h3>
+				<h3>支給項目設定</h3>
 				<table class="empRegister1">
 					<thead class="empRegister-head1">
 						<tr>
-							<th>지급항목</th>
-							<th>과세여부</th>
-							<th>비과세한도액</th>
-							<th>절사단위</th>
-							<th>근태연결/일괄지급</th>
-							<th>사용여부</th>
+							<th>支給項目</th>
+							<th>課税の可否</th>
+							<th>非課税限度額</th>
+							<th>節射単位</th>
+							<th>勤怠連結/一括支給</th>
+							<th>使用可否</th>
 						</tr>
 					</thead>
 					<tbody class="empRegister-body">
 						<tr>
-							<td>기본급</td>
+							<td>基本給</td>
 							<td></td>
 							<td></td>
 							<td></td>
@@ -43,50 +43,50 @@
 				<table class=empRegisterblack style="margin-bottom: 20px; width: 300px;">
 					<thead>
 						<tr>
-							<th>지급항목</th>
+							<th>支給項目</th>
 							<th></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td>과세여부</td>
+							<td>課税の可否</td>
 							<td></td>
 						</tr>
 						<tr>
-							<td>비과세명</td>
+							<td>非課税名</td>
 							<td></td>
 						</tr>
 						<tr>
-							<td>비과세 한도액</td>
+							<td>非課税限度額</td>
 							<td></td>
 						</tr>
 						<tr>
-							<td>계산방법</td>
+							<td>計算方法</td>
 							<td></td>
 						</tr>
 						<tr>
-							<td>절사단위</td>
+							<td>節射単位</td>
 							<td></td>
 						</tr>
 						<tr>
-							<td>근태연결/일괄지급</td>
+							<td>勤怠連結/一括支給</td>
 							<td></td>
 						</tr>
 						<tr>
-							<td>일괄지급액</td>
+							<td>一括支給額</td>
 							<td></td>
 						</tr>
 						<tr>
-							<td>사용여부</td>
+							<td>使用可否</td>
 							<td></td>
 						</tr>
 					</tbody>
 				</table>
 				<div class="divbtnsml">
-					<button>추가</button>
-					<button>수정</button>
-					<button class="cancel-btn">삭제</button>
-					<button class="cancel-btn">내용 지우기</button>
+					<button>追加</button>
+					<button>修整</button>
+					<button class="cancel-btn">削除</button>
+					<button class="cancel-btn">内容消去</button>
 				</div>
 			</form>
 

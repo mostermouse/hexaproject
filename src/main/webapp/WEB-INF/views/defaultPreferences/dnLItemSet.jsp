@@ -10,18 +10,18 @@
 			<img
 				src="<%=request.getContextPath()%>/resources/images/contentimages/dnLItemSet.png"
 				width="50" height="50">
-			<h1>휴가/근태설정</h1>
+			<h1>休暇/勤怠設定</h1>
 		</div>
 		<hr>
 		<div class="search-container">
 			<div class="title-table-left">
-				<h3>휴가항목 설정</h3>
+				<h3>休暇項目の設定</h3>
 				<table class="empRegister1">
 					<thead>
 						<tr>
-							<th class="empRegister-head1">휴가항목</th>
-							<th class="empRegister-head1">적용기간</th>
-							<th class="empRegister-head1">사용여부</th>
+							<th class="empRegister-head1">休暇項目</th>
+							<th class="empRegister-head1">適用期間</th>
+							<th class="empRegister-head1">使用可否</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -55,34 +55,34 @@
 					style="margin-bottom: 20px; width: 300px;">
 					<thead>
 						<tr>
-							<th style="width: 70px;"><label for="vacationTypeName">휴가항목</label></th>
+							<th style="width: 70px;"><label for="vacationTypeName">休暇項目</label></th>
 							<th><input type="text" id="vacationTypeName"
 								name="vacationTypeName" required></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td><label for="applyPeriod1">적용기간</label></td>
+							<td><label for="applyPeriod1">適用期間</label></td>
 							<td style="display: flex; align-items: center;"><input
 								type="date" id="applyPeriod1" name="applyPeriod1" required>
 								~ <input type="date" id="applyPeriod2" name="applyPeriod2"
 								required></td>
 						</tr>
 						<tr>
-							<td><label for="usage">사용여부</label></td>
+							<td><label for="usage">使用可否</label></td>
 							<td><select id="usage" name="usage">
-									<option value="true">사용</option>
-									<option value="false">사용안함</option>
+									<option value="true">使用</option>
+									<option value="false">使用なし</option>
 							</select></td>
 						</tr>
 					</tbody>
 				</table>
 				<div class="divbtnsml">
-					<button type="submit" onclick="submitForm('/addDnlItem')">추가</button>
-					<button type="submit" onclick="submitForm('/updateDnlItem')">수정</button>
+					<button type="submit" onclick="submitForm('/addDnlItem')">追加</button>
+					<button type="submit" onclick="submitForm('/updateDnlItem')">修整</button>
 					<button class="cancel-btn" type="submit"
-						onclick="submitForm('/deleteDnlItem')">삭제</button>
-					<button class="cancel-btn" type="reset">내용 지우기</button>
+						onclick="submitForm('/deleteDnlItem')">削除</button>
+					<button class="cancel-btn" type="reset">内容消去</button>
 				</div>
 			</form>
 		</div>
@@ -118,15 +118,15 @@
 		<hr>
 		<div class="search-container">
 			<div class="title-table-left">
-				<h3>근태항목 설정</h3>
+				<h3>勤怠項目設定</h3>
 				<table class="empRegister1">
 					<thead>
 						<tr>
-							<th class="empRegister-head1">근태항목</th>
-							<th class="empRegister-head1">단위</th>
-							<th class="empRegister-head1">그룹관리</th>
-							<th class="empRegister-head1">휴가공제</th>
-							<th class="empRegister-head1">사용여부</th>
+							<th class="empRegister-head1">勤怠項目</th>
+							<th class="empRegister-head1">単位</th>
+							<th class="empRegister-head1">グループ管理</th>
+							<th class="empRegister-head1">休暇控除</th>
+							<th class="empRegister-head1">使用可否</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -159,62 +159,62 @@
 					style="margin-bottom: 20px; width: 300px;">
 					<thead>
 						<tr>
-							<th style="width: 70px;"><label for="attendanceTypeName">근태항목</label></th>
+							<th style="width: 70px;"><label for="attendanceTypeName">勤怠項目</label></th>
 							<th><input type="text" id="attendanceTypeName"
 								name="attendanceTypeName" required></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td><label for="unit">단위</label></td>
+							<td><label for="unit">単位</label></td>
 							<td><select id="unit" name="unit">
-									<option value="">선택하세요.</option>
-									<option value="일">일</option>
-									<option value="시간">시간</option>
+									<option value="">選択してください。</option>
+									<option value="일">日</option>
+									<option value="시간">時間</option>
 							</select></td>
 						</tr>
 						<tr>
-							<td><label for="group">근태그룹</label></td>
+							<td><label for="group">勤怠グループ</label></td>
 							<td><select id="group" name="group">
-									<option value="">선택하세요.</option>
-									<option value="휴가">휴가</option>
-									<option value="연장근무">연장근무</option>
-									<option value="지각조퇴">지각조퇴</option>
-									<option value="특근">특근</option>
-									<option value="기타">기타</option>
+									<option value="">選択してください。</option>
+									<option value="휴가">休暇</option>
+									<option value="연장근무">延長勤務</option>
+									<option value="지각조퇴">遅刻早退</option>
+									<option value="특근">特別勤務</option>
+									<option value="기타">その他</option>
 							</select></td>
 						</tr>
 						<tr>
-							<td><label for="deduction">휴가공제</label></td>
+							<td><label for="deduction">休暇控除</label></td>
 							<td><select id="deduction" name="deduction">
-									<option value="">선택하세요.</option>
+									<option value="">選択してください。</option>
 							</select></td>
 						</tr>
 						<tr>
-							<td><label for="workingHour">근로시간연계</label></td>
+							<td><label for="workingHour">労働時間連携</label></td>
 							<td><select id="workingHour" name="workingHour">
-									<option value="">선택하세요.</option>
-									<option value="소정근로">소정근로</option>
-									<option value="연장근로">연장근로</option>
-									<option value="야간근로">야간근로</option>
-									<option value="휴일근로">휴일근로</option>
+									<option value="">選択してください。</option>
+									<option value="소정근로">所定労働</option>
+									<option value="연장근로">延長労働</option>
+									<option value="야간근로">夜間労働</option>
+									<option value="휴일근로">休日労働</option>
 							</select></td>
 						</tr>
 						<tr>
-							<td><label for="usage">사용여부</label></td>
+							<td><label for="usage">使用可否</label></td>
 							<td><select id="usage" name="usage">
-									<option value="true">사용</option>
-									<option value="false">사용안함</option>
+									<option value="true">使用</option>
+									<option value="false">使用なし</option>
 							</select></td>
 						</tr>
 					</tbody>
 				</table>
 				<div class="divbtnsml">
-					<button type="submit" onclick="submitForm('/addAttItem')">추가</button>
-					<button type="submit" onclick="submitForm('/updateAttItem')">수정</button>
+					<button type="submit" onclick="submitForm('/addAttItem')">追加</button>
+					<button type="submit" onclick="submitForm('/updateAttItem')">修整</button>
 					<button class="cancel-btn" type="submit"
-						onclick="submitForm('/deleteAtteItem')">삭제</button>
-					<button class="cancel-btn" type="reset">내용 지우기</button>
+						onclick="submitForm('/deleteAtteItem')">削除</button>
+					<button class="cancel-btn" type="reset">内容消去</button>
 				</div>
 			</form>
 		</div>

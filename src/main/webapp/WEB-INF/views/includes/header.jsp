@@ -119,11 +119,11 @@
 	<div id="payzon-13" class="payzon13">
 		<img src="<%= request.getContextPath() %>/resources/images/payzon_13.jpg" width="171" height="30"
 			alt=""
-			onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeMnt'">
+			onclick="window.location.href='<%=request.getContextPath()%>/'">
 		<!-- 사원현황관리 -->
 		<!-- employeeMnt.jsp -->
 		<div class="menu-item" id="payzon-18"
-			onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeMnt'">
+			onclick="window.location.href='<%=request.getContextPath()%>/'">
 			<img src="<%= request.getContextPath() %>/resources/images/payzon_18.jpg" alt="Item 18">
 		</div>
 	</div>

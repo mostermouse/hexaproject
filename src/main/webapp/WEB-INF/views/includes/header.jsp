@@ -123,7 +123,7 @@
 		<!-- 사원현황관리 -->
 		<!-- employeeMnt.jsp -->
 		<div class="menu-item" id="payzon-18"
-			onclick="window.location.href='<%=request.getContextPath()%>/'">
+			onclick="window.location.href='<%=request.getContextPath()%>/employeeMnt'">
 			<img src="<%= request.getContextPath() %>/resources/images/payzon_18.jpg" alt="Item 18">
 		</div>
 	</div>

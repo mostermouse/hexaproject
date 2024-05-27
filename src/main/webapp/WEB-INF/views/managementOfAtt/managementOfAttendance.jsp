@@ -43,12 +43,12 @@
                 </table>
             </div>
 
-            <form id="attendanceForm" method="post" action="${pageContext.request.contextPath}/addDiligenceMnt" style="margin-top: 60px;"
+            <form id="attendanceForm" method="post" action="${pageContext.request.contextPath}/addDiligenceMnt" style="margin-top: 50px;"
                   onsubmit="return validateForm()">
-                <table class="empRegisterblack" style="margin-bottom: 20px; width: 300px;">
+                <table class="empRegisterblack" style="margin-bottom: 10px; width: 410px;">
                     <thead>
                     <tr>
-                        <th style="width: 50px;">입력일자</th>
+                        <th style="width: 80px;">입력일자</th>
                         <th><input id="inputDate" name="inputDate" type="date" class="reginput-select" required></th>
                     </tr>
                     </thead>
@@ -56,7 +56,7 @@
                     <tr>
                         <td>근태항목</td>
                         <td>
-                            <select id="attendanceTypeId" name="attendanceTypeId" onchange="calculateAttendanceTime()"
+                            <select class="reginput-select" id="attendanceTypeId" name="attendanceTypeId" onchange="calculateAttendanceTime()"
                                     required>
                                 <option value="0">선택하세요.</option>
                                 <c:forEach var="attendanceTypeName" items="${attendanceTypeList}">
@@ -76,7 +76,7 @@
                     </tr>
                     <tr>
                         <td>근태일수</td>
-                        <td><input id="attendanceDays" name="attendanceDays" class="reginputhide1" readonly/>일</td>
+                        <td style=""><input style="width: 80%;" id="attendanceDays" name="attendanceDays" class="reginputhide1" readonly/><span>일</span></td>
                     </tr>
                     <tr>
                         <td>금액(수당)</td>
@@ -93,7 +93,7 @@
                 <!-- <input type="hidden" name="feildOrProjectIdLong" value="1"/>
                 <input type="hidden" name="departmentId" value="1"/>
                 <input type="hidden" name="positionId" value="1"/> -->
-                <div class="divbtnsml" style="margin-left: 50px;">
+                <div class="divbtnsml" style="margin-left: 120px;">
                     <button type="submit">저장</button>
                     <button type="button" class="cancel-btn" onclick="resetForm()">내용 지우기</button>
                 </div>

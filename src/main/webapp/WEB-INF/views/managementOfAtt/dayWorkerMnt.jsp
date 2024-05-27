@@ -479,6 +479,8 @@ function updateFeildOrProject(button) {
 
 			</div>
 		</div>
+	</div>
+</div>
 
 		<div id="attModal" class="modal">
 			<div class="modal-content">

@@ -4,11 +4,7 @@ import java.util.List;
 
 import org.spring.domain.employee.controller.model.EmployeeRegistrationForm;
 import org.spring.domain.employee.controller.model.WageRecordRequest;
-import org.spring.domain.employee.model.CareerEntity;
-import org.spring.domain.employee.model.DegreeEntity;
-import org.spring.domain.employee.model.DependentsEntity;
-import org.spring.domain.employee.model.EmployeeEntity;
-import org.spring.domain.employee.model.MilitaryServiceEntity;
+import org.spring.domain.employee.model.*;
 
 
 public interface EmployeeService {
@@ -16,6 +12,8 @@ public interface EmployeeService {
     public List<EmployeeEntity> getAllEmployee();
     
     public List<WageRecordRequest> listWageRecord(Long year);
+    List<DepartmentEntity> getDepartment();
+    List<PositionEntity> getPosition();
 
     
     // 사원현황판
@@ -31,6 +29,7 @@ public interface EmployeeService {
     
     // 사원등록 1페이지
     void registerEmployee(EmployeeRegistrationForm registrationForm);
+    void registerCompanyAndDetails(CompanyEntity company, ContactEntity contact, EmployeeSalaryAccountEntity salaryAccount);
 
 
 }

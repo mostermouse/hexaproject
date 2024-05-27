@@ -8,8 +8,12 @@
     <select id="getAllEmployee" resultType="org.spring.domain.employee.model.EmployeeEntity">
         SELECT * FROM employee
     </select>
-
-
+    <select id="getDepartment" resultType="org.spring.domain.employee.model.DepartmentEntity">
+        select * from department
+    </select>
+    <select id="getPosition" resultType="org.spring.domain.employee.model.PositionEntity">
+        select * from position
+    </select>
     <!-- 사원현황판  -->
     <!-- 재직자 인원수 -->
     <select id="countByStatusEmployed" resultType="long">
@@ -123,5 +127,84 @@
         #{militaryServiceId}, #{employeeId}, #{serviceType}, #{branch}, #{servicePeriod1}, #{servicePeriod2}, #{finalRank}, #{department}, #{exemptionReason}
         )
     </insert>
+
+    <select id="getNextSeqVal" resultType="long">
+        SELECT company_seq.NEXTVAL FROM DUAL
+    </select>
+
+    <insert id="insertCompany" parameterType="org.spring.domain.employee.model.CompanyEntity">
+        INSERT INTO company_info (
+            company_id,
+            company_name,
+            representative_name,
+            business_number,
+            corporation_number,
+            establishment_date,
+            website,
+            office_address,
+            phone_number,
+            fax_number,
+            business_type,
+            business_item
+        ) VALUES (
+                     #{companyId},
+                     #{companyName},
+                     #{representativeName},
+                     #{businessNumber},
+                     #{corporationNumber},
+                     #{establishmentDate},
+                     #{website},
+                     #{officeAddress},
+                     #{phoneNumber},
+                     #{faxNumber},
+                     #{businessType},
+                     #{businessItem}
+                 )
+    </insert>
+
+    <insert id="insertContact" parameterType="org.spring.domain.employee.model.ContactEntity">
+        INSERT INTO contact_person_info (
+            person_id,
+            company_id,
+            contact_name,
+            department_Name,
+            position_Name,
+            con_phone_number,
+            mobile_number,
+            email
+        ) VALUES (
+                     #{personId},
+                     #{companyId},
+                     #{contactName},
+                     #{departmentName},
+                     #{positionName},
+                     #{conPhoneNumber},
+                     #{mobileNumber},
+                     #{email}
+                 )
+    </insert>
+
+    <insert id="insertSalaryAccount" parameterType="org.spring.domain.employee.model.EmployeeSalaryAccountEntity">
+        INSERT INTO employee_salary_account (
+            account_id,
+            company_id,
+            bank_name,
+            account_number,
+            deposit_stocks,
+            salary_calculation1,
+            salary_calculation2,
+            salary_payment_date
+        ) VALUES (
+                     #{accountId},
+                     #{companyId},
+                     #{bankName},
+                     #{accountNumber},
+                     #{depositStocks},
+                     #{salaryCalculation1},
+                     #{salaryCalculation2},
+                     #{salaryPaymentDate}
+                 )
+    </insert>
+
 
 </mapper>

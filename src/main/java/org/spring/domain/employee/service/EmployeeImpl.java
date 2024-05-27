@@ -2,16 +2,13 @@
 
     import java.time.format.DateTimeFormatter;
     import java.util.ArrayList;
+    import java.util.Collections;
     import java.util.List;
 
     import org.spring.domain.employee.controller.model.EmployeeRegistrationForm;
     import org.spring.domain.employee.controller.model.WageRecordRequest;
     import org.spring.domain.employee.mapper.EmpMapper;
-    import org.spring.domain.employee.model.CareerEntity;
-    import org.spring.domain.employee.model.DegreeEntity;
-    import org.spring.domain.employee.model.DependentsEntity;
-    import org.spring.domain.employee.model.EmployeeEntity;
-    import org.spring.domain.employee.model.MilitaryServiceEntity;
+    import org.spring.domain.employee.model.*;
     import org.spring.domain.wage.model.WageEntity;
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.stereotype.Service;
@@ -70,6 +67,16 @@
                 }
             }
             return wageRecordRequests;
+        }
+
+        @Override
+        public List<DepartmentEntity> getDepartment() {
+            return mapper.getDepartment();
+        }
+
+        @Override
+        public List<PositionEntity> getPosition() {
+            return mapper.getPosition();
         }
 
         // 사원현황판
@@ -140,6 +147,26 @@
             mapper.insertCareer(careerEntity);
             mapper.insertMilitaryService(militaryServiceEntity);
         }
+
+        @Override
+        @Transactional
+        public void registerCompanyAndDetails(CompanyEntity company, ContactEntity contact, EmployeeSalaryAccountEntity salaryAccount) {
+            Long sequenceId = mapper.getNextSeqVal();
+
+            // 생성된 시퀀스 번호 설정
+            company.setCompanyId(sequenceId);
+
+            contact.setPersonId(sequenceId);
+            contact.setCompanyId(sequenceId);
+            salaryAccount.setAccountId(sequenceId);
+            salaryAccount.setCompanyId(sequenceId);
+
+            // 데이터 삽입
+            mapper.insertCompany(company);
+            mapper.insertContact(contact);
+            mapper.insertSalaryAccount(salaryAccount);
+        }
+
 
     }
 

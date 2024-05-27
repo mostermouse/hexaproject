@@ -3,18 +3,16 @@ package org.spring.domain.employee.mapper;
 import java.util.List;
 
 import org.spring.domain.employee.controller.model.EmployeeRegistrationForm;
-import org.spring.domain.employee.model.CareerEntity;
-import org.spring.domain.employee.model.DegreeEntity;
-import org.spring.domain.employee.model.DependentsEntity;
-import org.spring.domain.employee.model.EmployeeEntity;
-import org.spring.domain.employee.model.MilitaryServiceEntity;
+import org.spring.domain.employee.model.*;
 import org.spring.domain.wage.model.WageEntity;
 
 public interface EmpMapper {
 
     // 사원현황판
     List<EmployeeEntity> getAllEmployee();
-    long countByStatusEmployed();
+    List<DepartmentEntity> getDepartment();
+    List<PositionEntity> getPosition();
+     long countByStatusEmployed();
     long countByEmploymentTypeRegular();
     long countByEmploymentTypeContract();
     long countByEmploymentTypeTemporary();
@@ -39,4 +37,9 @@ public interface EmpMapper {
 
     void insertMilitaryService(MilitaryServiceEntity militaryServiceEntity);
 
+    //회사정보 등록 페이지
+    void insertCompany(CompanyEntity companyEntity);
+    void insertContact(ContactEntity contactEntity);
+    void insertSalaryAccount(EmployeeSalaryAccountEntity employeeSalaryAccountEntity);
+    Long getNextSeqVal();
 }

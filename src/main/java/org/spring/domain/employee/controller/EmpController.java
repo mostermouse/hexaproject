@@ -1,11 +1,7 @@
 package org.spring.domain.employee.controller;
 
 import org.spring.domain.employee.controller.model.EmployeeRegistrationForm;
-import org.spring.domain.employee.model.CareerEntity;
-import org.spring.domain.employee.model.DegreeEntity;
-import org.spring.domain.employee.model.DependentsEntity;
-import org.spring.domain.employee.model.EmployeeEntity;
-import org.spring.domain.employee.model.MilitaryServiceEntity;
+import org.spring.domain.employee.model.*;
 import org.spring.domain.employee.service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,6 +53,7 @@ public class EmpController {
         model.addAttribute("degree", new DegreeEntity());
         model.addAttribute("career", new CareerEntity());
         model.addAttribute("militaryservice", new MilitaryServiceEntity());
+
         return "defaultPreferences/employeeRegistration";
     }
 
@@ -67,6 +64,7 @@ public class EmpController {
         log.info("register" + model.toString());
         return "redirect:/employeeMnt";
     }
+
     @GetMapping("/employeeMnt")
     public String employeeMnt(Model model) {
         model.addAttribute("list", employeeService.getAllEmployee());
@@ -88,8 +86,20 @@ public class EmpController {
     
     @GetMapping("/membersInfo") //사용자 정보
     public String membersInfo(Model model){
+        model.addAttribute("department", employeeService.getDepartment());
+        model.addAttribute("position" , employeeService.getPosition());
         log.info(model.toString());
         return "defaultPreferences/membersInfo";
+    }
+
+    @PostMapping("/companyInfo")
+    public String companyInfo(@ModelAttribute CompanyEntity companyEntity, @ModelAttribute ContactEntity contactEntity, @ModelAttribute EmployeeSalaryAccountEntity employeeSalaryAccountEntity, Model model) {
+        log.info(model.toString());
+
+        // 하나의 서비스 메서드 호출로 세 개의 삽입 작업을 처리
+        employeeService.registerCompanyAndDetails(companyEntity, contactEntity, employeeSalaryAccountEntity);
+
+        return "redirect:/personnel/employeeIns";
     }
 
 

@@ -67,6 +67,9 @@ public class EmpController {
         log.info("register" + model.toString());
         return "redirect:/";
     }
-
+    @GetMapping("/employeeMnt")
+    public String employeeMnt(Model model) {
+    	return "hrManagement/employeeMnt";
+    }
 
 }

@@ -443,7 +443,7 @@ span.updown span.down {
 		<!-- 모달 내용 -->
 		<div class="w_219">
 			<ul class="title">
-				<li>現場/プロジェクト管理</li>
+				<li>現場/プロジェクト管理 </li>
 			</ul>
 			<!-- 현장/프로젝트 목록 -->
 			<div id="displayContent" class="displayContent">

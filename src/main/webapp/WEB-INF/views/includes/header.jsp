@@ -170,7 +170,7 @@
 	<!-- paymentMnt.jsp -->
 	<div id="payzon-15" class="payzon15">
 		<img src="<%= request.getContextPath() %>/resources/images/payzon_15.jpg" width="171" height="30"
-			alt="" onclick="window.location.href='<%= request.getContextPath() %>/wageList'">
+			alt="" onclick="window.location.href='<%= request.getContextPath() %>/payment/paymentMnt'">
 		<!-- 급여입력/관리 -->
 		<!-- paymentMnt.jsp -->
 		<div class="menu-item" id="payzon-20"

@@ -5,7 +5,7 @@
 
 <div id="content">
 
-    <div class="container">
+	<div class="container">
         <h2>휴가조회</h2>
         <p>전체 사원 휴가현황을 한 번에 보실 수 있습니다. 사원별 상세 휴가내역도 확인할 수 있습니다.</p>
         <form method="get" action="${pageContext.request.contextPath}/holidaysSearchResult">
@@ -40,6 +40,7 @@
                         <option value="${position.positionId}">${position.positionName}</option>
                     </c:forEach>
                 </select>
+                <input type="text" name="searchKeyword" placeholder="검색어 입력" value="${searchKeyword}">
                 <select name="viewCount">
                     <option value="30" <c:if test="${viewCount == 30}">selected</c:if>>30개씩 보기</option>
                     <option value="50" <c:if test="${viewCount == 50}">selected</c:if>>50개씩 보기</option>
@@ -48,7 +49,7 @@
                 <button type="submit">조회</button>
             </div>
         </form>
-        <table class="table table-hover">
+        <table>
             <thead>
                 <tr>
                     <th>구분</th>
@@ -64,7 +65,7 @@
             </thead>
             <tbody>
                 <c:forEach items="${vacList}" var="vacation">
-                    <tr onclick="openDetails(${vacation.employeeId})">
+                    <tr>
                         <td>${vacation.employmentType}</td>
                         <td>${vacation.employeeId}</td>
                         <td>${vacation.koreanName}</td>
@@ -86,40 +87,6 @@
             <button onclick="goToPage(${currentPage + 1})" <c:if test="${currentPage == totalPages}">disabled</c:if>>다음페이지</button>
         </div>
     </div>
-</div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="vacationDetailsModal" tabindex="-1" role="dialog" aria-labelledby="vacationDetailsModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="vacationDetailsModalLabel">휴가 상세 내역</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div id="modalContent">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>번호</th>
-                                    <th>입력일자</th>
-                                    <th>휴가항목</th>
-                                    <th>근태항목</th>
-                                    <th>기간</th>
-                                    <th>일수</th>
-                                    <th>적용</th>
-                                </tr>
-                            </thead>
-                            <tbody id="vacationDetailsBody">
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script>
         function goToPage(page) {
@@ -127,38 +94,9 @@
             urlParams.set('page', page);
             window.location.search = urlParams.toString();
         }
-
-        function openDetails(employeeId) {
-            $.ajax({
-                url: '${pageContext.request.contextPath}/vacationDetails',
-                method: 'GET',
-                data: { employeeId: employeeId },
-                success: function (data) {
-                    var tbody = $('#vacationDetailsBody');
-                    tbody.empty();
-                    data.forEach(function (vacation) {
-                        var row = '<tr>' +
-                            '<td>' + vacation.number + '</td>' +
-                            '<td>' + vacation.employmentDate + '</td>' +
-                            '<td>' + vacation.vacationType + '</td>' +
-                            '<td>' + vacation.employmentType + '</td>' +
-                            '<td>' + vacation.period + '</td>' +
-                            '<td>' + vacation.days + '</td>' +
-                            '<td>' + (vacation.applicable ? 'O' : 'X') + '</td>' +
-                            '</tr>';
-                        tbody.append(row);
-                    });
-                    $('#vacationDetailsModal').modal('show');
-                },
-                error: function (xhr, status, error) {
-                    console.log("Error: " + error);
-                }
-            });
-        }
     </script>
 
 </div>
-
 
 
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>

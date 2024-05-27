@@ -318,8 +318,16 @@ function attendanceMtn() {
 		$('#checkAll').prop('checked', allChecked);
 	}
 
-	// 출석 모달 열기
-	var selectedEmployeeId; // 전역 변수로 선택된 사원번호를 저장할 변수
+ //해당 사원 번호로 근태관리 리스트를 보여줌
+function attendanceMtn() {
+    // 모달을 표시하는 코드
+    $("#attModal").css("display", "block");
+}
+
+function updateFeildOrProject(button) {
+    var buttonText = button.innerText;
+    var span = button.parentElement.previousElementSibling;
+    var name = span.innerText;
 
 	function openAttendanceModal(employeeId) {
 		selectedEmployeeId = employeeId; // 선택된 사원번호를 전역 변수에 저장
@@ -380,175 +388,149 @@ function attendanceMtn() {
 						</tr>
 					</c:forEach>
 				</table>
-		</form>
-		<div class="title-table-right">
-			<form style="margin-top: 60px;">
-				<table class="empRegisterblack"
-					style="margin-bottom: 20px; width: 400px;">
-					<thead>
-						<tr>
-							<th style="width: 20px;"><input type="checkbox"></th>
-							<th style="width: 80px;">入力日</th>
-							<th style="width: 200px;"><input type="date"
-								class="reginput-select"></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><input type="checkbox"></td>
-							<td>勤怠期間</td>
-							<td style="height: 20px;"><input style="height: 20px;"
-								type="date" class="reginput-select"><span>~</span><input
-								style="height: 20px;" type="date" class="reginput-select"></td>
-						</tr>
-						<tr>
-							<td><input type="checkbox"></td>
-							<td>部署</td>
-							<td><select class="reginput-select">
-									<option value="">選択してください。</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td><input type="checkbox"></td>
-							<td>氏名</td>
-							<td><input class="reginputhide1" placeholder="氏名を入力してください。"></td>
-						</tr>
-						<tr>
-							<td><input type="checkbox"></td>
-							<td>勤怠グループ</td>
-							<td><select class="reginput-select">
-									<option value="">選択してください。</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td><input type="checkbox"></td>
-							<td>勤怠項目</td>
-							<td><select class="reginput-select">
-									<option value="">選択してください。</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td><input type="checkbox"></td>
-							<td>休暇項目</td>
-							<td><select class="reginput-select">
-									<option value="">選択してください。</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td><input type="checkbox"></td>
-							<td>摘要</td>
-							<td><input type="text" class="reginputhide1"
-								placeholder="摘要があれば入力してください。"></td>
-						</tr>
-					</tbody>
-				</table>
 			</form>
-			<div class="title-table-right">
-				<form>
-					<table class="day-worker-form-table" style="width: 400px;">
-						<tr style="height: 20px;">
-							<td style="width: 110px;">勤務日</td>
-							<td><input type="date" name="inputDate" id="workDate"
-								class="reginput-select"></td>
-						</tr>
-						<tr>
-							<td>現場/プロジェクト</td>
-							<td colspan="2">
-								<div class="button-container1" style="text-align: left;">
-									<select name="feildOrProjectId" id="inputFeildOrProject"
-										class="reginput-select"
-										style="width: 50%; margin-right: 32px; margin-right: auto;">
-										<option>選択してください。</option>
-										<c:forEach var="feildOrProject" items="${feildOrProjectList}">
-											<option value="${feildOrProject.feildOrProjectId}">${feildOrProject.name}</option>
-										</c:forEach>
-									</select>
-									<button id="modal_btn" type="button" class="all-button">リスト管理</button>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td>日割</td>
-							<td colspan="2"><input type="text" name="amount"
-								class="reginputhide" placeholder="日割りを入力してください"
-								style="width: 80%; text-align: right;"><span>円</span></td>
-						</tr>
-					</table>
-				</form>
-				<div class=divbtnsml style="margin-right: 120px; margin-top: 20px;">
-					<button type="submit" value="저장">貯蔵</button>
-					<button class="cancel-btn" type="reset" value="内容の消去">内容の消去</button>
+			<br>
+		<form action="/saveDayWorkerMnt" method="post" id="workerForm">
+			<table class="day-worker-form-table">
+				<tr>
+					<td>근무일자</td>
+					<td><input type="date" name="inputDate" id="workDate"
+						class="input-field"></td>
+				</tr>
+				<tr>
+					<td>현장/프로젝트</td>
+					<td colspan="2">
+						<div class="button-container1" style="text-align: left;">
+							<select name="feildOrProjectId" id="inputFeildOrProject"
+								class="reginput-select" style="width: 60%; margin-right: 32px;">
+								<option>선택하세요.</option>
+								<c:forEach var="feildOrProject" items="${feildOrProjectList}">
+									<option value="${feildOrProject.feildOrProjectId}">${feildOrProject.name}</option>
+								</c:forEach>
+							</select>
+							<button id="modal_btn" type="button" class="all-button">목록관리</button>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>일당</td>
+					<td colspan="2"><input type="text" name="amount"
+						class="reginputhide" placeholder="일당을 입력해주세요" style="width: 80%;"><span>원</span></td>
+				</tr>
+			</table>
+			<div class=divbtnsml style="margin-right: 120px;">
+			<button type="submit" value="저장">저장</button>
+			<button class="cancel-btn" type="reset" value="내용 지우기">내용
+				지우기</button>
+		</div>
+		</form>
+		
+		</div>
+		
+	</div>
+	
+	
+	</div>	
+		
+		<!-- 모달 창 -->
+		<div id="myModal" class="modal">
+			<!-- 모달 내용 -->
+
+			<div class="modal-content">
+				<!-- 모달 닫기 버튼 -->
+				<span class="close">&times;</span>
+				<!-- 모달 내용 -->
+				<div class="w_219">
+					<ul class="title">
+						<li>現場/プロジェクト管理</li>
+					</ul>
+					<!-- 현장/프로젝트 목록 -->
+					<div id="displayContent" class="displayContent">
+						<ul id="fieldProjectList" class="part01">
+							<c:forEach var="feildOrProject" items="${feildOrProjectList}">
+								<li class="p_t5" value="${feildOrProject.feildOrProjectId}">
+									<span class="updown p_t5"> &nbsp; <span class="up">
+											<a> <img alt="up"
+												src="/resources/images/icon_updown_01.png">
+										</a>
+									</span> <span class="down"> <a> <img alt="down"
+												src="/resources/images/icon_updown_02.png">
+										</a>
+									</span>
+								</span> <span class="fpname p_t5"> ${feildOrProject.name}</span> <span
+									class="m_d p_t5 p_r5"> <a onclick="$.fn.modifyButton()">修整</a>
+										| <a onclick="$.fn.deleteButton()">削除</a>
+								</span>
+								</li>
+							</c:forEach>
+						</ul>
+					</div>
+
+					<ul class="last">
+						<li><img src=""> <a href="" onclick="$.fn.addButton()">追加する</a></li>
+					</ul>
+					<ul>
+						<li>* 設定した順に反映されます。</li>
+						<li class="footer c"><span id="resetButton" class="anchor">
+								<button style="width: 87px; height: 30px;">初期化</button>
+						</span></li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+
+		<div id="attModal" class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<div class="pop01" style="width: 920px;">
+					<ul class="title">
+						<li>사원별 근무기록</li>
+					</ul>
+					<ul class="part p_t10">
+						<li class="bold font12"><span>●성명</span> <span>${dayworkerAttlist.koreanName}</span>
+						</li>
+					</ul>
+					<ul></ul>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
+
+		<script type="text/javascript">
+	$(document).ready(function() {
+		// 모달 열기 버튼 클릭 시 이벤트 처리
+		$("#modal_btn").click(function() {
+			$("#myModal").css("display", "block");
+		});
+
+		// 모달 닫기 버튼 클릭 시 이벤트 처리
+		$(".close").click(function() {
+			$("#myModal").css("display", "none");
+		});
+
+    // 모달 외부 클릭 시 모달 닫기
+    $(window).click(function(event) {
+        if (event.target.id === "myModal") {
+            $("#myModal").css("display", "none");
+        }
+    });
+});
+
+$("#attendance_modal_btn").click(function() {
+    $("#attModal").css("display", "block");
+});
+
+$(".close").click(function() {
+    $(this).closest('.modal').css("display", "none");
+});
+
+$(window).click(function(event) {
+    if ($(event.target).hasClass('modal')) {
+        $(event.target).css("display", "none");
+    }
+});
+
+</script>
 
 
-<!-- 모달 창 -->
-<div id="myModal" class="modal">
-	<!-- 모달 내용 -->
-
-	<div class="modal-content">
-		<!-- 모달 닫기 버튼 -->
-		<span class="close">&times;</span>
-		<!-- 모달 내용 -->
-		<div class="w_219">
-			<ul class="title">
-				<li>現場/プロジェクト管理</li>
-			</ul>
-			<!-- 현장/프로젝트 목록 -->
-			<div id="displayContent" class="displayContent">
-				<ul id="fieldProjectList" class="part01">
-					<c:forEach var="feildOrProject" items="${feildOrProjectList}">
-						<li class="p_t5" value="${feildOrProject.feildOrProjectId}">
-							<span class="updown p_t5"> &nbsp; <span class="up">
-									<a> <img alt="up"
-										src="/resources/images/icon_updown_01.png">
-								</a>
-							</span> <span class="down"> <a> <img alt="down"
-										src="/resources/images/icon_updown_02.png">
-								</a>
-							</span>
-						</span> <span class="fpname p_t5"> ${feildOrProject.name}</span> <span
-							class="m_d p_t5 p_r5"> <a onclick="$.fn.modifyButton()">修整</a>
-								| <a onclick="$.fn.deleteButton()">削除</a>
-						</span>
-						</li>
-					</c:forEach>
-				</ul>
-			</div>
-
-			<ul class="last">
-				<li><img src=""> <a href="" onclick="$.fn.addButton()">追加する</a>
-				</li>
-			</ul>
-			<ul>
-				<li>* 設定した順に反映されます。</li>
-				<li class="footer c"><span id="resetButton" class="anchor">
-						<button style="width: 87px; height: 30px;">初期化</button>
-				</span></li>
-			</ul>
-		</div>
-
-	</div>
-</div>
-
-<div id="attModal" class="modal">
-	<div class="modal-content">
-		<span class="close">&times;</span>
-		<div class="pop01" style="width: 920px;">
-			<ul class="title">
-				<li>사원별 근무기록</li>
-			</ul>
-			<ul class="part p_t10">
-				<li class="bold font12"><span>●성명</span> <span>${dayworkerAttlist.koreanName}</span>
-				</li>
-			</ul>
-			<ul></ul>
-		</div>
-	</div>
-</div>
-
-
-<%@ include file="/WEB-INF/views/includes/footer.jsp"%>
+		<%@ include file="/WEB-INF/views/includes/footer.jsp"%>

@@ -9,7 +9,8 @@
 			emp.employee_id,
 			emp.korean_name,
 			dept.department_name,
-			pos.position_name
+			pos.position_name,
+			emp.status
 		FROM
 			employee emp
 				JOIN
@@ -27,6 +28,6 @@
 			SELECT attendance_seq.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO attendance (attendance_id, employee_id, input_date, attendance_type_id, feild_or_project_id, start_date, end_date, attendance_days, amount, summary)
-		VALUES (#{attendanceId}, #{employeeId}, #{inputDate}, #{attendanceTypeId}, #{feildOrProjectIdLong}, #{startDate}, #{endDate}, #{attendanceDays}, #{amount}, #{summary})
+		VALUES (#{attendanceId}, #{employeeId}, #{inputDate}, #{attendanceTypeId}, #{feildOrProjectId}, #{startDate}, #{endDate}, #{attendanceDays}, #{amount}, #{summary})
 	</insert>
 </mapper>

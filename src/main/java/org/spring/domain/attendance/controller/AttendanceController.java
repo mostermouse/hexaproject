@@ -3,6 +3,7 @@ package org.spring.domain.attendance.controller;
 import java.util.List;
 
 import org.spring.domain.attendance.model.AttendanceEntity;
+import org.spring.domain.attendance.model.AttendanceTypeEntity;
 import org.spring.domain.attendance.service.AttendanceService2;
 import org.spring.domain.employee.model.DepartmentEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,9 @@ public class AttendanceController {
 	@GetMapping("/diligenceMnt")
 	public String getAllAttendance(Model model) {
 		List<DepartmentEntity> attendanceList = attendanceService2.getAllAttendance();
+		List<AttendanceTypeEntity> attendanceTypeList = attendanceService2.getAllAttendanceType();
 		model.addAttribute("attendancelist", attendanceList);
+		model.addAttribute("attendanceTypeList", attendanceTypeList);
 		log.info("Attendance List Model: " + model.toString());
 		return "managementOfAtt/managementOfAttendance";
 	}

@@ -355,7 +355,7 @@
 }
 
 .empRegister .empRegister-head1 {
-	background-color: #dff3fa;
+	background-color: #F6FDFF;
 	border-color: #c0c0c0;
 	text-align: center;
 	vertical-align: middle
@@ -407,7 +407,53 @@
 }
 
 .empRegister1 .empRegister-head1 {
-	background-color: #dff3fa;
+	background-color: #F6FDFF;
+	border-color: #c0c0c0;
+	text-align: center;
+	vertical-align: middle;
+	height: 20px;
+}
+
+.empRegisterr {
+	border-collapse: collapse;
+	border-spacing: 0;
+	min-height: 50px;
+	border-top: 3px solid #4499fa;
+	table-layout: fixed;
+	width: 100%;
+}
+
+.empRegisterr td {
+	border-color: #c0c0c0;
+	border-style: solid;
+	border-width: 1px;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	overflow: hidden;
+	padding: 10px 5px;
+	word-break: normal;
+}
+
+.empRegisterr th {
+	border-color: #c0c0c0;
+	border-style: solid;
+	border-width: 1px;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	overflow: hidden;
+	padding: 10px 5px;
+	word-break: normal;
+}
+
+.empRegisterr .empRegister-body {
+	border-color: #c0c0c0;
+	text-align: center;
+	height: 20px;
+}
+
+.empRegisterr .empRegister-head1 {
+	background-color: #F6FDFF;
 	border-color: #c0c0c0;
 	text-align: center;
 	vertical-align: middle;
@@ -454,7 +500,7 @@
 }
 
 .empRegister2 .empRegister-head1 {
-	background-color: #c0c0c0;
+	background-color: #d5d5d5;
 	border-color: #b3b3b3;
 	text-align: center;
 	vertical-align: middle;
@@ -756,6 +802,21 @@
     border-radius: 10px;
 }
 
+.rectanglee {
+    width: calc(25% - 15px);
+    height: 40px;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    padding: 2px 20px;
+    justify-content: space-around;
+}
+
+.redd {
+    background-color: #E17A7D;
+    color: white;
+}
+
 .gray {
     background-color: gray;
     color: white;
@@ -774,6 +835,11 @@
 .dark-gray {
     background-color: darkgray;
     color: white;
+}
+
+.dark-grayy {
+    background-color: #d5d5d5;
+    color: black;
 }
 
 .text-left {

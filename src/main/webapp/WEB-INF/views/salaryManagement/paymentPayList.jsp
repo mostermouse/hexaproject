@@ -22,36 +22,10 @@
 				<button class="all-button" type="submit">급여내역조회</button>
 			</div>
 		</form>
-		<table class="empRegister" style="width: 100%; margin-top: 40px;">
-			<thead>
-				<tr>
-					<th colspan="5" class="empRegister-head1">월별 급여내역</th>
-				</tr> 
-				<tr style="text-align: center; background-color: #eeeeee;">
-					<th style="color: #2b9aff;">급여월(차수)</th>
-					<th>보수월액</th>
-					<th>지급합계</th>
-					<th>공제합계</th>
-					<th>실지급액</th>
-				</tr>
-			</thead>
-			<tbody class="empRegister-body">
-					<tr>
-						<td style="text-align: center;"></td>
-						<td style="text-align: right;"></td>
-						<td style="text-align: right;"></td>
-						<td style="text-align: right;"></td>
-						<td style="text-align: right;"></td>
-					</tr>
-					<tr style="background-color: #ffffdf">
-						<td style="text-align: center;">합계</td>
-						<td style="text-align: right;"></td>
-						<td style="text-align: right;"></td>
-						<td style="text-align: right;"></td>
-						<td style="text-align: right;"></td>
-					</tr>
-			</tbody>
-		</table>
+		
+		
+		
+		
 		<div class="pagination">
 			<button onclick="goToPage(${currentPage - 1})"
 				<c:if test="${currentPage == 1}">disabled</c:if>>

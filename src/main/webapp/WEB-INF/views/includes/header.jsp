@@ -52,7 +52,7 @@
 	<!-- 급여입력/관리 -->
 	<!-- paymentMnt.jsp -->
 	<div id="payzon-07"
-		onclick="window.location.href='<%=request.getContextPath()%>/wageList'">
+		onclick="window.location.href='<%=request.getContextPath()%>/payment/paymentMnt'">
 		<img src="<%= request.getContextPath() %>/resources/images/payzon_07.jpg" width="117" height="80"
 			alt="">
 	</div>
@@ -174,7 +174,7 @@
 		<!-- 급여입력/관리 -->
 		<!-- paymentMnt.jsp -->
 		<div class="menu-item" id="payzon-20"
-			onclick="window.location.href='<%= request.getContextPath() %>/wageList'">
+			onclick="window.location.href='<%= request.getContextPath() %>/payment/paymentMnt'">
 			<img src="<%= request.getContextPath() %>/resources/images/payzon_20.jpg" alt="Item 20">
 		</div>
 		<!-- 급여입력/관리(일용직) -->

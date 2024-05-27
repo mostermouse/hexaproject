@@ -48,7 +48,7 @@ public class WageController {
 		model.addAttribute("departmentNames", departmentNames);
 		model.addAttribute("wageTypeNames", wageTypeNames);
 	}
-
+	
 	// 급여대장
 	@GetMapping("/payment/paymentRegisterList")
 	public String getPaymentRegisterList(
@@ -96,6 +96,11 @@ public class WageController {
 	public String paymentPayItem(Model model){
 		//TODO 비어있음
 		return "salaryManagement/paymentPayItemPart";
+	}
+	@GetMapping("/payment/paymentMnt") //급여입력 일용직
+	public String paymentMnt(Model model) {
+		//TODO wageList 대성이형 이거 옮겨놔 
+		return "salaryManagement/paymentMnt";
 	}
 
 }

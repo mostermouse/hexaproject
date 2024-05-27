@@ -183,12 +183,13 @@ span.updown span.down {
 <script type="text/javascript">
 	$(document).ready(
 			function() {
-
+				// "전체검색" 버튼 클릭 시 동작
 				$("#btnSrchAll").click(function() {
 					location.replace("/dayWorkerMnt");
 					return;
 				});
 
+				// "검색" 버튼 클릭 시 동작
 				$("#searchButton").click(function() {
 					var searchKeyword = $('#searchKeyword').val();
 					if (searchKeyword === '検索語入力') {
@@ -201,6 +202,7 @@ span.updown span.down {
 					return true;
 				});
 
+				// "전체선택" 체크박스 클릭 시 동작
 				$("#checkAll").click(
 						function() {
 							$('input[name="employeeId"]').prop('checked',
@@ -214,6 +216,7 @@ span.updown span.down {
 							}
 						});
 
+				// 개별 체크박스 클릭 시 동작
 				$('input[name="employeeId"]').click(function() {
 					var row = $(this).closest('tr');
 					if ($(this).prop('checked')) {
@@ -224,16 +227,9 @@ span.updown span.down {
 					updateSelectAllCheckbox();
 				});
 
-/*  달력
-    $("#workDate").datepicker({
-        dateFormat : "yy-mm-dd",
-        onSelect : function(dateText, inst) {
-            $(this).val(dateText);
-        }
-    });
-*/
-    $("#saveButton").click(function(event) {
-        event.preventDefault(); // 폼의 기본 제출 동작을 막음
+				// "저장" 버튼 클릭 시 동작
+				$("#saveButton").click(function(event) {
+					event.preventDefault(); // 폼의 기본 제출 동작을 막음
 
 					// 체크된 사원의 employeeId 값을 수집
 					var selectedEmployeeIds = [];
@@ -247,29 +243,58 @@ span.updown span.down {
 					console.log(selectedEmployeeIds); // 선택된 employeeId 값들을 콘솔에 출력
 
 					if (selectedEmployeeIds.length === 0) {
-						alert("有効な社員を選択してください。");
+						alert("사원을 선택해주세요.");
 						return;
+					} else {
+						alert("등록 완료 했습니다.");
 					}
-
-        if (selectedEmployeeIds.length === 0) {
-            alert("사원을 선택해주세요.");
-            return;
-        } else {
-			alert("등록 완료 했습니다.");        	
-        }
 
 					// 폼 제출
 					$('#workerForm').submit();
 				});
 
+				// 모달 열기 버튼 클릭 시 이벤트 처리
+				$("#modal_btn").click(function() {
+					$("#myModal").css("display", "block");
+				});
+
+				// 모달 닫기 버튼 클릭 시 이벤트 처리
+				$(".close").click(function() {
+					$("#myModal").css("display", "none");
+				});
+
+				// 모달 외부 클릭 시 모달 닫기
+				$(window).click(function(event) {
+					if (event.target.id === "myModal") {
+						$("#myModal").css("display", "none");
+					}
+				});
+
+				// 출석 모달 열기 버튼 클릭 시 이벤트 처리
+				$("#attendance_modal_btn").click(function() {
+					$("#attModal").css("display", "block");
+				});
+
+				// 모달 닫기 버튼 클릭 시 이벤트 처리
+				$(".close").click(function() {
+					$(this).closest('.modal').css("display", "none");
+				});
+
+				// 모달 외부 클릭 시 모달 닫기
+				$(window).click(function(event) {
+					if ($(event.target).hasClass('modal')) {
+						$(event.target).css("display", "none");
+					}
+				});
 			});
 
-	// 상태별(재직, 퇴직) select 박스에서 해당 사원으로 보여줌
+	// 상태별(재직, 퇴직) select 박스에서 해당 사원으로 필터링
 	function filterByStatus() {
 		var status = document.getElementById("statusSelect").value;
 		window.location.href = "/dayWorkerMnt?status=" + status;
 	}
 
+	// 필드 또는 프로젝트 업데이트
 	function updateFeildOrProject(button) {
 		var buttonText = button.innerText;
 		var span = button.parentElement.previousElementSibling;
@@ -281,57 +306,27 @@ function attendanceMtn() {
     $("#attModal").css("display", "block");
 }
 
- //해당 사원 번호로 근태관리 리스트를 보여줌
-function attendanceMtn() {
-    // 모달을 표시하는 코드
-    $("#attModal").css("display", "block");
-}
+	// 전체 선택 체크박스 업데이트
+	function updateSelectAllCheckbox() {
+		var allChecked = true;
+		$('input[name="employeeId"]').each(function() {
+			if (!$(this).prop('checked')) {
+				allChecked = false;
+				return false;
+			}
+		});
+		$('#checkAll').prop('checked', allChecked);
+	}
 
-function updateFeildOrProject(button) {
-    var buttonText = button.innerText;
-    var span = button.parentElement.previousElementSibling;
-    var name = span.innerText;
+	// 출석 모달 열기
+	var selectedEmployeeId; // 전역 변수로 선택된 사원번호를 저장할 변수
 
-    if (buttonText === '수정') {
-        var input = document.createElement("input");
-        input.type = "text";
-        input.value = name;
-        span.innerHTML = "";
-        span.appendChild(input);
-        button.innerText = '저장';
-        alert('수정을 완료하려면 "저장"을 클릭하세요.');
-    } else if (buttonText === '저장') {
-        var newName = span.firstChild.value;
-        span.innerHTML = newName;
-        button.innerText = '수정';
-        alert('저장되었습니다: ' + newName);
-    }
-}
-
-
-
-function updateSelectAllCheckbox() {
-    var allChecked = true;
-    $('input[name="employeeId"]').each(function() {
-        if (!$(this).prop('checked')) {
-            allChecked = false;
-            return false; 
-        }
-    });
-    $('#checkAll').prop('checked', allChecked);
-}
-
-
-var selectedEmployeeId; // 전역 변수로 선택된 사원번호를 저장할 변수
-
-function openAttendanceModal(employeeId) {
-    selectedEmployeeId = employeeId; // 선택된 사원번호를 전역 변수에 저장
-    alert(selectedEmployeeId);
-    window.location.href ="/dayWorkerAttendanceList?selectedEmployeeId="+selectedEmployeeId;
-    
-    $("#attModal").css("display", "block"); // 모달 열기
-}
-
+	function openAttendanceModal(employeeId) {
+		selectedEmployeeId = employeeId; // 선택된 사원번호를 전역 변수에 저장
+		alert(selectedEmployeeId);
+		window.location.href = "/dayWorkerAttendanceList?selectedEmployeeId="
+				+ selectedEmployeeId;
+	}
 </script>
 
 <div id="content">
@@ -448,43 +443,41 @@ function openAttendanceModal(employeeId) {
 					</tbody>
 				</table>
 			</form>
-			<div class=divbtnsml style="margin-right: 120px;">
-				<button>検索</button>
-				<button class="cancel-btn">全体表示</button>
-			</div>
-		</div>
-	</div>
-</div>
-<%-- <table class="day-worker-form-table" style="width: 600px;">
-	                    <tr style="height: 20px;">
-	                        <td style="width: 110px;">근무일자</td>
-	                        <td><input type="date" name="inputDate" id="workDate"
-	                            class="reginput-select"></td>
-	                    </tr>
-	                    <tr>
-	                        <td>현장/프로젝트</td>
-	                        <td colspan="2">
-	                            <div class="button-container1" style="text-align: left;">
-	                                <select name="feildOrProjectId" id="inputFeildOrProject"
-	                                    class="reginput-select" style="width: 60%; margin-right: 32px;">
-	                                    <option>선택하세요.</option>
-	                                    <c:forEach var="feildOrProject" items="${feildOrProjectList}">
-	                                        <option value="${feildOrProject.feildOrProjectId}">${feildOrProject.name}</option>
-	                                    </c:forEach>
-	                                </select>
-	                                <button id="modal_btn" type="button" class="all-button">목록관리</button>
-	                            </div>
-	                        </td>
-	                    </tr>
-	                    <tr>
-	                        <td>일당</td>
-	                        <td colspan="2"><input type="text" name="amount" class="reginputhide" placeholder="일당을 입력해주세요" style="width: 80%;"><span>원</span></td>
-	                    </tr>
+			<div class="title-table-right">
+				<form>
+					<table class="day-worker-form-table" style="width: 400px;">
+						<tr style="height: 20px;">
+							<td style="width: 110px;">勤務日</td>
+							<td><input type="date" name="inputDate" id="workDate"
+								class="reginput-select"></td>
+						</tr>
+						<tr>
+							<td>現場/プロジェクト</td>
+							<td colspan="2">
+								<div class="button-container1" style="text-align: left;">
+									<select name="feildOrProjectId" id="inputFeildOrProject"
+										class="reginput-select"
+										style="width: 50%; margin-right: 32px; margin-right: auto;">
+										<option>選択してください。</option>
+										<c:forEach var="feildOrProject" items="${feildOrProjectList}">
+											<option value="${feildOrProject.feildOrProjectId}">${feildOrProject.name}</option>
+										</c:forEach>
+									</select>
+									<button id="modal_btn" type="button" class="all-button">リスト管理</button>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>日割</td>
+							<td colspan="2"><input type="text" name="amount"
+								class="reginputhide" placeholder="日割りを入力してください"
+								style="width: 80%; text-align: right;"><span>円</span></td>
+						</tr>
 					</table>
 				</form>
-				<div class=divbtnsml style="margin-right: 120px;">
-					<button type="submit" value="저장">저장</button>
-					<button class="cancel-btn" type="reset" value="내용 지우기">내용 지우기</button>
+				<div class=divbtnsml style="margin-right: 120px; margin-top: 20px;">
+					<button type="submit" value="저장">貯蔵</button>
+					<button class="cancel-btn" type="reset" value="内容の消去">内容の消去</button>
 				</div>
 			</div>
 		</div>
@@ -542,56 +535,20 @@ function openAttendanceModal(employeeId) {
 </div>
 
 <div id="attModal" class="modal">
-      <div class="modal-content">
-          <span class="close">&times;</span>
-          <div class="pop01" style="width: 920px;">
-              <ul class="title">
-              	<li>사원별 근무기록</li>
-              </ul>
-              <ul class="part p_t10">
-              		<li class="bold font12">
-              			<span>●성명</span>
-              			<span>${dayworkerAttlist.koreanName}</span>
-              		</li>
-              </ul>
-              <ul></ul>
-          </div>
-      </div>
+	<div class="modal-content">
+		<span class="close">&times;</span>
+		<div class="pop01" style="width: 920px;">
+			<ul class="title">
+				<li>사원별 근무기록</li>
+			</ul>
+			<ul class="part p_t10">
+				<li class="bold font12"><span>●성명</span> <span>${dayworkerAttlist.koreanName}</span>
+				</li>
+			</ul>
+			<ul></ul>
+		</div>
+	</div>
 </div>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		// 모달 열기 버튼 클릭 시 이벤트 처리
-		$("#modal_btn").click(function() {
-			$("#myModal").css("display", "block");
-		});
 
-		// 모달 닫기 버튼 클릭 시 이벤트 처리
-		$(".close").click(function() {
-			$("#myModal").css("display", "none");
-		});
-
-    // 모달 외부 클릭 시 모달 닫기
-    $(window).click(function(event) {
-        if (event.target.id === "myModal") {
-            $("#myModal").css("display", "none");
-        }
-    });
-});
-
-$("#attendance_modal_btn").click(function() {
-    $("#attModal").css("display", "block");
-});
-
-$(".close").click(function() {
-    $(this).closest('.modal').css("display", "none");
-});
-
-$(window).click(function(event) {
-    if ($(event.target).hasClass('modal')) {
-        $(event.target).css("display", "none");
-    }
-});
-
-</script>
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>

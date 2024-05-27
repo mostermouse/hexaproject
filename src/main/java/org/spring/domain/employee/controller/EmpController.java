@@ -84,6 +84,8 @@ public class EmpController {
         return "hrManagement/employeeMnt";
 
     }
+    
+    
     @GetMapping("/membersInfo") //사용자 정보
     public String membersInfo(Model model){
         log.info(model.toString());

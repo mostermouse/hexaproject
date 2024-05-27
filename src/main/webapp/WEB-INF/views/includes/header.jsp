@@ -31,14 +31,14 @@
 	<!-- 사원현황 -->
 	<!-- employeeMnt.jsp -->
 	<div id="payzon-04"
-		onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeMnt'">
+		onclick="window.location.href='<%=request.getContextPath()%>/'">
 		<img src="<%= request.getContextPath() %>/resources/images/payzon_04.jpg"  width="102" height="80"
 			alt="">
 	</div>
 	<!-- 근태기록/관리 -->
 	<!-- managementOfAttendance.jsp -->
 	<div id="payzon-05"
-		onclick="window.location.href='<%=request.getContextPath()%>/diligence/diligenceMnt'">
+		onclick="window.location.href='<%=request.getContextPath()%>/diligenceMnt'">
 		<img src="<%= request.getContextPath() %>/resources/images/payzon_05.jpg" width="124" height="80"
 			alt="">
 	</div>

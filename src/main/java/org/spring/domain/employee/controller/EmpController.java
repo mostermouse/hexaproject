@@ -65,11 +65,24 @@ public class EmpController {
         employeeService.registerEmployee(registrationForm);
 
         log.info("register" + model.toString());
-        return "redirect:/";
+        return "redirect:/employeeMnt";
     }
     @GetMapping("/employeeMnt")
     public String employeeMnt(Model model) {
-    	return "hrManagement/employeeMnt";
+        model.addAttribute("list", employeeService.getAllEmployee());
+        model.addAttribute("employed", employeeService.countByStatusEmployed());
+        model.addAttribute("regular", employeeService.countByEmploymentTypeRegular());
+        model.addAttribute("contract", employeeService.countByEmploymentTypeContract());
+        model.addAttribute("temporary", employeeService.countByEmploymentTypeTemporary());
+        model.addAttribute("dispatched", employeeService.countByEmploymentTypeDispatched());
+        model.addAttribute("appointed", employeeService.countByEmploymentTypeAppointed());
+        model.addAttribute("daily", employeeService.countByEmploymentTypeDaily());
+        model.addAttribute("resigned", employeeService.countByStatusResigned());
+        model.addAttribute("allemployees", employeeService.countAllEmployees());
+        log.info(model.toString());
+
+        return "hrManagement/employeeMnt";
+
     }
 
 }

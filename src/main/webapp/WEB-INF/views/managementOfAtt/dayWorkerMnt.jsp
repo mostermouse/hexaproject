@@ -224,13 +224,6 @@ span.updown span.down {
 					updateSelectAllCheckbox();
 				});
 
-				$("#workDate").datepicker({
-					dateFormat : "yy-mm-dd",
-					onSelect : function(dateText, inst) {
-						$(this).val(dateText);
-					}
-				});
-
 				$("#saveButton").click(function(event) {
 					event.preventDefault(); // 폼의 기본 제출 동작을 막음
 
@@ -308,6 +301,9 @@ span.updown span.down {
 <div id="content">
 	<div class="table-container">
 		<div class="header-container">
+			<img
+				src="<%=request.getContextPath()%>/resources/images/contentimages/dayWorkerMnt.png"
+				width="50" height="50">
 			<h1>일용직 근무기록/관리</h1>
 		</div>
 		<hr>
@@ -333,8 +329,8 @@ span.updown span.down {
 			</select>
 		</div>
 		<br>
-		<form action="/saveDayWorkerMnt" method="post" id="workerForm">
-			<div class="search-container">
+		<div class="search-container">
+			<form action="/saveDayWorkerMnt" method="post" id="workerForm">
 				<table class="day-worker-table" border="1">
 					<tr class="empRegister-head">
 						<th style="width: 20px;"><input type="checkbox" id="checkAll"></th>
@@ -356,88 +352,22 @@ span.updown span.down {
 						</tr>
 					</c:forEach>
 				</table>
-		</form>
-		<div class="title-table-right">
-			<form style="margin-top: 60px;">
-				<table class="empRegisterblack"
-					style="margin-bottom: 20px; width: 400px;">
-					<thead>
-						<tr>
-							<th style="width: 20px;"><input type="checkbox"></th>
-							<th style="width: 80px;">입력일자</th>
-							<th style="width: 200px;"><input type="date"
-								class="reginput-select"></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><input type="checkbox"></td>
-							<td>근태기간</td>
-							<td style="height: 20px;"><input style="height: 20px;"
-								type="date" class="reginput-select"><span>~</span><input
-								style="height: 20px;" type="date" class="reginput-select"></td>
-						</tr>
-						<tr>
-							<td><input type="checkbox"></td>
-							<td>부서</td>
-							<td><select class="reginput-select">
-									<option value="">선택하세요.</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td><input type="checkbox"></td>
-							<td>성명</td>
-							<td><input class="reginputhide1" placeholder="성명을 입력하세요."></td>
-						</tr>
-						<tr>
-							<td><input type="checkbox"></td>
-							<td>근태그룹</td>
-							<td><select class="reginput-select">
-									<option value="">선택하세요.</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td><input type="checkbox"></td>
-							<td>근태항목</td>
-							<td><select class="reginput-select">
-									<option value="">선택하세요.</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td><input type="checkbox"></td>
-							<td>휴가항목</td>
-							<td><select class="reginput-select">
-									<option value="">선택하세요.</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td><input type="checkbox"></td>
-							<td>적요</td>
-							<td><input type="text" class="reginputhide1"
-								placeholder="적요가있다면 입력해주세요."></td>
-						</tr>
-					</tbody>
-				</table>
 			</form>
-			<div class=divbtnsml style="margin-right: 120px;">
-				<button>검색</button>
-				<button class="cancel-btn">전체보기</button>
-			</div>
-		</div>
-	</div>
-</div>
-<%-- <table class="day-worker-form-table" style="width: 600px;">
-	                    <tr style="height: 20px;">
+			<div class="title-table-right">
+				<form>
+					<table class="empRegisterblack"
+						style="margin-bottom: 20px; width: 400px;">
+						<tr style="height: 20px;">
 	                        <td style="width: 110px;">근무일자</td>
-	                        <td><input type="text" name="inputDate" id="workDate"
-	                            class="input-field"></td>
+	                        <td><input type="date" name="inputDate" id="workDate"
+	                            class="reginput-select"></td>
 	                    </tr>
 	                    <tr>
 	                        <td>현장/프로젝트</td>
 	                        <td colspan="2">
-	                            <div class="button-container1">
+	                            <div class="button-container1" style="text-align: left;">
 	                                <select name="feildOrProjectId" id="inputFeildOrProject"
-	                                    class="select-field">
+	                                    class="reginput-select" style="width: 60%; margin-right: 32px;">
 	                                    <option>선택하세요.</option>
 	                                    <c:forEach var="feildOrProject" items="${feildOrProjectList}">
 	                                        <option value="${feildOrProject.feildOrProjectId}">${feildOrProject.name}</option>
@@ -449,15 +379,19 @@ span.updown span.down {
 	                    </tr>
 	                    <tr>
 	                        <td>일당</td>
-	                        <td><input type="text" name="amount" class="input-field"></td>
+	                        <td colspan="2"><input type="text" name="amount" class="reginputhide" placeholder="일당을 입력해주세요" style="width: 80%;"><span>원</span></td>
 	                    </tr>
-	                </table>
-            </div>
-            <div class="button-container1">
-                <input class="all-button" id="saveButton" type="submit" value="저장" >
-                <input class="all-button1" type="reset" value="내용 지우기">
-            </div>
-            </form>  --%>
+					</table>
+				</form>
+				<div class=divbtnsml style="margin-right: 120px;">
+					<button type="submit" value="저장">저장</button>
+					<button class="cancel-btn" type="reset" value="내용 지우기">내용 지우기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 
 <!-- 모달 창 -->
 <div id="myModal" class="modal">

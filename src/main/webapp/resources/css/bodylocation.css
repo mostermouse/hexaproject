@@ -378,7 +378,7 @@
 }
 
 .empRegister1 td {
-	border-color: black;
+	border-color: #c0c0c0;
 	border-style: solid;
 	border-width: 1px;
 	font-family: Arial, sans-serif;
@@ -389,7 +389,7 @@
 }
 
 .empRegister1 th {
-	border-color: black;
+	border-color: #c0c0c0;
 	border-style: solid;
 	border-width: 1px;
 	font-family: Arial, sans-serif;

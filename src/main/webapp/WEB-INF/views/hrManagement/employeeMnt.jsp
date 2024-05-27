@@ -8,14 +8,14 @@
 			<img
 				src="<%=request.getContextPath()%>/resources/images/contentimages/employeeMnt.png"
 				width="50" height="50">
-			<h1>사원현황/관리</h1>
+			<h1>社員の現況/管理</h1>
 		</div>
 			<hr>
 		<div>
 			<table class="tg">
 				<thead>
 					<tr>
-						<th class="tg-ev56">재직자</th>
+						<th class="tg-ev56">在職者</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -28,12 +28,12 @@
 			<table class="tg">
 				<thead>
 					<tr>
-						<th class="tg-c5zh">정규직</th>
-						<th class="tg-c5zh">계약직</th>
-						<th class="tg-c5zh">임시직</th>
-						<th class="tg-c5zh">파견직</th>
-						<th class="tg-c5zh">위촉직</th>
-						<th class="tg-c5zh">일용직</th>
+						<th class="tg-c5zh">正社員</th>
+						<th class="tg-c5zh">契約職</th>
+						<th class="tg-c5zh">臨時職</th>
+						<th class="tg-c5zh">派遣職</th>
+						<th class="tg-c5zh">委嘱職</th>
+						<th class="tg-c5zh">日雇い</th>
 
 					</tr>
 				</thead>
@@ -51,7 +51,7 @@
 			<table class="tg">
 				<thead>
 					<tr>
-						<th class="tg-c5zh">퇴사자</th>
+						<th class="tg-c5zh">退社者</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -63,7 +63,7 @@
 			<table class="tg">
 				<thead>
 					<tr>
-						<th class="tg-c5zh">전체</th>
+						<th class="tg-c5zh">全体</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -75,17 +75,17 @@
 		</div>
 		<table class="empRegister1" style="max-width: 1557px; margin-top: 30px;">
 			<tr class="empRegister-head1">
-				<th>구분</th>
-				<th>입사일</th>
-				<th>사원번호</th>
-				<th>성명(한글)</th>
-				<th>부서</th>
-				<th>직위</th>
-				<th>주민번호</th>
-				<th>휴대폰</th>
-				<th>이메일</th>
-				<th>퇴사일</th>
-				<th>상태</th>
+				<th>区分</th>
+				<th>入社日</th>
+				<th>社員番号</th>
+				<th>氏名(漢字)</th>
+				<th>部署</th>
+				<th>職位</th>
+				<th>住民番号</th>
+				<th>携帯電話</th>
+				<th>メール</th>
+				<th>退社日</th>
+				<th>状態</th>
 			</tr>
 			<c:forEach items="${list}" var="employee">
 				<tr class="empRegister-body">

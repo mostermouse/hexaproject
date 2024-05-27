@@ -19,7 +19,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class VacationController {
 
-	  @Autowired
+	 @Autowired
 	    private VacationService service;
 
 	    @GetMapping("/holidaysSearchResult")
@@ -50,6 +50,7 @@ public class VacationController {
 	        model.addAttribute("currentPage", page);
 	        model.addAttribute("totalPages", totalPages);
 	        model.addAttribute("viewCount", viewCount);
+	        model.addAttribute("searchKeyword", searchKeyword);
 	        log.info("Vacation details: " + model.toString());
 	        return "managementOfAtt/holidaysSearchResult";
 	    }
@@ -72,11 +73,9 @@ public class VacationController {
 	        model.addAttribute("vacList", filteredVacations);
 	        return "partials/vacationList :: vacationList";
 	    }
-	    @GetMapping("/vacationDetails")
-	    @ResponseBody
-	    public List<VacationDetailsEntity> getVacationDetails(@RequestParam("employeeId") Long employeeId) {
-	        return service.getVacationDetailsByEmployeeId(employeeId);
-	    }
+	
+
+
 
 	@GetMapping("/dnLItem") //휴가/근태설정
 	public String dnLItemSet(Model model){

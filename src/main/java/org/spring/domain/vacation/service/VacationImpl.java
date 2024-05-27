@@ -19,60 +19,54 @@ import lombok.extern.log4j.Log4j;
 @Service
 @AllArgsConstructor
 public class VacationImpl implements VacationService {
+	 @Setter(onMethod_ = @Autowired)
+	    private VacationMapper vacMapper;
 
-	@Setter(onMethod_ = @Autowired)
-    private VacationMapper vacMapper;
+	    @Override
+	    public List<VacationDetailsEntity> getAllVacationDetails() {
+	        log.info("Get vacation details");
+	        return vacMapper.getAllVacationDetails();
+	    }
 
-    @Override
-    public List<VacationDetailsEntity> getAllVacationDetails() {
-        log.info("Get vacation details");
-        return vacMapper.getAllVacationDetails();
-    }
+	    @Override
+	    public List<VacationDaysEntity> getAllVacationDays() {
+	        log.info("Get vacation days");
+	        return vacMapper.getAllVacationDays();
+	    }
 
-    @Override
-    public List<VacationDaysEntity> getAllVacationDays() {
-        log.info("Get vacation days");
-        return vacMapper.getAllVacationDays();
-    }
+	    @Override
+	    public List<VacationTypeEntity> getAllVacationTypes() {
+	        log.info("Get vacation types");
+	        return vacMapper.getAllVacationTypes();
+	    }
 
-    @Override
-    public List<VacationTypeEntity> getAllVacationTypes() {
-        log.info("Get vacation types");
-        return vacMapper.getAllVacationTypes();
-    }
+	    @Override
+	    public List<String> getAllStatuses() {
+	        return vacMapper.getAllStatuses();
+	    }
 
-    @Override
-    public List<String> getAllStatuses() {
-        return vacMapper.getAllStatuses();
-    }
+	    @Override
+	    public List<String> getAllEmploymentTypes() {
+	        return vacMapper.getAllEmploymentTypes();
+	    }
 
-    @Override
-    public List<String> getAllEmploymentTypes() {
-        return vacMapper.getAllEmploymentTypes();
-    }
+	    @Override
+	    public List<DepartmentEntity> getAllDepartments() {
+	        return vacMapper.getAllDepartments();
+	    }
 
-    @Override
-    public List<DepartmentEntity> getAllDepartments() {
-        return vacMapper.getAllDepartments();
-    }
+	    @Override
+	    public List<PositionEntity> getAllPositions() {
+	        return vacMapper.getAllPositions();
+	    }
 
-    @Override
-    public List<PositionEntity> getAllPositions() {
-        return vacMapper.getAllPositions();
-    }
+	    @Override
+	    public List<VacationDetailsEntity> getFilteredVacationDetails(String status, String employmentType, Long departmentId, Long positionId, String vacationTypeName, String searchKeyword, int offset, int limit) {
+	        return vacMapper.getFilteredVacationDetails(status, employmentType, departmentId, positionId, vacationTypeName, searchKeyword, offset, limit);
+	    }
 
-    @Override
-    public List<VacationDetailsEntity> getFilteredVacationDetails(String status, String employmentType, Long departmentId, Long positionId, String vacationTypeName, String searchKeyword, int offset, int limit) {
-        return vacMapper.getFilteredVacationDetails(status, employmentType, departmentId, positionId, vacationTypeName, searchKeyword, offset, limit);
-    }
-
-    @Override
-    public int countFilteredVacationDetails(String status, String employmentType, Long departmentId, Long positionId, String vacationTypeName, String searchKeyword) {
-        return vacMapper.countFilteredVacationDetails(status, employmentType, departmentId, positionId, vacationTypeName, searchKeyword);
-    }
-
-    @Override
-    public List<VacationDetailsEntity> getVacationDetailsByEmployeeId(Long employeeId) {
-        return vacMapper.getVacationDetailsByEmployeeId(employeeId);
-    }
-}
+	    @Override
+	    public int countFilteredVacationDetails(String status, String employmentType, Long departmentId, Long positionId, String vacationTypeName, String searchKeyword) {
+	        return vacMapper.countFilteredVacationDetails(status, employmentType, departmentId, positionId, vacationTypeName, searchKeyword);
+	    }
+	}

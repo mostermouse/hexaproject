@@ -132,6 +132,31 @@
 		SELECT status FROM employee WHERE employment_type = '일용직'
 	</select>
 	
+	<!-- 일용직 근태 관리 리스트 --> 
+	<select id="getDayWorkerAttendance" resultType="org.spring.domain.attendance.model.AttendanceEntity">
+		SELECT
+		    a.employee_id,
+		    e.korean_name,
+		    e.department_id,
+		    e.position_id,
+		    a.attendance_id,
+		    a.input_date,
+		    a.feild_or_project_id,
+		    f.name,
+		    a.amount
+		FROM
+		    attendance a
+		JOIN
+		    employee e ON e.employee_id = a.employee_id
+		JOIN
+		    feild_or_project f ON a.feild_or_project_id = f.feild_or_project_id
+		<where>
+		a.employee_id = #{employeeId}
+		</where>
+		    
+	</select>
+	
+	
 	<!-- <update id="updateFeildOrProject">
 		
 	</update>

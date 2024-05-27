@@ -70,5 +70,12 @@ public class AttendanceImpl implements AttendanceService {
 	}
 
 
+	@Override
+	public List<AttendanceEntity> getDayWorkerAttendance(Long employeeId) {
+		log.info("getDayWorkerAttendance : " + mapper.getDayWorkerAttendance(employeeId));
+		return mapper.getDayWorkerAttendance(employeeId);
+	}
+
+
 
 }

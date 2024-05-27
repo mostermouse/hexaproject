@@ -183,24 +183,26 @@ span.updown span.down {
 <script type="text/javascript">
 	$(document).ready(
 			function() {
-
+				// "전체검색" 버튼 클릭 시 동작
 				$("#btnSrchAll").click(function() {
 					location.replace("/dayWorkerMnt");
 					return;
 				});
 
+				// "검색" 버튼 클릭 시 동작
 				$("#searchButton").click(function() {
 					var searchKeyword = $('#searchKeyword').val();
-					if (searchKeyword === '검색어 입력') {
+					if (searchKeyword === '検索語入力') {
 						searchKeyword = '';
 					}
 					if (searchKeyword.trim() === '') {
-						alert("검색어를 입력해주세요.");
+						alert("検索語を入力してください。");
 						return false;
 					}
 					return true;
 				});
 
+				// "전체선택" 체크박스 클릭 시 동작
 				$("#checkAll").click(
 						function() {
 							$('input[name="employeeId"]').prop('checked',
@@ -214,6 +216,7 @@ span.updown span.down {
 							}
 						});
 
+				// 개별 체크박스 클릭 시 동작
 				$('input[name="employeeId"]').click(function() {
 					var row = $(this).closest('tr');
 					if ($(this).prop('checked')) {
@@ -224,17 +227,15 @@ span.updown span.down {
 					updateSelectAllCheckbox();
 				});
 
+				// "저장" 버튼 클릭 시 동작
 				$("#saveButton").click(function(event) {
 					event.preventDefault(); // 폼의 기본 제출 동작을 막음
-
-					// 기존에 추가된 숨겨진 필드 삭제
-					$("input[name='selectedEmployeeIds']").remove();
 
 					// 체크된 사원의 employeeId 값을 수집
 					var selectedEmployeeIds = [];
 					$('input[name="employeeId"]:checked').each(function() {
 						var employeeId = $(this).val();
-						if (employeeId && employeeId !== '선택하세요.') {
+						if (employeeId && employeeId !== '選択してください。') {
 							selectedEmployeeIds.push(employeeId);
 						}
 					});
@@ -242,29 +243,58 @@ span.updown span.down {
 					console.log(selectedEmployeeIds); // 선택된 employeeId 값들을 콘솔에 출력
 
 					if (selectedEmployeeIds.length === 0) {
-						alert("유효한 사원을 선택해주세요.");
+						alert("사원을 선택해주세요.");
 						return;
+					} else {
+						alert("등록 완료 했습니다.");
 					}
-
-					// 수집된 employeeId 값을 숨겨진 필드로 추가
-					$('<input>').attr({
-						type : 'hidden',
-						name : 'selectedEmployeeIds',
-						value : selectedEmployeeIds.join(',')
-					}).appendTo('#workerForm');
 
 					// 폼 제출
 					$('#workerForm').submit();
 				});
 
+				// 모달 열기 버튼 클릭 시 이벤트 처리
+				$("#modal_btn").click(function() {
+					$("#myModal").css("display", "block");
+				});
+
+				// 모달 닫기 버튼 클릭 시 이벤트 처리
+				$(".close").click(function() {
+					$("#myModal").css("display", "none");
+				});
+
+				// 모달 외부 클릭 시 모달 닫기
+				$(window).click(function(event) {
+					if (event.target.id === "myModal") {
+						$("#myModal").css("display", "none");
+					}
+				});
+
+				// 출석 모달 열기 버튼 클릭 시 이벤트 처리
+				$("#attendance_modal_btn").click(function() {
+					$("#attModal").css("display", "block");
+				});
+
+				// 모달 닫기 버튼 클릭 시 이벤트 처리
+				$(".close").click(function() {
+					$(this).closest('.modal').css("display", "none");
+				});
+
+				// 모달 외부 클릭 시 모달 닫기
+				$(window).click(function(event) {
+					if ($(event.target).hasClass('modal')) {
+						$(event.target).css("display", "none");
+					}
+				});
 			});
 
-	// 상태별(재직, 퇴직) select 박스에서 해당 사원으로 보여줌
+	// 상태별(재직, 퇴직) select 박스에서 해당 사원으로 필터링
 	function filterByStatus() {
 		var status = document.getElementById("statusSelect").value;
 		window.location.href = "/dayWorkerMnt?status=" + status;
 	}
 
+	// 필드 또는 프로젝트 업데이트
 	function updateFeildOrProject(button) {
 		var buttonText = button.innerText;
 		var span = button.parentElement.previousElementSibling;
@@ -286,6 +316,7 @@ span.updown span.down {
 		}
 	}
 
+	// 전체 선택 체크박스 업데이트
 	function updateSelectAllCheckbox() {
 		var allChecked = true;
 		$('input[name="employeeId"]').each(function() {
@@ -296,22 +327,29 @@ span.updown span.down {
 		});
 		$('#checkAll').prop('checked', allChecked);
 	}
+
+	// 출석 모달 열기
+	var selectedEmployeeId; // 전역 변수로 선택된 사원번호를 저장할 변수
+
+	function openAttendanceModal(employeeId) {
+		selectedEmployeeId = employeeId; // 선택된 사원번호를 전역 변수에 저장
+		alert(selectedEmployeeId);
+		window.location.href = "/dayWorkerAttendanceList?selectedEmployeeId="
+				+ selectedEmployeeId;
+	}
 </script>
 
 <div id="content">
 	<div class="table-container">
 		<div class="header-container">
-			<img
-				src="<%=request.getContextPath()%>/resources/images/contentimages/dayWorkerMnt.png"
-				width="50" height="50">
-			<h1>일용직 근무기록/관리</h1>
+			<h1>日雇い勤務記録/管理</h1>
 		</div>
 		<hr>
 
 		<div class="search-container" style="margin-top: 50px;">
 			<form action="/dayWorkerMnt" method="get" style="display: flex;">
 				<input name="searchKeyword" id="searchKeyword" type="text"
-					placeholder="검색어 입력">
+					placeholder="検索語入力">
 				<button style="background-color: transparent; border: none;"
 					id="searchButton" type="submit">
 					<img
@@ -319,10 +357,10 @@ span.updown span.down {
 						alt="Search">
 				</button>
 			</form>
-			<input name="btnSrchAll" id="btnSrchAll" type="button" value="전체보기"
+			<input name="btnSrchAll" id="btnSrchAll" type="button" value="全体表示"
 				class="all-button"> <select id="statusSelect"
 				onchange="filterByStatus()" class="reginput-select">
-				<option>상태별</option>
+				<option>状態別</option>
 				<c:forEach var="status" items="${statuslist}">
 					<option value="${status.status}">${status.status}</option>
 				</c:forEach>
@@ -334,11 +372,11 @@ span.updown span.down {
 				<table class="day-worker-table" border="1">
 					<tr class="empRegister-head">
 						<th style="width: 20px;"><input type="checkbox" id="checkAll"></th>
-						<th>구분</th>
-						<th>사원번호</th>
-						<th>성명</th>
-						<th>부서</th>
-						<th>근무기록</th>
+						<th>区分</th>
+						<th>社員番号</th>
+						<th>氏名</th>
+						<th>部署</th>
+						<th>勤務記録</th>
 					</tr>
 					<c:forEach items="${list}" var="dayWorker">
 						<tr>
@@ -355,37 +393,39 @@ span.updown span.down {
 			</form>
 			<div class="title-table-right">
 				<form>
-					<table class="empRegisterblack"
-						style="margin-bottom: 20px; width: 400px;">
+					<table class="day-worker-form-table" style="width: 400px;">
 						<tr style="height: 20px;">
-	                        <td style="width: 110px;">근무일자</td>
-	                        <td><input type="date" name="inputDate" id="workDate"
-	                            class="reginput-select"></td>
-	                    </tr>
-	                    <tr>
-	                        <td>현장/프로젝트</td>
-	                        <td colspan="2">
-	                            <div class="button-container1" style="text-align: left;">
-	                                <select name="feildOrProjectId" id="inputFeildOrProject"
-	                                    class="reginput-select" style="width: 60%; margin-right: 32px;">
-	                                    <option>선택하세요.</option>
-	                                    <c:forEach var="feildOrProject" items="${feildOrProjectList}">
-	                                        <option value="${feildOrProject.feildOrProjectId}">${feildOrProject.name}</option>
-	                                    </c:forEach>
-	                                </select>
-	                                <button id="modal_btn" type="button" class="all-button">목록관리</button>
-	                            </div>
-	                        </td>
-	                    </tr>
-	                    <tr>
-	                        <td>일당</td>
-	                        <td colspan="2"><input type="text" name="amount" class="reginputhide" placeholder="일당을 입력해주세요" style="width: 80%;"><span>원</span></td>
-	                    </tr>
+							<td style="width: 110px;">勤務日</td>
+							<td><input type="date" name="inputDate" id="workDate"
+								class="reginput-select"></td>
+						</tr>
+						<tr>
+							<td>現場/プロジェクト</td>
+							<td colspan="2">
+								<div class="button-container1" style="text-align: left;">
+									<select name="feildOrProjectId" id="inputFeildOrProject"
+										class="reginput-select"
+										style="width: 50%; margin-right: 32px; margin-right: auto;">
+										<option>選択してください。</option>
+										<c:forEach var="feildOrProject" items="${feildOrProjectList}">
+											<option value="${feildOrProject.feildOrProjectId}">${feildOrProject.name}</option>
+										</c:forEach>
+									</select>
+									<button id="modal_btn" type="button" class="all-button">リスト管理</button>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>日割</td>
+							<td colspan="2"><input type="text" name="amount"
+								class="reginputhide" placeholder="日割りを入力してください"
+								style="width: 80%; text-align: right;"><span>円</span></td>
+						</tr>
 					</table>
 				</form>
-				<div class=divbtnsml style="margin-right: 120px;">
-					<button type="submit" value="저장">저장</button>
-					<button class="cancel-btn" type="reset" value="내용 지우기">내용 지우기</button>
+				<div class=divbtnsml style="margin-right: 120px; margin-top: 20px;">
+					<button type="submit" value="저장">貯蔵</button>
+					<button class="cancel-btn" type="reset" value="内容の消去">内容の消去</button>
 				</div>
 			</div>
 		</div>
@@ -403,7 +443,7 @@ span.updown span.down {
 		<!-- 모달 내용 -->
 		<div class="w_219">
 			<ul class="title">
-				<li>현장/프로젝트 관리</li>
+				<li>現場/プロジェクト管理</li>
 			</ul>
 			<!-- 현장/프로젝트 목록 -->
 			<div id="displayContent" class="displayContent">
@@ -419,8 +459,8 @@ span.updown span.down {
 								</a>
 							</span>
 						</span> <span class="fpname p_t5"> ${feildOrProject.name}</span> <span
-							class="m_d p_t5 p_r5"> <a onclick="$.fn.modifyButton()">수정</a>
-								| <a onclick="$.fn.deleteButton()">삭제</a>
+							class="m_d p_t5 p_r5"> <a onclick="$.fn.modifyButton()">修整</a>
+								| <a onclick="$.fn.deleteButton()">削除</a>
 						</span>
 						</li>
 					</c:forEach>
@@ -428,13 +468,13 @@ span.updown span.down {
 			</div>
 
 			<ul class="last">
-				<li><img src=""> <a href="" onclick="$.fn.addButton()">추가하기</a>
+				<li><img src=""> <a href="" onclick="$.fn.addButton()">追加する</a>
 				</li>
 			</ul>
 			<ul>
-				<li>* 설정하신 순서대로 반영됩니다.</li>
+				<li>* 設定した順に反映されます。</li>
 				<li class="footer c"><span id="resetButton" class="anchor">
-						<button style="width: 87px; height: 30px;">초기화</button>
+						<button style="width: 87px; height: 30px;">初期化</button>
 				</span></li>
 			</ul>
 		</div>
@@ -442,25 +482,21 @@ span.updown span.down {
 	</div>
 </div>
 
+<div id="attModal" class="modal">
+	<div class="modal-content">
+		<span class="close">&times;</span>
+		<div class="pop01" style="width: 920px;">
+			<ul class="title">
+				<li>사원별 근무기록</li>
+			</ul>
+			<ul class="part p_t10">
+				<li class="bold font12"><span>●성명</span> <span>${dayworkerAttlist.koreanName}</span>
+				</li>
+			</ul>
+			<ul></ul>
+		</div>
+	</div>
+</div>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		// 모달 열기 버튼 클릭 시 이벤트 처리
-		$("#modal_btn").click(function() {
-			$("#myModal").css("display", "block");
-		});
 
-		// 모달 닫기 버튼 클릭 시 이벤트 처리
-		$(".close").click(function() {
-			$("#myModal").css("display", "none");
-		});
-
-		// 모달 외부 클릭 시 모달 닫기
-		$(window).click(function(event) {
-			if (event.target.id === "myModal") {
-				$("#myModal").css("display", "none");
-			}
-		});
-	});
-</script>
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>

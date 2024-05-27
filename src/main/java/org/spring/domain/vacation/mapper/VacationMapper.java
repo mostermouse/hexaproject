@@ -34,6 +34,4 @@ public interface VacationMapper {
 	                                     @Param("positionId") Long positionId,
 	                                     @Param("vacationTypeName") String vacationTypeName,
 	                                     @Param("searchKeyword") String searchKeyword);
-
-	    List<VacationDetailsEntity> getVacationDetailsByEmployeeId(@Param("employeeId") Long employeeId);
 	}

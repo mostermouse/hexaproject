@@ -97,7 +97,7 @@ public class WageController {
 		//TODO 비어있음
 		return "salaryManagement/paymentPayItemPart";
 	}
-	@GetMapping("/payment/paymentMnt") //급여입력 일용직
+	@GetMapping("/payment/paymentMnt") //급여입력
 	public String paymentMnt(Model model) {
 		//TODO wageList 대성이형 이거 옮겨놔 
 		return "salaryManagement/paymentMnt";

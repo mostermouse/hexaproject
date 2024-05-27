@@ -23,7 +23,7 @@
 		<!-- <property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521/XE"></property> -->
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521/XE" />
 		<property name="username" value="system" />
-		<property name="password" value="pass" />
+		<property name="password" value="1234" />
 	</bean>
 
 	<!-- HikariCP configuration -->
@@ -52,7 +52,7 @@
 	<mybatis-spring:scan base-package="org.spring.domain.vacation.mapper" />
 	<mybatis-spring:scan base-package="org.spring.domain.attendance.mapper" />
 	<mybatis-spring:scan base-package="org.spring.domain.wage.mapper" />
-
+	<mybatis-spring:scan base-package="org.spring.domain.attendance.mapper" />
 
 
 	<!-- Component Scan -->

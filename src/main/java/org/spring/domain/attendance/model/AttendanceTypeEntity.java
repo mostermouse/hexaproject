@@ -12,6 +12,7 @@ public class AttendanceTypeEntity extends AttendanceGroupEntity {
 	private Long attendanceTypeId;
 	private String attendanceTypeName;
 	private String unit;
+	private Long attendaceGroupId;
 	private Long vacationTypeId;
-	private Character usage;
+	private Boolean usage;
 }

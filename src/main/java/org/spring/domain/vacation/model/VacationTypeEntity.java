@@ -20,6 +20,6 @@ public class VacationTypeEntity extends EmployeeEntity {
 	private LocalDate applyPeriod1;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")	
 	private LocalDate applyPeriod2;
-	private Character usage;
+	private Boolean usage;
 
 }

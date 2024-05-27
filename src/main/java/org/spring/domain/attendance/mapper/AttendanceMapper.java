@@ -1,7 +1,7 @@
 package org.spring.domain.attendance.mapper;
 
 import java.util.List;
-import org.apache.ibatis.annotations.Mapper;
+
 import org.spring.domain.attendance.model.AttendanceEntity;
 import org.spring.domain.attendance.model.AttendanceTypeEntity;
 import org.spring.domain.employee.model.DepartmentEntity;

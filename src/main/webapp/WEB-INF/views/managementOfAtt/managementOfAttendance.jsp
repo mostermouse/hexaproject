@@ -10,6 +10,7 @@
             <h1>근태기록/관리</h1>
         </div>
         <hr>
+        
         <div class="search-container">
             <div class="title-table-right">
                 <select class="reginput-select">

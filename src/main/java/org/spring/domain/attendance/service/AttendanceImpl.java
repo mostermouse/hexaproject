@@ -64,7 +64,7 @@ public class AttendanceImpl implements AttendanceService {
 		        	AttendanceEntity dayWorkerEntity = new AttendanceEntity();
 		        	dayWorkerEntity.setEmployeeId(employeeId);
 		        	dayWorkerEntity.setInputDate(inputDate);
-		        	dayWorkerEntity.setFeildOrProjectIdLong(fieldOrProjectId);
+		        	dayWorkerEntity.setFeildOrProjectId(fieldOrProjectId);
 		        	dayWorkerEntity.setAmount(amount);
 		            mapper.saveDayWorker(dayWorkerEntity);
 	}

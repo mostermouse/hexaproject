@@ -25,8 +25,12 @@ public interface AttMapper {
 	// 일용직 리스트
 	List<EmployeeEntity> getDayWorkerList(DepartmentEntity departmentEntity);
 	
+	// 일용직 근태 관리 리스트
+	List<AttendanceEntity> getDayWorkerAttendance(Long employeeId);
+	
 	// 일용직 근무기록 저장
 	void saveDayWorker(AttendanceEntity dayWorkerEntity);
+	
 
 	
 }

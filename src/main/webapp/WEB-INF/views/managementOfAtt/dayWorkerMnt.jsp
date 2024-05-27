@@ -224,11 +224,16 @@ span.updown span.down {
 					updateSelectAllCheckbox();
 				});
 
-				$("#saveButton").click(function(event) {
-					event.preventDefault(); // 폼의 기본 제출 동작을 막음
-
-					// 기존에 추가된 숨겨진 필드 삭제
-					$("input[name='selectedEmployeeIds']").remove();
+/*  달력
+    $("#workDate").datepicker({
+        dateFormat : "yy-mm-dd",
+        onSelect : function(dateText, inst) {
+            $(this).val(dateText);
+        }
+    });
+*/
+    $("#saveButton").click(function(event) {
+        event.preventDefault(); // 폼의 기본 제출 동작을 막음
 
 					// 체크된 사원의 employeeId 값을 수집
 					var selectedEmployeeIds = [];
@@ -246,12 +251,12 @@ span.updown span.down {
 						return;
 					}
 
-					// 수집된 employeeId 값을 숨겨진 필드로 추가
-					$('<input>').attr({
-						type : 'hidden',
-						name : 'selectedEmployeeIds',
-						value : selectedEmployeeIds.join(',')
-					}).appendTo('#workerForm');
+        if (selectedEmployeeIds.length === 0) {
+            alert("사원을 선택해주세요.");
+            return;
+        } else {
+			alert("등록 완료 했습니다.");        	
+        }
 
 					// 폼 제출
 					$('#workerForm').submit();
@@ -270,32 +275,57 @@ span.updown span.down {
 		var span = button.parentElement.previousElementSibling;
 		var name = span.innerText;
 
-		if (buttonText === '修整') {
-			var input = document.createElement("input");
-			input.type = "text";
-			input.value = name;
-			span.innerHTML = "";
-			span.appendChild(input);
-			button.innerText = '保存';
-			alert('修正を完了するには、[保存] をクリックしてください。');
-		} else if (buttonText === '保存') {
-			var newName = span.firstChild.value;
-			span.innerHTML = newName;
-			button.innerText = '修整';
-			alert('저장되었습니다: ' + newName);
-		}
-	}
+ //해당 사원 번호로 근태관리 리스트를 보여줌
+function attendanceMtn() {
+    // 모달을 표시하는 코드
+    $("#attModal").css("display", "block");
+}
 
-	function updateSelectAllCheckbox() {
-		var allChecked = true;
-		$('input[name="employeeId"]').each(function() {
-			if (!$(this).prop('checked')) {
-				allChecked = false;
-				return false;
-			}
-		});
-		$('#checkAll').prop('checked', allChecked);
-	}
+function updateFeildOrProject(button) {
+    var buttonText = button.innerText;
+    var span = button.parentElement.previousElementSibling;
+    var name = span.innerText;
+
+    if (buttonText === '수정') {
+        var input = document.createElement("input");
+        input.type = "text";
+        input.value = name;
+        span.innerHTML = "";
+        span.appendChild(input);
+        button.innerText = '저장';
+        alert('수정을 완료하려면 "저장"을 클릭하세요.');
+    } else if (buttonText === '저장') {
+        var newName = span.firstChild.value;
+        span.innerHTML = newName;
+        button.innerText = '수정';
+        alert('저장되었습니다: ' + newName);
+    }
+}
+
+
+
+function updateSelectAllCheckbox() {
+    var allChecked = true;
+    $('input[name="employeeId"]').each(function() {
+        if (!$(this).prop('checked')) {
+            allChecked = false;
+            return false; 
+        }
+    });
+    $('#checkAll').prop('checked', allChecked);
+}
+
+
+var selectedEmployeeId; // 전역 변수로 선택된 사원번호를 저장할 변수
+
+function openAttendanceModal(employeeId) {
+    selectedEmployeeId = employeeId; // 선택된 사원번호를 전역 변수에 저장
+    alert(selectedEmployeeId);
+    window.location.href ="/dayWorkerAttendanceList?selectedEmployeeId="+selectedEmployeeId;
+    
+    $("#attModal").css("display", "block"); // 모달 열기
+}
+
 </script>
 
 <div id="content">
@@ -505,6 +535,23 @@ span.updown span.down {
 	</div>
 </div>
 
+<div id="attModal" class="modal">
+      <div class="modal-content">
+          <span class="close">&times;</span>
+          <div class="pop01" style="width: 920px;">
+              <ul class="title">
+              	<li>사원별 근무기록</li>
+              </ul>
+              <ul class="part p_t10">
+              		<li class="bold font12">
+              			<span>●성명</span>
+              			<span>${dayworkerAttlist.koreanName}</span>
+              		</li>
+              </ul>
+              <ul></ul>
+          </div>
+      </div>
+</div>
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -518,12 +565,12 @@ span.updown span.down {
 			$("#myModal").css("display", "none");
 		});
 
-		// 모달 외부 클릭 시 모달 닫기
-		$(window).click(function(event) {
-			if (event.target.id === "myModal") {
-				$("#myModal").css("display", "none");
-			}
-		});
-	});
+    // 모달 외부 클릭 시 모달 닫기
+    $(window).click(function(event) {
+        if (event.target.id === "myModal") {
+            $("#myModal").css("display", "none");
+        }
+    });
+});
 </script>
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>

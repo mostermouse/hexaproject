@@ -33,27 +33,28 @@
 	text-align: left;
 }
 
-.button-container {
-	display: flex;
-	flex-wrap: wrap;
+.button-container-right {
+	margin-left: auto;
 	gap: 10px;
 }
 
 .floating-container button {
-	flex: 1 1 calc(33.333% - 10px);
-	background-color: #007bff;
-	border: none;
-	color: #fff;
-	padding: 10px 20px;
-	border-radius: 10px;
-	cursor: pointer;
-	transition: background-color 0.3s;
-	width: 40px;
-	height: 45px;
+    width: 90px;
+    height: 45px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 5px;
+    box-sizing: border-box;
+    font-size: 12px;
 }
 
 .floating-container button:hover {
-	background-color: #0056b3;
+    background-color: #0056b3;
 }
 
 .floating-table {
@@ -76,9 +77,32 @@
 	vertical-align: middle
 }
 
+.button-container-top {
+    display: flex;
+    justify-content: space-between; /* 요소들을 공간에 맞게 배치 */
+    margin-bottom: 5px; /* 위아래 간격 조정 */
+}
+
+.button-container-bottom {
+    display: flex;
+    justify-content: flex-start; /* 요소들을 왼쪽에 배치 */
+    
+}
+
+.header-container1 {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 10px 0;
+}
+
 .header-container {
 	display: flex;
-	align-items: center; /* 이미지와 텍스트를 세로 방향으로 가운데 정렬 */
+	align-items: center;
+}
+
+.header-container h5 {
+	margin-right: auto;
 }
 
 .header-container img {
@@ -125,7 +149,7 @@
 	border-radius: 10px;
 	cursor: pointer;
 	transition: background-color 0.3s;
-	margin:0 2px;
+	margin: 0 2px;
 }
 
 .divbtnsml button:hover {
@@ -401,16 +425,16 @@
 	border-right: 0px;
 }
 
-.empRegisterblack td, .empRegisterblack th{
+.empRegisterblack td, .empRegisterblack th {
 	font-family: Arial, sans-serif;
 	font-size: 14px;
 	overflow: hidden;
 	padding: 10px 5px;
 	word-break: normal;
 	min-height: 50px;
-	border-color:gray;
-	border-style:solid;
-	border-width:1px;
+	border-color: gray;
+	border-style: solid;
+	border-width: 1px;
 	border-left: 0px;
 	border-right: 0px;
 }
@@ -437,6 +461,15 @@
 .reginputhide {
 	border: none;
 	width: 95%;
+}
+
+.reginputhidepay {
+	border: none;
+	width: calc(100% - 30px);
+}
+
+.reginputhidepay + span {
+	margin-left: 5px
 }
 
 .reginputhide1 {
@@ -623,3 +656,79 @@
 	cursor: pointer; /* 커서 포인터로 변경 */
 	border-radius: 5px; /* 둥근 모서리 */
 }
+
+.form-container {
+	display: flex;
+}
+
+.red-box, .grey-box {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 7px;
+	padding-right: 7px;
+	display: flex;
+	align-items: center;
+}
+
+.red-box {
+	background-color: red;
+	color: white;
+}
+
+.grey-box {
+	background-color: #a6a6a6;
+	color: black;
+}
+
+.red-box label, .grey-box label {
+	margin-right: 10px;
+}
+
+.red-box select, .grey-box input, .grey-box select {
+	margin-right: 10px;
+}
+
+/* 급여 종합 정보 사각형 */
+.rectangle-container {
+    display: flex;
+}
+
+.rectangle {
+    width: calc(25% - 15px);
+    height: 50px;
+    margin-right: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    border-radius: 10px;
+}
+
+.gray {
+    background-color: gray;
+    color: white;
+}
+
+.sky-blue {
+    background-color: #9dd6ee;
+    color: white;
+}
+
+.orange {
+    background-color: #ff7594;
+    color: white;
+}
+
+.dark-gray {
+    background-color: darkgray;
+    color: white;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+

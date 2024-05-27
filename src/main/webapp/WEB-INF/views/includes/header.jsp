@@ -133,11 +133,11 @@
 	<div id="payzon-14" class="payzon14">
 		<img src="<%= request.getContextPath() %>/resources/images/payzon_14.jpg" width="171" height="30"
 			alt=""
-			onclick="window.location.href='<%=request.getContextPath()%>/diligence/diligenceMnt'">
+			onclick="window.location.href='<%=request.getContextPath()%>/diligenceMnt'">
 		<!-- 근태기록/관리 -->
 		<!-- managementOfAttendance.jsp -->
 		<div class="menu-item" id="payzon-19"
-			onclick="window.location.href='<%=request.getContextPath()%>/diligence/diligenceMnt'">
+			onclick="window.location.href='<%=request.getContextPath()%>/diligenceMnt'">
 			<img src="<%= request.getContextPath() %>/resources/images/payzon_19.jpg" alt="Item 19">
 		</div>
 		<!-- 근태 조회 -->
@@ -155,7 +155,7 @@
 		<!-- 일용근무기록/관리 -->
 		<!-- dayWorkerMnt.jsp -->
 		<div class="menu-item" id="payzon-30"
-			onclick="window.location.href='<%=request.getContextPath()%>/diligence/dayWorkerMnt'">
+			onclick="window.location.href='<%=request.getContextPath()%>/dayWorkerMnt'">
 			<img src="<%= request.getContextPath() %>/resources/images/payzon_30.jpg" alt="Item 30">
 		</div>
 		<!-- 일용 근무 조회 -->

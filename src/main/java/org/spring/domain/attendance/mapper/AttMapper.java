@@ -15,17 +15,18 @@ public interface AttMapper {
     );
     // 근태 리스트
     List<AttendanceEntity> getEmployeeAttendanceList();
-	
 
-    // 일용직 리스트
-	/* List<EmployeeEntity> getDayWorkerList(String srchKwrd, String status); */
-
+    // 현장/프로젝트 리스트
 	List<FeildOrProjectIdEntity> selectFeildOrProject();
 	
-	/* List<EmployeeEntity> getEmployeeStatus(String status); */
+	// 상태(재직, 퇴직) 리스트
 	List<EmployeeEntity> getDayWorkertatus();
 
+	// 일용직 리스트
 	List<EmployeeEntity> getDayWorkerList(DepartmentEntity departmentEntity);
+	
+	// 일용직 근무기록 저장
+	void saveDayWorker(AttendanceEntity dayWorkerEntity);
 
 	
 }

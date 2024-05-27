@@ -86,8 +86,10 @@
 		    
     </select>
 	
-	<select id="getDayWorkerList" parameterType="map" resultType="org.spring.domain.employee.model.DepartmentEntity">
-    SELECT e.employee_id, e.employment_type, e.korean_name, e.english_name, e.hire_date, e.resignation_date, e.department_id, e.position_id, e.foreign_or_domestic, e.resident_number1, e.resident_number2, e.address, e.tel_phone, e.mobile, e.email, e.sns, e.other_details, e.status, d.department_name
+	<select id="getDayWorkerList" parameterType="org.spring.domain.employee.model.DepartmentEntity" resultType="org.spring.domain.employee.model.DepartmentEntity">
+    SELECT e.employee_id, e.employment_type, e.korean_name, e.english_name, e.hire_date, e.resignation_date, 
+           e.department_id, e.position_id, e.foreign_or_domestic, e.resident_number1, e.resident_number2, 
+           e.address, e.tel_phone, e.mobile, e.email, e.sns, e.other_details, e.status, d.department_name
     FROM employee e
     JOIN department d ON e.department_id = d.department_id
     <where>
@@ -95,23 +97,22 @@
         <if test="status != null and status != ''">
             AND e.status = #{status}
         </if>
-        <if test="employeeId != null and employeeId != ''">
-            AND (
-                e.employee_id LIKE CONCAT('%', #{employeeId}, '%')
-                OR e.korean_name LIKE CONCAT('%', #{koreanName}, '%')
-                OR d.department_name LIKE CONCAT('%', #{departmentName}, '%')
-            )
+        <if test="employeeId != null">
+            AND e.employee_id = #{employeeId}
         </if>
-        <!-- 널 값 검사를 추가 -->
         <if test="koreanName != null and koreanName != ''">
-            AND e.korean_name LIKE CONCAT('%', #{koreanName}, '%')
+            AND e.korean_name LIKE '%' || #{koreanName} || '%'
         </if>
         <if test="departmentName != null and departmentName != ''">
-            AND d.department_name LIKE CONCAT('%', #{departmentName}, '%')
+            AND d.department_name LIKE '%' || #{departmentName} || '%'
         </if>
     </where>
     ORDER BY e.employee_id DESC
 </select>
+
+
+
+
 
 	
 	<select id="selectFeildOrProject" resultType="org.spring.domain.attendance.model.FeildOrProjectIdEntity">
@@ -134,8 +135,9 @@
 	<!-- <update id="updateFeildOrProject">
 		
 	</update>
-	
-	<inert id="insertDayWorkerRegistry" >
-		INSERT INTO  () VALUES 
-	</inert> -->
+	-->
+	 <insert id="saveDayWorker" parameterType="org.spring.domain.attendance.model.AttendanceEntity">
+        INSERT INTO attendance (attendance_id, employee_id, input_date, feild_or_project_id, amount)
+        VALUES (attendance_seq.nextval, #{employeeId}, #{inputDate}, #{feildOrProjectId}, #{amount})
+    </insert>
 </mapper>

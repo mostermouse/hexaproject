@@ -24,8 +24,8 @@ public class EmployeeEntity {
     private LocalDate hireDate;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate resignationDate;
-    private Long departmentId;
-    private Long positionId;
+    private Long  departmentId;
+    private Long  positionId;
     private String foreignOrDomestic;
     private String residentNumber1;
     private String residentNumber2;

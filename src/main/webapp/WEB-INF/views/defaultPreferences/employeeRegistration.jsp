@@ -93,7 +93,7 @@
 					<th class="empRegister-head1"><span style="color: #FE0000">*</span><label
 						for="employmentType">고용 형태</label></th>
 					<th class="empRegister-body"><select id="employmentType"
-						name="employmentType" class="reginput-select">
+						name="EmployeeEntity.employmentType" class="reginput-select">
 							<option value="">선택해주세요.</option>
 							<option value="정규직">정규직</option>
 							<option value="계약직">계약직</option>
@@ -107,26 +107,26 @@
 					<td class="empRegister-head1"><span style="color: #FE0000">*</span><label
 						for="koreanName">한글 이름</label></td>
 					<td class="empRegister-body"><input type="text"
-						id="koreanName" name="koreanName" class="reginputhide" required></td>
+						id="koreanName" name="EmployeeEntity.koreanName" class="reginputhide" required></td>
 					<td class="empRegister-head1"><label for="englishName">영문
 							이름</label></td>
 					<td class="empRegister-body"><input type="text"
-						id="englishName" name="englishName" class="reginputhide"></td>
+						id="englishName" name="EmployeeEntity.englishName" class="reginputhide"></td>
 				</tr>
 				<tr>
 					<td class="empRegister-head1"><span style="color: #FE0000">*</span><label
 						for="hireDate">입사일</label></td>
 					<td class="empRegister-body"><input type="date" id="hireDate"
-						name="hireDate" class="reginput-select"></td>
+						name="EmployeeEntity.hireDate" class="reginput-select"></td>
 					<td class="empRegister-head1"><label for="resignationDate">퇴사일</label></td>
 					<td class="empRegister-body"><input type="date"
-						id="resignationDate" name="resignationDate"
+						id="resignationDate" name="EmployeeEntity.resignationDate"
 						class="reginput-select"></td>
 				</tr>
 				<tr>
-					<td class="empRegister-head1"><label for="department">부서</label></td>
+					<td class="empRegister-head1"><label for="departmentName">부서</label></td>
 					<td class="empRegister-body"><select id="department"
-						name="department" class="reginput-select">
+						name="DepartmentEntity.departmentName" class="reginput-select">
 							<option value="">선택해주세요.</option>
 							<option value="사장실">사장실</option>
 							<option value="개발팀">개발팀</option>
@@ -137,8 +137,8 @@
 							<option value="기획전략팀">기획전략팀</option>
 					</select></td>
 					<td class="empRegister-head1"><label for="position">직위</label></td>
-					<td class="empRegister-body"><select id="position"
-						name="position" class="reginput-select">
+					<td class="empRegister-body"><select id="positionName"
+						name="PositionEntity.positionName" class="reginput-select">
 							<option value="">선택해주세요.</option>
 							<option value="이사">이사</option>
 							<option value="차장">차장</option>
@@ -154,45 +154,45 @@
 				<tr>
 					<td class="empRegister-head1"><label for="foreignOrDomestic">내/외국인</label></td>
 					<td class="empRegister-body"><select id="foreignOrDomestic"
-						name="foreignOrDomestic" class="reginput-select">
+						name="EmployeeEntity.foreignOrDomestic" class="reginput-select">
 							<option value="">선택해주세요.</option>
 							<option value="내국인">내국인</option>
 							<option value="외국인">외국인</option>
 					</select></td>
 					<td class="empRegister-head1"><label for="residentNumber1">주민등록번호</label></td>
 					<td class="empRegister-body"><input type="text"
-						id="residentNumber1" name="residentNumber1" class="reginput">-<input
-						type="text" id="residentNumber2" name="residentNumber2"
+						id="residentNumber1" name="EmployeeEntity.residentNumber1" class="reginput">-<input
+						type="text" id="residentNumber2" name="EmployeeEntity.residentNumber2"
 						class="reginput"></td>
 				</tr>
 				<tr>
 					<td class="empRegister-head2"><label for="address">주소</label></td>
 					<td class="empRegister-body" colspan="3"><input type="text"
-						id="address" name="address" class="reginputhide"></td>
+						id="address" name="EmployeeEntity.address" class="reginputhide"></td>
 				</tr>
 				<tr>
 					<td class="empRegister-head2"><label for="telPhone">전화번호</label></td>
 					<td class="empRegister-body"><input type="text" id="telPhone"
-						name="telPhone" class="reginputhide"></td>
+						name="EmployeeEntity.telPhone" class="reginputhide"></td>
 					<td class="empRegister-head2"><label for="mobile">휴대전화번호</label></td>
 					<td class="empRegister-body"><input type="text" id="mobile"
-						name="mobile" class="reginputhide"></td>
+						name="EmployeeEntity.mobile" class="reginputhide"></td>
 				</tr>
 				<tr>
 					<td class="empRegister-head2"><label for="email">이메일</label></td>
 					<td class="empRegister-body"><input type="email" id="email"
-						name="email" class="reginputhide"></td>
+						name="EmployeeEntity.email" class="reginputhide"></td>
 					<td class="empRegister-head2"><label for="sns">SNS</label></td>
 					<td class="empRegister-body"><input type="text" id="sns"
-						name="sns" class="reginputhide"></td>
+						name="EmployeeEntity.sns" class="reginputhide"></td>
 				</tr>
 				<tr>
 					<td class="empRegister-head2"><label for="otherDetails">기타
 							상세 정보</label></td>
 					<td class="empRegister-body"><input type="text"
-						id="otherDetails" name="otherDetails" class="reginputhide"></td>
+						id="otherDetails" name="EmployeeEntity.otherDetails" class="reginputhide"></td>
 					<td class="empRegister-head2"><label for="status">상태</label></td>
-					<td class="empRegister-body"><select id="status" name="status"
+					<td class="empRegister-body"><select id="status" name="EmployeeEntity.status"
 						class="reginput-select">
 							<option value="재직">재직</option>
 							<option value="퇴사">퇴사</option>

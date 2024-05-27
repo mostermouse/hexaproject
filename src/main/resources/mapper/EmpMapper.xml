@@ -67,9 +67,9 @@
     <!-- 사원등록 1페이지 -->
     <!-- Insert employee -->
     <insert id="insertEmployee" parameterType="org.spring.domain.employee.model.EmployeeEntity">
-        <!--<selectKey keyProperty="employeeId" resultType="Long" order="BEFORE">
+        <selectKey keyProperty="employeeId" resultType="Long" order="BEFORE">
             SELECT employee_seq.NEXTVAL FROM DUAL
-        </selectKey>-->
+        </selectKey>
         INSERT INTO employee (
         employee_id, employment_type, korean_name, english_name, hire_date, resignation_date, department_id, position_id,
         foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile, email, sns, other_details, status

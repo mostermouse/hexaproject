@@ -2,6 +2,7 @@ package org.spring.domain.employee.mapper;
 
 import java.util.List;
 
+import org.spring.domain.employee.controller.model.EmployeeRegistrationForm;
 import org.spring.domain.employee.model.CareerEntity;
 import org.spring.domain.employee.model.DegreeEntity;
 import org.spring.domain.employee.model.DependentsEntity;
@@ -27,11 +28,15 @@ public interface EmpMapper {
     public List<WageEntity> getYearWage(Long year);
     
     // 사원등록 1페이지
-    public void insertEmployee(EmployeeEntity employeeEntity, 
-    		DependentsEntity dependentsEntity, 
-    		DegreeEntity degreeEntity, 
-    		CareerEntity careerEntity, 
-    		MilitaryServiceEntity militaryServiceEntity);
+    void registerEmployee(EmployeeRegistrationForm registrationForm);
+    void insertEmployee(EmployeeEntity employeeEntity);
 
-   
+    void insertDependent(DependentsEntity dependentsEntity);
+
+    void insertDegree(DegreeEntity degreeEntity);
+
+    void insertCareer(CareerEntity careerEntity);
+
+    void insertMilitaryService(MilitaryServiceEntity militaryServiceEntity);
+
 }

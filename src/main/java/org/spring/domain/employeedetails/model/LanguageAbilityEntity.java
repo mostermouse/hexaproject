@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.spring.domain.employee.model.EmployeeEntity;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -15,6 +16,7 @@ public class LanguageAbilityEntity extends EmployeeEntity {
     private String language;
     private String testName;
     private Long officialScore;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate acquisitionDate;
     private String readingAbility;
     private String writingAbility;

@@ -2,6 +2,7 @@ package org.spring.domain.employee.service;
 
 import java.util.List;
 
+import org.spring.domain.employee.controller.model.EmployeeRegistrationForm;
 import org.spring.domain.employee.controller.model.WageRecordRequest;
 import org.spring.domain.employee.model.CareerEntity;
 import org.spring.domain.employee.model.DegreeEntity;
@@ -29,9 +30,7 @@ public interface EmployeeService {
     long countAllEmployees();
     
     // 사원등록 1페이지
-    public void registerEmployee(EmployeeEntity employeeEntity, 
-    		DependentsEntity dependentsEntity, 
-    		DegreeEntity degreeEntity, 
-    		CareerEntity careerEntity, 
-    		MilitaryServiceEntity militaryServiceEntity);
+    void registerEmployee(EmployeeRegistrationForm registrationForm);
+
+
 }

@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Data
@@ -19,7 +20,9 @@ public class EmployeeEntity {
     private String employmentType;
     private String koreanName;
     private String englishName;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate hireDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate resignationDate;
     private Long departmentId;
     private Long positionId;

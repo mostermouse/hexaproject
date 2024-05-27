@@ -1,5 +1,6 @@
 package org.spring.domain.employee.controller;
 
+import org.spring.domain.employee.controller.model.EmployeeRegistrationForm;
 import org.spring.domain.employee.model.CareerEntity;
 import org.spring.domain.employee.model.DegreeEntity;
 import org.spring.domain.employee.model.DependentsEntity;
@@ -59,23 +60,12 @@ public class EmpController {
         return "defaultPreferences/employeeRegistration";
     }
 
-    @PostMapping("/employeeRegistration")
-    public String registerEmployee(
-            @ModelAttribute EmployeeEntity employeeEntity,
-            @ModelAttribute DependentsEntity dependentsEntity,
-            @ModelAttribute DegreeEntity degreeEntity,
-            @ModelAttribute CareerEntity careerEntity,
-            @ModelAttribute MilitaryServiceEntity militaryServiceEntity,
-            Model model) {
+    @PostMapping("/employeeregistration")
+    public String registerEmployee(@ModelAttribute EmployeeRegistrationForm registrationForm, Model model) {
+        employeeService.registerEmployee(registrationForm);
 
-        employeeService.registerEmployee(employeeEntity,
-                dependentsEntity,
-                degreeEntity,
-                careerEntity,
-                militaryServiceEntity);
-
-
-        return "redirect:/index";
+        log.info("register" + model.toString());
+        return "redirect:/";
     }
 
 

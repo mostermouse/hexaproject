@@ -9,12 +9,9 @@
 			emp.employee_id,
 			emp.korean_name,
 			dept.department_name,
-			pos.position_name,
-			att.attendance_id
+			pos.position_name
 		FROM
 			employee emp
-				JOIN
-			attendance att ON emp.employee_id = att.employee_id
 				JOIN
 			department dept ON emp.department_id = dept.department_id
 				JOIN

@@ -49,7 +49,7 @@
                     <thead>
                     <tr>
                         <th style="width: 50px;">입력일자</th>
-                        <th><input name="AttendanceEntity.inputDate" type="date" class="reginput-select" id="AttendanceEntity.inputDate" required></th>
+                        <th><input id="inputDate" name="inputDate" type="date" class="reginput-select" required></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -68,9 +68,9 @@
                     <tr>
                         <td>기간</td>
                         <td>
-                            <input name="startDate" type="date" class="reginput-select" id="startDate"
+                            <input id="startDate" name="startDate" type="date" class="reginput-select"
                                    onchange="calculateAttendanceTime()" required> ~
-                            <input name="endDate" type="date" class="reginput-select" id="endDate"
+                            <input id="endDate" name="endDate" type="date" class="reginput-select"
                                    onchange="calculateAttendanceTime()" required>
                         </td>
                     </tr>

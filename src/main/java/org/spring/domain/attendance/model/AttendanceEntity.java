@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class AttendanceEntity extends EmployeeEntity {
     private Long attendanceId;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate inputDate;
     private String attendanceTypeId;
     private Long feildOrProjectIdLong;

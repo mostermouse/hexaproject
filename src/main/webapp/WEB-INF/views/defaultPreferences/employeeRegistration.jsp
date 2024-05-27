@@ -79,6 +79,8 @@
 			action="${pageContext.request.contextPath}/employeeregistration"
 			method="post" onsubmit="return validateForm()">
 
+
+
 			<!-- Employee Table -->
 			<div class="header-container">
 				<h3 id="section2">기본정보</h3>
@@ -86,8 +88,8 @@
 			<table class="empRegister">
 				<tr>
 					<th class="empRegister-head1"><label for="employeeId">사원번호</label></th>
-					<th class="empRegister-body"><input type="text"
-						id="employeeId" name="employeeId" class="reginputhide" required></th>
+					<th class="empRegister-body"><input type="number"
+						id="employeeId" name="EmployeeEntity.employeeId" class="reginputhide" required></th>
 					<th class="empRegister-head1"><span style="color: #FE0000">*</span><label
 						for="employmentType">고용 형태</label></th>
 					<th class="empRegister-body"><select id="employmentType"
@@ -303,7 +305,7 @@
 				<!-- Career Table -->
 				<h3 id="section4">경력</h3>
 
-				<table class="empRegister1">
+				<table class="empRegister1"> <!-- 입사일 퇴사일 안눌려요 센빠이 -->
 					<thead>
 						<tr>
 							<th class="empRegister-head1">회사이름</th>

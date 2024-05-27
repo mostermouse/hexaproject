@@ -16,7 +16,7 @@ public class AttendanceEntity extends EmployeeEntity {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate inputDate;
     private String attendanceTypeId;
-    private Long feildOrProjectIdLong;
+    private Long feildOrProjectId;
     @DateTimeFormat(pattern = "yyyy-MM-dd")	
     private LocalDate startDate;
     @DateTimeFormat(pattern = "yyyy-MM-dd")	

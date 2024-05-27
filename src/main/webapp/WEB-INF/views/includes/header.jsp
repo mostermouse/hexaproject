@@ -31,7 +31,7 @@
 	<!-- 사원현황 -->
 	<!-- employeeMnt.jsp -->
 	<div id="payzon-04"
-		onclick="window.location.href='<%=request.getContextPath()%>/'">
+		onclick="window.location.href='<%=request.getContextPath()%>/employeeMnt'">
 		<img src="<%= request.getContextPath() %>/resources/images/payzon_04.jpg"  width="102" height="80"
 			alt="">
 	</div>
@@ -52,14 +52,14 @@
 	<!-- 급여입력/관리 -->
 	<!-- paymentMnt.jsp -->
 	<div id="payzon-07"
-		onclick="window.location.href='<%=request.getContextPath()%>/payment/paymentMnt'">
+		onclick="window.location.href='<%=request.getContextPath()%>/wageList'">
 		<img src="<%= request.getContextPath() %>/resources/images/payzon_07.jpg" width="117" height="80"
 			alt="">
 	</div>
 	<!-- 급여입력/관리(일용직) -->
 	<!-- paymentMntDayWorker.jsp -->
 	<div id="payzon-08"
-		onclick="window.location.href='<%=request.getContextPath()%>/payment/paymentMntDayWorker'">
+		onclick="window.location.href='<%=request.getContextPath()%>/paymentMntDayWorker'">
 		<img src="<%= request.getContextPath() %>/resources/images/payzon_08.jpg" width="139" height="80"
 			alt="">
 	</div>
@@ -73,7 +73,7 @@
 	<!-- 사원별 급여내용 -->
 	<!-- paymentPayList.jsp -->
 	<div id="payzon-10"
-		onclick="window.location.href='<%=request.getContextPath()%>/payment/paymentPayList'">
+		onclick="window.location.href='<%=request.getContextPath()%>/paymentPayList'">
 		<img src="<%= request.getContextPath() %>/resources/images/payzon_10.jpg" width="122" height="80"
 			alt="">
 	</div>
@@ -87,11 +87,11 @@
 	<div id="payzon-12" class="payzon12">
 		<img src="<%= request.getContextPath() %>/resources/images/payzon_12.jpg" width="171" height="30"
 			alt=""
-			onclick="window.location.href='<%=request.getContextPath()%>/config/membersInfo'">
+			onclick="window.location.href='<%=request.getContextPath()%>/membersInfo'">
 		<!-- 사용자 정보 -->
 		<!-- membersInfo.jsp -->
 		<div class="menu-item" id="payzon-17"
-			onclick="window.location.href='<%=request.getContextPath()%>/config/membersInfo'">
+			onclick="window.location.href='<%=request.getContextPath()%>/membersInfo'">
 			<img src="<%= request.getContextPath() %>/resources/images/payzon_17.jpg" alt="Item 17">
 		</div>
 		<!-- 사원 등록 -->
@@ -103,13 +103,13 @@
 		<!-- 휴가/근태설정 -->
 		<!-- dnLItemSet.jsp -->
 		<div class="menu-item" id="payzon-26"
-			onclick="window.location.href='<%=request.getContextPath()%>/dnLItemSet'">
+			onclick="window.location.href='<%=request.getContextPath()%>/dnLItem'">
 			<img src="<%= request.getContextPath() %>/resources/images/payzon_26.jpg" alt="Item 26">
 		</div>
 		<!-- 급여항목설정 -->
 		<!-- payItemSet.jsp -->
 		<div class="menu-item" id="payzon-29"
-			onclick="window.location.href='<%=request.getContextPath()%>/config/payItemSet'">
+			onclick="window.location.href='<%=request.getContextPath()%>/payItem'">
 			<img src="<%= request.getContextPath() %>/resources/images/payzon_29.jpg" alt="Item 29">
 		</div>
 	</div>
@@ -143,7 +143,7 @@
 		<!-- 근태 조회 -->
 		<!-- diligenceSearchMonth.jsp -->
 		<div class="menu-item" id="payzon-24"
-			onclick="window.location.href='<%=request.getContextPath()%>/diligence/diligenceSearchMonth'">
+			onclick="window.location.href='<%=request.getContextPath()%>/diligenceSearchMonth'">
 			<img src="<%= request.getContextPath() %>/resources/images/payzon_24.jpg" alt="Item 24">
 		</div>
 		<!-- 휴가 조회 -->
@@ -161,7 +161,7 @@
 		<!-- 일용 근무 조회 -->
 		<!-- dayWorkerSearchMonth.jsp -->
 		<div class="menu-item" id="payzon-33"
-			onclick="window.location.href='<%=request.getContextPath()%>/diligence/dayWorkerSearchMonth'">
+			onclick="window.location.href='<%=request.getContextPath()%>/dayWorkerSearchMonth'">
 			<img src="<%= request.getContextPath() %>/resources/images/payzon_33.jpg" alt="Item 33">
 		</div>
 	</div>
@@ -170,17 +170,17 @@
 	<!-- paymentMnt.jsp -->
 	<div id="payzon-15" class="payzon15">
 		<img src="<%= request.getContextPath() %>/resources/images/payzon_15.jpg" width="171" height="30"
-			alt="" onclick="window.location.href='<%= request.getContextPath() %>/payment/paymentMnt'">
+			alt="" onclick="window.location.href='<%= request.getContextPath() %>/wageList'">
 		<!-- 급여입력/관리 -->
 		<!-- paymentMnt.jsp -->
 		<div class="menu-item" id="payzon-20"
-			onclick="window.location.href='<%= request.getContextPath() %>/payment/paymentMnt'">
+			onclick="window.location.href='<%= request.getContextPath() %>/wageList'">
 			<img src="<%= request.getContextPath() %>/resources/images/payzon_20.jpg" alt="Item 20">
 		</div>
 		<!-- 급여입력/관리(일용직) -->
 		<!-- paymentMntDayWorker.jsp -->
 		<div class="menu-item" id="payzon-25"
-			onclick="window.location.href='<%= request.getContextPath() %>/payment/paymentMntDayWorker'">
+			onclick="window.location.href='<%= request.getContextPath() %>/paymentMntDayWorker'">
 			<img src="<%= request.getContextPath() %>/resources/images/payzon_25.jpg" alt="Item 25">
 		</div>
 		<!-- 급여 대장 -->
@@ -192,13 +192,13 @@
 		<!-- 사원별 급여내용 -->
 		<!-- paymentPayList.jsp -->
 		<div class="menu-item" id="payzon-31"
-			onclick="window.location.href='<%= request.getContextPath() %>/payment/paymentPayList'">
+			onclick="window.location.href='<%= request.getContextPath() %>/paymentPayList'">
 			<img src="<%= request.getContextPath() %>/resources/images/payzon_31.jpg" alt="Item 31">
 		</div>
 		<!-- 항목별 조회 -->
 		<!-- paymentPayItemPart.jsp -->
 		<div class="menu-item" id="payzon-34"
-			onclick="window.location.href='<%= request.getContextPath() %>/payment/paymentPayItemPart'">
+			onclick="window.location.href='<%= request.getContextPath() %>/paymentPayItemPart'">
 			<img src="<%= request.getContextPath() %>/resources/images/payzon_34.jpg" alt="Item 34">
 		</div>
 	</div>

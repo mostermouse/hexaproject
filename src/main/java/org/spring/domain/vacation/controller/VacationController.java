@@ -77,5 +77,12 @@ public class VacationController {
 	    public List<VacationDetailsEntity> getVacationDetails(@RequestParam("employeeId") Long employeeId) {
 	        return service.getVacationDetailsByEmployeeId(employeeId);
 	    }
-	    
+
+	@GetMapping("/dnLItem") //휴가/근태설정
+	public String dnLItemSet(Model model){
+		log.info(model.toString());
+		return "defaultPreferences/dnLItemSet";
 	}
+
+
+}

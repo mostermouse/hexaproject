@@ -76,5 +76,26 @@ public class WageController {
 
 		return "salaryManagement/paymentRegisterPeriodList";
 	}
+	@GetMapping("/paymentMntDayWorker") //일용직 급여 관리
+	public String paymentMntDayWorker(Model model){
+		//TODO 내용물 넣어야함
+		return "salaryManagement/paymentMntDayWorker";
+	}
+	@GetMapping("/payItem") //급여 항목 설정
+	public String payItem(Model model) {
+		log.info("payItem.................");
+		//TODO 값 넣어야함
+		return "defaultPreferences/payItemSet";
+	}
+	@GetMapping("/paymentPayList")//사원별 급여 내용
+	public String paymentPayList(Model model){
+		//TODO 비어있음 내용물 채워야함
+		return "salaryManagement/paymentPayList";
+	}
+	@GetMapping("/paymentPayItemPart")//급여 항목별 조회
+	public String paymentPayItem(Model model){
+		//TODO 비어있음
+		return "salaryManagement/paymentPayItemPart";
+	}
 
 }

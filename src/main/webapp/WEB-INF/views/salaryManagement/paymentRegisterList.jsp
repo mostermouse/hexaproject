@@ -27,8 +27,14 @@ tr a {
 
 <div id="content">
 
-	<div class="divtitle">
-		<h3>Wage Records for Year ${param.year}</h3>
+	<div class="table-container">
+		<div class="header-container">
+			<img
+				src="<%=request.getContextPath()%>/resources/images/contentimages/paymentRegisterList.png"
+				width="50" height="50">
+			<h1>급여대장</h1>
+		</div>
+		<hr>
 		<%-- 년도 선택 창 --%>
 		<form action="/payment/paymentRegisterList" method="get">
 			<label for="year">Select Year:</label> <select name="year" id="year">
@@ -43,7 +49,7 @@ tr a {
 	</div>
 
 	<%-- 급여 대장 표시 --%>
-	<div class="table-container">
+	<div class="table-container" style="margin-top: 20px;">
 		<table class="pay">
 			<thead>
 				<tr>

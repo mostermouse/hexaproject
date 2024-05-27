@@ -11,17 +11,27 @@ import org.spring.domain.vacation.model.VacationTypeEntity;
 
 
 public interface VacationService {
-		List<VacationDetailsEntity> getAllVacationDetails();
+	 List<VacationDetailsEntity> getAllVacationDetails();
 	    List<VacationDaysEntity> getAllVacationDays();
 	    List<VacationTypeEntity> getAllVacationTypes();
 	    List<String> getAllStatuses();
 	    List<String> getAllEmploymentTypes();
 	    List<DepartmentEntity> getAllDepartments();
 	    List<PositionEntity> getAllPositions();
-	    List<VacationDetailsEntity> getFilteredVacationDetails(@Param("status") String status, 
-                @Param("employmentType") String employmentType, 
-                @Param("departmentId") Long departmentId, 
-                @Param("positionId") Long positionId, 
-                @Param("vacationTypeName") String vacationTypeName,
-                @Param("searchKeyword") String searchKeyword);
-}
+	    List<VacationDetailsEntity> getFilteredVacationDetails(@Param("status") String status,
+	                                                           @Param("employmentType") String employmentType,
+	                                                           @Param("departmentId") Long departmentId,
+	                                                           @Param("positionId") Long positionId,
+	                                                           @Param("vacationTypeName") String vacationTypeName,
+	                                                           @Param("searchKeyword") String searchKeyword,
+	                                                           @Param("offset") int offset,
+	                                                           @Param("limit") int limit);
+	    int countFilteredVacationDetails(@Param("status") String status,
+	                                     @Param("employmentType") String employmentType,
+	                                     @Param("departmentId") Long departmentId,
+	                                     @Param("positionId") Long positionId,
+	                                     @Param("vacationTypeName") String vacationTypeName,
+	                                     @Param("searchKeyword") String searchKeyword);
+
+	    List<VacationDetailsEntity> getVacationDetailsByEmployeeId(@Param("employeeId") Long employeeId);
+	}

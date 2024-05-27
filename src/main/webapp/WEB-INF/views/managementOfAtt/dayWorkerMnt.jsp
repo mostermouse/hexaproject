@@ -281,6 +281,12 @@ function attendanceMtn() {
     $("#attModal").css("display", "block");
 }
 
+ //해당 사원 번호로 근태관리 리스트를 보여줌
+function attendanceMtn() {
+    // 모달을 표시하는 코드
+    $("#attModal").css("display", "block");
+}
+
 function updateFeildOrProject(button) {
     var buttonText = button.innerText;
     var span = button.parentElement.previousElementSibling;
@@ -572,5 +578,20 @@ function openAttendanceModal(employeeId) {
         }
     });
 });
+
+$("#attendance_modal_btn").click(function() {
+    $("#attModal").css("display", "block");
+});
+
+$(".close").click(function() {
+    $(this).closest('.modal').css("display", "none");
+});
+
+$(window).click(function(event) {
+    if ($(event.target).hasClass('modal')) {
+        $(event.target).css("display", "none");
+    }
+});
+
 </script>
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>

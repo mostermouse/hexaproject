@@ -221,7 +221,7 @@
 				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns2?scrollToSection=section10'">추천신원보증</button>
 		</div>
 	</div>
-<div class="table-container">
+	<div class="table-container">
 		<div class="header-container">
 			<img
 				src="<%=request.getContextPath()%>/resources/images/contentimages/employeeMnt.png"
@@ -232,7 +232,7 @@
 		<hr>
 		<br>
 		<form id="registerForm"
-			action="${pageContext.request.contextPath}/employeeregistration"
+			action="${pageContext.request.contextPath}/employeeregistration2"
 			method="post" onsubmit="return validateForm()">
 
 			<!-- Employee Table -->
@@ -356,24 +356,27 @@
 			<br> <br>
 			<hr>
 			<div class="grey-box">
-			<h2>사원 정보2</h2>
+				<h2>사원 정보2</h2>
 			</div>
 			<div class="table-container">
 				<div class="header-container">
 					<h3 id="section6">자격.면허 & 어학능력</h3>
 				</div>
 				<div class="header-container">
-					<h5><samp style="color: red;">+</samp><span style="color: blue;"> 자격 & 면허</span></h5>
+					<h5>
+						<samp style="color: red;">+</samp>
+						<span style="color: blue;"> 자격 & 면허</span>
+					</h5>
 					<div style="margin-left: auto;">
-					<button onclick="add1(event)">추가</button>
-					<button onclick="delete1(event)">삭제</button>
+						<button onclick="add1(event)">추가</button>
+						<button onclick="delete1(event)">삭제</button>
 					</div>
 				</div>
 				<table class="empRegister1" id="table1">
 					<thead>
 						<tr>
-							<th style="width: 20px;" class="empRegister-head1"><input type="checkbox"
-						onclick="toggleAll(this)"></th>
+							<th style="width: 20px;" class="empRegister-head1"><input
+								type="checkbox" onclick="toggleAll(this)"></th>
 							<th class="empRegister-head1">자격/면허명</th>
 							<th class="empRegister-head1">취득일</th>
 							<th class="empRegister-head1">발행기관</th>
@@ -384,27 +387,35 @@
 					<tbody>
 						<tr>
 							<td class="empRegister-body"><input type="checkbox"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="date" class="reginput-select"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="date"
+								class="reginput-select"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
 						</tr>
 					</tbody>
 				</table>
 				<br>
 				<div class="header-container">
-					<h5><samp style="color: red;">+</samp><span style="color: blue;"> 어학능력</span></h5>
+					<h5>
+						<samp style="color: red;">+</samp>
+						<span style="color: blue;"> 어학능력</span>
+					</h5>
 					<div style="margin-left: auto;">
-					<button onclick="add2(event)">추가</button>
-					<button onclick="delete2(event)">삭제</button>
+						<button onclick="add2(event)">추가</button>
+						<button onclick="delete2(event)">삭제</button>
 					</div>
 				</div>
 				<table class="empRegister1" id="table2">
 					<thead>
 						<tr>
-							<th style="width: 20px;" class="empRegister-head1"><input type="checkbox"
-						onclick="toggleAll(this)"></th>
+							<th style="width: 20px;" class="empRegister-head1"><input
+								type="checkbox" onclick="toggleAll(this)"></th>
 							<th class="empRegister-head1">외국어명</th>
 							<th class="empRegister-head1">시험</th>
 							<th class="empRegister-head1">공인점수</th>
@@ -417,52 +428,50 @@
 					<tbody>
 						<tr>
 							<td class="empRegister-body"><input type="checkbox"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="date" class="reginput-select"></td>
-							<td class="empRegister-body">
-								<select class="reginput-select">
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="date"
+								class="reginput-select"></td>
+							<td class="empRegister-body"><select class="reginput-select">
 									<option value="">선택</option>
 									<option value="상">상</option>
 									<option value="중">중</option>
 									<option value="하">하</option>
-								</select>
-							</td>
-							<td class="empRegister-body">
-								<select class="reginput-select">
+							</select></td>
+							<td class="empRegister-body"><select class="reginput-select">
 									<option value="">선택</option>
 									<option value="상">상</option>
 									<option value="중">중</option>
 									<option value="하">하</option>
-								</select>
-							</td>
-							<td class="empRegister-body">
-								<select class="reginput-select">
+							</select></td>
+							<td class="empRegister-body"><select class="reginput-select">
 									<option value="">선택</option>
 									<option value="상">상</option>
 									<option value="중">중</option>
 									<option value="하">하</option>
-								</select>
-							</td>
+							</select></td>
 						</tr>
 					</tbody>
 				</table>
 				<br>
-				
+
 				<!-- Degree Table -->
 				<div class="header-container">
-				<h3 id="section7">교육훈련</h3>
-				<div style="margin-left: auto;">
-					<button onclick="add3(event)">추가</button>
-					<button onclick="delete3(event)">삭제</button>
+					<h3 id="section7">교육훈련</h3>
+					<div style="margin-left: auto;">
+						<button onclick="add3(event)">추가</button>
+						<button onclick="delete3(event)">삭제</button>
 					</div>
 				</div>
 				<table class="empRegister1" id="table3">
 					<thead>
 						<tr>
-							<th style="width: 20px;" class="empRegister-head1"><input type="checkbox"
-						onclick="toggleAll(this)"></th>
+							<th style="width: 20px;" class="empRegister-head1"><input
+								type="checkbox" onclick="toggleAll(this)"></th>
 							<th class="empRegister-head1">교육구분</th>
 							<th class="empRegister-head1">교육명</th>
 							<th class="empRegister-head1">교육기간(부터)</th>
@@ -475,39 +484,43 @@
 					<tbody>
 						<tr>
 							<td class="empRegister-body"><input type="checkbox"></td>
-							<td class="empRegister-body">
-								<select class="reginput-select">
+							<td class="empRegister-body"><select class="reginput-select">
 									<option value="">선택</option>
 									<option value="사내직무">사내직무</option>
 									<option value="사외직무">사외직무</option>
 									<option value="계층교육">계층교육</option>
 									<option value="어학교육">어학교육</option>
 									<option value="기타">기타</option>
-								</select>
-							</td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="date" class="reginput-select"></td>
-							<td class="empRegister-body"><input type="date" class="reginput-select"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhidepay"><span>원</span></td>
-							<td class="empRegister-body"><input type="text" class="reginputhidepay"><span>원</span></td>
+							</select></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="date"
+								class="reginput-select"></td>
+							<td class="empRegister-body"><input type="date"
+								class="reginput-select"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhidepay"><span>원</span></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhidepay"><span>원</span></td>
 						</tr>
 					</tbody>
 				</table>
 				<br>
 
 				<div class="header-container">
-				<h3 id="section8">상벌</h3>
-				<div style="margin-left: auto;">
-					<button onclick="add4(event)">추가</button>
-					<button onclick="delete4(event)">삭제</button>
+					<h3 id="section8">상벌</h3>
+					<div style="margin-left: auto;">
+						<button onclick="add4(event)">추가</button>
+						<button onclick="delete4(event)">삭제</button>
 					</div>
 				</div>
 				<table class="empRegister1" id="table4">
 					<thead>
 						<tr>
-							<th style="width: 20px;" class="empRegister-head1"><input type="checkbox"
-						onclick="toggleAll(this)"></th>
+							<th style="width: 20px;" class="empRegister-head1"><input
+								type="checkbox" onclick="toggleAll(this)"></th>
 							<th class="empRegister-head1">구분</th>
 							<th class="empRegister-head1">상벌명</th>
 							<th class="empRegister-head1">상벌권자</th>
@@ -519,8 +532,7 @@
 					<tbody>
 						<tr>
 							<td class="empRegister-body"><input type="checkbox"></td>
-							<td class="empRegister-body">
-								<select class="reginput-select">
+							<td class="empRegister-body"><select class="reginput-select">
 									<option value="">선택</option>
 									<option value="포상">포상</option>
 									<option value="표창">표창</option>
@@ -533,30 +545,34 @@
 									<option value="경고">경고</option>
 									<option value="조치불가">조치불가</option>
 									<option value="해고">해고</option>
-								</select>
-							</td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="date" class="reginput-select"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
+							</select></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="date"
+								class="reginput-select"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
 						</tr>
 					</tbody>
 				</table>
 				<br>
 
 				<div class="header-container">
-				<h3 id="section9">발령</h3>
-				<div style="margin-left: auto;">
-					<button onclick="add4(event)">추가</button>
-					<button onclick="delete4(event)">삭제</button>
+					<h3 id="section9">발령</h3>
+					<div style="margin-left: auto;">
+						<button onclick="add4(event)">추가</button>
+						<button onclick="delete4(event)">삭제</button>
 					</div>
 				</div>
 				<table class="empRegister1" id="table5">
 					<thead>
 						<tr>
-							<th style="width: 20px;" class="empRegister-head1"><input type="checkbox"
-						onclick="toggleAll(this)"></th>
+							<th style="width: 20px;" class="empRegister-head1"><input
+								type="checkbox" onclick="toggleAll(this)"></th>
 							<th class="empRegister-head1">발령구분</th>
 							<th class="empRegister-head1">발령일자</th>
 							<th class="empRegister-head1">부서</th>
@@ -568,8 +584,7 @@
 					<tbody>
 						<tr>
 							<td class="empRegister-body"><input type="checkbox"></td>
-							<td class="empRegister-body">
-								<select class="reginput-select">
+							<td class="empRegister-body"><select class="reginput-select">
 									<option value="">선택</option>
 									<option value="포상">채용</option>
 									<option value="표창">전보</option>
@@ -577,23 +592,30 @@
 									<option value="면직">승격</option>
 									<option value="정직">승호</option>
 									<option value="감봉">파견</option>
-								</select>
-							</td>
-							<td class="empRegister-body"><input type="date" class="reginput-select"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
+							</select></td>
+							<td class="empRegister-body"><input type="date"
+								class="reginput-select"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
 						</tr>
 					</tbody>
 				</table>
 				<br>
-				
+
 				<div class="header-container">
 					<h3 id="section10">추천 & 신원보증</h3>
 				</div>
 				<div class="header-container">
-					<h5><samp style="color: red;">+</samp><span style="color: blue;"> 추천인</span></h5>
+					<h5>
+						<samp style="color: red;">+</samp>
+						<span style="color: blue;"> 추천인</span>
+					</h5>
 				</div>
 				<table class="empRegister1">
 					<thead>
@@ -607,17 +629,25 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
 						</tr>
 					</tbody>
 				</table>
-				
+
 				<div class="header-container">
-					<h5><samp style="color: red;">+</samp><span style="color: blue;"> 보증보험</span></h5>
+					<h5>
+						<samp style="color: red;">+</samp>
+						<span style="color: blue;"> 보증보험</span>
+					</h5>
 				</div>
 				<table class="empRegister1">
 					<thead>
@@ -632,18 +662,27 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhidepay"><span>원</span></td>
-							<td class="empRegister-body"><input type="date" class="reginput-select"></td>
-							<td class="empRegister-body"><input type="date" class="reginput-select"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhidepay"><span>원</span></td>
+							<td class="empRegister-body"><input type="date"
+								class="reginput-select"></td>
+							<td class="empRegister-body"><input type="date"
+								class="reginput-select"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
 						</tr>
 					</tbody>
 				</table>
-				
+
 				<div class="header-container">
-					<h5><samp style="color: red;">+</samp><span style="color: blue;"> 보증인</span></h5>
+					<h5>
+						<samp style="color: red;">+</samp>
+						<span style="color: blue;"> 보증인</span>
+					</h5>
 				</div>
 				<table class="empRegister1">
 					<thead>
@@ -659,13 +698,20 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhidepay"><span>원</span></td>
-							<td class="empRegister-body"><input type="date" class="reginput-select"></td>
-							<td class="empRegister-body"><input type="date" class="reginput-select"></td>
-							<td class="empRegister-body"><input type="text" class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhidepay"><span>원</span></td>
+							<td class="empRegister-body"><input type="date"
+								class="reginput-select"></td>
+							<td class="empRegister-body"><input type="date"
+								class="reginput-select"></td>
+							<td class="empRegister-body"><input type="text"
+								class="reginputhide"></td>
 						</tr>
 					</tbody>
 				</table>

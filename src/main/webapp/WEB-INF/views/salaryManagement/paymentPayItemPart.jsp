@@ -13,7 +13,7 @@
 
 		<form id="dateForm">
 			<div class="search-container grey-box"
-				style="margin-top: 10px; display: inline-block; width: 100%;">
+				style="margin-top: 30px; display: inline-block; width: 100%;">
 				<span>*기간선택</span> <input type="month"> <span>~</span> <input
 					type="month"> <span>*항목선택</span> <select>
 					<option value="">급여항목 선택</option>

@@ -39,22 +39,22 @@
 }
 
 .floating-container button {
-    width: 90px;
-    height: 45px;
-    background-color: #007bff;
-    border: none;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin: 5px;
-    box-sizing: border-box;
-    font-size: 12px;
+	width: 90px;
+	height: 45px;
+	background-color: #007bff;
+	border: none;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	margin: 5px;
+	box-sizing: border-box;
+	font-size: 12px;
 }
 
 .floating-container button:hover {
-    background-color: #0056b3;
+	background-color: #0056b3;
 }
 
 .floating-table {
@@ -78,15 +78,14 @@
 }
 
 .button-container-top {
-    display: flex;
-    justify-content: space-between; /* 요소들을 공간에 맞게 배치 */
-    margin-bottom: 5px; /* 위아래 간격 조정 */
+	display: flex;
+	justify-content: space-between; /* 요소들을 공간에 맞게 배치 */
+	margin-bottom: 5px; /* 위아래 간격 조정 */
 }
 
 .button-container-bottom {
-    display: flex;
-    justify-content: flex-start; /* 요소들을 왼쪽에 배치 */
-    
+	display: flex;
+	justify-content: flex-start; /* 요소들을 왼쪽에 배치 */
 }
 
 .header-container1 {
@@ -182,6 +181,11 @@
 .title-container {
 	position: relative;
 	display: inline-block;
+}
+
+.inline-headers h3 {
+	display: inline-block;
+	margin-right: 20px;
 }
 
 .table-container {
@@ -561,7 +565,7 @@
 	width: calc(100% - 30px);
 }
 
-.reginputhidepay + span {
+.reginputhidepay+span {
 	margin-left: 5px
 }
 
@@ -622,6 +626,28 @@
 .search-container {
 	display: flex;
 	gap: 40px; /* 간격 설정 */
+}
+
+.search-containerr {
+	margin-left: 150px;
+	margin-right: 150px;
+}
+
+.table-containerr {
+	margin-bottom: 30px;
+	margin-left: 150px;
+	margin-right: 150px;
+}
+
+.flex-containerr {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.form-containerr {
+	margin-left: 20px;
 }
 
 .title-table-left {
@@ -788,65 +814,64 @@
 
 /* 급여 종합 정보 사각형 */
 .rectangle-container {
-    display: flex;
+	display: flex;
 }
 
 .rectangle {
-    width: calc(25% - 15px);
-    height: 50px;
-    margin-right: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
-    border-radius: 10px;
+	width: calc(25% - 15px);
+	height: 50px;
+	margin-right: 15px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 10px;
+	border-radius: 10px;
 }
 
 .rectanglee {
-    width: calc(25% - 15px);
-    height: 40px;
-    margin-right: 15px;
-    display: flex;
-    align-items: center;
-    padding: 2px 20px;
-    justify-content: space-around;
+	width: calc(25% - 15px);
+	height: 40px;
+	margin-right: 15px;
+	display: flex;
+	align-items: center;
+	padding: 2px 20px;
+	justify-content: space-around;
 }
 
 .redd {
-    background-color: #E17A7D;
-    color: white;
+	background-color: #E17A7D;
+	color: white;
 }
 
 .gray {
-    background-color: gray;
-    color: white;
+	background-color: gray;
+	color: white;
 }
 
 .sky-blue {
-    background-color: #9dd6ee;
-    color: white;
+	background-color: #9dd6ee;
+	color: white;
 }
 
 .orange {
-    background-color: #ff7594;
-    color: white;
+	background-color: #ff7594;
+	color: white;
 }
 
 .dark-gray {
-    background-color: darkgray;
-    color: white;
+	background-color: darkgray;
+	color: white;
 }
 
 .dark-grayy {
-    background-color: #d5d5d5;
-    color: black;
+	background-color: #d5d5d5;
+	color: black;
 }
 
 .text-left {
-    text-align: left;
+	text-align: left;
 }
 
 .text-right {
-    text-align: right;
+	text-align: right;
 }
-

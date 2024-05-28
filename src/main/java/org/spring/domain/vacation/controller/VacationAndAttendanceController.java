@@ -26,7 +26,7 @@ public class VacationAndAttendanceController {
 		this.vacationTypeService = vacationTypeService;
 	}
 
-	@GetMapping("/dnLItemSet")
+	@GetMapping("/dnLItemSet1")//TODO 매퍼 이름 겹침 임시로 수정함
 	public String showDnlItemSet(Model model) {
 		model.addAttribute("attendanceTypes", attendanceTypeService.getAllAttendanceTypes());
 		model.addAttribute("vacationTypes", vacationTypeService.getAllVacationTypes());
@@ -45,13 +45,14 @@ public class VacationAndAttendanceController {
 		return "redirect:/dnLItemSet";
 	}
 
-	@PostMapping("/updateAttItem")
+	@PostMapping("/updateAttItem1")//TODO 매퍼 이름 겹침 임시로 바꿈
 	public String updateAttendanceItem(@ModelAttribute AttendanceTypeEntity attendanceTypeEntity) {
 		attendanceTypeService.updateAttendanceType(attendanceTypeEntity);
 		return "redirect:/dnLItemSet";
 	}
 
 	@PostMapping("/updateDnlItem")
+	//TODO 매퍼 이름 겹침 임시로 바꿈
 	public String updateVacationItem(@ModelAttribute VacationTypeEntity vacationTypeEntity) {
 		vacationTypeService.updateVacationType(vacationTypeEntity);
 		return "redirect:/dnLItemSet";

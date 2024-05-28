@@ -1,22 +1,30 @@
     package org.spring.domain.employee.service;
 
     import java.time.format.DateTimeFormatter;
-    import java.util.ArrayList;
-    import java.util.Collections;
-    import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 
-    import org.spring.domain.employee.controller.model.EmployeeRegistrationForm;
-    import org.spring.domain.employee.controller.model.WageRecordRequest;
-    import org.spring.domain.employee.mapper.EmpMapper;
-    import org.spring.domain.employee.model.*;
-    import org.spring.domain.wage.model.WageEntity;
-    import org.springframework.beans.factory.annotation.Autowired;
-    import org.springframework.stereotype.Service;
+import org.spring.domain.employee.controller.model.EmployeeRegistrationForm;
+import org.spring.domain.employee.controller.model.WageRecordRequest;
+import org.spring.domain.employee.mapper.EmpMapper;
+import org.spring.domain.employee.model.CareerEntity;
+import org.spring.domain.employee.model.CompanyEntity;
+import org.spring.domain.employee.model.ContactEntity;
+import org.spring.domain.employee.model.DegreeEntity;
+import org.spring.domain.employee.model.DepartmentEntity;
+import org.spring.domain.employee.model.DependentsEntity;
+import org.spring.domain.employee.model.EmployeeEntity;
+import org.spring.domain.employee.model.EmployeeSalaryAccountEntity;
+import org.spring.domain.employee.model.MilitaryServiceEntity;
+import org.spring.domain.employee.model.PositionEntity;
+import org.spring.domain.wage.model.WageEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-    import lombok.AllArgsConstructor;
-    import lombok.Setter;
-    import lombok.extern.log4j.Log4j;
-    import org.springframework.transaction.annotation.Transactional;
+import lombok.AllArgsConstructor;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
 
     @Log4j
     @Service

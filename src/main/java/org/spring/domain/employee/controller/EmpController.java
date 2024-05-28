@@ -1,8 +1,18 @@
 package org.spring.domain.employee.controller;
 
+import org.spring.domain.employee.controller.model.DetailsRegistrationForm;
 import org.spring.domain.employee.controller.model.EmployeeRegistrationForm;
-import org.spring.domain.employee.model.*;
+import org.spring.domain.employee.model.CareerEntity;
+import org.spring.domain.employee.model.CompanyEntity;
+import org.spring.domain.employee.model.ContactEntity;
+import org.spring.domain.employee.model.DegreeEntity;
+import org.spring.domain.employee.model.DependentsEntity;
+import org.spring.domain.employee.model.EmployeeEntity;
+import org.spring.domain.employee.model.EmployeeSalaryAccountEntity;
+import org.spring.domain.employee.model.MilitaryServiceEntity;
 import org.spring.domain.employee.service.EmployeeService;
+import org.spring.domain.employeedetails.model.CertificationEntity;
+import org.spring.domain.employeedetails.service.EmpDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +29,7 @@ import lombok.extern.log4j.Log4j;
 public class EmpController {
 
     private EmployeeService employeeService;
+    private EmpDetailsService empDetailsService;
 
     // 사원현황판, 급여대장
     @GetMapping("/")
@@ -62,7 +73,7 @@ public class EmpController {
         employeeService.registerEmployee(registrationForm);
 
         log.info("register" + model.toString());
-        return "redirect:/employeeMnt";
+        return "redirect:/personnel/register"; // 페이지 경로 수정
     }
 
     @GetMapping("/employeeMnt")
@@ -101,6 +112,28 @@ public class EmpController {
 
         return "redirect:/personnel/employeeIns";
     }
+ // 사원등록 2페이지
+    @GetMapping("/personnel/register")
+    public String showDetailsRegistrationForm(Model model) {
+        model.addAttribute("certification", new CertificationEntity());
+        model.addAttribute("languageability", new CertificationEntity());
+        model.addAttribute("training", new CertificationEntity());
+        model.addAttribute("rewardpenalty", new CertificationEntity());
+        model.addAttribute("appointment", new CertificationEntity());
+        model.addAttribute("referrer", new CertificationEntity());
+        model.addAttribute("insurance", new CertificationEntity());
+        model.addAttribute("guarantor", new CertificationEntity());
+        model.addAttribute("retirement", new CertificationEntity());
 
+        return "defaultPreferences/employeeRegistration2";
+    }
 
+    // 사원등록 2페이지 처리
+    @PostMapping("/employeeregistration2")
+    public String registerEmployeeDetails(@ModelAttribute DetailsRegistrationForm detailsRegistrationForm, Model model) {
+        empDetailsService.registerDetails(detailsRegistrationForm);
+
+        log.info("register" + model.toString());
+        return "redirect:/employeeMnt";
+    }
 }

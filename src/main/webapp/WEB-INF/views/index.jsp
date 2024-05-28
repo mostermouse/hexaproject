@@ -6,10 +6,11 @@
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
 
 <div id="content">
-
 	<%-- 사원 숫자 표시 --%>
 	<div class="table-container1">
-
+		<div class="title-table-left">
+			<h3>社員現況</h3>
+		</div>
 		<table class="tg">
 			<thead>
 				<tr>
@@ -51,53 +52,98 @@
 			</tbody>
 		</table>
 	</div>
-
 	<hr>
+	
+	<div class="search-containerr">
+        <div class="table-containerr">
+            <div class="flex-containerr">
+                <h3>会社情報</h3>
+            </div>
+            <table class="empRegister1">
+                <thead>
+                    <tr>
+                        <th class="empRegister-head1">相互名</th>
+                        <th class="empRegister-body"></th>
+                        <th class="empRegister-head1">代表者</th>
+                        <th class="empRegister-body"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="empRegister-head1">事業者番号</td>
+                        <td class="empRegister-body"></td>
+                        <td class="empRegister-head1">法人登録番号</td>
+                        <td class="empRegister-body"></td>
+                    </tr>
+                    <tr>
+                        <td class="empRegister-head1">設立日</td>
+                        <td class="empRegister-body"></td>
+                        <td class="empRegister-head1">ホームページ</td>
+                        <td class="empRegister-body"></td>
+                    </tr>
+                    <tr>
+                        <td class="empRegister-head1">事業所の住所</td>
+                        <td colspan="3" class="empRegister-body"></td>
+                    </tr>
+                    <tr>
+                        <td class="empRegister-head1">電話番号</td>
+                        <td class="empRegister-body"></td>
+                        <td class="empRegister-head1">ファックス番号</td>
+                        <td class="empRegister-body"></td>
+                    </tr>
+                    <tr>
+                        <td class="empRegister-head1">業態</td>
+                        <td class="empRegister-body"></td>
+                        <td class="empRegister-head1">種目</td>
+                        <td class="empRegister-body"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-	<div class="divtitle">
-
-		<%-- 년도 선택 창 --%>
-		<form action="/" method="get">
-			<label for="year">選択年:</label> <select name="year" id="year">
-				<%-- 2010년부터 현재 연도까지의 년도를 선택할 수 있도록 --%>
-				<c:forEach var="y" begin="2010"
-					end="<%=java.time.LocalDate.now().getYear()%>">
-					<option value="${y}"
-						<c:if test="${y eq param.year}">selected</c:if>>${y}</option>
-				</c:forEach>
-			</select> <input type="submit" value="照会">
-		</form>
-	</div>
-
-	<%-- 급여 대장  --%>
-	<div class="table-container">
-		<table class="pay">
-			<thead>
-				<tr>
-					<th class="pay-head">帰属年月</th>
-					<th class="pay-head">給与次数</th>
-					<th class="pay-head">精算期間</th>
-					<th class="pay-head">支払日</th>
-					<th class="pay-head">人員</th>
-					<th class="pay-head">総支払額</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${listWageRecord}" var="record">
-					<tr>
-						<td class="pay-body">${record.yearMonth}</td>
-						<td class="pay-body">${record.wagePeriod}</td>
-						<td class="pay-body">${record.settlementPeriodStartDate}~
-							${record.settlementPeriodEndDate}</td>
-						<td class="pay-body">${record.wagePaymentDate}</td>
-						<td class="pay-body">${record.paidEmployeeCount}</td>
-						<td class="pay-total">${record.totalPaidWage}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
+        <div class="table-containerr">
+            <div class="flex-containerr">
+                <h3>給与台帳</h3>
+                <div class="form-containerr">
+                    <form action="/" method="get">
+                        <label for="year">選択年:</label>
+                        <select name="year" id="year">
+                            <!-- 2010년부터 현재 연도까지의 년도를 선택할 수 있도록 -->
+                            <c:forEach var="y" begin="2010" end="<%=java.time.LocalDate.now().getYear()%>">
+                                <option value="${y}" <c:if test="${y eq param.year}">selected</c:if>>${y}</option>
+                            </c:forEach>
+                        </select>
+                        <input type="submit" value="照会">
+                    </form>
+                </div>
+            </div>
+            
+            <table class="empRegister1">
+            	<thead>
+            		<tr>
+            			<th class="empRegister-head1">帰属年月</th>
+            			<th class="empRegister-head1">給与次数</th>
+            			<th class="empRegister-head1">精算期間</th>
+            			<th class="empRegister-head1">支払日</th>
+            			<th class="empRegister-head1">人員</th>
+            			<th class="empRegister-head1">総支払額</th>
+            		</tr>
+            	</thead>
+            	<tbody>
+            	<c:forEach items="${listWageRecord}" var="record">
+            		<tr>
+            			<td class="empRegister-body" style="text-align: center;">${record.yearMonth}</td>
+            			<td class="empRegister-body" style="text-align: center;">${record.wagePeriod}</td>
+            			<td class="empRegister-body" style="text-align: center;">${record.settlementPeriodStartDate}~${record.settlementPeriodEndDate}</td>
+            			<td class="empRegister-body" style="text-align: center;">${record.wagePaymentDate}</td>
+            			<td class="empRegister-body" style="text-align: center;">${record.paidEmployeeCount}</td>
+            			<td class="empRegister-body" style="text-align: right; color: blue;">${record.totalPaidWage}円</td>
+            		</tr>
+            		</c:forEach>
+            	</tbody>
+            </table>
+        </div>
+    </div>
 </div>
-
 
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>

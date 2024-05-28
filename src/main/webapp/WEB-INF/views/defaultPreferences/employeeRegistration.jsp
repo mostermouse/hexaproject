@@ -89,7 +89,7 @@
 				<tr>
 					<th class="empRegister-head1"><label for="employeeId">社員番号</label></th>
 					<th class="empRegister-body"><input type="number"
-						id="employeeId" name="EmployeeEntity.employeeId" class="reginputhide" required></th>
+						id="employeeId" name="EmployeeEntity.employeeId" class="reginputhide" readonly></th>
 					<th class="empRegister-head1"><span style="color: #FE0000">*</span><label
 						for="employmentType">雇用形態</label></th>
 					<th class="empRegister-body"><select id="employmentType"
@@ -218,7 +218,7 @@
 					<tbody>
 						<tr>
 							<td class="empRegister-body"><select id="relationship"
-								name="relationship" class="reginput-select">
+								name="DependentsEntity.relationship" class="reginput-select">
 									<option value="">選択してください。</option>
 									<option value="부">配偶者</option>
 									<option value="모">息子</option>
@@ -237,17 +237,17 @@
 									<option value="자녀">孫娘</option>
 							</select></td>
 							<td class="empRegister-body"><input type="text"
-								id="parentsName" name="parentsName" class="reginputhide1"></td>
+								id="parentsName" name="DependentsEntity.parentsName" class="reginputhide1"></td>
 							<td class="empRegister-body"><select
-								id="foreignOrDomesticDependent"
-								name="foreignOrDomesticDependent" class="reginput-select">
+								id="foreignOrDomestic"
+								name="DependentsEntity.foreignOrDomestic" class="reginput-select">
 									<option value="">選択してください。</option>
 									<option value="국내">国内</option>
 									<option value="외국인">外国人</option>
 							</select></td>
 							<td class="empRegister-body"><input type="text"
-								id="parentsNumber1" name="parentsNumber1" class="reginput">
-								- <input type="text" id="parentsNumber2" name="parentsNumber2"
+								id="parentsNumber1" name="DependentsEntity.parentsNumber1" class="reginput">
+								- <input type="text" id="parentsNumber2" name="DependentsEntity.parentsNumber2"
 								class="reginput"></td>
 						</tr>
 					</tbody>
@@ -269,7 +269,7 @@
 					<tbody>
 						<tr>
 							<td class="empRegister-body"><select id="graduate"
-								name="graduate" class="reginput-select">
+								name="DegreeEntity.graduate" class="reginput-select">
 									<option value="">選択</option>
 									<option value="초등학교">小学校</option>
 									<option value="중학교">中学校</option>
@@ -279,21 +279,21 @@
 									<option value="박사">博士</option>
 							</select></td>
 							<td class="empRegister-body"><input type="date"
-								id="admissionDate" name="admissionDate" class="reginput-select"></td>
+								id="admissionDate" name="DegreeEntity.admissionDate" class="reginput-select"></td>
 							<td class="empRegister-body"><input type="date"
-								id="graduationDate" name="graduationDate"
+								id="graduationDate" name="DegreeEntity.graduationDate"
 								class="reginput-select"></td>
 							<td class="empRegister-body"><input type="text"
-								id="schoolName" name="schoolName" class="reginputhide1"></td>
+								id="schoolName" name="DegreeEntity.schoolName" class="reginputhide1"></td>
 							<td class="empRegister-body"><input type="text" id="major"
-								name="major" class="reginputhide1"></td>
+								name="DegreeEntity.major" class="reginputhide1"></td>
 							<td class="empRegister-body"><select id="completion"
-								name="completion" class="reginput-select">
+								name="DegreeEntity.completion" class="reginput-select">
 									<option value="">選択</option>
-									<option value="">卒業</option>
-									<option value="">修了</option>
-									<option value="">自退</option>
-									<option value="">在学中</option>
+									<option value="卒業">卒業</option>
+									<option value="修了">修了</option>
+									<option value="自退">自退</option>
+									<option value="在学中">在学中</option>
 							</select></td>
 						</tr>
 					</tbody>
@@ -318,21 +318,21 @@
 					<tbody>
 						<tr>
 							<td class="empRegister-body"><input type="text"
-								id="companyName" name="companyName" class="reginputhide1"></td>
+								id="companyName" name="CareerEntity.companyName" class="reginputhide1"></td>
 							<td class="empRegister-body"><input type="date"
-								id="startDate" name="startDate"></td>
+								id="startDate" name="CareerEntity.startDate"></td>
 							<td class="empRegister-body"><input type="date" id="endDate"
-								name="endDate"></td>
+								name="CareerEntity.endDate"></td>
 							<td class="empRegister-body"><input type="text"
-								id="employmentPeriod" name="employmentPeriod"
+								id="employmentPeriod" name="CareerEntity.employmentPeriod"
 								class="reginputhide1"></td>
 							<td class="empRegister-body"><input type="text"
-								id="finalPosition" name="finalPosition" class="reginputhide1"></td>
+								id="finalPosition" name="CareerEntity.finalPosition" class="reginputhide1"></td>
 							<td class="empRegister-body"><input type="text"
-								id="responsibilities" name="responsibilities"
+								id="responsibilities" name="CareerEntity.responsibilities"
 								class="reginputhide1"></td>
 							<td class="empRegister-body"><input type="text"
-								id="reasonForLeaving" name="reasonForLeaving"
+								id="reasonForResignation" name="CareerEntity.reasonForResignation"
 								class="reginputhide1"></td>
 						</tr>
 					</tbody>
@@ -356,13 +356,13 @@
 					<tbody>
 						<tr>
 							<td class="empRegister-body"><select id="serviceType"
-								name="serviceType">
+								name="MilitaryServiceEntity.serviceType">
 									<option value="">選択</option>
 									<option value="군필">転役</option>
 									<option value="미필">未了</option>
 							</select></td>
 							<td class="empRegister-body"><select id="branch"
-								name="branch">
+								name="MilitaryServiceEntity.branch">
 									<option value="">選択</option>
 									<option value="육군">陸軍</option>
 									<option value="해군">海軍</option>
@@ -372,15 +372,15 @@
 									<option value="기타">その他</option>
 							</select></td>
 							<td class="empRegister-body"><input type="date"
-								id="servicePeriod1" name="servicePeriod1"></td>
+								id="servicePeriod1" name="MilitaryServiceEntity.servicePeriod1"></td>
 							<td class="empRegister-body"><input type="date"
-								id="servicePeriod2" name="servicePeriod2"></td>
+								id="servicePeriod2" name="MilitaryServiceEntity.servicePeriod2"></td>
 							<td class="empRegister-body"><input type="text"
-								id="finalRank" name="finalRank" class="reginputhide"></td>
+								id="finalRank" name="MilitaryServiceEntity.finalRank" class="reginputhide"></td>
 							<td class="empRegister-body"><input type="text"
-								id="militaryClass" name="militaryClass" class="reginputhide"></td>
+								id="department" name="MilitaryServiceEntity.department" class="reginputhide"></td>
 							<td class="empRegister-body"><input type="text"
-								id="exemptionReason" name="exemptionReason" class="reginputhide"></td>
+								id="exemptionReason" name="MilitaryServiceEntity.exemptionReason" class="reginputhide"></td>
 						</tr>
 					</tbody>
 				</table>

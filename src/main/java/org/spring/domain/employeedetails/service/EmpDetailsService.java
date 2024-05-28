@@ -1,4 +1,8 @@
 package org.spring.domain.employeedetails.service;
 
-public class EmpDetailsService {
+import org.spring.domain.employee.controller.model.DetailsRegistrationForm;
+
+public interface EmpDetailsService {
+	void registerDetails(DetailsRegistrationForm detailsRegistrationForm);
+
 }

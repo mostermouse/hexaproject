@@ -6,8 +6,13 @@
 
 	<!-- 전직원 정보 -->
 	<select id="getAllEmployee"
-		resultType="org.spring.domain.employee.model.EmployeeEntity">
-		SELECT * FROM employee
+		resultType="org.spring.domain.employee.model.DepartmentEntity">
+		SELECT e.employee_id, e.employment_type, e.hire_date, e.korean_name, e.department_id, e.position_id,
+			   e.resident_number1, e.resident_number2, e.tel_phone, e.email, e.resignation_date, e.status,
+			   d.department_name, p.position_name
+		FROM employee e
+				 JOIN department d ON e.department_id = d.department_id
+				 JOIN position p ON e.position_id = p.position_id
 	</select>
 	<select id="getDepartment"
 		resultType="org.spring.domain.employee.model.DepartmentEntity">
@@ -86,8 +91,9 @@
 	<!-- Insert employee -->
 	<insert id="insertEmployee"
 		parameterType="org.spring.domain.employee.model.EmployeeEntity">
+
 		INSERT INTO employee (
-		employee_id, employment_type,
+		account_id  , company_id ,person_id ,employee_id, employment_type,
 		korean_name, english_name, hire_date,
 		resignation_date, department_id,
 		position_id,
@@ -95,7 +101,8 @@
 		address, tel_phone, mobile,
 		email, sns, other_details, status
 		) VALUES (
-		employee_seq.NEXTVAL, #{employmentType}, #{koreanName},
+		#{accountId},#{companyId},#{personId},
+		#{employeeId}, #{employmentType}, #{koreanName},
 		#{englishName}, #{hireDate},
 		#{resignationDate}, #{departmentId},
 		#{positionId},
@@ -113,11 +120,11 @@
 		parameterType="org.spring.domain.employee.model.DependentsEntity">
 		INSERT INTO dependents (
 		dependent_id, employee_id,
-		relationship, parents_name, foreign_or_domestic,
+		relationship, parents_name, foreign_or_domestic1,
 		parents_number1,
 		parents_number2
 		) VALUES (
-		dependents_seq.NEXTVAL, #{employeeId},
+		#{dependentId}, #{employeeId},
 		#{relationship}, #{parentsName}, #{foreignOrDomestic},
 		#{parentsNumber1}, #{parentsNumber2}
 		)
@@ -126,11 +133,11 @@
 	<insert id="insertDegree"
 		parameterType="org.spring.domain.employee.model.DegreeEntity">
 		INSERT INTO degree (
-		degree_id, graduate, admission_date,
+		degree_id,employee_id ,graduate, admission_date,
 		graduation_date, school_name, major,
 		completion
 		) VALUES (
-		education_seq.nextval, #{graduate}, #{admissionDate},
+		#{degreeId},#{employeeId}, #{graduate}, #{admissionDate},
 		#{graduationDate}, #{schoolName},
 		#{major}, #{completion}
 		)
@@ -140,12 +147,12 @@
 	<insert id="insertCareer"
 		parameterType="org.spring.domain.employee.model.CareerEntity">
 		INSERT INTO career (
-		career_id, company_name, start_date,
+		career_id,employee_id ,company_name, start_date,
 		end_date, employment_period,
 		final_position, responsibilities,
 		reason_for_resignation
 		) VALUES (
-		career_seq.NEXTVAL, #{companyName},
+		#{careerId},#{employeeId} ,#{companyName},
 		#{startDate}, #{endDate}, #{employmentPeriod},
 		#{finalPosition},
 		#{responsibilities}, #{reasonForResignation}
@@ -158,19 +165,70 @@
 		INSERT INTO military_service (
 		military_service_id,
 		employee_id, service_type, branch, service_period1, service_period2,
-		final_rank, department, exemption_reason
+		final_rank, department1, exemption_reason
 		) VALUES (
-		military_service_seq.NEXTVAL, #{employeeId}, #{serviceType},
+		#{militaryServiceId}, #{employeeId}, #{serviceType},
 		#{branch}, #{servicePeriod1},
 		#{servicePeriod2}, #{finalRank},
-		#{department}, #{exemptionReason}
+		#{department1}, #{exemptionReason}
 		)
 	</insert>
+
+	<select id="getCompany" resultType="org.spring.domain.employee.model.CompanyEntity">
+		SELECT
+		*
+		FROM company_info
+	</select>
 
 	<select id="getNextSeqVal" resultType="long">
 		SELECT company_seq.NEXTVAL
 		FROM DUAL
 	</select>
+
+	<select id="getCompanySeqCurrVal" resultType="long">
+		SELECT company_seq.CURRVAL
+		FROM DUAL
+	</select>
+	<select id="getEmpSeqVal" resultType="long">
+		select EMPLOYEE_SEQ.NEXTVAL
+		from dual
+	</select>
+
+	<select id="getEmpSeqCurrval" resultType="long">
+		select employee_seq.CURRVAL
+		from dual
+	</select>
+
+	<select id="getDependentSeq" resultType="long">
+		select dependents_seq.NEXTVAL
+		from dual
+	</select>
+
+	<select id="getDegreeSeq" resultType="long">
+		select degree_seq.NEXTVAL
+		from dual
+	</select>
+
+	<select id="getCareerSeq" resultType="long">
+		select CAREER_SEQ.NEXTVAL
+		from dual
+	</select>
+	<select id="getMilitarySeq" resultType="long">
+		select MILITARY_SERVICE_SEQ.NEXTVAL
+		from dual
+	</select>
+
+
+	<select id="getCompanyId" resultType="long">
+		select company_id from company_info
+	</select>
+	<select id="getContactId" resultType="long">
+		select person_id from contact_person_info
+	</select>
+	<select id="getAcountId" resultType="long">
+		SELECT account_id FROM EMPLOYEE_SALARY_ACCOUNT
+	</select>
+
 
 	<insert id="insertCompany"
 		parameterType="org.spring.domain.employee.model.CompanyEntity">
@@ -209,8 +267,8 @@
 		person_id,
 		company_id,
 		contact_name,
-		department_Name,
-		position_Name,
+		department_id,
+		position_id,
 		con_phone_number,
 		mobile_number,
 		email
@@ -218,8 +276,8 @@
 		#{personId},
 		#{companyId},
 		#{contactName},
-		#{departmentName},
-		#{positionName},
+		#{departmentId},
+		#{positionId},
 		#{conPhoneNumber},
 		#{mobileNumber},
 		#{email}

@@ -48,7 +48,8 @@ public class EmpController {
         model.addAttribute("resigned", employeeService.countByStatusResigned());
         model.addAttribute("allemployees", employeeService.countAllEmployees());
         log.info("getEmployess...........");
-        
+        //회사정보 출력
+        model.addAttribute("company", employeeService.getCompany());
         //급여대장
     	model.addAttribute("listWageRecord", employeeService.listWageRecord(year));
     	log.info("getWageList...........");
@@ -64,13 +65,21 @@ public class EmpController {
         model.addAttribute("degree", new DegreeEntity());
         model.addAttribute("career", new CareerEntity());
         model.addAttribute("militaryservice", new MilitaryServiceEntity());
+        model.addAttribute("department", employeeService.getDepartment());
+        model.addAttribute("position" , employeeService.getPosition());
+        log.info("showRegistrationForm : {}" + model.toString());
 
         return "defaultPreferences/employeeRegistration";
     }
 
     @PostMapping("/employeeregistration")
-    public String registerEmployee(@ModelAttribute EmployeeRegistrationForm registrationForm, Model model) {
-        employeeService.registerEmployee(registrationForm);
+    public String registerEmployee(@ModelAttribute EmployeeEntity employeeEntity,
+                                   @ModelAttribute DependentsEntity dependentsEntity,
+                                    @ModelAttribute DegreeEntity degreeEntity,
+                                   @ModelAttribute CareerEntity careerEntity,
+                                   @ModelAttribute MilitaryServiceEntity militaryServiceEntity,
+                                   Model model) {
+        employeeService.registerEmployee(employeeEntity , dependentsEntity , degreeEntity , careerEntity , militaryServiceEntity);
 
         log.info("register" + model.toString());
         return "redirect:/personnel/register"; // 페이지 경로 수정
@@ -88,6 +97,8 @@ public class EmpController {
         model.addAttribute("daily", employeeService.countByEmploymentTypeDaily());
         model.addAttribute("resigned", employeeService.countByStatusResigned());
         model.addAttribute("allemployees", employeeService.countAllEmployees());
+        model.addAttribute("department", employeeService.getDepartment());
+        model.addAttribute("position" , employeeService.getPosition());
         log.info(model.toString());
 
         return "hrManagement/employeeMnt";

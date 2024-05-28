@@ -28,8 +28,14 @@ public interface EmployeeService {
     long countAllEmployees();
     
     // 사원등록 1페이지
-    void registerEmployee(EmployeeRegistrationForm registrationForm);
+    void registerEmployee(EmployeeEntity employeeEntity,DependentsEntity dependentsEntity , DegreeEntity degreeEntity , CareerEntity careerEntity , MilitaryServiceEntity militaryServiceEntity );
+
+
+    //회사등록
     void registerCompanyAndDetails(CompanyEntity company, ContactEntity contact, EmployeeSalaryAccountEntity salaryAccount);
 
+
+    //회사정보 가져오기
+    CompanyEntity getCompany();
 
 }

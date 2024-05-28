@@ -63,39 +63,39 @@
                 <thead>
                     <tr>
                         <th class="empRegister-head1">相互名</th>
-                        <th class="empRegister-body"></th>
+                        <th class="empRegister-body">${company.companyName}</th>
                         <th class="empRegister-head1">代表者</th>
-                        <th class="empRegister-body"></th>
+                        <th class="empRegister-body">${company.representativeName}</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td class="empRegister-head1">事業者番号</td>
-                        <td class="empRegister-body"></td>
+                        <td class="empRegister-body">${company.businessNumber}</td>
                         <td class="empRegister-head1">法人登録番号</td>
-                        <td class="empRegister-body"></td>
+                        <td class="empRegister-body">${company.corporationNumber}</td>
                     </tr>
                     <tr>
                         <td class="empRegister-head1">設立日</td>
-                        <td class="empRegister-body"></td>
+                        <td class="empRegister-body">${company.establishmentDate}</td>
                         <td class="empRegister-head1">ホームページ</td>
-                        <td class="empRegister-body"></td>
+                        <td class="empRegister-body">${company.website}</td>
                     </tr>
                     <tr>
                         <td class="empRegister-head1">事業所の住所</td>
-                        <td colspan="3" class="empRegister-body"></td>
+                        <td colspan="3" class="empRegister-body">${company.officeAddress}</td>
                     </tr>
                     <tr>
                         <td class="empRegister-head1">電話番号</td>
-                        <td class="empRegister-body"></td>
+                        <td class="empRegister-body">${company.phoneNumber}</td>
                         <td class="empRegister-head1">ファックス番号</td>
-                        <td class="empRegister-body"></td>
+                        <td class="empRegister-body">${company.faxNumber}</td>
                     </tr>
                     <tr>
                         <td class="empRegister-head1">業態</td>
-                        <td class="empRegister-body"></td>
+                        <td class="empRegister-body">${company.businessType}</td>
                         <td class="empRegister-head1">種目</td>
-                        <td class="empRegister-body"></td>
+                        <td class="empRegister-body">${company.businessItem}</td>
                     </tr>
                 </tbody>
             </table>

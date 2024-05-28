@@ -93,8 +93,8 @@
 					<td>${employee.hireDate}</td>
 					<td>${employee.employeeId}</td>
 					<td>${employee.koreanName}</td>
-					<td>${employee.departmentId}</td>
-					<td>${employee.positionId}</td>
+					<td>${employee.departmentName}</td>
+					<td>${employee.positionName}</td>
 					<td>${employee.residentNumber1}-${employee.residentNumber2}</td>
 					<td>${employee.telPhone}</td>
 					<td>${employee.email}</td>

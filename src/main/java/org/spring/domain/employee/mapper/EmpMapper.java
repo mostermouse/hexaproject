@@ -26,7 +26,6 @@ public interface EmpMapper {
     public List<WageEntity> getYearWage(Long year);
     
     // 사원등록 1페이지
-    void registerEmployee(EmployeeRegistrationForm registrationForm);
     void insertEmployee(EmployeeEntity employeeEntity);
 
     void insertDependent(DependentsEntity dependentsEntity);
@@ -41,5 +40,21 @@ public interface EmpMapper {
     void insertCompany(CompanyEntity companyEntity);
     void insertContact(ContactEntity contactEntity);
     void insertSalaryAccount(EmployeeSalaryAccountEntity employeeSalaryAccountEntity);
+
     Long getNextSeqVal();
+    Long getCompanySeqCurrVal();
+    Long getEmpSeqVal();
+    Long getEmpSeqCurrval();
+    CompanyEntity getCompany();
+
+    Long getCompanyId();
+    Long getContactId();
+    Long getAcountId();
+
+    Long getDependentSeq();
+    Long getDegreeSeq();
+    Long getCareerSeq();
+    Long getMilitarySeq();
+
+
 }

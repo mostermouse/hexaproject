@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DegreeEntity extends EmployeeEntity {
-    private String degreeId;
+    private Long degreeId;
     private String graduate;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate admissionDate;

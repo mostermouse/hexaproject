@@ -138,15 +138,39 @@ import lombok.extern.log4j.Log4j;
             return mapper.countAllEmployees();
         }
 
-        // 사원등록 1페이지
         @Override
-        @Transactional
-        public void registerEmployee(EmployeeRegistrationForm registrationForm) {
-            EmployeeEntity employeeEntity = registrationForm.getEmployeeEntity();
-            DependentsEntity dependentsEntity = registrationForm.getDependentsEntity();
-            DegreeEntity degreeEntity = registrationForm.getDegreeEntity();
-            CareerEntity careerEntity = registrationForm.getCareerEntity();
-            MilitaryServiceEntity militaryServiceEntity = registrationForm.getMilitaryServiceEntity();
+        public void registerEmployee(EmployeeEntity employeeEntity, DependentsEntity dependentsEntity, DegreeEntity degreeEntity, CareerEntity careerEntity, MilitaryServiceEntity militaryServiceEntity) {
+            //employee에 채워줄 아이디
+            Long companyId = mapper.getCompanyId();
+            Long contactId = mapper.getContactId();
+            Long accountId = mapper.getAcountId(); // 변수명 수정
+
+            // 직원 시퀀스 값 가져오기
+            Long employeeSeqVal = mapper.getEmpSeqVal();
+            Long employeeSeqCurrVal = mapper.getEmpSeqCurrval();
+            //각 테이블 기본키 id
+            Long dependentsSeq = mapper.getDependentSeq();
+            Long degreeSeq = mapper.getDegreeSeq();
+            Long careerSeq = mapper.getCareerSeq();
+            Long militarySeq = mapper.getMilitarySeq();
+
+            // 엔티티에 ID 값 설정
+            employeeEntity.setPersonId(companyId);
+            employeeEntity.setAccountId(accountId);
+            employeeEntity.setCompanyId(contactId);
+            employeeEntity.setEmployeeId(employeeSeqVal);
+
+            dependentsEntity.setEmployeeId(employeeSeqCurrVal);
+            dependentsEntity.setDependentId(dependentsSeq);
+
+            degreeEntity.setEmployeeId(employeeSeqCurrVal);
+            degreeEntity.setDegreeId(degreeSeq);
+
+            careerEntity.setEmployeeId(employeeSeqCurrVal);
+            careerEntity.setCareerId(careerSeq);
+
+            militaryServiceEntity.setEmployeeId(employeeSeqCurrVal);
+            militaryServiceEntity.setMilitaryServiceId(militarySeq);
 
             // 각 엔티티 등록
             mapper.insertEmployee(employeeEntity);
@@ -154,7 +178,9 @@ import lombok.extern.log4j.Log4j;
             mapper.insertDegree(degreeEntity);
             mapper.insertCareer(careerEntity);
             mapper.insertMilitaryService(militaryServiceEntity);
+
         }
+
 
         @Override
         @Transactional
@@ -173,6 +199,9 @@ import lombok.extern.log4j.Log4j;
             mapper.insertCompany(company);
             mapper.insertContact(contact);
             mapper.insertSalaryAccount(salaryAccount);
+        }
+        public CompanyEntity getCompany() {
+            return  mapper.getCompany();
         }
 
 

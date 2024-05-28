@@ -13,10 +13,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class EmployeeEntity {
 
     private Long employeeId;
+    private Long personId;
+    private Long companyId;
+    private Long accountId;
     private String employmentType;
     private String koreanName;
     private String englishName;

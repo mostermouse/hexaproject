@@ -332,7 +332,7 @@
 								id="responsibilities" name="responsibilities"
 								class="reginputhide1"></td>
 							<td class="empRegister-body"><input type="text"
-								id="reasonForLeaving" name="reasonForLeaving"
+								id="reasonForResignation" name="reasonForResignation"
 								class="reginputhide1"></td>
 						</tr>
 					</tbody>
@@ -378,7 +378,7 @@
 							<td class="empRegister-body"><input type="text"
 								id="finalRank" name="finalRank" class="reginputhide"></td>
 							<td class="empRegister-body"><input type="text"
-								id="militaryClass" name="militaryClass" class="reginputhide"></td>
+								id="department" name="department" class="reginputhide"></td>
 							<td class="empRegister-body"><input type="text"
 								id="exemptionReason" name="exemptionReason" class="reginputhide"></td>
 						</tr>

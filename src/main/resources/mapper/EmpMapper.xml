@@ -100,7 +100,7 @@
     INSERT INTO degree (
         degree_id, graduate, admission_date, graduation_date, school_name, major, completion
     ) VALUES (
-                 #{degreeId}, #{gradeDate}, #{admissionDate}, #{graduationDate}, #{schoolName}, #{major}, #{completion}
+                 #{degreeId}, #{graduate}, #{admissionDate}, #{graduationDate}, #{schoolName}, #{major}, #{completion}
              )
 
 </insert>

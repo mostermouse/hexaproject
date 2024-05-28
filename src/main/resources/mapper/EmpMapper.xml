@@ -20,47 +20,56 @@
 	<!-- 사원현황판 -->
 	<!-- 재직자 인원수 -->
 	<select id="countByStatusEmployed" resultType="long">
-		SELECT COUNT(*) FROM employee WHERE status = '재직'
+		SELECT COUNT(*)
+		FROM employee WHERE status = '재직'
 	</select>
 
 	<!-- 정규직 인원수 -->
 	<select id="countByEmploymentTypeRegular" resultType="long">
-		SELECT COUNT(*) FROM employee WHERE employment_type = '정규직'
+		SELECT
+		COUNT(*) FROM employee WHERE employment_type = '정규직'
 	</select>
 
 	<!-- 계약직 인원수 -->
 	<select id="countByEmploymentTypeContract" resultType="long">
-		SELECT COUNT(*) FROM employee WHERE employment_type = '계약직'
+		SELECT
+		COUNT(*) FROM employee WHERE employment_type = '계약직'
 	</select>
 
 	<!-- 임시직 인원수 -->
 	<select id="countByEmploymentTypeTemporary" resultType="long">
-		SELECT COUNT(*) FROM employee WHERE employment_type = '임시직'
+		SELECT
+		COUNT(*) FROM employee WHERE employment_type = '임시직'
 	</select>
 
 	<!-- 파견직 인원수 -->
 	<select id="countByEmploymentTypeDispatched" resultType="long">
-		SELECT COUNT(*) FROM employee WHERE employment_type = '파견직'
+		SELECT
+		COUNT(*) FROM employee WHERE employment_type = '파견직'
 	</select>
 
 	<!-- 위촉직 인원수 -->
 	<select id="countByEmploymentTypeAppointed" resultType="long">
-		SELECT COUNT(*) FROM employee WHERE employment_type = '위촉직'
+		SELECT
+		COUNT(*) FROM employee WHERE employment_type = '위촉직'
 	</select>
 
 	<!-- 일용직 인원수 -->
 	<select id="countByEmploymentTypeDaily" resultType="long">
-		SELECT COUNT(*) FROM employee WHERE employment_type = '일용직'
+		SELECT
+		COUNT(*) FROM employee WHERE employment_type = '일용직'
 	</select>
 
 	<!-- 퇴사자 인원수 -->
 	<select id="countByStatusResigned" resultType="long">
-		SELECT COUNT(*) FROM employee WHERE status = '퇴사'
+		SELECT COUNT(*)
+		FROM employee WHERE status = '퇴사'
 	</select>
 
 	<!-- 전체 인원수 -->
 	<select id="countAllEmployees" resultType="long">
-		SELECT COUNT(*) FROM employee
+		SELECT COUNT(*) FROM
+		employee
 	</select>
 
 
@@ -68,7 +77,8 @@
 	<!-- 급여정보 연도 -->
 	<select id="getYearWage"
 		resultType="org.spring.domain.wage.model.WageEntity">
-		SELECT * FROM wage WHERE TO_CHAR(wage_payment_date, 'YYYY') = #{year}
+		SELECT * FROM wage WHERE TO_CHAR(wage_payment_date, 'YYYY')
+		= #{year}
 	</select>
 
 
@@ -77,15 +87,22 @@
 	<insert id="insertEmployee"
 		parameterType="org.spring.domain.employee.model.EmployeeEntity">
 		INSERT INTO employee (
-		employee_id, employment_type, korean_name, english_name, hire_date,
-		resignation_date, department_id, position_id,
-		foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile,
+		employee_id, employment_type,
+		korean_name, english_name, hire_date,
+		resignation_date, department_id,
+		position_id,
+		foreign_or_domestic, resident_number1, resident_number2,
+		address, tel_phone, mobile,
 		email, sns, other_details, status
 		) VALUES (
-		employee_seq.NEXTVAL, #{employmentType}, #{koreanName}, #{englishName}, #{hireDate},
-		#{resignationDate}, #{departmentId}, #{positionId},
-		#{foreignOrDomestic}, #{residentNumber1}, #{residentNumber2},
-		#{address}, #{telPhone}, #{mobile}, #{email}, #{sns}, #{otherDetails},
+		employee_seq.NEXTVAL, #{employmentType}, #{koreanName},
+		#{englishName}, #{hireDate},
+		#{resignationDate}, #{departmentId},
+		#{positionId},
+		#{foreignOrDomestic}, #{residentNumber1},
+		#{residentNumber2},
+		#{address}, #{telPhone}, #{mobile}, #{email},
+		#{sns}, #{otherDetails},
 		#{status}
 		)
 	</insert>
@@ -95,10 +112,13 @@
 	<insert id="insertDependent"
 		parameterType="org.spring.domain.employee.model.DependentsEntity">
 		INSERT INTO dependents (
-		dependent_id, employee_id, relationship, parents_name, foreign_or_domestic,
-		parents_number1, parents_number2
+		dependent_id, employee_id,
+		relationship, parents_name, foreign_or_domestic,
+		parents_number1,
+		parents_number2
 		) VALUES (
-		dependents_seq.NEXTVAL, #{employeeId}, #{relationship}, #{parentsName}, #{foreignOrDomestic},
+		dependents_seq.NEXTVAL, #{employeeId},
+		#{relationship}, #{parentsName}, #{foreignOrDomestic},
 		#{parentsNumber1}, #{parentsNumber2}
 		)
 	</insert>
@@ -106,10 +126,12 @@
 	<insert id="insertDegree"
 		parameterType="org.spring.domain.employee.model.DegreeEntity">
 		INSERT INTO degree (
-		degree_id, graduate, admission_date, graduation_date, school_name, major,
+		degree_id, graduate, admission_date,
+		graduation_date, school_name, major,
 		completion
 		) VALUES (
-		education_seq.nextval, #{graduate}, #{admissionDate}, #{graduationDate}, #{schoolName},
+		education_seq.nextval, #{graduate}, #{admissionDate},
+		#{graduationDate}, #{schoolName},
 		#{major}, #{completion}
 		)
 
@@ -118,11 +140,15 @@
 	<insert id="insertCareer"
 		parameterType="org.spring.domain.employee.model.CareerEntity">
 		INSERT INTO career (
-		career_id, company_name, start_date, end_date, employment_period,
-		final_position, responsibilities, reason_for_resignation
+		career_id, company_name, start_date,
+		end_date, employment_period,
+		final_position, responsibilities,
+		reason_for_resignation
 		) VALUES (
-		career_seq.NEXTVAL, #{companyName}, #{startDate}, #{endDate}, #{employmentPeriod},
-		#{finalPosition}, #{responsibilities}, #{reasonForResignation}
+		career_seq.NEXTVAL, #{companyName},
+		#{startDate}, #{endDate}, #{employmentPeriod},
+		#{finalPosition},
+		#{responsibilities}, #{reasonForResignation}
 		)
 	</insert>
 
@@ -130,16 +156,20 @@
 	<insert id="insertMilitaryService"
 		parameterType="org.spring.domain.employee.model.MilitaryServiceEntity">
 		INSERT INTO military_service (
-		military_service_id, employee_id, service_type, branch, service_period1, service_period2,
+		military_service_id,
+		employee_id, service_type, branch, service_period1, service_period2,
 		final_rank, department, exemption_reason
 		) VALUES (
-		military_service_seq.NEXTVAL, #{employeeId}, #{serviceType}, #{branch}, #{servicePeriod1},
-		#{servicePeriod2}, #{finalRank}, #{department}, #{exemptionReason}
+		military_service_seq.NEXTVAL, #{employeeId}, #{serviceType},
+		#{branch}, #{servicePeriod1},
+		#{servicePeriod2}, #{finalRank},
+		#{department}, #{exemptionReason}
 		)
 	</insert>
 
 	<select id="getNextSeqVal" resultType="long">
-		SELECT company_seq.NEXTVAL FROM DUAL
+		SELECT company_seq.NEXTVAL
+		FROM DUAL
 	</select>
 
 	<insert id="insertCompany"
@@ -218,6 +248,5 @@
 		#{salaryPaymentDate}
 		)
 	</insert>
-
 
 </mapper>

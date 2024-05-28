@@ -89,7 +89,7 @@
 				<tr>
 					<th class="empRegister-head1"><label for="employeeId">社員番号</label></th>
 					<th class="empRegister-body"><input type="number"
-						id="employeeId" name="EmployeeEntity.employeeId" class="reginputhide" required></th>
+						id="employeeId" name="EmployeeEntity.employeeId" class="reginputhide" readonly></th>
 					<th class="empRegister-head1"><span style="color: #FE0000">*</span><label
 						for="employmentType">雇用形態</label></th>
 					<th class="empRegister-body"><select id="employmentType"

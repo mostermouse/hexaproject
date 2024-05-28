@@ -2,7 +2,6 @@ package org.spring.domain.attendance.service;
 
 import java.util.List;
 
-import org.spring.domain.attendance.mapper.AttMapper;
 import org.spring.domain.attendance.mapper.AttendanceMapper;
 import org.spring.domain.attendance.model.AttendanceEntity;
 import org.spring.domain.attendance.model.AttendanceTypeEntity;
@@ -20,7 +19,8 @@ public class AttendanceImpl2 implements AttendanceService2{
 	
 	@Autowired
     private AttendanceMapper mapper;
-
+	
+	
 	@Override
 	public List<DepartmentEntity> getAllAttendance() {
 		List<DepartmentEntity> attendanceList = mapper.getAllAttendance();

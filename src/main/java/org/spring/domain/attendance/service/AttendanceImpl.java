@@ -23,7 +23,6 @@ public class AttendanceImpl implements AttendanceService {
     @Autowired
     private AttMapper mapper;
 
-    @Override
     public List<AttendanceEntityRequest> getEmployeeAttendance() {
         log.info("getEmployeeAttendance..........");
         

@@ -1,15 +1,12 @@
 package org.spring.domain.vacation.mapper;
 
+import org.spring.domain.vacation.model.VacationTypeEntity;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.spring.domain.vacation.model.VacationTypeEntity;
-
-@Mapper
 public interface VacationTypeMapper {
     List<VacationTypeEntity> getAllVacationType();
-    VacationTypeEntity getVacationTypeById(Long vacationTypeId);
+    VacationTypeEntity getVacationTypeById(long vacationTypeId);
     void createVacationType(VacationTypeEntity vacationType);
     void updateVacationType(VacationTypeEntity vacationType);
-    void deleteVacationType(Long vacationTypeId);
+    void deleteVacationType(long vacationTypeId);
 }

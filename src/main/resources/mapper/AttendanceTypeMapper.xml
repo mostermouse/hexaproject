@@ -1,49 +1,39 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.domain.attendance.mapper.AttendanceTypeMapper">
 
-<mapper
-	namespace="org.spring.domain.attendance.mapper.AttendanceTypeMapper">
+    <!-- Select all AttendanceTypeEntities -->
+    <select id="findAll" resultType="org.spring.domain.attendance.model.AttendanceTypeEntity">
+        SELECT * FROM attendance_type
+    </select>
 
-	<resultMap id="AttendanceTypeResultMap"
-		type="org.spring.domain.attendance.model.AttendanceTypeEntity">
-		<id property="attendanceTypeId" column="attendance_type_id" />
-		<result property="attendanceTypeName" column="attendance_type_name" />
-		<result property="unit" column="unit" />
-		<result property="attendanceGroupId" column="attandance_group_id" />
-		<result property="vacationTypeId" column="vacation_type_id" />
-		<result property="attendanceUsage" column="usage" /> <!-- Changed column name -->
-	</resultMap>
+    <!-- Select all AttendanceGroupEntities -->
+    <select id="findAllGroups" resultType="org.spring.domain.attendance.model.AttendanceGroupEntity">
+        SELECT * FROM attendance_group
+    </select>
 
-	<select id="getAllAttendanceTypes"
-		resultMap="AttendanceTypeResultMap">
-		SELECT * FROM attendance_type
-	</select>
-
-
-	<select id="getAttendanceTypeById" parameterType="long"
-		resultMap="AttendanceTypeResultMap">
-		SELECT * FROM attendance_type WHERE attendance_type_id = #{attendanceTypeId}
-	</select>
-
-	<insert id="createAttendanceType"
-		parameterType="org.spring.domain.attendance.model.AttendanceTypeEntity">
-		INSERT INTO attendance_type (attendance_type_id, attendance_type_name, unit, attandance_group_id, vacation_type_id,
-		usage) <!-- Changed column name -->
-		VALUES (attendance_type_seq.nextval, #{attendanceTypeName}, #{unit}, #{attendanceGroupId}, #{vacationTypeId}, #{attendanceUsage}) <!-- Changed column name -->
-	</insert>
-
-	<update id="updateAttendanceType"
-		parameterType="org.spring.domain.attendance.model.AttendanceTypeEntity">
-		UPDATE attendance_type
-		SET attendance_type_name = #{attendanceTypeName}, unit =
-		#{unit}, attandance_group_id = #{attendanceGroupId}, vacation_type_id = #{vacationTypeId}, usage = #{attendanceUsage} <!-- Changed column name -->
-		WHERE attendance_type_id = #{attendanceTypeId}
-	</update>
-
-	<delete id="deleteAttendanceType" parameterType="long">
-		DELETE FROM attendance_type WHERE attendance_type_id = #{attendanceTypeId}
-	</delete>
+    <!-- Insert a new AttendanceTypeEntity -->
+    <insert id="insert" parameterType="org.spring.domain.attendance.model.AttendanceTypeEntity">
+        <selectKey keyProperty="attendanceTypeId" resultType="java.lang.Long" order="BEFORE">
+            SELECT attendance_type_seq.nextval FROM dual
+        </selectKey>
+        INSERT INTO attendance_type (attendance_type_id, attendance_type_name, unit, vacation_type_id, usage)
+        VALUES (#{attendanceTypeId}, #{attendanceTypeName}, #{unit}, #{vacationTypeId}, #{usage})
+    </insert>
+    
+    <!-- Update an existing AttendanceTypeEntity -->
+    <update id="update" parameterType="org.spring.domain.attendance.model.AttendanceTypeEntity">
+        UPDATE attendance_type
+        SET attendance_type_name = #{attendanceTypeName},
+            unit = #{unit},
+            vacation_type_id = #{vacationTypeId},
+            usage = #{usage}
+        WHERE attendance_type_id = #{attendanceTypeId}
+    </update>
+    
+    <!-- Delete an AttendanceTypeEntity by ID -->
+    <delete id="delete" parameterType="java.lang.Long">
+        DELETE FROM attendance_type WHERE attendance_type_id = #{id}
+    </delete>
 
 </mapper>

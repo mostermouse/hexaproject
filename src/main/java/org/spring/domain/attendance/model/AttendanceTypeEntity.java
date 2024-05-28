@@ -15,4 +15,5 @@ public class AttendanceTypeEntity extends AttendanceGroupEntity {
 	private Long attendaceGroupId;
 	private Long vacationTypeId;
 	private Boolean usage;
+	private Long attendanceGroupId;
 }

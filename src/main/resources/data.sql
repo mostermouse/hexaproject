@@ -721,48 +721,49 @@ INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '외근', '시�
 
 -- department 테이블에 값 삽입
 INSERT ALL
-INTO department (department_id, department_name)VALUES (5, '디자인부')          -- 디자인부
-INTO department (department_id, department_name)VALUES (3, '콘텐츠부')        -- 콘텐츠부
-INTO department (department_id, department_name)VALUES (4, '업무지원부')          -- 업무지원부
-INTO department (department_id, department_name)VALUES (7, '기획전략부')          -- 기획전략부
-INTO department (department_id, department_name)VALUES (6, '관리부')              -- 관리부
-INTO department (department_id, department_name)VALUES (1, '사장실')              -- 사장실
-INTO department (department_id, department_name)VALUES (2, '개발부')              -- 개발부
+INTO department (department_id, department_name)VALUES (5, 'デザイン部')          -- 디자인부
+INTO department (department_id, department_name)VALUES (3, 'コンテンツ部')        -- 콘텐츠부
+INTO department (department_id, department_name)VALUES (4, '業務支援部')          -- 업무지원부
+INTO department (department_id, department_name)VALUES (7, '企画戦略部')          -- 기획전략부
+INTO department (department_id, department_name)VALUES (6, '管理部')              -- 관리부
+INTO department (department_id, department_name)VALUES (1, '社長室')              -- 사장실
+INTO department (department_id, department_name)VALUES (2, '開発部')              -- 개발부
 SELECT * FROM dual;
 select * from department;
+
 -- position 테이블에 값 삽입
 INSERT ALL
-INTO position (position_id, position_name)VALUES (1, '사장')     -- 사장
-INTO position (position_id, position_name)VALUES (2, '이사')     -- 이사
-INTO position (position_id, position_name)VALUES (3, '실장')       -- 실장
-INTO position (position_id, position_name)VALUES  (4, '부장')       -- 부장
-INTO position (position_id, position_name)VALUES (5, '차장')       -- 차장
-INTO position (position_id, position_name)VALUES (6, '과장')       -- 과장
-INTO position (position_id, position_name)VALUES (7, '대리')       -- 대리
-INTO position (position_id, position_name)VALUES (8, '주임')       -- 주임
-INTO position (position_id, position_name)VALUES (9, '사원')       -- 사원
+INTO position (position_id, position_name)VALUES (1, '社長')     -- 사장
+INTO position (position_id, position_name)VALUES (2, '取締役')     -- 이사
+INTO position (position_id, position_name)VALUES (3, '室長')       -- 실장
+INTO position (position_id, position_name)VALUES  (4, '部長')       -- 부장
+INTO position (position_id, position_name)VALUES (5, '次長')       -- 차장
+INTO position (position_id, position_name)VALUES (6, '課長')       -- 과장
+INTO position (position_id, position_name)VALUES (7, '代理')       -- 대리
+INTO position (position_id, position_name)VALUES (8, '主任')       -- 주임
+INTO position (position_id, position_name)VALUES (9, '社員')       -- 사원
 SELECT * FROM dual;
 
 -- feild 테이블에 값 삽입
 INSERT ALL
-INTO feild_or_project VALUES (1, '개발프로젝트')
-INTO feild_or_project VALUES (2, '연구소')
-INTO feild_or_project VALUES (3, '공장1')
-INTO feild_or_project VALUES (4, '현장1')
-INTO feild_or_project VALUES (5, '현장2')
+INTO feild_or_project VALUES (1, '開発プロジェクト')
+INTO feild_or_project VALUES (2, '研究所')
+INTO feild_or_project VALUES (3, '工場1')
+INTO feild_or_project VALUES (4, '現場1')
+INTO feild_or_project VALUES (5, '現場2')
 SELECT * FROM dual;
 
 -- 휴가 항목 테이블에 값 삽입
-INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2015연차', '20240101','20241231','N');
-INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2016연차', '20240101','20241231','N');
-INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2017연차', '20240101','20241231','N');
-INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2018연차', '20240101','20241231','N');
-INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2019연차', '20240101','20241231','N');
-INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2020연차', '20240101','20241231','N');
-INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2021연차', '20240101','20241231','N');
-INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2022연차', '20240101','20241231','N');
-INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2023연차', '20240101','20241231','N');
-INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2024연차', '20240101','20241231','Y');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2015年次', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2016年次', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2017年次', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2018年次', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2019年次', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2020年次', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2021年次', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2022年次', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2023年次', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2024年次', '20240101','20241231','Y');
 
 commit ;
 -----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -783,5 +784,4 @@ FROM
     dual
 CONNECT BY
     level <= 36; -- 4 (employee_id 개수) * 9 (wage_type_id 개수)
-
 insert into employee values (employee_seq.nextval,'1','1','1','20220202','20220203','1','1','1','1','1','1','1','1','1','1','1','1');

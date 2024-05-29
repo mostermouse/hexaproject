@@ -58,7 +58,7 @@
 				<td class="empRegister-body"><input type="date" class="reginput-select"></td>
 				<td class="empRegister-body">
 					<select class="reginput-select">
-						<option value="">선택</option>
+						<option value="">選択</option>
 						<option value="상">上</option>
 						<option value="중">中</option>
 						<option value="하">下</option>
@@ -66,7 +66,7 @@
 				</td>
 				<td class="empRegister-body">
 					<select class="reginput-select">
-						<option value="">선택</option>
+						<option value="">選択</option>
 						<option value="상">上</option>
 						<option value="중">中</option>
 						<option value="하">下</option>
@@ -74,7 +74,7 @@
 				</td>
 				<td class="empRegister-body">
 					<select class="reginput-select">
-						<option value="">선택</option>
+						<option value="">選択</option>
 						<option value="상">上</option>
 						<option value="중">中</option>
 						<option value="하">下</option>
@@ -108,12 +108,12 @@
             newRow.innerHTML = `
             	<td class="empRegister-body"><input type="checkbox"></td>
 				<td class="empRegister-body"><select class="reginput-select">
-						<option value="">선택</option>
-						<option value="사내직무">사내직무</option>
-						<option value="사외직무">사외직무</option>
-						<option value="계층교육">계층교육</option>
-						<option value="어학교육">어학교육</option>
-						<option value="기타">기타</option>
+						<option value="">選択</option>
+						<option value="사내직무">社内職務</option>
+						<option value="사외직무">社外職務</option>
+						<option value="계층교육">階層教育</option>
+						<option value="어학교육">語学教育</option>
+						<option value="기타">その他</option>
 				</select></td>
 				<td class="empRegister-body"><input type="text"
 					class="reginputhide"></td>
@@ -124,9 +124,9 @@
 				<td class="empRegister-body"><input type="text"
 					class="reginputhide"></td>
 				<td class="empRegister-body"><input type="text"
-					class="reginputhidepay"><span>원</span></td>
+					class="reginputhidepay"><span>円</span></td>
 				<td class="empRegister-body"><input type="text"
-					class="reginputhidepay"><span>원</span></td>
+					class="reginputhidepay"><span>円</span></td>
             `;
 
             tableBody.appendChild(newRow);
@@ -155,18 +155,18 @@
             newRow.innerHTML = `
             	<td class="empRegister-body"><input type="checkbox"></td>
 				<td class="empRegister-body"><select class="reginput-select">
-						<option value="">선택</option>
-						<option value="포상">포상</option>
-						<option value="표창">표창</option>
-						<option value="시상">시상</option>
-						<option value="면직">면직</option>
-						<option value="정직">정직</option>
-						<option value="감봉">감봉</option>
-						<option value="견책">견책</option>
-						<option value="주의">주의</option>
-						<option value="경고">경고</option>
-						<option value="조치불가">조치불가</option>
-						<option value="해고">해고</option>
+						<option value="">選択</option>
+						<option value="褒賞">褒賞</option>
+						<option value="表彰">表彰</option>
+						<option value="授賞">授賞</option>
+						<option value="免職">免職</option>
+						<option value="停職">停職</option>
+						<option value="減給">減給</option>
+						<option value="譴責">譴責</option>
+						<option value="注意">注意</option>
+						<option value="警告">警告</option>
+						<option value="措置不可">措置不可</option>
+						<option value="解雇">解雇</option>
 				</select></td>
 				<td class="empRegister-body"><input type="text"
 					class="reginputhide"></td>
@@ -206,13 +206,13 @@
             newRow.innerHTML = `
             	<td class="empRegister-body"><input type="checkbox"></td>
 				<td class="empRegister-body"><select class="reginput-select">
-						<option value="">선택</option>
-						<option value="포상">채용</option>
-						<option value="표창">전보</option>
-						<option value="시상">승진</option>
-						<option value="면직">승격</option>
-						<option value="정직">승호</option>
-						<option value="감봉">파견</option>
+						<option value="">選択</option>
+						<option value="採用">採用</option>
+						<option value="転補">転補</option>
+						<option value="昇進">昇進</option>
+						<option value="昇格">昇格</option>
+						<option value="停職">停職</option>
+						<option value="派遣">派遣</option>
 				</select></td>
 				<td class="empRegister-body"><input type="date"
 					class="reginput-select"></td>
@@ -272,36 +272,36 @@
 				</tr>
 			</tbody>
 		</table>
-		<h3 style="text-align: left;">사원정보1</h3>
+		<h3 style="text-align: left;">社員情報1</h3>
 		<div class="button-container-top">
 			<button
-				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns?scrollToSection=section1'">기본정보</button>
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns?scrollToSection=section1'">基本情報</button>
 			<button
-				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns?scrollToSection=section2'">부양가족</button>
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns?scrollToSection=section2'">扶養家族</button>
 			<button
-				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns?scrollToSection=section3'">학력</button>
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns?scrollToSection=section3'">学歴</button>
 		</div>
 		<div class="button-container-bottom">
 			<button
-				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns?scrollToSection=section4'">경력</button>
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns?scrollToSection=section4'">経歴</button>
 			<button
-				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns?scrollToSection=section5'">병력</button>
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns?scrollToSection=section5'">兵力</button>
 		</div>
 		<hr>
-		<h3 style="text-align: left;">사원정보2</h3>
+		<h3 style="text-align: left;">社員情報2</h3>
 		<div class="button-container-top">
 			<button
-				onclick="window.location.href='<%=request.getContextPath()%>/personnel/register?scrollToSection=section6'">자격면허</button>
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/register?scrollToSection=section6'">資格免許</button>
 			<button
-				onclick="window.location.href='<%=request.getContextPath()%>/personnel/register?scrollToSection=section7'">교육훈련</button>
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/register?scrollToSection=section7'">教育訓練</button>
 			<button
-				onclick="window.location.href='<%=request.getContextPath()%>/personnel/register?scrollToSection=section8'">상벌</button>
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/register?scrollToSection=section8'">賞罰</button>
 		</div>
 		<div class="button-container-bottom">
 			<button
-				onclick="window.location.href='<%=request.getContextPath()%>/personnel/register?scrollToSection=section9'">발령</button>
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/register?scrollToSection=section9'">発令</button>
 			<button
-				onclick="window.location.href='<%=request.getContextPath()%>/personnel/register?scrollToSection=section10'">추천신원보증</button>
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/register?scrollToSection=section10'">推奨身元保証</button>
 		</div>
 	</div>
 	<div class="table-container">
@@ -309,9 +309,9 @@
 			<img
 				src="<%=request.getContextPath()%>/resources/images/contentimages/employeeMnt.png"
 				alt="" width="50" height="50">
-			<h1 id="section1">사원 등록</h1>
+			<h1 id="section1">社員登録</h1>
 		</div>
-		<h4>사원정보를 등록하는 메뉴입니다. 해당되는 항목만 입력하시면 됩니다. (* 표시는 필수 입력사항)</h4>
+		<h4>社員情報を登録するメニューです。 該当する項目だけ入力すればいいです。 (* 表示は必須入力事項)</h4>
 		<hr>
 		<br>
 		<form id="registerForm"
@@ -323,21 +323,21 @@
 
 			<div class="table-container">
 			<div class="grey-box" style="height: 30px;">
-				<h2>사원 정보2</h2>
+				<h2>社員情報2</h2>
 			</div>
 			</div>
 			<div class="table-container">
 				<div class="header-container">
-					<h3 id="section6">자격.면허 & 어학능력</h3>
+					<h3 id="section6">資格·免許&語学能力</h3>
 				</div>
 				<div class="header-container">
 					<h5>
 						<samp style="color: red;">+</samp>
-						<span style="color: blue;"> 자격 & 면허</span>
+						<span style="color: blue;"> 資格·免許</span>
 					</h5>
 					<div style="margin-left: auto;">
-						<button onclick="add1(event)">추가</button>
-						<button onclick="delete1(event)">삭제</button>
+						<button onclick="add1(event)">追加</button>
+						<button onclick="delete1(event)">削除</button>
 					</div>
 				</div>
 				<table class="empRegister1" id="table1">
@@ -345,11 +345,11 @@
 						<tr>
 							<th style="width: 20px;" class="empRegister-head1"><input
 								type="checkbox" onclick="toggleAll(this)"></th>
-							<th class="empRegister-head1">자격/면허명</th>
-							<th class="empRegister-head1">취득일</th>
-							<th class="empRegister-head1">발행기관</th>
-							<th class="empRegister-head1">증번호</th>
-							<th class="empRegister-head1">비고</th>
+							<th class="empRegister-head1">資格/免許名</th>
+							<th class="empRegister-head1">取得日</th>
+							<th class="empRegister-head1">発行機関</th>
+							<th class="empRegister-head1">免許証番号</th>
+							<th class="empRegister-head1">備考</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -359,7 +359,7 @@
 							<td class="empRegister-body"><input type="date" id="acquisitionDate" name="acquisitionDate" class="reginput-select"></td>
 							<td class="empRegister-body"><input type="text" id="issuingOrganization" name="issuingOrganization" class="reginputhide"></td>
 							<td class="empRegister-body"><input type="text" id="certificationNumber" name="certificationNumber" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="text" id="remarks" name="remarks" class="reginputhide"></td>
+							<td class="empRegister-body"><input type="text" id="remarks1" name="remarks1" class="reginputhide"></td>
 						</tr>
 					</tbody>
 				</table>
@@ -367,11 +367,11 @@
 				<div class="header-container">
 					<h5>
 						<samp style="color: red;">+</samp>
-						<span style="color: blue;"> 어학능력</span>
+						<span style="color: blue;"> 語学能力</span>
 					</h5>
 					<div style="margin-left: auto;">
-						<button onclick="add2(event)">추가</button>
-						<button onclick="delete2(event)">삭제</button>
+						<button onclick="add2(event)">追加</button>
+						<button onclick="delete2(event)">削除</button>
 					</div>
 				</div>
 				<table class="empRegister1" id="table2">
@@ -379,13 +379,13 @@
 						<tr>
 							<th style="width: 20px;" class="empRegister-head1"><input
 								type="checkbox" onclick="toggleAll(this)"></th>
-							<th class="empRegister-head1">외국어명</th>
-							<th class="empRegister-head1">시험</th>
-							<th class="empRegister-head1">공인점수</th>
-							<th class="empRegister-head1">취득일</th>
-							<th class="empRegister-head1">독해</th>
-							<th class="empRegister-head1">작문</th>
-							<th class="empRegister-head1">회화</th>
+							<th class="empRegister-head1">外国語名</th>
+							<th class="empRegister-head1">試験</th>
+							<th class="empRegister-head1">公認点数</th>
+							<th class="empRegister-head1" style="width: 150px;">取得日</th>
+							<th class="empRegister-head1">読解</th>
+							<th class="empRegister-head1">作文</th>
+							<th class="empRegister-head1">会話</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -400,22 +400,22 @@
 							<td class="empRegister-body"><input type="date"
 								class="reginput-select"></td>
 							<td class="empRegister-body"><select class="reginput-select">
-									<option value="">선택</option>
-									<option value="상">상</option>
-									<option value="중">중</option>
-									<option value="하">하</option>
+									<option value="">選択</option>
+									<option value="상">上</option>
+									<option value="중">中</option>
+									<option value="하">下</option>
 							</select></td>
 							<td class="empRegister-body"><select class="reginput-select">
-									<option value="">선택</option>
-									<option value="상">상</option>
-									<option value="중">중</option>
-									<option value="하">하</option>
+									<option value="">選択</option>
+									<option value="상">上</option>
+									<option value="중">中</option>
+									<option value="하">下</option>
 							</select></td>
 							<td class="empRegister-body"><select class="reginput-select">
-									<option value="">선택</option>
-									<option value="상">상</option>
-									<option value="중">중</option>
-									<option value="하">하</option>
+									<option value="">選択</option>
+									<option value="상">上</option>
+									<option value="중">中</option>
+									<option value="하">下</option>
 							</select></td>
 						</tr>
 					</tbody>
@@ -424,10 +424,10 @@
 
 				<!-- Training Table -->
         <div class="header-container">
-            <h3 id="section7">교육훈련</h3>
+            <h3 id="section7">教育訓練</h3>
             <div style="margin-left: auto;">
-                <button onclick="add3(event)">추가</button>
-                <button onclick="delete3(event)">삭제</button>
+                <button onclick="add3(event)">追加</button>
+                <button onclick="delete3(event)">削除</button>
             </div>
         </div>
         <table class="empRegister1" id="table3">
@@ -435,32 +435,32 @@
                 <tr>
                     <th style="width: 20px;" class="empRegister-head1"><input
                         type="checkbox" onclick="toggleAll(this)"></th>
-                    <th class="empRegister-head1">교육구분</th>
-                    <th class="empRegister-head1">교육명</th>
-                    <th class="empRegister-head1">교육기간(부터)</th>
-                    <th class="empRegister-head1">교육기간(까지)</th>
-                    <th class="empRegister-head1">교육기관</th>
-                    <th class="empRegister-head1">교육비</th>
-                    <th class="empRegister-head1">환급교육비</th>
+                    <th class="empRegister-head1">教育区分</th>
+                    <th class="empRegister-head1">教育名</th>
+                    <th class="empRegister-head1" style="width: 150px;">教育期間(から)</th>
+                    <th class="empRegister-head1" style="width: 150px;">教育期間(まで)</th>
+                    <th class="empRegister-head1">教育機関</th>
+                    <th class="empRegister-head1">教育費</th>
+                    <th class="empRegister-head1">還付教育費</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td class="empRegister-body"><input type="checkbox" name="degreeCheck"></td>
                     <td class="empRegister-body"><select class="reginput-select" id="trainingType" name="trainingType">
-                            <option value="">선택</option>
-                            <option value="사내직무">사내직무</option>
-                            <option value="사외직무">사외직무</option>
-                            <option value="계층교육">계층교육</option>
-                            <option value="어학교육">어학교육</option>
-                            <option value="기타">기타</option>
+                            <option value="">選択</option>
+                            <option value="사내직무">社内職務</option>
+                            <option value="사외직무">社外職務</option>
+                            <option value="계층교육">階層教育</option>
+                            <option value="어학교육">語学教育</option>
+                            <option value="기타">その他</option>
                     </select></td>
                     <td class="empRegister-body"><input type="text" class="reginputhide" id="trainingName" name="trainingName"></td>
                     <td class="empRegister-body"><input type="date" class="reginput-select" id="trainingStartDate" name="trainingStartDate"></td>
                     <td class="empRegister-body"><input type="date" class="reginput-select" id="trainingEndDate" name="trainingEndDate"></td>
                     <td class="empRegister-body"><input type="text" class="reginputhide" id="trainingOrganization" name="trainingOrganization"></td>
-                    <td class="empRegister-body"><input type="text" class="reginputhidepay" id="trainingCost" name="trainingCost"><span>원</span></td>
-                    <td class="empRegister-body"><input type="text" class="reginputhidepay" id="refundableTrainingCost" name="refundableTrainingCost"><span>원</span></td>
+                    <td class="empRegister-body"><input type="text" class="reginputhidepay" id="trainingCost" name="trainingCost"><span>円</span></td>
+                    <td class="empRegister-body"><input type="text" class="reginputhidepay" id="refundableTrainingCost" name="refundableTrainingCost"><span>円</span></td>
                 </tr>
             </tbody>
         </table>
@@ -468,10 +468,10 @@
 
         <!-- Reward Table -->
         <div class="header-container">
-            <h3 id="section8">상벌</h3>
+            <h3 id="section8">賞罰</h3>
             <div style="margin-left: auto;">
-                <button onclick="add4(event)">추가</button>
-                <button onclick="delete4(event)">삭제</button>
+                <button onclick="add4(event)">追加</button>
+                <button onclick="delete4(event)">削除</button>
             </div>
         </div>
         <table class="empRegister1" id="table4">
@@ -479,36 +479,36 @@
                 <tr>
                     <th style="width: 20px;" class="empRegister-head1"><input
                         type="checkbox" onclick="toggleAll(this)"></th>
-                    <th class="empRegister-head1">구분</th>
-                    <th class="empRegister-head1">상벌명</th>
-                    <th class="empRegister-head1">상벌권자</th>
-                    <th class="empRegister-head1">상벌일자</th>
-                    <th class="empRegister-head1">상벌내용</th>
-                    <th class="empRegister-head1">비고</th>
+                    <th class="empRegister-head1" style="width: 80px;">区分</th>
+                    <th class="empRegister-head1">賞罰名</th>
+                    <th class="empRegister-head1">賞罰権者</th>
+                    <th class="empRegister-head1">賞罰日</th>
+                    <th class="empRegister-head1">賞罰内容</th>
+                    <th class="empRegister-head1">備考</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td class="empRegister-body"><input type="checkbox" name="rewardCheck"></td>
                     <td class="empRegister-body"><select class="reginput-select" id="rewardPenaltyType" name="rewardPenaltyType">
-                            <option value="">선택</option>
-                            <option value="포상">포상</option>
-                            <option value="표창">표창</option>
-                            <option value="시상">시상</option>
-                            <option value="면직">면직</option>
-                            <option value="정직">정직</option>
-                            <option value="감봉">감봉</option>
-                            <option value="견책">견책</option>
-                            <option value="주의">주의</option>
-                            <option value="경고">경고</option>
-                            <option value="조치불가">조치불가</option>
-                            <option value="해고">해고</option>
+                            <option value="">選択</option>
+                            <option value="褒賞">褒賞</option>
+                            <option value="表彰">表彰</option>
+                            <option value="授賞">授賞</option>
+                            <option value="免職">免職</option>
+                            <option value="停職">停職</option>
+                            <option value="減給">減給</option>
+                            <option value="譴責">譴責</option>
+                            <option value="注意">注意</option>
+                            <option value="警告">警告</option>
+                            <option value="措置不可">措置不可</option>
+                            <option value="解雇">解雇</option>
                     </select></td>
                     <td class="empRegister-body"><input type="text" class="reginputhide" id="rewardPenaltyName" name="rewardPenaltyName"></td>
                     <td class="empRegister-body"><input type="text" class="reginputhide" id="rewardPenaltyGiver" name="rewardPenaltyGiver"></td>
                     <td class="empRegister-body"><input type="date" class="reginput-select" id="rewardPenaltyDate" name="rewardPenaltyDate"></td>
                     <td class="empRegister-body"><input type="text" class="reginputhide" id="rewardPenaltyDescription" name="rewardPenaltyDescription"></td>
-                    <td class="empRegister-body"><input type="text" class="reginputhide" id="remarks" name="remarks"></td>
+                    <td class="empRegister-body"><input type="text" class="reginputhide" id="remarks2" name="remarks2"></td>
                 </tr>
             </tbody>
         </table>
@@ -516,10 +516,10 @@
 
         <!-- Appointment Table -->
         <div class="header-container">
-            <h3 id="section9">발령</h3>
+            <h3 id="section9">発令</h3>
             <div style="margin-left: auto;">
-                <button onclick="add4(event)">추가</button>
-                <button onclick="delete4(event)">삭제</button>
+                <button onclick="add4(event)">追加</button>
+                <button onclick="delete4(event)">削除</button>
             </div>
         </div>
         <table class="empRegister1" id="table5">
@@ -527,12 +527,12 @@
                 <tr>
                     <th style="width: 20px;" class="empRegister-head1"><input
                         type="checkbox" onclick="toggleAll(this)"></th>
-                    <th class="empRegister-head1">발령구분</th>
-                    <th class="empRegister-head1">발령일자</th>
-                    <th class="empRegister-head1">부서</th>
-                    <th class="empRegister-head1">직위</th>
-                    <th class="empRegister-head1">직책</th>
-                    <th class="empRegister-head1">비고</th>
+                    <th class="empRegister-head1">発令区分</th>
+                    <th class="empRegister-head1">発令日</th>
+                    <th class="empRegister-head1">部署</th>
+                    <th class="empRegister-head1">職位</th>
+                    <th class="empRegister-head1">職責</th>
+                    <th class="empRegister-head1">備考</th>
                 </tr>
             </thead>
             <tbody>
@@ -551,7 +551,7 @@
                     <td class="empRegister-body"><input type="text" class="reginputhide" id="department" name="department"></td>
                     <td class="empRegister-body"><input type="text" class="reginputhide" id="position" name="position"></td>
                     <td class="empRegister-body"><input type="text" class="reginputhide" id="positionType" name="positionType"></td>
-                    <td class="empRegister-body"><input type="text" class="reginputhide" id="remarks" name="remarks"></td>
+                    <td class="empRegister-body"><input type="text" class="reginputhide" id="remarks3" name="remarks3"></td>
                 </tr>
             </tbody>
         </table>
@@ -612,7 +612,7 @@
                     <td class="empRegister-body"><input type="text" class="reginputhidepay" id="insuranceAmount" name="insuranceAmount"><span>원</span></td>
                     <td class="empRegister-body"><input type="date" class="reginput-select" id="insuranceStartDate" name="insuranceStartDate"></td>
                     <td class="empRegister-body"><input type="date" class="reginput-select" id="insuranceEndDate" name="insuranceEndDate"></td>
-                    <td class="empRegister-body"><input type="text" class="reginputhide" id="remarks" name="remarks"></td>
+                    <td class="empRegister-body"><input type="text" class="reginputhide" id="remarks4 name="remarks4"></td>
                 </tr>
             </tbody>
         </table>

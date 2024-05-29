@@ -146,11 +146,11 @@
 		<div class="search-container">
 			<div class="title-table-left">
 				<h3>給与支払情報</h3>
-				<table style="max-width: 800px" class="empRegister1">
+				<table style="max-width: 850px" class="empRegister1">
 					<thead>
 						<tr>
 							<th class="empRegister-head1">給与計算期間</th>
-							<th class="empRegister-body" colspan="2" style="width: 300px;">
+							<th class="empRegister-body" colspan="2" style="width: 350px;">
 								<input type="date" id="EmployeeSalaryAccountEntity.salaryCalculation1" name="salaryCalculation1" class="reginput">
 								~
 								<input type="date" id="EmployeeSalaryAccountEntity.salaryCalculation2" name="salaryCalculation2" class="reginput">

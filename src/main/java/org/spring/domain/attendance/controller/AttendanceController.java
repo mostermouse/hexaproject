@@ -69,7 +69,7 @@ public class AttendanceController {
 
 		attendanceService2.createAttendance(attendance);
 		log.info("Attendance created: " + model.toString());
-        return "redirect:/diligenceMnt";
+        return "redirect:/diligenceSearchMonth";
     }
     
 

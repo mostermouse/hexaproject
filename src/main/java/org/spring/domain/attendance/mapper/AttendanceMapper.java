@@ -9,7 +9,7 @@ import org.spring.domain.employee.model.DepartmentEntity;
 public interface AttendanceMapper {
 
 	List<DepartmentEntity> getAllAttendance();
-	AttendanceEntity getAttendanceById(Long attendanceId);
+	List<AttendanceEntity> getAttendanceById();
 	List<AttendanceTypeEntity> getAllAttendanceType();
 	void createAttendance(AttendanceEntity attendance);
 	void updateAttendance(Long id);

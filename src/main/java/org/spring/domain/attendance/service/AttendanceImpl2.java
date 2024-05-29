@@ -37,5 +37,10 @@ public class AttendanceImpl2 implements AttendanceService2{
 	public void createAttendance(AttendanceEntity attendance) {
 		mapper.createAttendance(attendance);
 	}
+
+	@Override
+	public List<AttendanceEntity> getAttendanceById() {
+		 return mapper.getAttendanceById();
+	}
 	
 }

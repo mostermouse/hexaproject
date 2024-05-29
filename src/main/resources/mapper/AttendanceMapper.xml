@@ -39,4 +39,8 @@
 		#{employeeId}, #{inputDate}, #{attendanceTypeId}, #{feildOrProjectId},
 		#{startDate}, #{endDate}, #{attendanceDays}, #{amount}, #{summary})
 	</insert>
+	
+	<select id="getAttendanceById" resultType="org.spring.domain.attendance.model.AttendanceEntity">
+		select * from attendance where employee_id = #{employeeId}
+	</select>
 </mapper>

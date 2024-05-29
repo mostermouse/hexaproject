@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -26,6 +25,10 @@
 	width: 80%;
 }
 
+.modal-content table {
+	width: 100%;
+}
+
 .close {
 	color: #aaa;
 	float: right;
@@ -37,6 +40,25 @@
 	color: black;
 	text-decoration: none;
 	cursor: pointer;
+}
+
+.table-container {
+	display: flex;
+	flex-direction: column;
+	max-width: 100%; /* 테이블이 부모 요소 내에서 최대 크기를 가지도록 설정 */
+	overflow-x: auto; /* 가로 스크롤을 표시하여 내용이 넘칠 때 스크롤 할 수 있도록 함 */
+}
+
+.table-row {
+	display: flex;
+	flex-direction: row;
+}
+
+.table-cell {
+	border: 1px solid #000;
+	padding: 5px 10px;
+	flex: 1;
+	white-space: nowrap; /* 텍스트가 잘리지 않고 한 줄로 표시되도록 함 */
 }
 </style>
 
@@ -65,7 +87,6 @@
 							<th>氏名</th>
 							<th>部署</th>
 							<th>職位</th>
-							<th>勤怠記録</th>
 						</tr>
 					</thead>
 					<tbody class="empRegister-body">
@@ -79,46 +100,12 @@
 								<td>${attlist.koreanName}</td>
 								<td>${attlist.departmentName}</td>
 								<td>${attlist.positionName}</td>
-								<td><button type="button"
-										onclick="document.getElementById('attendanceModal${status.count}').style.display='block'">勤怠記録</button></td>
 							</tr>
-							<!-- Modal Structure -->
-							<div id="attendanceModal${status.count}" class="modal">
-								<div class="modal-content">
-									<span class="close">&times;</span>
-									<div>
-										<h2>사원별 근퇴기록</h2>
-										<p id="employeeInfo">이름: ${attlist.koreanName} (사원 번호: ${attlist.employeeId}) 부서: ${attlist.departmentName} 직책: ${attlist.positionName}</p>
-										<div style="display: flex; flex-direction: column;">
-											<div style="display: flex; align-items: center;">
-												<div
-													style="margin-left: auto; display: flex; align-items: center;">
-													<select id="selectYear">
-
-														<%-- 여기에 년도 옵션을 동적으로 추가할 수 있습니다. --%>
-														<c:forEach var="year" begin="2000" end="2100">
-															<option value="${year}">${year}</option>
-														</c:forEach>
-													</select> <label for="selectYear" style="margin-right: 5px;">년도</label>
-												</div>
-												<div
-													style="margin-left: 10px; display: flex; align-items: center;">
-													<select id="selectMonth">
-														<%-- 여기에 월 옵션을 동적으로 추가할 수 있습니다. --%>
-														<c:forEach var="month" begin="1" end="12">
-															<option value="${month}">${month}</option>
-														</c:forEach>
-													</select> <label for="selectMonth" style="margin-right: 5px;">월</label>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
 						</c:forEach>
 					</tbody>
 				</table>
 			</div>
+
 			<form id="attendanceForm" method="post"
 				action="${pageContext.request.contextPath}/addDiligenceMnt"
 				style="margin-top: 50px;" onsubmit="return validateForm()">
@@ -178,43 +165,26 @@
 	</div>
 </div>
 
-
-
-
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>
 
 <script>
-// JavaScript to handle modal functionality
-document.addEventListener('DOMContentLoaded', function() {
-    // Get all close buttons with the "close" class
-    var closeButtons = document.querySelectorAll('.close');
-
-    // Add click event listener to each close button
-    closeButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            // Find the parent modal of the clicked button
-            var modal = button.closest('.modal');
-            
-            // Hide the modal
-            modal.style.display = 'none';
-        });
-    });
-});
-
-
+// 모두 선택 기능
 document.getElementById('selectAll').addEventListener('click', function() {
     var checkboxes = document.querySelectorAll('.selectItem');
     for (var checkbox of checkboxes) {
         checkbox.checked = this.checked;
     }
+    document.querySelector('form#attendanceForm button[type="submit"]').disabled = !this.checked;
 });
 
+// 직원 선택에 따라 직원 ID를 업데이트하는 함수
 function updateEmployeeId(checkbox) {
     var row = checkbox.closest('tr');
     var employeeId = row.querySelector('td:nth-child(3)').textContent;
     document.getElementsByName('employeeId')[0].value = employeeId;
 }
 
+// 근태 기간 계산 함수
 function calculateAttendanceTime() {
     var attendanceType = document.getElementById('attendanceType').value;
     var startDate = document.getElementById('startDate').value;
@@ -237,16 +207,33 @@ function calculateAttendanceTime() {
     }
 }
 
+// 폼 유효성 검사 함수
 function validateForm() {
     var attendanceType = document.getElementById('attendanceType').value;
+    var employeeId = document.getElementsByName('employeeId')[0].value;
+    
+    // 근태 유형이 선택되었는지 확인
     if (attendanceType === "0") {
-        alert("근태항목을 선택해주세요.");
+        alert("근태 항목을 선택해주세요.");
         return false;
     }
+    
+    // 어떤 직원이 선택되었는지 확인
+    if (employeeId === "") {
+        alert("사원을 선택해주세요.");
+        return false;
+    }
+    
     return true;
 }
 
+// 폼 리셋 함수
 function resetForm() {
     document.getElementById('attendanceForm').reset();
+    document.querySelector('form#attendanceForm button[type="submit"]').disabled = true;
 }
 </script>
+
+
+
+<%@ include file="/WEB-INF/views/includes/footer.jsp"%>

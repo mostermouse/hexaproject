@@ -59,7 +59,7 @@
 				<table class="empRegister1">
 					<thead class="empRegister-head1">
 						<tr>
-							<th><input type="checkbox" id="selectAll"></th>
+							<th style="width: 20px;"><input type="checkbox" id="selectAll"></th>
 							<th>区分</th>
 							<th>社員番号</th>
 							<th>氏名</th>

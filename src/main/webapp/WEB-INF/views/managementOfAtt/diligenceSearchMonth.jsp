@@ -114,7 +114,7 @@
                         <th>部署</th>
                         <th>職位</th>
                         <th>勤怠記録</th>
-                        <th>勤怠期間</th>
+                        <th style="width: 180px;">勤怠期間</th>
                         <th>勤怠日数</th>
                         <th>金額</th>
                         <th>摘要</th>

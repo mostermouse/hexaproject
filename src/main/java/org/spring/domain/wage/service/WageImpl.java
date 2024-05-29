@@ -138,6 +138,8 @@ public class WageImpl implements WageService {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		List<WageRecordDetailsRequest> yearWageEntities = mapper.getYearMonthPeriodWage(yearMonth, wagePeriod);
 		log.info(yearWageEntities.size() + " wageEntities found");
+		if( yearWageEntities.size() == 0 )
+			return null;
 
 		// 1행에 항목 및 급여종류 저장
 		// 2행부터 사원별 정보 저장
@@ -151,12 +153,12 @@ public class WageImpl implements WageService {
 		// 반환할 자료형 선언, 항목 이름 저장
 		final int ROWS = 6;// 급여종류 전 항목 갯수
 		List<String> firstRow = new ArrayList<>();
-		firstRow.add("사원번호");
-		firstRow.add("구분");
-		firstRow.add("성명");
-		firstRow.add("입사일");
-		firstRow.add("부서");
-		firstRow.add("직위");
+		firstRow.add("社員番号");
+		firstRow.add("区分");
+		firstRow.add("氏名");
+		firstRow.add("入社日");
+		firstRow.add("部署,");
+		firstRow.add("職位");
 
 		// 중복되지 않는 급여 종류를 저장하기
 		List<WageRecordDetailsRequest> uniqueWageTypes = getUniqueWageTypes(yearWageEntities);
@@ -165,7 +167,7 @@ public class WageImpl implements WageService {
 			firstRow.add(uniqueWageTypes.get(i).getWageTypeName());
 		}
 		// 마지막에 지급총액 저장
-		firstRow.add("지급총액(円)");
+		firstRow.add("支払総額(円)");
 		// 항목 행 저장
 		finalReturnList.add(firstRow);
 
@@ -173,9 +175,9 @@ public class WageImpl implements WageService {
 		List<String> lastRow = new ArrayList<>();
 		for (int i = 0; i < ROWS + uniqueWageTypes.size() + 1; i++) {
 			if (i == 1)
-				lastRow.add("합");
+				lastRow.add("合");
 			else if (i == 4)
-				lastRow.add("계");
+				lastRow.add("計");
 			else if (i != 1 && i != 4 && i < ROWS)
 				lastRow.add("");
 			else
@@ -300,12 +302,14 @@ public class WageImpl implements WageService {
 
 		// 반환할 행 선언, 항목 이름 저장
 		List<String> firstRow = new ArrayList<>();
-		firstRow.add("급여월(차수)");
+		firstRow.add("給与月(次数)");
 
 		// 연,월,차수에 해당하는 급여정보 불러오기
 		List<WageRecordDetailsRequest> WageValues = mapper.getWageValue(stringToLongYMDtoYM(settlementPeriodStartDate),
 				stringToLongYMDtoYM(settlementPeriodEndDate), employeeId);
 		log.info("WageValues: " + WageValues.size());
+		if( WageValues.size() == 0 )
+			return null;
 
 		// 중복되지 않는 연,월,차수 저장하기
 		List<WageRecordDetailsRequest> uniqueYearMonthPeriods = mapper.getYearMonthPeriod(
@@ -322,14 +326,14 @@ public class WageImpl implements WageService {
 		}
 
 		// 마지막에 지급총액 저장
-		firstRow.add("지급총액(円)");
+		firstRow.add("支払総額(円)");
 
 		// 최종반환 List에 항목 행 저장
 		finalReturnList.add(firstRow);
 
 		// 마지막 합계 행 선언 및 정보저장
 		List<String> lastRow = new ArrayList<>();
-		lastRow.add("합계");
+		lastRow.add("合計");
 
 		// 1.년월 행
 		for (int i = 0; i < uniqueYearMonthPeriods.size(); i++) {
@@ -375,7 +379,7 @@ public class WageImpl implements WageService {
 
 		// 마지막 종합 행 계산, 추가
 		List<String> columnTotal = new ArrayList<String>();
-		columnTotal.add("총합");
+		columnTotal.add("総合");
 		for (int i = 1; i < finalReturnList.get(0).size(); i++) {
 			columnTotal.add("0");
 		}
@@ -410,10 +414,10 @@ public class WageImpl implements WageService {
 
 		// 반환할 행 선언, 항목 이름 저장
 		List<String> firstRow = new ArrayList<>();
-		firstRow.add("구분");
-		firstRow.add("성명");
-		firstRow.add("부서");
-		firstRow.add("직위");
+		firstRow.add("区分");
+		firstRow.add("氏名");
+		firstRow.add("部署");
+		firstRow.add("職位");
 
 		// 기간,항목별 직원목록 불러오기
 		List<WageRecordDetailsRequest> uniqueEmployees = mapper.getWageTypeEmployeeInfo(
@@ -436,16 +440,18 @@ public class WageImpl implements WageService {
 		List<WageRecordDetailsRequest> WageValues2 = mapper.getWageTypeValue(stringToLongYMtoYM(settlementPeriodStartDate),
 				stringToLongYMtoYM(settlementPeriodEndDate), wageTypeId);
 		log.info(WageValues2.size() + " WageValues2 found");
-
+		if( WageValues2.size() == 0 )
+			return null;
+		
 		// 마지막에 지급총액 저장
-		firstRow.add("지급총액(円)");
+		firstRow.add("支払総額(円)");
 
 		// 최종반환 List에 항목 행 저장
 		finalReturnList.add(firstRow);
 
 		// 마지막 합계 행 선언 및 정보저장
 		List<String> lastRow = new ArrayList<>();
-		lastRow.add("합계");
+		lastRow.add("合計");
 
 		// 1.년월 행
 		for (int i = 0; i < uniqueEmployees.size(); i++) {
@@ -493,8 +499,8 @@ public class WageImpl implements WageService {
 		// 마지막 종합 행 계산, 추가
 		List<String> columnTotal = new ArrayList<String>();
 		columnTotal.add("");
-		columnTotal.add("총");
-		columnTotal.add("합");
+		columnTotal.add("総");
+		columnTotal.add("合");
 		columnTotal.add("");
 
 		for (int i = COLUMNS; i < finalReturnList.get(0).size(); i++) {

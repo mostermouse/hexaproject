@@ -33,16 +33,23 @@ th {
 			<div class="rectanglee sky-blue" style="margin-top: 20px;">
 				<select class="reginput-select" name="employmentType">
 					<option value="">選択してください。</option>
-					<option value="正社員" ${param.employmentType == '正社員' ? 'selected' : ''}>正社員-</option>
-					<option value="契約職" ${param.employmentType == '契約職' ? 'selected' : ''}>契約職</option>
-					<option value="臨時職" ${param.employmentType == '臨時職' ? 'selected' : ''}>臨時職</option>
-					<option value="派遣職" ${param.employmentType == '派遣職' ? 'selected' : ''}>派遣職</option>
-					<option value="委嘱職" ${param.employmentType == '委嘱職' ? 'selected' : ''}>委嘱職</option>
-					<option value="日雇い" ${param.employmentType == '日雇い' ? 'selected' : ''}>日雇い</option>
+					<option value="正社員"
+						${param.employmentType == '正社員' ? 'selected' : ''}>正社員-</option>
+					<option value="契約職"
+						${param.employmentType == '契約職' ? 'selected' : ''}>契約職</option>
+					<option value="臨時職"
+						${param.employmentType == '臨時職' ? 'selected' : ''}>臨時職</option>
+					<option value="派遣職"
+						${param.employmentType == '派遣職' ? 'selected' : ''}>派遣職</option>
+					<option value="委嘱職"
+						${param.employmentType == '委嘱職' ? 'selected' : ''}>委嘱職</option>
+					<option value="日雇い"
+						${param.employmentType == '日雇い' ? 'selected' : ''}>日雇い</option>
 				</select> <select class="reginput-select" name="departmentId">
 					<option value="부서 선택">選択</option>
 					<c:forEach items="${department}" var="dept">
-						<option value="${dept.departmentId}" ${param.departmentId == dept.departmentId ? 'selected' : ''}>${dept.departmentName}</option>
+						<option value="${dept.departmentId}"
+							${param.departmentId == dept.departmentId ? 'selected' : ''}>${dept.departmentName}</option>
 					</c:forEach>
 				</select>
 				<button class="all-button" type="submit">조회</button>
@@ -60,19 +67,22 @@ th {
 		</form>
 
 	</div>
-	<div class="table-container">
-		<table class="empRegisterr" style="width: 100%;">
-			<tbody class="empRegister-body">
-				<c:forEach var="row" items="${listWageRecordYMP}">
-					<tr>
-						<c:forEach var="cell" items="${row}">
-							<td style="text-align: center; font-size: 12px;">${cell}</td>
-						</c:forEach>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
+	
+	<c:if test="${not empty listWageRecordYMP}">
+		<div class="table-container">
+			<table class="empRegisterr" style="width: 100%;">
+				<tbody class="empRegister-body">
+					<c:forEach var="row" items="${listWageRecordYMP}">
+						<tr>
+							<c:forEach var="cell" items="${row}">
+								<td style="text-align: center; font-size: 12px;">${cell}</td>
+							</c:forEach>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+	</c:if>
 </div>
 
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>

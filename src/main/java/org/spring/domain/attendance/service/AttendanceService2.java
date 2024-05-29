@@ -12,4 +12,5 @@ public interface AttendanceService2 {
 	List<DepartmentEntity> getAllAttendance();
 	List<AttendanceTypeEntity> getAllAttendanceType();
 	void createAttendance(AttendanceEntity attendance);
+	List<AttendanceEntity> getAttendanceById();
 }

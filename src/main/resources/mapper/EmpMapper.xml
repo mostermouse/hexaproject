@@ -6,12 +6,14 @@
 	<!-- 전직원 정보 -->
 	<select id="getAllEmployee"
 		resultType="org.spring.domain.employee.model.DepartmentEntity">
-		SELECT e.employee_id, e.employment_type, e.hire_date, e.korean_name, e.department_id, e.position_id,
-			   e.resident_number1, e.resident_number2, e.tel_phone, e.email, e.resignation_date, e.status,
-			   d.department_name, p.position_name
+		SELECT e.employee_id, e.employment_type, e.hire_date,
+		e.korean_name, e.department_id, e.position_id,
+		e.resident_number1, e.resident_number2, e.tel_phone, e.email, e.resignation_date,
+		e.status,
+		d.department_name, p.position_name
 		FROM employee e
-				 JOIN department d ON e.department_id = d.department_id
-				 JOIN position p ON e.position_id = p.position_id
+		JOIN department d ON e.department_id = d.department_id
+		JOIN position p ON e.position_id = p.position_id
 	</select>
 	<select id="getDepartment"
 		resultType="org.spring.domain.employee.model.DepartmentEntity">
@@ -21,9 +23,9 @@
 		resultType="org.spring.domain.employee.model.PositionEntity">
 		select * from position
 	</select>
-	<!-- 사원현황판 -->
-	<!-- 재직자 인원수 -->
-	<select id="countByStatusEmployed" resultType="long">
+	<!-- 사원현황판
+	재직자 인원수
+	 --><select id="countByStatusEmployed" resultType="long">
 		SELECT COUNT(*)
 		FROM employee WHERE status = '재직'
 	</select>
@@ -64,7 +66,7 @@
 		COUNT(*) FROM employee WHERE employment_type = '일용직'
 	</select>
 
-	<!-- 퇴사자 인원수 -->
+<!-- 	퇴사자 인원수 -->
 	<select id="countByStatusResigned" resultType="long">
 		SELECT COUNT(*)
 		FROM employee WHERE status = '퇴사'
@@ -77,8 +79,8 @@
 	</select>
 
 
-	<!-- 급여대장 출력 -->
-	<!-- 급여정보 연도 -->
+	<!-- 급여대장 출력
+	급여정보 연도 -->
 	<select id="getYearWage"
 		resultType="org.spring.domain.wage.model.WageEntity">
 		SELECT * FROM wage WHERE TO_CHAR(wage_payment_date, 'YYYY')
@@ -86,22 +88,26 @@
 	</select>
 
 
-	<!-- 사원등록 1페이지 -->
-	<!-- Insert employee -->
+	<!-- 사원등록 1페이지
+	Insert employee -->
 	<insert id="insertEmployee"
 		parameterType="org.spring.domain.employee.model.EmployeeEntity">
 
 		INSERT INTO employee (
-		account_id  , company_id ,person_id ,employee_id, employment_type,
+		account_id , company_id ,person_id
+		,employee_id, employment_type,
 		korean_name, english_name, hire_date,
 		resignation_date, department_id,
 		position_id,
-		foreign_or_domestic, resident_number1, resident_number2,
+		foreign_or_domestic,
+		resident_number1, resident_number2,
 		address, tel_phone, mobile,
-		email, sns, other_details, status
+		email,
+		sns, other_details, status
 		) VALUES (
 		#{accountId},#{companyId},#{personId},
-		#{employeeId}, #{employmentType}, #{koreanName},
+		#{employeeId},
+		#{employmentType}, #{koreanName},
 		#{englishName}, #{hireDate},
 		#{resignationDate}, #{departmentId},
 		#{positionId},
@@ -132,10 +138,12 @@
 	<insert id="insertDegree"
 		parameterType="org.spring.domain.employee.model.DegreeEntity">
 		INSERT INTO degree (
-		degree_id,employee_id ,graduate, admission_date,
+		degree_id,employee_id ,graduate,
+		admission_date,
 		graduation_date, school_name, major,
 		completion
-		) VALUES (
+		) VALUES
+		(
 		#{degreeId},#{employeeId}, #{graduate}, #{admissionDate},
 		#{graduationDate}, #{schoolName},
 		#{major}, #{completion}
@@ -146,15 +154,19 @@
 	<insert id="insertCareer"
 		parameterType="org.spring.domain.employee.model.CareerEntity">
 		INSERT INTO career (
-		career_id,employee_id ,company_name, start_date,
+		career_id,employee_id ,company_name,
+		start_date,
 		end_date, employment_period,
-		final_position, responsibilities,
+		final_position,
+		responsibilities,
 		reason_for_resignation
 		) VALUES (
 		#{careerId},#{employeeId} ,#{companyName},
-		#{startDate}, #{endDate}, #{employmentPeriod},
+		#{startDate}, #{endDate},
+		#{employmentPeriod},
 		#{finalPosition},
-		#{responsibilities}, #{reasonForResignation}
+		#{responsibilities},
+		#{reasonForResignation}
 		)
 	</insert>
 
@@ -167,13 +179,16 @@
 		final_rank, department1, exemption_reason
 		) VALUES (
 		#{militaryServiceId}, #{employeeId}, #{serviceType},
-		#{branch}, #{servicePeriod1},
+		#{branch},
+		#{servicePeriod1},
 		#{servicePeriod2}, #{finalRank},
-		#{department1}, #{exemptionReason}
+		#{department1},
+		#{exemptionReason}
 		)
 	</insert>
 
-	<select id="getCompany" resultType="org.spring.domain.employee.model.CompanyEntity">
+	<select id="getCompany"
+		resultType="org.spring.domain.employee.model.CompanyEntity">
 		SELECT
 		*
 		FROM company_info
@@ -185,7 +200,8 @@
 	</select>
 
 	<select id="getCompanySeqCurrVal" resultType="long">
-		SELECT company_seq.CURRVAL
+		SELECT
+		company_seq.CURRVAL
 		FROM DUAL
 	</select>
 	<select id="getEmpSeqVal" resultType="long">
@@ -194,12 +210,14 @@
 	</select>
 
 	<select id="getEmpSeqCurrval" resultType="long">
-		select employee_seq.CURRVAL
+		select
+		employee_seq.CURRVAL
 		from dual
 	</select>
 
 	<select id="getDependentSeq" resultType="long">
-		select dependents_seq.NEXTVAL
+		select
+		dependents_seq.NEXTVAL
 		from dual
 	</select>
 
@@ -213,19 +231,23 @@
 		from dual
 	</select>
 	<select id="getMilitarySeq" resultType="long">
-		select MILITARY_SERVICE_SEQ.NEXTVAL
+		select
+		MILITARY_SERVICE_SEQ.NEXTVAL
 		from dual
 	</select>
 
 
 	<select id="getCompanyId" resultType="long">
-		select company_id from company_info
+		select company_id from
+		company_info
 	</select>
 	<select id="getContactId" resultType="long">
-		select person_id from contact_person_info
+		select person_id from
+		contact_person_info
 	</select>
 	<select id="getAcountId" resultType="long">
-		SELECT account_id FROM EMPLOYEE_SALARY_ACCOUNT
+		SELECT account_id FROM
+		EMPLOYEE_SALARY_ACCOUNT
 	</select>
 
 
@@ -305,14 +327,19 @@
 		#{salaryPaymentDate}
 		)
 	</insert>
-	<select id="getEmpInfo" resultType="org.spring.domain.employee.model.DepartmentEntity">
-SELECT e.employee_id, e.employment_type, e.hire_date, e.korean_name, e.department_id, e.position_id, 
-       e.resident_number1, e.resident_number2, e.tel_phone, e.email, e.resignation_date, e.status, 
-       d.department_name, p.position_name 
-  FROM employee e 
-  JOIN department d ON e.department_id = d.department_id 
-  JOIN position p ON e.position_id = p.position_id 
- WHERE e.employee_id = (SELECT employee_id FROM (SELECT employee_id FROM employee ORDER BY employee_id DESC) WHERE ROWNUM = 1)
+	
+	<select id="getEmpInfo"
+		resultType="org.spring.domain.employee.model.DepartmentEntity">
+		SELECT e.employee_id, e.employment_type, e.hire_date, e.korean_name,
+		e.department_id, e.position_id,
+		e.resident_number1, e.resident_number2, e.tel_phone, e.email, e.resignation_date,
+		e.status,
+		d.department_name, p.position_name
+		FROM employee e
+		JOIN department d ON e.department_id = d.department_id
+		JOIN position p ON e.position_id = p.position_id
+		WHERE e.employee_id = (SELECT employee_id FROM (SELECT employee_id FROM
+		employee ORDER BY employee_id DESC) WHERE ROWNUM = 1)
 
 
 

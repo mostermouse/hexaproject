@@ -14,7 +14,8 @@ import org.spring.domain.employeedetails.model.TrainingEntity;
 public interface EmpDetailsMapper {
 	
 	// 사원등록 2페이지
-	void registerDetails(DetailsRegistrationForm detailsRegistrationForm);
+	void registerDetails(CertificationEntity certificationEntity , LanguageAbilityEntity languageAbilityEntity , TrainingEntity trainingEntity ,RewardPenaltyEntity rewardPenaltyEntity ,
+						 AppointmentEntity appointmentEntity, ReferrerEntity referrerEntity , InsuranceEntity insuranceEntity , GuarantorEntity guarantorEntity);
 	
 	void insertCertification(CertificationEntity certificationEntity);
 	void insertLanguageAbility(LanguageAbilityEntity languageAbilityEntity);
@@ -25,5 +26,8 @@ public interface EmpDetailsMapper {
 	void insertInsurance(InsuranceEntity insuranceEntity);
 	void insertGuarantor(GuarantorEntity guarantorEntity);
 	void insertRetirement(RetirementEntity retirementEntity);
+
+
+	Long searchEmployeeId();
 	
 }

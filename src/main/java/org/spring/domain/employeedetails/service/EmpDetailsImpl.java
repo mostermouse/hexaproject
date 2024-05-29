@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Log4j
 @Service
@@ -30,19 +31,20 @@ public class EmpDetailsImpl implements EmpDetailsService {
 	// 사원등록 2페이지
 	@Override
 	@Transactional
-	public void registerDetails(DetailsRegistrationForm detailsRegistrationForm) {
-		
-		log.info("rigsterdetails..........");
+	public void registerDetails(CertificationEntity certificationEntity , LanguageAbilityEntity languageAbilityEntity , TrainingEntity trainingEntity , RewardPenaltyEntity rewardPenaltyEntity ,
+								AppointmentEntity appointmentEntity, ReferrerEntity referrerEntity , InsuranceEntity insuranceEntity , GuarantorEntity guarantorEntity ) {
+		Long serchEmpId = mapper.searchEmployeeId();
 
-		CertificationEntity certificationEntity = detailsRegistrationForm.getCertificationEntity();
-		LanguageAbilityEntity languageAbilityEntity = detailsRegistrationForm.getLanguageAbilityEntity();
-		TrainingEntity trainingEntity = detailsRegistrationForm.getTrainingEntity();
-		RewardPenaltyEntity rewardPenaltyEntity = detailsRegistrationForm.getRewardPenaltyEntity();
-		AppointmentEntity appointmentEntity = detailsRegistrationForm.getAppointmentEntity();
-		ReferrerEntity referrerEntity = detailsRegistrationForm.getReferrerEntity();
-		InsuranceEntity insuranceEntity = detailsRegistrationForm.getInsuranceEntity();
-		GuarantorEntity guarantorEntity = detailsRegistrationForm.getGuarantorEntity();
-		RetirementEntity retirementEntity = detailsRegistrationForm.getRetirementEntity();
+		//각각 유저아이디 넣기
+		certificationEntity.setEmployeeId(serchEmpId);
+		languageAbilityEntity.setEmployeeId(serchEmpId);
+		trainingEntity.setEmployeeId(serchEmpId);
+		rewardPenaltyEntity.setEmployeeId(serchEmpId);
+		appointmentEntity.setEmployeeId(serchEmpId);
+		referrerEntity.setEmployeeId(serchEmpId);
+		insuranceEntity.setEmployeeId(serchEmpId);
+		guarantorEntity.setEmployeeId(serchEmpId);
+
 
 		// 각 엔티티 등록
 		mapper.insertCertification(certificationEntity);
@@ -53,7 +55,7 @@ public class EmpDetailsImpl implements EmpDetailsService {
 		mapper.insertReferrer(referrerEntity);
 		mapper.insertInsurance(insuranceEntity);
 		mapper.insertGuarantor(guarantorEntity);
-		mapper.insertRetirement(retirementEntity);
+
 
 	}
 }

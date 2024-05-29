@@ -109,11 +109,11 @@
             	<td class="empRegister-body"><input type="checkbox"></td>
 				<td class="empRegister-body"><select class="reginput-select">
 						<option value="">選択</option>
-						<option value="사내직무">社内職務</option>
-						<option value="사외직무">社外職務</option>
-						<option value="계층교육">階層教育</option>
-						<option value="어학교육">語学教育</option>
-						<option value="기타">その他</option>
+						<option value="社内職務">社内職務</option>
+						<option value="社外職務">社外職務</option>
+						<option value="階層教育">階層教育</option>
+						<option value="語学教育">語学教育</option>
+						<option value="その他">その他</option>
 				</select></td>
 				<td class="empRegister-body"><input type="text"
 					class="reginputhide"></td>
@@ -343,8 +343,7 @@
 				<table class="empRegister1" id="table1">
 					<thead>
 						<tr>
-							<th style="width: 20px;" class="empRegister-head1"><input
-								type="checkbox" onclick="toggleAll(this)"></th>
+							<th style="width: 20px;" class="empRegister-head1"></th>
 							<th class="empRegister-head1">資格/免許名</th>
 							<th class="empRegister-head1">取得日</th>
 							<th class="empRegister-head1">発行機関</th>
@@ -354,9 +353,9 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td class="empRegister-body"><input type="checkbox" id="certificationCheck" name="certificationCheck" onclick="toggleAll(this)"></td>
+							<td class="empRegister-body"></td>
 							<td class="empRegister-body"><input type="text" id="certificationName" name="certificationName" class="reginputhide"></td>
-							<td class="empRegister-body"><input type="date" id="acquisitionDate" name="acquisitionDate" class="reginput-select"></td>
+							<td class="empRegister-body"><input type="date" id="acquisitionDate" name="acquisitionDate" class="reginputhide"></td>
 							<td class="empRegister-body"><input type="text" id="issuingOrganization" name="issuingOrganization" class="reginputhide"></td>
 							<td class="empRegister-body"><input type="text" id="certificationNumber" name="certificationNumber" class="reginputhide"></td>
 							<td class="empRegister-body"><input type="text" id="remarks1" name="remarks1" class="reginputhide"></td>
@@ -377,8 +376,7 @@
 				<table class="empRegister1" id="table2">
 					<thead>
 						<tr>
-							<th style="width: 20px;" class="empRegister-head1"><input
-								type="checkbox" onclick="toggleAll(this)"></th>
+							<th style="width: 20px;" class="empRegister-head1"></th>
 							<th class="empRegister-head1">外国語名</th>
 							<th class="empRegister-head1">試験</th>
 							<th class="empRegister-head1">公認点数</th>
@@ -390,28 +388,28 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td class="empRegister-body"><input type="checkbox" id="languageAbilityCheck" name="languageAbilityCheck" onclick="toggleAll(this)"></td>
-							<td class="empRegister-body"><input type="text"
+							<td class="empRegister-body"></td>
+							<td class="empRegister-body"><input type="text" id="language" name="language"
 								class="reginputhide"></td>
-							<td class="empRegister-body"><input type="text"
+							<td class="empRegister-body"><input type="text" id="testName" name="testName"
 								class="reginputhide"></td>
-							<td class="empRegister-body"><input type="text"
+							<td class="empRegister-body"><input type="number" id="officialScore" name="officialScore"
 								class="reginputhide"></td>
-							<td class="empRegister-body"><input type="date"
+							<td class="empRegister-body"><input type="date" id="acquisitionDate1" name="acquisitionDate1"
 								class="reginput-select"></td>
-							<td class="empRegister-body"><select class="reginput-select">
+							<td class="empRegister-body"><select class="reginput-select" id="readingAbility" name="readingAbility">
 									<option value="">選択</option>
 									<option value="상">上</option>
 									<option value="중">中</option>
 									<option value="하">下</option>
 							</select></td>
-							<td class="empRegister-body"><select class="reginput-select">
+							<td class="empRegister-body"><select class="reginput-select" id="writingAbility" name="writingAbility">
 									<option value="">選択</option>
 									<option value="상">上</option>
 									<option value="중">中</option>
 									<option value="하">下</option>
 							</select></td>
-							<td class="empRegister-body"><select class="reginput-select">
+							<td class="empRegister-body"><select class="reginput-select" id="speakingAbility" name="speakingAbility">
 									<option value="">選択</option>
 									<option value="상">上</option>
 									<option value="중">中</option>
@@ -433,8 +431,7 @@
         <table class="empRegister1" id="table3">
             <thead>
                 <tr>
-                    <th style="width: 20px;" class="empRegister-head1"><input
-                        type="checkbox" onclick="toggleAll(this)"></th>
+                    <th style="width: 20px;" class="empRegister-head1"></th>
                     <th class="empRegister-head1">教育区分</th>
                     <th class="empRegister-head1">教育名</th>
                     <th class="empRegister-head1" style="width: 150px;">教育期間(から)</th>
@@ -446,7 +443,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td class="empRegister-body"><input type="checkbox" name="degreeCheck"></td>
+                    <td class="empRegister-body"></td>
                     <td class="empRegister-body"><select class="reginput-select" id="trainingType" name="trainingType">
                             <option value="">選択</option>
                             <option value="사내직무">社内職務</option>
@@ -459,8 +456,8 @@
                     <td class="empRegister-body"><input type="date" class="reginput-select" id="trainingStartDate" name="trainingStartDate"></td>
                     <td class="empRegister-body"><input type="date" class="reginput-select" id="trainingEndDate" name="trainingEndDate"></td>
                     <td class="empRegister-body"><input type="text" class="reginputhide" id="trainingOrganization" name="trainingOrganization"></td>
-                    <td class="empRegister-body"><input type="text" class="reginputhidepay" id="trainingCost" name="trainingCost"><span>円</span></td>
-                    <td class="empRegister-body"><input type="text" class="reginputhidepay" id="refundableTrainingCost" name="refundableTrainingCost"><span>円</span></td>
+                    <td class="empRegister-body"><input type="number" class="reginputhidepay" id="trainingCost" name="trainingCost"><span>円</span></td>
+                    <td class="empRegister-body"><input type="number" class="reginputhidepay" id="refundableTrainingCost" name="refundableTrainingCost"><span>円</span></td>
                 </tr>
             </tbody>
         </table>
@@ -477,8 +474,7 @@
         <table class="empRegister1" id="table4">
             <thead>
                 <tr>
-                    <th style="width: 20px;" class="empRegister-head1"><input
-                        type="checkbox" onclick="toggleAll(this)"></th>
+                    <th style="width: 20px;" class="empRegister-head1"></th>
                     <th class="empRegister-head1" style="width: 80px;">区分</th>
                     <th class="empRegister-head1">賞罰名</th>
                     <th class="empRegister-head1">賞罰権者</th>
@@ -489,7 +485,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td class="empRegister-body"><input type="checkbox" name="rewardCheck"></td>
+                    <td class="empRegister-body"></td>
                     <td class="empRegister-body"><select class="reginput-select" id="rewardPenaltyType" name="rewardPenaltyType">
                             <option value="">選択</option>
                             <option value="褒賞">褒賞</option>
@@ -525,9 +521,8 @@
         <table class="empRegister1" id="table5">
             <thead>
                 <tr>
-                    <th style="width: 20px;" class="empRegister-head1"><input
-                        type="checkbox" onclick="toggleAll(this)"></th>
-                    <th class="empRegister-head1">発令区分</th>
+                    <th style="width: 20px;" class="empRegister-head1"></th>
+                    <th class="empRegister-head1" style="width: 70px;">発令区分</th>
                     <th class="empRegister-head1">発令日</th>
                     <th class="empRegister-head1">部署</th>
                     <th class="empRegister-head1">職位</th>
@@ -537,19 +532,29 @@
             </thead>
             <tbody>
                 <tr>
-                    <td class="empRegister-body"><input type="checkbox" name="appointmentCheck"></td>
+                    <td class="empRegister-body"></td>
                     <td class="empRegister-body"><select class="reginput-select" id="appointmentType" name="appointmentType">
-                            <option value="">선택</option>
-                            <option value="채용">채용</option>
-                            <option value="전보">전보</option>
-                            <option value="승진">승진</option>
-                            <option value="승격">승격</option>
-                            <option value="승호">승호</option>
-                            <option value="파견">파견</option>
+                            <option value="">選択</option>
+                            <option value="採用">採用</option>
+                            <option value="転補">転補</option>
+                            <option value="昇進">昇進</option>
+                            <option value="昇格">昇格</option>
+                            <option value="派遣">派遣</option>
                     </select></td>
                     <td class="empRegister-body"><input type="date" class="reginput-select" id="appointmentDate" name="appointmentDate"></td>
-                    <td class="empRegister-body"><input type="text" class="reginputhide" id="department" name="department"></td>
-                    <td class="empRegister-body"><input type="text" class="reginputhide" id="position" name="position"></td>
+                    <td class="empRegister-body"><select id="departmentId"
+                                                         name="departmentId" class="reginput-select">
+                        <option value="">選択</option>
+                        <c:forEach items="${department}" var="dept">
+                            <option value="${dept.departmentId}">${dept.departmentName}</option>
+                        </c:forEach>
+                    </select></td>
+                    <td class="empRegister-body"><select id="positionId" name="positionId" class="reginput-select">
+                        <option value="">選択</option>
+                        <c:forEach items="${position}" var="posi">
+                            <option value="${posi.positionId}">${posi.positionName}</option>
+                        </c:forEach>
+                    </select></td>
                     <td class="empRegister-body"><input type="text" class="reginputhide" id="positionType" name="positionType"></td>
                     <td class="empRegister-body"><input type="text" class="reginputhide" id="remarks3" name="remarks3"></td>
                 </tr>
@@ -559,22 +564,22 @@
 
         <!-- Recommendation & Guarantee Table -->
         <div class="header-container">
-            <h3 id="section10">추천 & 신원보증</h3>
+            <h3 id="section10">推薦 &身元保証</h3>
         </div>
         <div class="header-container">
             <h5>
                 <samp style="color: red;">+</samp>
-                <span style="color: blue;"> 추천인</span>
+                <span style="color: blue;"> 推薦人</span>
             </h5>
         </div>
         <table class="empRegister1">
             <thead>
                 <tr>
-                    <th class="empRegister-head1">성명</th>
-                    <th class="empRegister-head1">관계</th>
-                    <th class="empRegister-head1">회사명</th>
-                    <th class="empRegister-head1">직위</th>
-                    <th class="empRegister-head1">전화번호</th>
+                    <th class="empRegister-head1">氏名</th>
+                    <th class="empRegister-head1">関係</th>
+                    <th class="empRegister-head1">社名</th>
+                    <th class="empRegister-head1">職位</th>
+                    <th class="empRegister-head1">電話番号</th>
                 </tr>
             </thead>
             <tbody>
@@ -591,28 +596,28 @@
         <div class="header-container">
             <h5>
                 <samp style="color: red;">+</samp>
-                <span style="color: blue;"> 보증보험</span>
+                <span style="color: blue;"> 保証保険</span>
             </h5>
         </div>
         <table class="empRegister1">
             <thead>
                 <tr>
-                    <th class="empRegister-head1">가입기관</th>
-                    <th class="empRegister-head1">보험번호</th>
-                    <th class="empRegister-head1">보험금액</th>
-                    <th class="empRegister-head1">가입일자</th>
-                    <th class="empRegister-head1">만료일자</th>
-                    <th class="empRegister-head1">비고</th>
+                    <th class="empRegister-head1">加入機関</th>
+                    <th class="empRegister-head1">保険番号</th>
+                    <th class="empRegister-head1">保険金額</th>
+                    <th class="empRegister-head1">加入日</th>
+                    <th class="empRegister-head1">満了日</th>
+                    <th class="empRegister-head1">備考</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td class="empRegister-body"><input type="text" class="reginputhide" id="insuranceAgency" name="insuranceAgency"></td>
                     <td class="empRegister-body"><input type="text" class="reginputhide" id="insuranceNumber" name="insuranceNumber"></td>
-                    <td class="empRegister-body"><input type="text" class="reginputhidepay" id="insuranceAmount" name="insuranceAmount"><span>원</span></td>
+                    <td class="empRegister-body"><input type="number" class="reginputhidepay" id="insuranceAmount" name="insuranceAmount"><span>円</span></td>
                     <td class="empRegister-body"><input type="date" class="reginput-select" id="insuranceStartDate" name="insuranceStartDate"></td>
                     <td class="empRegister-body"><input type="date" class="reginput-select" id="insuranceEndDate" name="insuranceEndDate"></td>
-                    <td class="empRegister-body"><input type="text" class="reginputhide" id="remarks4 name="remarks4"></td>
+                    <td class="empRegister-body"><input type="text" class="reginputhide" id="remarks4" name="remarks4"></td>
                 </tr>
             </tbody>
         </table>
@@ -620,19 +625,19 @@
         <div class="header-container">
             <h5>
                 <samp style="color: red;">+</samp>
-                <span style="color: blue;"> 보증인</span>
+                <span style="color: blue;"> 保証人</span>
             </h5>
         </div>
         <table class="empRegister1">
             <thead>
                 <tr>
-                    <th class="empRegister-head1">성명</th>
-                    <th class="empRegister-head1">관계</th>
-                    <th class="empRegister-head1">주민번호</th>
-                    <th class="empRegister-head1">보증금액</th>
-                    <th class="empRegister-head1">보증일자</th>
-                    <th class="empRegister-head1">만료일자</th>
-                    <th class="empRegister-head1">전화번호</th>
+                    <th class="empRegister-head1">氏名</th>
+                    <th class="empRegister-head1">関係</th>
+                    <th class="empRegister-head1">住民番号</th>
+                    <th class="empRegister-head1" style="width: 160px;">保証金額</th>
+                    <th class="empRegister-head1" style="width: 140px;">保証日</th>
+                    <th class="empRegister-head1" style="width: 140px;">満了日</th>
+                    <th class="empRegister-head1">電話番号</th>
                 </tr>
             </thead>
             <tbody>
@@ -640,7 +645,7 @@
                     <td class="empRegister-body"><input type="text" class="reginputhide" id="guarantorName" name="guarantorName"></td>
                     <td class="empRegister-body"><input type="text" class="reginputhide" id="guarantorRelationship" name="guarantorRelationship"></td>
                     <td class="empRegister-body"><input type="text" class="reginputhide" id="guarantorResidentNumber" name="guarantorResidentNumber"></td>
-                    <td class="empRegister-body"><input type="text" class="reginputhidepay" id="guaranteeAmount" name="guaranteeAmount"><span>원</span></td>
+                    <td class="empRegister-body"><input type="number" class="reginputhidepay" id="guaranteeAmount" name="guaranteeAmount"><span>円</span></td>
                     <td class="empRegister-body"><input type="date" class="reginput-select" id="guaranteeDate" name="guaranteeDate"></td>
                     <td class="empRegister-body"><input type="date" class="reginput-select" id="guaranteeExpirationDate" name="guaranteeExpirationDate"></td>
                     <td class="empRegister-body"><input type="text" class="reginputhide" id="guarantorPhoneNumber" name="guarantorPhoneNumber"></td>
@@ -650,7 +655,7 @@
 				<!-- Submit Button -->
 				<br>
 				<div class="divbtn">
-					<button type="submit">등록</button>
+					<button type="submit">登録</button>
 				</div>
 			</div>
 		</form>

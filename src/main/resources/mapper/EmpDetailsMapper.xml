@@ -4,6 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
 	namespace="org.spring.domain.employee.mapper.EmpDetailsMapper">
+	<!-- 사원 아이디 불러오기 -->
+	<select id="searchEmployeeId" resultType="long">
+		SELECT employee_id FROM employee ORDER BY employee_id DESC FETCH FIRST 1 ROW ONLY
+	</select>
 
 	<!-- 사원등록2페이지 -->
 	<!-- Insert Certification -->
@@ -12,12 +16,12 @@
 		INSERT INTO certification (
 		certification_id,
 		employee_id, certification_name, acquisition_date,
-		issuing_organization, certification_number, remarks
+		issuing_organization, certification_number, remarks1
 		) VALUES (
 		certification_seq.NEXTVAL, #{employeeId}, #{certificationName},
 		#{acquisitionDate},
 		#{issuingOrganization}, #{certificationNumber},
-		#{remarks}
+		#{remarks1}
 		)
 	</insert>
 	<!-- Insert LanguageAbility -->
@@ -25,12 +29,12 @@
 		parameterType="org.spring.domain.employeedetails.model.LanguageAbilityEntity">
 		INSERT INTO language_ability (
 		language_ability_id,
-		employee_id, language, test_name, official_score, acquisition_date,
+		employee_id, language, test_name, official_score, acquisition_date1,
 		reading_ability, writing_ability, speaking_ability
 		) VALUES (
 		language_ability_seq.NEXTVAL, #{employeeId}, #{language}, #{testName},
 		#{officialScore},
-		#{acquisitionDate}, #{readingAbility},
+		#{acquisitionDate1}, #{readingAbility},
 		#{writingAbility},
 		#{speakingAbility}
 		)
@@ -60,13 +64,13 @@
 		reward_penalty_id,
 		employee_id, reward_penalty_type, reward_penalty_name,
 		reward_penalty_giver, reward_penalty_date, reward_penalty_description,
-		remarks
+		remarks2
 		) VALUES (
 		rewardpenalty_seq.NEXTVAL, #{employeeId},
 		#{rewardPenaltyType}, #{rewardPenaltyName},
 		#{rewardPenaltyGiver},
 		#{rewardPenaltyDate},
-		#{rewardPenaltyDescription}, #{remarks}
+		#{rewardPenaltyDescription}, #{remarks2}
 		)
 	</insert>
 	<!-- Insert Appointment -->
@@ -74,13 +78,13 @@
 		parameterType="org.spring.domain.employeedetails.model.AppointmentEntity">
 		INSERT INTO appointment (
 		appointment_id, employee_id,
-		appointment_type, appointment_date, department,
-		position,
-		position_type, remarks
+		appointment_type, appointment_date, department_id,
+		position_id,
+		position_type, remarks3
 		) VALUES (
 		appointment_seq.NEXTVAL,
-		#{employeeId}, #{appointmentType}, #{appointmentDate}, #{department},
-		#{position}, #{positionType}, #{remarks}
+		#{employeeId}, #{appointmentType}, #{appointmentDate}, #{departmentId},
+		#{positionId}, #{positionType}, #{remarks3}
 		)
 	</insert>
 	<!-- Insert Referrer -->
@@ -104,13 +108,13 @@
 		INSERT INTO insurance (
 		insurance_id, employee_id,
 		insurance_agency, insurance_number, insurance_amount,
-		insurance_start_date, insurance_end_date, remarks
+		insurance_start_date, insurance_end_date, remarks4
 		) VALUES (
 		insurance_seq.NEXTVAL, #{employeeId}, #{insuranceAgency},
 		#{insuranceNumber},
 		#{insuranceAmount}, #{insuranceStartDate},
 		#{insuranceEndDate},
-		#{remarks}
+		#{remarks4}
 		)
 	</insert>
 	<!-- Insert Guarantor -->

@@ -16,10 +16,10 @@ public class AppointmentEntity extends EmployeeEntity {
     private String appointmentType;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate appointmentDate;
-    private String department;
-    private String position;
+    private Long departmentId;
+    private Long positionId;
     private String positionType;
-    private String remarks;
+    private String remarks3;
 
 
 }

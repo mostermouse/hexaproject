@@ -18,6 +18,6 @@ public class CertificationEntity extends EmployeeEntity {
     private LocalDate acquisitionDate;
     private String issuingOrganization;
     private String certificationNumber;
-    private String remarks;
+    private String remarks1;
 
 }

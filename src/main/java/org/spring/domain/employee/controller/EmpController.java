@@ -4,7 +4,7 @@ import org.spring.domain.employee.controller.model.DetailsRegistrationForm;
 import org.spring.domain.employee.controller.model.EmployeeRegistrationForm;
 import org.spring.domain.employee.model.*;
 import org.spring.domain.employee.service.EmployeeService;
-import org.spring.domain.employeedetails.model.CertificationEntity;
+import org.spring.domain.employeedetails.model.*;
 import org.spring.domain.employeedetails.service.EmpDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -129,8 +129,20 @@ public class EmpController {
 
     // 사원등록 2페이지 처리
     @PostMapping("/employeeregistration2")
-    public String registerEmployeeDetails(@ModelAttribute DetailsRegistrationForm detailsRegistrationForm, Model model) {
-        empDetailsService.registerDetails(detailsRegistrationForm);
+    public String registerEmployeeDetails(@ModelAttribute CertificationEntity certificationEntity ,
+                                          @ModelAttribute LanguageAbilityEntity languageAbilityEntity ,
+                                          @ModelAttribute TrainingEntity trainingEntity ,
+                                          @ModelAttribute RewardPenaltyEntity rewardPenaltyEntity ,
+                                          @ModelAttribute AppointmentEntity appointmentEntity,
+                                          @ModelAttribute ReferrerEntity referrerEntity ,
+                                          @ModelAttribute InsuranceEntity insuranceEntity ,
+                                          @ModelAttribute GuarantorEntity guarantorEntity ,
+                                           Model model) {
+        model.addAttribute("department" , employeeService.getDepartment());
+        model.addAttribute("position" , employeeService.getPosition());
+
+        empDetailsService.registerDetails(certificationEntity , languageAbilityEntity , trainingEntity ,
+                rewardPenaltyEntity ,appointmentEntity ,referrerEntity ,insuranceEntity ,guarantorEntity);
 
         log.info("register" + model.toString());
         return "redirect:/employeeMnt";

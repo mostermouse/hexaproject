@@ -468,7 +468,7 @@ CREATE TABLE certification (
                                acquisition_date DATE,  -- 취득일
                                issuing_organization VARCHAR2(200),  -- 발행 기관
                                certification_number VARCHAR2(100),  -- 자격증 번호
-                               remarks VARCHAR2(4000)  -- 비고
+                               remarks1 VARCHAR2(4000)  -- 비고
 
 );
 
@@ -479,7 +479,7 @@ CREATE TABLE language_ability (
                                   language VARCHAR2(100),  -- 언어
                                   test_name VARCHAR2(100),  -- 시험명
                                   official_score NUMBER,  -- 공식 점수
-                                  acquisition_date DATE,  -- 취득일
+                                  acquisition_date1 DATE,  -- 취득일
                                   reading_ability VARCHAR2(20),  -- 독해 능력
                                   writing_ability VARCHAR2(20),  -- 작문 능력
                                   speaking_ability VARCHAR2(20)  -- 말하기 능력
@@ -509,7 +509,7 @@ CREATE TABLE reward_penalty (
                                 reward_penalty_giver VARCHAR2(200),  -- 상벌을 수여한 사람 또는 기관
                                 reward_penalty_date DATE,  -- 상벌일
                                 reward_penalty_description VARCHAR2(4000),  -- 상벌 내용
-                                remarks VARCHAR2(4000)  -- 비고
+                                remarks2 VARCHAR2(4000)  -- 비고
 
 );
 
@@ -519,10 +519,10 @@ CREATE TABLE appointment (
                              employee_id number,  -- 직원 ID (외래 키)
                              appointment_type VARCHAR2(100),  -- 발령 유형
                              appointment_date DATE,  -- 발령일
-                             department VARCHAR2(100),  -- 발령 부서
-                             position VARCHAR2(100),  -- 발령 직위
+                             department_id number,  -- 발령 부서
+                             position_id number,  -- 발령 직위
                              position_type VARCHAR2(100),  -- 직책 유형
-                             remarks VARCHAR2(4000)  -- 비고
+                             remarks3 VARCHAR2(4000)  -- 비고
 
 );
 
@@ -547,7 +547,7 @@ CREATE TABLE insurance (
                            insurance_amount NUMBER,  -- 보험 금액
                            insurance_start_date DATE,  -- 보험 시작일
                            insurance_end_date DATE,  -- 보험 종료일
-                           remarks VARCHAR2(4000)  -- 비고
+                           remarks4 VARCHAR2(4000)  -- 비고
 
 );
 

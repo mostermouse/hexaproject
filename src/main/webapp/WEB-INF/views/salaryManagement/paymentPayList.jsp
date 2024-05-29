@@ -8,21 +8,21 @@
         <div class="header-container">
             <img src="<%=request.getContextPath()%>/resources/images/contentimages/paymentPayList.png"
                 width="50" height="50">
-            <h1>사원별 급여내역</h1>
+            <h1>社員別給与内訳</h1>
         </div>
         <hr>
 
         <form>
             <div class="search-container grey-box"
                 style="margin-top: 30px; display: inline-block; width: 100%;">
-                <span>*기간선택</span> 
+                <span>*期間選択</span> 
                 <input type="date" name="settlementPeriodStartDate" value="${param.settlementPeriodStartDate}">
                 <span>~</span>
                 <input type="date" name="settlementPeriodEndDate" value="${param.settlementPeriodEndDate}"> 
-                <span>*사원선택</span>
+                <span>*社員選択</span>
                 <input id="employeeName" onclick="openModal()" name="employeeName" value="${param.employeeName}" readonly>
                 <input type="hidden" id="employeeId" name="employeeId" value="${employeeId}">
-                <button class="all-button" type="submit">급여내역조회</button>
+                <button class="all-button" type="submit">給与明細照会</button>
             </div>
         </form>
 
@@ -45,19 +45,19 @@
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
         <h2>사원 선택</h2>
-        <table>
-            <thead>
+        <table class="empRegisterr">
+            <thead class="empRegister-head1">
                 <tr>
-                    <th>구분</th>
-                    <th>사원 번호</th>
-                    <th>성명</th>
-                    <th>부서</th>
-                    <th>직위</th>
-                    <th>상태</th>
-                    <th>선택</th>
+                    <th>区分</th>
+                    <th>社員番号</th>
+                    <th>氏名</th>
+                    <th>部署</th>
+                    <th>職位</th>
+                    <th>状態</th>
+                    <th>選択</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="empRegister-body">
                 <c:forEach items="${employeeList}" var="emp">
                     <tr>
                         <td>${emp.employmentType}</td>
@@ -66,7 +66,7 @@
                         <td>${emp.departmentName}</td>
                         <td>${emp.positionName}</td>
                         <td>${emp.status}</td>
-                        <td><button type="button" onclick="selectEmployee('${emp.employeeId}', '${emp.koreanName}')">선택</button></td>
+                        <td><button type="button" class="all-button" onclick="selectEmployee('${emp.employeeId}', '${emp.koreanName}')">선택</button></td>
                     </tr>
                 </c:forEach>
             </tbody>

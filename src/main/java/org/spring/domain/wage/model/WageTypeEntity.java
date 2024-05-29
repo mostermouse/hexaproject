@@ -14,5 +14,5 @@ public class WageTypeEntity {
 	private String numberCut;
 	private String attendanceOrLumpsum;
 	private String attendanceOrLumpsumContent;
-	private Character usage;
+	private String usage;
 }

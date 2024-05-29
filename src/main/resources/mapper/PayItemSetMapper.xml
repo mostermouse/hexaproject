@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="org.spring.domain.vacation.mapper.PayItemSetMapper">
+
+	<!-- Select -->
+	<select id="getAllWageType"
+		resultType="org.spring.domain.wage.model.WageTypeEntity">
+		SELECT * FROM wage_type
+	</select>
+
+	<!-- Select by ID -->
+	<select id="getWageTypeId"
+		resultType="org.spring.domain.wage.model.WageTypeEntity">
+		SELECT * FROM wage_type
+		WHERE wage_type_id = #{wageTypeId}
+	</select>
+
+	<!-- Insert a new WageTypeEntity -->
+	<insert id="createWageType"
+		parameterType="org.spring.domain.wage.model.WageTypeEntity">
+		<selectKey keyProperty="wageTypeId" order="BEFORE"
+			resultType="long">
+			SELECT wage_type_seq.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO wage_type 
+		VALUES (
+		#{wageTypeId}, 
+		#{wageTypeName}, 
+		#{numberCut},
+		#{attendanceOrLumpsum}, 
+		#{attendanceOrLumpsumContent},
+		#{usage})
+	</insert>
+
+	<!-- Update an existing WageTypeEntity -->
+	<update id="updateWageType"
+		parameterType="org.spring.domain.wage.model.WageTypeEntity">
+		UPDATE wage_type
+		SET 
+		wage_type_name = #{wageTypeName},
+		number_cut = #{numberCut},
+		attendance_or_lumpsum = #{attendanceOrLumpsum},
+		attendance_or_lumpsum_content = #{attendanceOrLumpsumContent},
+		usage = #{usage}
+		WHERE wage_type_id = #{wageTypeId}
+	</update>
+
+	<!-- Delete a WageTypeEntity by ID -->
+	<delete id="deleteWageType" parameterType="long">
+		DELETE FROM wage_type
+		WHERE wage_type_id = #{wageTypeId}
+	</delete>
+	
+</mapper>

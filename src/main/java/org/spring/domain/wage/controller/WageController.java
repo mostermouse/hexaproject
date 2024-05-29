@@ -1,21 +1,17 @@
 package org.spring.domain.wage.controller;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.spring.domain.wage.mapper.WageMapper;
 import org.spring.domain.wage.model.WageEntity;
 import org.spring.domain.wage.service.WageService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.AllArgsConstructor;
-import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
@@ -48,7 +44,7 @@ public class WageController {
 		model.addAttribute("departmentNames", departmentNames);
 		model.addAttribute("wageTypeNames", wageTypeNames);
 	}
-	
+
 	// 급여대장
 	@GetMapping("/payment/paymentRegisterList")
 	public String getPaymentRegisterList(
@@ -76,30 +72,54 @@ public class WageController {
 
 		return "salaryManagement/paymentRegisterPeriodList";
 	}
-	@GetMapping("/paymentMntDayWorker") //일용직 급여 관리
-	public String paymentMntDayWorker(Model model){
-		//TODO 내용물 넣어야함
-		return "salaryManagement/paymentMntDayWorker";
-	}
-	@GetMapping("/payItem") //급여 항목 설정
-	public String payItem(Model model) {
-		log.info("payItem.................");
-		//TODO 값 넣어야함
-		return "defaultPreferences/payItemSet";
-	}
-	@GetMapping("/paymentPayList")//사원별 급여 내용
-	public String paymentPayList(Model model){
-		//TODO 비어있음 내용물 채워야함
+
+	// 사원별 급여 내용
+	@GetMapping("/paymentPayList")
+	public String paymentPayList(
+			@RequestParam(name = "settlementPeriodStartDate", required = false, defaultValue = "2022-01-01") String settlementPeriodStartDate,
+			@RequestParam(name = "settlementPeriodEndDate", required = false, defaultValue = "2022-12-31") String settlementPeriodEndDate,
+			@RequestParam(name = "employeeId", required = false, defaultValue = "1") Long employeeId, Model model) {
+
+		// TODO 검색변수 받아서 검색하도록 해야 함
+
+		log.info("paymentPayList..........................");
+
+		model.addAttribute("listWageRecordEMP",
+				wageService.listWageRecordEMP(settlementPeriodStartDate, settlementPeriodEndDate, employeeId));
+
 		return "salaryManagement/paymentPayList";
 	}
-	@GetMapping("/paymentPayItemPart")//급여 항목별 조회
-	public String paymentPayItem(Model model){
-		//TODO 비어있음
+
+	// 항목별 급여 조회
+	@GetMapping("/paymentPayItemPart")
+	public String paymentPayItem(
+			@RequestParam(name = "settlementPeriodStartDate", required = false, defaultValue = "2022-01-01") String settlementPeriodStartDate,
+			@RequestParam(name = "settlementPeriodEndDate", required = false, defaultValue = "2022-12-31") String settlementPeriodEndDate,
+			@RequestParam(name = "wageTypeId", required = false, defaultValue = "1") Long wageTypeId, Model model) {
+
+		model.addAttribute("listWageRecordWT",
+				wageService.listWageRecordWT(settlementPeriodStartDate, settlementPeriodEndDate, wageTypeId));
+
+		// TODO 검색변수 받아서 검색하도록 해야 함
 		return "salaryManagement/paymentPayItemPart";
 	}
-	@GetMapping("/payment/paymentMnt") //급여입력
+
+	@GetMapping("/paymentMntDayWorker") // 일용직 급여 관리
+	public String paymentMntDayWorker(Model model) {
+		// TODO 내용물 넣어야함
+		return "salaryManagement/paymentMntDayWorker";
+	}
+
+	@GetMapping("/payItem") // 급여 항목 설정
+	public String payItem(Model model) {
+		log.info("payItem.................");
+		// TODO 값 넣어야함
+		return "defaultPreferences/payItemSet";
+	}
+
+	@GetMapping("/payment/paymentMnt") // 급여입력
 	public String paymentMnt(Model model) {
-		//TODO wageList 대성이형 이거 옮겨놔 
+		// TODO wageList 대성이형 이거 옮겨놔
 		return "salaryManagement/paymentMnt";
 	}
 

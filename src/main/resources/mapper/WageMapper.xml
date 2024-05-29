@@ -101,40 +101,191 @@
 
 
 	<!-- 급여대장 출력 -->
-	<!-- 급여정보 연도,차수 -->
-	<select id="getYearMonthPeriodWage" 
-		resultType="org.spring.domain.wage.controller.model.WageRecordDetailsRequest">
-	    SELECT
-		e.employee_id as employee_id,
-		e.employment_type as employment_type,
-		e.korean_name as korean_name,
-		e.hire_date as hire_date,
-		e.department_id as department_id,
-		d.department_name as department_name,
-		p.position_id as position_id,
-		p.position_name as position_name,
-		w.wage_id as wage_id,
-		w.wage_period as wage_period,
-		w.wage_type_id as wage_type_id,
-		wt.wage_type_name as wage_type_name,
-		w.wage_value as wage_value,
-		w.settlement_period_start_date as settlement_period_start_date,
-		w.settlement_period_end_date as settlement_period_end_date,
-		w.wage_payment_date as wage_payment_date
-	    FROM wage w
-	    JOIN employee e ON e.employee_id = w.employee_id
-	    JOIN wage_type wt ON wt.wage_type_id = w.wage_type_id
-	    JOIN department d ON d.department_id = e.department_id
-	    JOIN position p ON p.position_id = e.position_id
-	    WHERE TO_CHAR(wage_payment_date, 'YYYYMM') = #{yearMonth}
-	    AND wage_period = #{wagePeriod}
-	</select>
-	
 	<!-- 급여정보 연도 -->
 	<select id="getYearWage"
 		resultType="org.spring.domain.wage.model.WageEntity">
 		SELECT * FROM wage WHERE TO_CHAR(wage_payment_date, 'YYYY')
 		= #{year}
+	</select>
+
+	<!-- 급여정보 연도,차수 -->
+	<select id="getYearMonthPeriodWage"
+		resultType="org.spring.domain.wage.controller.model.WageRecordDetailsRequest">
+		SELECT
+		e.employee_id as employee_id,
+		e.employment_type as
+		employment_type,
+		e.korean_name as korean_name,
+		e.hire_date as hire_date,
+		e.department_id
+		as department_id,
+		d.department_name as department_name,
+		p.position_id as
+		position_id,
+		p.position_name as position_name,
+		w.wage_id as wage_id,
+		w.wage_period as wage_period,
+		w.wage_type_id as
+		wage_type_id,
+		wt.wage_type_name as wage_type_name,
+		w.wage_value as
+		wage_value,
+		w.settlement_period_start_date as
+		settlement_period_start_date,
+		w.settlement_period_end_date as
+		settlement_period_end_date,
+		w.wage_payment_date as wage_payment_date
+		FROM wage w
+		JOIN employee e ON e.employee_id = w.employee_id
+		JOIN
+		wage_type wt ON wt.wage_type_id = w.wage_type_id
+		JOIN department d ON
+		d.department_id = e.department_id
+		JOIN position p ON p.position_id =
+		e.position_id
+		WHERE TO_CHAR(wage_payment_date, 'YYYYMM') = #{yearMonth}
+		AND wage_period = #{wagePeriod}
+	</select>
+
+	<!-- 급여정보 연도,차수 -->
+	<select id="getEmployeeWage"
+		resultType="org.spring.domain.wage.controller.model.WageRecordDetailsRequest">
+    <![CDATA[
+    SELECT
+        e.employee_id as employee_id,
+        e.employment_type as employment_type,
+        e.korean_name as korean_name,
+        e.hire_date as hire_date,
+        e.department_id as department_id,
+        d.department_name as department_name,
+        p.position_id as position_id,
+        p.position_name as position_name,
+        e.status as status,
+        w.wage_id as wage_id,
+        w.wage_period as wage_period,
+        w.wage_type_id as wage_type_id,
+        wt.wage_type_name as wage_type_name,
+        w.wage_value as wage_value,
+        w.settlement_period_start_date as settlement_period_start_date,
+        w.settlement_period_end_date as settlement_period_end_date,
+        w.wage_payment_date as wage_payment_date
+    FROM wage w
+    JOIN employee e ON e.employee_id = w.employee_id
+    JOIN wage_type wt ON wt.wage_type_id = w.wage_type_id
+    JOIN department d ON d.department_id = e.department_id
+    JOIN position p ON p.position_id = e.position_id
+    WHERE TO_CHAR(w.settlement_period_start_date, 'YYYYMM') >= #{settlementPeriodStartDate}
+    AND TO_CHAR(w.settlement_period_end_date, 'YYYYMM') <= #{settlementPeriodEndDate}
+    AND e.employee_id = #{employeeId}
+    ]]>
+	</select>
+
+
+	<!-- 사원별 급여 조회 -->
+	<!-- 연,월,차수 불러오기 -->
+	<select id="getYearMonthPeriod"
+		resultType="org.spring.domain.wage.controller.model.WageRecordDetailsRequest">
+    <![CDATA[
+    SELECT DISTINCT
+	    settlement_period_start_date,
+	    wage_period as wage_period
+	FROM wage 
+	WHERE TO_CHAR(settlement_period_start_date, 'YYYYMM') >= #{settlementPeriodStartDate}
+	AND TO_CHAR(settlement_period_end_date, 'YYYYMM') <= #{settlementPeriodEndDate}
+	AND employee_id = #{employeeId}
+	ORDER BY settlement_period_start_date, wage_period
+    ]]>
+	</select>
+
+	<!-- 급여종류 -->
+	<select id="getWageType"
+		resultType="org.spring.domain.wage.controller.model.WageRecordDetailsRequest">
+    <![CDATA[
+    SELECT DISTINCT
+	    w.wage_type_id as wage_type_id,
+	    wt.wage_type_name as wage_type_name
+	FROM wage w
+	JOIN wage_type wt ON wt.wage_type_id = w.wage_type_id
+    WHERE TO_CHAR(w.settlement_period_start_date, 'YYYYMM') >= #{settlementPeriodStartDate}
+    AND TO_CHAR(w.settlement_period_end_date, 'YYYYMM') <= #{settlementPeriodEndDate}
+    AND w.employee_id = #{employeeId}
+	ORDER BY w.wage_type_id
+    ]]>
+	</select>
+
+	<!-- 급여 값 -->
+	<select id="getWageValue"
+		resultType="org.spring.domain.wage.controller.model.WageRecordDetailsRequest">
+    <![CDATA[
+	SELECT
+	    w.settlement_period_start_date as settlement_period_start_date,
+	    w.wage_period as wage_period,
+	    wt.wage_type_name as wage_type_name,
+	    w.wage_value as wage_value
+	FROM wage w
+	JOIN wage_type wt ON wt.wage_type_id = w.wage_type_id
+	WHERE TO_CHAR(w.settlement_period_start_date, 'YYYYMM') >= #{settlementPeriodStartDate}
+	AND TO_CHAR(w.settlement_period_end_date, 'YYYYMM') <= #{settlementPeriodEndDate}
+	AND w.employee_id = #{employeeId}
+	ORDER BY TO_CHAR(w.settlement_period_start_date, 'YYYYMM'), w.wage_period, w.wage_type_id
+    ]]>
+	</select>
+
+
+	<!-- 항목별 급여 조회 -->
+	<!-- 정산기간, 급여항목별 직원 및 정보 목록  -->
+	<select id="getWageTypeEmployeeInfo"
+		resultType="org.spring.domain.wage.controller.model.WageRecordDetailsRequest">
+    <![CDATA[
+    SELECT DISTINCT
+	    e.employment_type as employment_type,
+	    e.korean_name as korean_name,
+	    d.department_name as department_name,
+	    p.position_name as position_name,
+	    e.employee_id as employee_id
+	FROM wage w
+	JOIN employee e ON e.employee_id = w.employee_id
+	JOIN department d ON d.department_id = e.department_id
+	JOIN position p ON p.position_id = e.position_id
+	WHERE TO_CHAR(w.settlement_period_start_date, 'YYYYMM') >= #{settlementPeriodStartDate}
+	AND TO_CHAR(w.settlement_period_end_date, 'YYYYMM') <= #{settlementPeriodEndDate}
+	AND w.wage_type_id = #{wageTypeId}
+	ORDER BY employee_id
+	    ]]>
+	</select>
+	
+	<!-- 정산기간, 급여항목별 연월, 차수  -->
+	<select id="getWageTypeYearMonthPeriod"
+		resultType="org.spring.domain.wage.controller.model.WageRecordDetailsRequest">
+    <![CDATA[
+    SELECT DISTINCT
+	    settlement_period_start_date,
+	    wage_period
+	FROM wage
+	WHERE TO_CHAR(settlement_period_start_date, 'YYYYMM') >= #{settlementPeriodStartDate}
+	AND TO_CHAR(settlement_period_end_date, 'YYYYMM') <= #{settlementPeriodEndDate}
+	AND wage_type_id = #{wageTypeId}
+	ORDER BY settlement_period_start_date, wage_period
+	    ]]>
+	</select>
+	
+	<!-- 급여항목별 급여 -->
+	<select id="getWageTypeValue"
+		resultType="org.spring.domain.wage.controller.model.WageRecordDetailsRequest">
+    <![CDATA[
+    SELECT
+	    w.settlement_period_start_date as settlement_period_start_date,
+	    w.wage_period as wage_period,
+	    e.employee_id as employee_id,
+	    w.wage_value as wage_value
+	FROM wage w
+	JOIN employee e ON e.employee_id = w.employee_id
+	JOIN department d ON d.department_id = e.department_id
+	JOIN position p ON p.position_id = e.position_id
+	WHERE TO_CHAR(w.settlement_period_start_date, 'YYYYMM') >= #{settlementPeriodStartDate}
+	AND TO_CHAR(w.settlement_period_end_date, 'YYYYMM') <= #{settlementPeriodEndDate}
+	AND w.wage_type_id = #{wageTypeId}
+	    ]]>
 	</select>
 
 </mapper>

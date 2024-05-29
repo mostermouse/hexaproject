@@ -31,6 +31,18 @@
 			</div>
 		</form>
 
+		<table class="empRegisterr">
+			<tbody class="empRegister-body">
+				<c:forEach var="row" items="${listWageRecordWT}">
+					<tr>
+						<c:forEach var="cell" items="${row}">
+							<td style="text-align: center;">${cell}</td>
+						</c:forEach>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+
 	</div>
 </div>
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>

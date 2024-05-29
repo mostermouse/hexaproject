@@ -766,9 +766,9 @@ INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2024연차', '2024
 
 commit ;
 -----------------------------------------------------------------------------------------------------------------------------------------------------
-
 -- 급여 대장 기능 테스트를 위한 더미데이터 코드
 -- 2022년도로 설정하고, 클릭해보면, 콘솔에 데이터 표시.
+insert into employee values (1,1,1,employee_seq.nextval,'1','1','1','20220202','20220203','1','1','1','1','1','1','1','1','1','1','1','1');
 INSERT INTO wage (wage_id, employee_id, wage_period, wage_type_id, wage_value, settlement_period_start_date, settlement_period_end_date, wage_payment_date)
 SELECT 
     wage_seq.nextval,
@@ -783,5 +783,4 @@ FROM
     dual
 CONNECT BY
     level <= 36; -- 4 (employee_id 개수) * 9 (wage_type_id 개수)
-
-insert into employee values (employee_seq.nextval,'1','1','1','20220202','20220203','1','1','1','1','1','1','1','1','1','1','1','1');
+COMMIT;

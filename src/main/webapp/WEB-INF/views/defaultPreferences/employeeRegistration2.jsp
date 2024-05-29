@@ -58,6 +58,7 @@
 				<td class="empRegister-body"><input type="date" class="reginput-select"></td>
 				<td class="empRegister-body">
 					<select class="reginput-select">
+						<option value="">선택</option>
 						<option value="상">上</option>
 						<option value="중">中</option>
 						<option value="하">下</option>
@@ -65,6 +66,7 @@
 				</td>
 				<td class="empRegister-body">
 					<select class="reginput-select">
+						<option value="">선택</option>
 						<option value="상">上</option>
 						<option value="중">中</option>
 						<option value="하">下</option>
@@ -72,6 +74,7 @@
 				</td>
 				<td class="empRegister-body">
 					<select class="reginput-select">
+						<option value="">선택</option>
 						<option value="상">上</option>
 						<option value="중">中</option>
 						<option value="하">下</option>
@@ -96,25 +99,40 @@
             });
         }
         
-        function add1(event) {
+        function add3(event) {
         	event.preventDefault();
             const tableBody = document.querySelector('#table3');
 
             const newRow = document.createElement('tr');
 
             newRow.innerHTML = `
-                <td class="empRegister-body"><input type="checkbox"></td>
-                <td class="empRegister-body"><input type="text" class="reginputhide"></td>
-                <td class="empRegister-body"><input type="date" class="reginput-select"></td>
-                <td class="empRegister-body"><input type="text" class="reginputhide"></td>
-                <td class="empRegister-body"><input type="text" class="reginputhide"></td>
-                <td class="empRegister-body"><input type="text" class="reginputhide"></td>
+            	<td class="empRegister-body"><input type="checkbox"></td>
+				<td class="empRegister-body"><select class="reginput-select">
+						<option value="">선택</option>
+						<option value="사내직무">사내직무</option>
+						<option value="사외직무">사외직무</option>
+						<option value="계층교육">계층교육</option>
+						<option value="어학교육">어학교육</option>
+						<option value="기타">기타</option>
+				</select></td>
+				<td class="empRegister-body"><input type="text"
+					class="reginputhide"></td>
+				<td class="empRegister-body"><input type="date"
+					class="reginput-select"></td>
+				<td class="empRegister-body"><input type="date"
+					class="reginput-select"></td>
+				<td class="empRegister-body"><input type="text"
+					class="reginputhide"></td>
+				<td class="empRegister-body"><input type="text"
+					class="reginputhidepay"><span>원</span></td>
+				<td class="empRegister-body"><input type="text"
+					class="reginputhidepay"><span>원</span></td>
             `;
 
             tableBody.appendChild(newRow);
         }
         
-        function delete1(event) {
+        function delete3(event) {
         	event.preventDefault();
             const tableBody = document.querySelector('#table3');
 
@@ -128,25 +146,90 @@
             });
         }
         
-        function add1(event) {
+        function add4(event) {
+        	event.preventDefault();
+            const tableBody = document.querySelector('#table4');
+
+            const newRow = document.createElement('tr');
+
+            newRow.innerHTML = `
+            	<td class="empRegister-body"><input type="checkbox"></td>
+				<td class="empRegister-body"><select class="reginput-select">
+						<option value="">선택</option>
+						<option value="포상">포상</option>
+						<option value="표창">표창</option>
+						<option value="시상">시상</option>
+						<option value="면직">면직</option>
+						<option value="정직">정직</option>
+						<option value="감봉">감봉</option>
+						<option value="견책">견책</option>
+						<option value="주의">주의</option>
+						<option value="경고">경고</option>
+						<option value="조치불가">조치불가</option>
+						<option value="해고">해고</option>
+				</select></td>
+				<td class="empRegister-body"><input type="text"
+					class="reginputhide"></td>
+				<td class="empRegister-body"><input type="text"
+					class="reginputhide"></td>
+				<td class="empRegister-body"><input type="date"
+					class="reginput-select"></td>
+				<td class="empRegister-body"><input type="text"
+					class="reginputhide"></td>
+				<td class="empRegister-body"><input type="text"
+					class="reginputhide"></td>
+            `;
+
+            tableBody.appendChild(newRow);
+        }
+        
+        function delete4(event) {
+        	event.preventDefault();
+            const tableBody = document.querySelector('#table4');
+
+            const rows = tableBody.querySelectorAll('tr');
+
+            rows.forEach(row => {
+                const checkbox = row.querySelector('input[type="checkbox"]');
+                if (checkbox && checkbox.checked) {
+                    tableBody.removeChild(row);
+                }
+            });
+        }
+        
+        function add5(event) {
         	event.preventDefault();
             const tableBody = document.querySelector('#table5');
 
             const newRow = document.createElement('tr');
 
             newRow.innerHTML = `
-                <td class="empRegister-body"><input type="checkbox"></td>
-                <td class="empRegister-body"><input type="text" class="reginputhide"></td>
-                <td class="empRegister-body"><input type="date" class="reginput-select"></td>
-                <td class="empRegister-body"><input type="text" class="reginputhide"></td>
-                <td class="empRegister-body"><input type="text" class="reginputhide"></td>
-                <td class="empRegister-body"><input type="text" class="reginputhide"></td>
+            	<td class="empRegister-body"><input type="checkbox"></td>
+				<td class="empRegister-body"><select class="reginput-select">
+						<option value="">선택</option>
+						<option value="포상">채용</option>
+						<option value="표창">전보</option>
+						<option value="시상">승진</option>
+						<option value="면직">승격</option>
+						<option value="정직">승호</option>
+						<option value="감봉">파견</option>
+				</select></td>
+				<td class="empRegister-body"><input type="date"
+					class="reginput-select"></td>
+				<td class="empRegister-body"><input type="text"
+					class="reginputhide"></td>
+				<td class="empRegister-body"><input type="text"
+					class="reginputhide"></td>
+				<td class="empRegister-body"><input type="text"
+					class="reginputhide"></td>
+				<td class="empRegister-body"><input type="text"
+					class="reginputhide"></td>
             `;
 
             tableBody.appendChild(newRow);
         }
         
-        function delete1(event) {
+        function delete5(event) {
         	event.preventDefault();
             const tableBody = document.querySelector('#table5');
 
@@ -238,9 +321,10 @@
 
 
 
-
-			<div class="grey-box">
+			<div class="table-container">
+			<div class="grey-box" style="height: 30px;">
 				<h2>사원 정보2</h2>
+			</div>
 			</div>
 			<div class="table-container">
 				<div class="header-container">
@@ -448,8 +532,8 @@
 				<div class="header-container">
 					<h3 id="section9">발령</h3>
 					<div style="margin-left: auto;">
-						<button onclick="add4(event)">추가</button>
-						<button onclick="delete4(event)">삭제</button>
+						<button onclick="add5(event)">추가</button>
+						<button onclick="delete5(event)">삭제</button>
 					</div>
 				</div>
 				<table class="empRegister1" id="table5">

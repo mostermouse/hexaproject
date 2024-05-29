@@ -2,29 +2,28 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
 <div id="content">
-<style>
-	.input-container {
-		position: relative; /* 부모 요소를 기준으로 자식 요소 위치를 설정하기 위해 사용 */
-	}
+	<style>
+.input-container {
+	position: relative; /* 부모 요소를 기준으로 자식 요소 위치를 설정하기 위해 사용 */
+}
 
-	.placeholder-text {
-		color: red;         /* 빨간색 */
-		opacity: 0.5;       /* 희미하게 */
-		font-size: 12px;    /* 텍스트 크기 */
-		position: absolute; /* 절대 위치 지정 */
-		top: 50%;           /* 수직 중앙 정렬 */
-		left: 10px;         /* 좌측 패딩 */
-		transform: translateY(-50%); /* 수직 중앙 정렬 */
-		pointer-events: none; /* 텍스트가 클릭되지 않도록 설정 */
-	}
+.placeholder-text {
+	color: red; /* 빨간색 */
+	opacity: 0.5; /* 희미하게 */
+	font-size: 12px; /* 텍스트 크기 */
+	position: absolute; /* 절대 위치 지정 */
+	top: 50%; /* 수직 중앙 정렬 */
+	left: 10px; /* 좌측 패딩 */
+	transform: translateY(-50%); /* 수직 중앙 정렬 */
+	pointer-events: none; /* 텍스트가 클릭되지 않도록 설정 */
+}
 
-	.reginputhide {
-		position: relative; /* 상대 위치 지정 */
-		z-index: 1;         /* 입력 필드가 텍스트 위에 오도록 설정 */
-		background: transparent; /* 배경 투명 설정 */
-		color: transparent; /* 텍스트 투명 설정 */
-	}
-
+.reginputhide {
+	position: relative; /* 상대 위치 지정 */
+	z-index: 1; /* 입력 필드가 텍스트 위에 오도록 설정 */
+	background: transparent; /* 배경 투명 설정 */
+	color: transparent; /* 텍스트 투명 설정 */
+}
 </style>
 	<div class="floating-container">
 		<table class="floating-table">
@@ -98,9 +97,7 @@
 		<h4>社員情報を登録するメニューです。該当する項目だけを入力してください。 （*表示は必須入力事項)</h4>
 		<hr>
 		<br>
-		<form id="registerForm2"
-			action="/employeeregistration"
-			method="post">
+		<form id="registerForm2" action="/employeeregistration" method="post">
 
 
 
@@ -113,8 +110,9 @@
 					<th class="empRegister-head1">社員番号</th>
 					<th class="empRegister-body">
 						<div class="input-container">
-							<input type="number" id="employeeId" name="employeeId" class="reginputhide" readonly>
-							<span class="placeholder-text">自動入力されます</span>
+							<input type="number" id="employeeId" name="employeeId"
+								class="reginputhide" readonly> <span
+								class="placeholder-text">自動入力されます</span>
 						</div>
 					</th>
 					<th class="empRegister-head1"><span style="color: #FE0000">*</span>雇用形態</th>
@@ -148,25 +146,22 @@
 				</tr>
 				<tr>
 					<td class="empRegister-head1">部署</label></td>
-					<td class="empRegister-body">
-                        <select id="departmentId" name="departmentId" class="reginput-select">
-                        <option value="">選択</option>
-                        <c:forEach items="${department}" var="dept">
-                            <option value="${dept.departmentId}">${dept.departmentName}</option>
-                        </c:forEach>
-                    </select>
-                    </td>
-                    <td class="empRegister-head1">
-                        役職</label>
-                    </td>
-                    <td class="empRegister-body">
-                        <select id="positionId" name="positionId" class="reginput-select">
-                            <option value="">選択</option>
-                            <c:forEach items="${position}" var="posi">
-                                <option value="${posi.positionId}">${posi.positionName}</option>
-                            </c:forEach>
-                        </select>
-                    </td>
+					<td class="empRegister-body"><select id="departmentId"
+						name="departmentId" class="reginput-select">
+							<option value="">選択</option>
+							<c:forEach items="${department}" var="dept">
+								<option value="${dept.departmentId}">${dept.departmentName}</option>
+							</c:forEach>
+					</select></td>
+					<td class="empRegister-head1">役職</label>
+					</td>
+					<td class="empRegister-body"><select id="positionId"
+						name="positionId" class="reginput-select">
+							<option value="">選択</option>
+							<c:forEach items="${position}" var="posi">
+								<option value="${posi.positionId}">${posi.positionName}</option>
+							</c:forEach>
+					</select></td>
 				</tr>
 				<tr>
 					<td class="empRegister-head1">内/外国人</td>
@@ -217,8 +212,11 @@
 			</table>
 			<br> <br>
 			<hr>
-
-			<h2>社員情報1</h2>
+			<div class="table-container">
+			<div class="grey-box" style="height: 30px;">
+				<h2>社員情報1</h2>
+			</div>
+			</div>
 			<div class="table-container">
 				<div class="header-container">
 					<!-- Dependents Table -->
@@ -256,8 +254,7 @@
 							</select></td>
 							<td class="empRegister-body"><input type="text"
 								id="parentsName" name="parentsName" class="reginputhide1"></td>
-							<td class="empRegister-body"><select
-								id="foreignOrDomestic1"
+							<td class="empRegister-body"><select id="foreignOrDomestic1"
 								name="foreignOrDomestic1" class="reginput-select">
 									<option value="">選択してください。</option>
 									<option value="국내">国内</option>
@@ -321,7 +318,8 @@
 				<!-- Career Table -->
 				<h3 id="section4">経歴</h3>
 
-				<table class="empRegister1"> <!-- 입사일 퇴사일 안눌려요 센빠이 -->
+				<table class="empRegister1">
+					<!-- 입사일 퇴사일 안눌려요 센빠이 -->
 					<thead>
 						<tr>
 							<th class="empRegister-head1" style="width: 85px;">会社名</th>

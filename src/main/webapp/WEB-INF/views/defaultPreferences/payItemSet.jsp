@@ -10,26 +10,26 @@
         <div class="table-container">
             <div class="header-container">
                 <img src="<%=request.getContextPath()%>/resources/images/contentimages/payItemSet.png" width="50" height="50">
-                <h1>급여항목 설정</h1>
+                <h1>給与項目設定</h1>
             </div>
             <hr>
             <div class="search-container">
                 <div class="title-table-left">
-                    <h3>지급항목 설정</h3>
+                    <h3>支給項目設定</h3>
                     <table class="empRegister1">
                         <thead class="empRegister-head1">
                             <tr>
-                                <th>지급항목</th>
-                                <th>과세여부</th>
-                                <th>비과세한도액</th>
-                                <th>절사단위</th>
-                                <th>근태연결/일괄지급</th>
-                                <th>사용여부</th>
+                                <th>支給項目</th>
+                                <th>課税の可否</th>
+                                <th>非課税限度額</th>
+                                <th>節射単位</th>
+                                <th>勤怠連結/一括支給</th>
+                                <th>使用可否</th>
                             </tr>
                         </thead>
                         <tbody class="empRegister-body">
                             <tr>
-                                <td>기본급</td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -44,70 +44,70 @@
                     <table class="empRegisterblack" style="margin-bottom: 20px; width: 400px;">
                         <thead>
                             <tr>
-                                <th style="width: 120px;">지급항목</th>
-                                <th><input type="text" placeholder="지급 항목을 입력해 주세요." class="reginputhide"></th>
+                                <th style="width: 120px;">支給項目</th>
+                                <th><input type="text" placeholder="支給項目を入力してください。" class="reginputhide"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>과세여부</td>
+                                <td>課税可否</td>
                                 <td>
-                                    <input type="checkbox" id="tax" name="tax"><label for="tax">전체과세</label>
-                                    <input type="checkbox" id="notax" name="tax"><label for="notax">비과세</label>
+                                    <input type="checkbox" id="tax" name="tax"><label for="tax">全体課税</label>
+                                    <input type="checkbox" id="notax" name="tax"><label for="notax">非課税</label>
                                 </td>
                             </tr>
                             <tr class="nontax-field hidden">
-                                <td>비과세명</td>
+                                <td>非課税名</td>
                                 <td><input type="text" class="reginputhide"></td>
                             </tr>
                             <tr class="nontax-field hidden">
-                                <td>비과세 한도액</td>
+                                <td>非課税限度額</td>
                                 <td><input type="text" class="reginputhide"></td>
                             </tr>
                             <tr>
-                                <td>계산방법</td>
-                                <td><input type="text" placeholder="계산방법을 입력해주세요." class="reginputhide"></td>
+                                <td>計算方法</td>
+                                <td><input type="text" placeholder="計算方法を入力してください" class="reginputhide"></td>
                             </tr>
                             <tr>
-                                <td>절사단위</td>
+                                <td>節射単位</td>
                                 <td>
                                     <select class="reginput-select">
-                                        <option value="">없음</option>
-                                        <option value="">1원 단위</option>
-                                        <option value="">10원 단위</option>
-                                        <option value="">100원 단위</option>
+                                        <option value="">なし</option>
+                                        <option value="">1円単位</option>
+                                        <option value="">10円単位</option>
+                                        <option value="">100円単位</option>
                                     </select>
                                 </td>
                             </tr>
                             <tr>
-                                <td>근태연결/일괄지급</td>
+                                <td>勤怠連結/一括支給</td>
                                 <td>
                                     <select class="reginput-select" id="paymentOption">
-                                        <option value="">선택하세요.</option>
-                                        <option value="일괄지급">일괄지급</option>
+                                        <option value="">選択してください。</option>
+                                        <option value="일괄지급">一括払い</option>
                                     </select>
                                 </td>
                             </tr>
                             <tr class="bulk-payment-field hidden">
-                                <td>일괄지급액</td>
+                                <td>一括支給額</td>
                                 <td>
-                                    <input type="text" class="reginputhide" style="width: 80%; text-align: right;"><span>원</span>
+                                    <input type="text" class="reginputhide" style="width: 80%; text-align: right;"><span>円</span>
                                 </td>
                             </tr>
                             <tr>
-                                <td>사용여부</td>
+                                <td>使用可否</td>
                                 <td>
-                                    <input type="checkbox" id="use" name="use" checked="checked"><label for="use">사용</label>
-                                    <input type="checkbox" id="nouse" name="use"><label for="nouse">사용안함</label>
+                                    <input type="checkbox" id="use" name="use" checked="checked"><label for="use">使用</label>
+                                    <input type="checkbox" id="nouse" name="use"><label for="nouse">使用なし</label>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <div class="divbtnsml">
-                        <button>추가</button>
-                        <button>수정</button>
-                        <button class="cancel-btn">삭제</button>
-                        <button class="cancel-btn">내용 지우기</button>
+                        <button>追加</button>
+                        <button>修整</button>
+                        <button class="cancel-btn">削除</button>
+                        <button class="cancel-btn">内容消去</button>
                     </div>
                 </form>
             </div>
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     paymentOption.addEventListener('change', function() {
-        if (this.value === '일괄지급') {
+        if (this.value === '一括払い') {
             bulkPaymentField.classList.remove('hidden');
         } else {
             bulkPaymentField.classList.add('hidden');

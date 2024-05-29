@@ -103,7 +103,7 @@
 		<!-- 휴가/근태설정 -->
 		<!-- dnLItemSet.jsp -->
 		<div class="menu-item" id="payzon-26"
-			onclick="window.location.href='<%=request.getContextPath()%>/dnLItem'">
+			onclick="window.location.href='<%=request.getContextPath()%>/dnLItemSet1'">
 			<img src="<%= request.getContextPath() %>/resources/images/payzon_26.jpg" alt="Item 26">
 		</div>
 		<!-- 급여항목설정 -->

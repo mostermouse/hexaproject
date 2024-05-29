@@ -36,37 +36,37 @@ public class VacationAndAttendanceController {
 	@PostMapping("/createAttItem")
 	public String createAttendanceItem(@ModelAttribute AttendanceTypeEntity attendanceTypeEntity) {
 		attendanceTypeService.createAttendanceType(attendanceTypeEntity);
-		return "redirect:/dnLItemSet";
+		return "redirect:/dnLItemSet1";
 	}
 
 	@PostMapping("/createDnlItem")
 	public String createVacationItem(@ModelAttribute VacationTypeEntity vacationTypeEntity) {
 		vacationTypeService.createVacationType(vacationTypeEntity);
-		return "redirect:/dnLItemSet";
+		return "redirect:/dnLItemSet1";
 	}
 
 	@PostMapping("/updateAttItem1")//TODO 매퍼 이름 겹침 임시로 바꿈
 	public String updateAttendanceItem(@ModelAttribute AttendanceTypeEntity attendanceTypeEntity) {
 		attendanceTypeService.updateAttendanceType(attendanceTypeEntity);
-		return "redirect:/dnLItemSet";
+		return "redirect:/dnLItemSet1";
 	}
 
 	@PostMapping("/updateDnlItem")
 	//TODO 매퍼 이름 겹침 임시로 바꿈
 	public String updateVacationItem(@ModelAttribute VacationTypeEntity vacationTypeEntity) {
 		vacationTypeService.updateVacationType(vacationTypeEntity);
-		return "redirect:/dnLItemSet";
+		return "redirect:/dnLItemSet1";
 	}
 
 	@DeleteMapping("/deleteAttItem")
 	public String deleteAttendanceItem(@RequestParam("id") Long id) {
 		attendanceTypeService.deleteAttendanceType(id);
-		return "redirect:/dnLItemSet";
+		return "redirect:/dnLItemSet1";
 	}
 
 	@DeleteMapping("/deleteDnlItem")
 	public String deleteVacationItem(@RequestParam("id") Long id) {
 		vacationTypeService.deleteVacationType(id);
-		return "redirect:/dnLItemSet";
+		return "redirect:/dnLItemSet1";
 	}
 }

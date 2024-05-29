@@ -59,11 +59,5 @@ public class VacationController {
         return service.getVacationUsageByEmployeeId(employeeId);
     }
 
-	@GetMapping("/dnLItem") //휴가/근태설정
-	public String dnLItemSet(Model model){
-		log.info(model.toString());
-		return "defaultPreferences/dnLItemSet";
-	}
-
 
 }

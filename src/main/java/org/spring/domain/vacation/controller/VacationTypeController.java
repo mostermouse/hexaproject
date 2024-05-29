@@ -26,11 +26,11 @@ public class VacationTypeController {
 
 	@GetMapping("/dnLItemSet") //TODO 매퍼 이름 겹침
 	public String getAllVacationType(Model model) {
-		//TODO 매퍼.xml 등록 안 되어 있습니다.
-		/*List<VacationTypeEntity> vacationTypes = vacationTypeService.getAllVacationType();*//*
+
+		List<VacationTypeEntity> vacationTypes = vacationTypeService.getAllVacationTypes();
 		model.addAttribute("vacationTypes", vacationTypes); // 속성 이름을 "vacationTypes"로 변경
         List<AttendanceTypeEntity> attendanceTypes = attendanceTypeService.getAllAttendanceTypes();
-        model.addAttribute("attendanceTypes", attendanceTypes);*/
+        model.addAttribute("attendanceTypes", attendanceTypes);
 		return "defaultPreferences/dnLItemSet"; // 접두사와 접미사를 제거하여 뷰 이름만 반환
 
 	}

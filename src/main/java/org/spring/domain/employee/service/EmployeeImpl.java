@@ -87,10 +87,14 @@ import lombok.extern.log4j.Log4j;
             return mapper.getPosition();
         }
 
+
+
         // 사원현황판
         @Override
         public List<EmployeeEntity> getAllEmployee() {
             log.info("getEmployee..........");
+
+
             return mapper.getAllEmployee();
         }
         @Override
@@ -202,6 +206,14 @@ import lombok.extern.log4j.Log4j;
         }
         public CompanyEntity getCompany() {
             return  mapper.getCompany();
+        }
+
+        @Override
+        public DepartmentEntity getEmpInfo(EmployeeEntity employeeEntity , PositionEntity positionEntity , DepartmentEntity departmentEntity) {
+
+           return  mapper.getEmpInfo(employeeEntity , positionEntity , departmentEntity);
+
+
         }
 
 

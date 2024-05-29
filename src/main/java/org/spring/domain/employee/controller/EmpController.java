@@ -2,14 +2,7 @@ package org.spring.domain.employee.controller;
 
 import org.spring.domain.employee.controller.model.DetailsRegistrationForm;
 import org.spring.domain.employee.controller.model.EmployeeRegistrationForm;
-import org.spring.domain.employee.model.CareerEntity;
-import org.spring.domain.employee.model.CompanyEntity;
-import org.spring.domain.employee.model.ContactEntity;
-import org.spring.domain.employee.model.DegreeEntity;
-import org.spring.domain.employee.model.DependentsEntity;
-import org.spring.domain.employee.model.EmployeeEntity;
-import org.spring.domain.employee.model.EmployeeSalaryAccountEntity;
-import org.spring.domain.employee.model.MilitaryServiceEntity;
+import org.spring.domain.employee.model.*;
 import org.spring.domain.employee.service.EmployeeService;
 import org.spring.domain.employeedetails.model.CertificationEntity;
 import org.spring.domain.employeedetails.service.EmpDetailsService;
@@ -125,8 +118,10 @@ public class EmpController {
     }
  // 사원등록 2페이지
     @GetMapping("/personnel/register")
-    public String showDetailsRegistrationForm(Model model) {
-       model.addAttribute("employee" , employeeService.getAllEmployee());
+    public String showDetailsRegistrationForm(@ModelAttribute EmployeeEntity employeeEntity ,
+                                              @ModelAttribute PositionEntity positionEntity ,
+                                              @ModelAttribute DepartmentEntity departmentEntity, Model model) {
+       model.addAttribute("employee" , employeeService.getEmpInfo(employeeEntity , positionEntity , departmentEntity));
        model.addAttribute("department" , employeeService.getDepartment());
        model.addAttribute("position" , employeeService.getPosition());
         return "defaultPreferences/employeeRegistration2";

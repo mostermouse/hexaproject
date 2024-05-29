@@ -305,5 +305,15 @@
 		#{salaryPaymentDate}
 		)
 	</insert>
+	<select id="getEmpInfo" resultType="org.spring.domain.employee.model.DepartmentEntity">
+		SELECT e.employee_id, e.employment_type, e.hire_date, e.korean_name, e.department_id, e.position_id,
+			   e.resident_number1, e.resident_number2, e.tel_phone, e.email, e.resignation_date, e.status,
+			   d.department_name, p.position_name
+		FROM employee e
+				 JOIN department d ON e.department_id = d.department_id
+				 JOIN position p ON e.position_id = p.position_id
+		WHERE e.employee_id = (SELECT employee_id FROM employee ORDER BY employee_id DESC FETCH FIRST 1 ROW ONLY)
+	</select>
+
 
 </mapper>

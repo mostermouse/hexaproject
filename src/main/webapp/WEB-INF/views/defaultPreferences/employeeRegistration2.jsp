@@ -250,25 +250,25 @@
 			<thead>
 				<tr>
 					<th class="head" >社員番号</th>
-					<th class="body"> </th>
+					<th class="body">${employee.employeeId}</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td class="head">氏名</td>
-					<td class="body"></td>
+					<td class="body">${employee.koreanName}</td>
 				</tr>
 				<tr>
 					<td class="head">部署</td>
-					<td class="body"></td>
+					<td class="body">${employee.departmentName}</td>
 				</tr>
 				<tr>
 					<td class="head">職位</td>
-					<td class="body"></td>
+					<td class="body">${employee.positionName}</td>
 				</tr>
 				<tr>
 					<td class="head">入社日</td>
-					<td class="body"></td>
+					<td class="body">${employee.hireDate}</td>
 				</tr>
 			</tbody>
 		</table>

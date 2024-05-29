@@ -12,7 +12,7 @@ public interface EmpMapper {
     List<EmployeeEntity> getAllEmployee();
     List<DepartmentEntity> getDepartment();
     List<PositionEntity> getPosition();
-
+    Long getEmployeeId();
      long countByStatusEmployed();
     long countByEmploymentTypeRegular();
     long countByEmploymentTypeContract();
@@ -56,6 +56,8 @@ public interface EmpMapper {
     Long getDegreeSeq();
     Long getCareerSeq();
     Long getMilitarySeq();
+
+    DepartmentEntity getEmpInfo(EmployeeEntity employeeEntity , PositionEntity positionEntity , DepartmentEntity departmentEntity);
 
 
 }

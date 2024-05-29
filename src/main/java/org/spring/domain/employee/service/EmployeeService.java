@@ -38,4 +38,7 @@ public interface EmployeeService {
     //회사정보 가져오기
     CompanyEntity getCompany();
 
+    DepartmentEntity getEmpInfo(EmployeeEntity employeeEntity , PositionEntity positionEntity , DepartmentEntity departmentEntity);
+
+
 }

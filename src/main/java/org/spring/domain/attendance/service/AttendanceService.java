@@ -19,7 +19,10 @@ public interface AttendanceService {
 	public List<EmployeeEntity> getStatusList(); 
 	public void saveDayWorker(Long employeeId, LocalDate inputDate, Long feildOrProjectId, Long amount);
 
-	public List<AttendanceEntity> getDayWorkerAttendance(Long employeeId);
+	public AttendanceEntity getDayWorkerAttendance(Long employeeId);
+
+	//public AttendanceEntity dayWorkerAttendanceList(Long employeeId);
+
 
 	
 

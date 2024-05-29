@@ -1,18 +1,19 @@
 package org.spring.domain.employee.model;
 
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class DegreeEntity extends EmployeeEntity {
-    private String degreeId;
-    private String gradeDate;
+    private Long degreeId;
+    private String graduate;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate admissionDate;
     @DateTimeFormat(pattern = "yyyy-MM-dd")

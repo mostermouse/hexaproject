@@ -19,6 +19,6 @@ public class RewardPenaltyEntity extends EmployeeEntity {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate rewardPenaltyDate;
     private String rewardPenaltyDescription;
-    private String remarks;
+    private String remarks2;
 
 }

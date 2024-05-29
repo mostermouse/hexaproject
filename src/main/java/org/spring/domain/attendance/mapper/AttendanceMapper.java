@@ -14,4 +14,5 @@ public interface AttendanceMapper {
 	void createAttendance(AttendanceEntity attendance);
 	void updateAttendance(Long id);
 	void deleteAttendance(Long attendanceId);
+	
 }

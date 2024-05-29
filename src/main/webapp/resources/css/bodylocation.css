@@ -39,22 +39,22 @@
 }
 
 .floating-container button {
-    width: 90px;
-    height: 45px;
-    background-color: #007bff;
-    border: none;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin: 5px;
-    box-sizing: border-box;
-    font-size: 12px;
+	width: 90px;
+	height: 45px;
+	background-color: #007bff;
+	border: none;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	margin: 5px;
+	box-sizing: border-box;
+	font-size: 12px;
 }
 
 .floating-container button:hover {
-    background-color: #0056b3;
+	background-color: #0056b3;
 }
 
 .floating-table {
@@ -78,15 +78,14 @@
 }
 
 .button-container-top {
-    display: flex;
-    justify-content: space-between; /* 요소들을 공간에 맞게 배치 */
-    margin-bottom: 5px; /* 위아래 간격 조정 */
+	display: flex;
+	justify-content: space-between; /* 요소들을 공간에 맞게 배치 */
+	margin-bottom: 5px; /* 위아래 간격 조정 */
 }
 
 .button-container-bottom {
-    display: flex;
-    justify-content: flex-start; /* 요소들을 왼쪽에 배치 */
-    
+	display: flex;
+	justify-content: flex-start; /* 요소들을 왼쪽에 배치 */
 }
 
 .header-container1 {
@@ -165,6 +164,21 @@
 	background-color: #5a6268; /* hover 시 어두운 회색 */
 }
 
+.cancel-btnn {
+	background-color: #a6a6a6; /* 회색 배경 */
+	color: #fff;
+	border: none;
+	padding: 5px 15px;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	margin: 0 2px;
+}
+
+.cancel-btnn:hover {
+	background-color: #5a6268; /* hover 시 어두운 회색 */
+}
+
 .divtitle {
 	display: flex;
 	justify-content: center;
@@ -182,6 +196,11 @@
 .title-container {
 	position: relative;
 	display: inline-block;
+}
+
+.inline-headers h3 {
+	display: inline-block;
+	margin-right: 20px;
 }
 
 .table-container {
@@ -355,7 +374,7 @@
 }
 
 .empRegister .empRegister-head1 {
-	background-color: #dff3fa;
+	background-color: #F6FDFF;
 	border-color: #c0c0c0;
 	text-align: center;
 	vertical-align: middle
@@ -407,7 +426,53 @@
 }
 
 .empRegister1 .empRegister-head1 {
-	background-color: #dff3fa;
+	background-color: #F6FDFF;
+	border-color: #c0c0c0;
+	text-align: center;
+	vertical-align: middle;
+	height: 20px;
+}
+
+.empRegisterr {
+	border-collapse: collapse;
+	border-spacing: 0;
+	min-height: 50px;
+	border-top: 3px solid #4499fa;
+	table-layout: fixed;
+	width: 100%;
+}
+
+.empRegisterr td {
+	border-color: #c0c0c0;
+	border-style: solid;
+	border-width: 1px;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	overflow: hidden;
+	padding: 10px 5px;
+	word-break: normal;
+}
+
+.empRegisterr th {
+	border-color: #c0c0c0;
+	border-style: solid;
+	border-width: 1px;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	overflow: hidden;
+	padding: 10px 5px;
+	word-break: normal;
+}
+
+.empRegisterr .empRegister-body {
+	border-color: #c0c0c0;
+	text-align: center;
+	height: 20px;
+}
+
+.empRegisterr .empRegister-head1 {
+	background-color: #F6FDFF;
 	border-color: #c0c0c0;
 	text-align: center;
 	vertical-align: middle;
@@ -454,7 +519,7 @@
 }
 
 .empRegister2 .empRegister-head1 {
-	background-color: #c0c0c0;
+	background-color: #d5d5d5;
 	border-color: #b3b3b3;
 	text-align: center;
 	vertical-align: middle;
@@ -515,7 +580,7 @@
 	width: calc(100% - 30px);
 }
 
-.reginputhidepay + span {
+.reginputhidepay+span {
 	margin-left: 5px
 }
 
@@ -535,6 +600,17 @@
 }
 
 .reginput-select:focus {
+	outline: none;
+	border-color: #696969;
+}
+
+.reginput-input {
+	border: 1px solid #c0c0c0;
+	border-radius: 4px;
+	padding: 4px;
+}
+
+.reginput-input:focus {
 	outline: none;
 	border-color: #696969;
 }
@@ -576,6 +652,28 @@
 .search-container {
 	display: flex;
 	gap: 40px; /* 간격 설정 */
+}
+
+.search-containerr {
+	margin-left: 150px;
+	margin-right: 150px;
+}
+
+.table-containerr {
+	margin-bottom: 30px;
+	margin-left: 150px;
+	margin-right: 150px;
+}
+
+.flex-containerr {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.form-containerr {
+	margin-left: 20px;
 }
 
 .title-table-left {
@@ -742,45 +840,64 @@
 
 /* 급여 종합 정보 사각형 */
 .rectangle-container {
-    display: flex;
+	display: flex;
 }
 
 .rectangle {
-    width: calc(25% - 15px);
-    height: 50px;
-    margin-right: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
-    border-radius: 10px;
+	width: calc(25% - 15px);
+	height: 50px;
+	margin-right: 15px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 10px;
+	border-radius: 10px;
+}
+
+.rectanglee {
+	width: calc(25% - 15px);
+	height: 40px;
+	margin-right: 15px;
+	display: flex;
+	align-items: center;
+	padding: 2px 20px;
+	justify-content: space-around;
+}
+
+.redd {
+	background-color: #E17A7D;
+	color: white;
 }
 
 .gray {
-    background-color: gray;
-    color: white;
+	background-color: gray;
+	color: white;
 }
 
 .sky-blue {
-    background-color: #9dd6ee;
-    color: white;
+	background-color: #9dd6ee;
+	color: white;
 }
 
 .orange {
-    background-color: #ff7594;
-    color: white;
+	background-color: #ff7594;
+	color: white;
 }
 
 .dark-gray {
-    background-color: darkgray;
-    color: white;
+	background-color: darkgray;
+	color: white;
+}
+
+.dark-grayy {
+	background-color: #d5d5d5;
+	color: black;
 }
 
 .text-left {
-    text-align: left;
+	text-align: left;
 }
 
 .text-right {
-    text-align: right;
+	text-align: right;
 }
-

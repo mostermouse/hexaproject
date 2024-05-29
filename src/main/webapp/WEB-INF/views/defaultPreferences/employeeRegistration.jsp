@@ -2,7 +2,29 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
 <div id="content">
+	<style>
+.input-container {
+	position: relative; /* 부모 요소를 기준으로 자식 요소 위치를 설정하기 위해 사용 */
+}
 
+.placeholder-text {
+	color: red; /* 빨간색 */
+	opacity: 0.5; /* 희미하게 */
+	font-size: 12px; /* 텍스트 크기 */
+	position: absolute; /* 절대 위치 지정 */
+	top: 50%; /* 수직 중앙 정렬 */
+	left: 10px; /* 좌측 패딩 */
+	transform: translateY(-50%); /* 수직 중앙 정렬 */
+	pointer-events: none; /* 텍스트가 클릭되지 않도록 설정 */
+}
+
+.reginputhide {
+	position: relative; /* 상대 위치 지정 */
+	z-index: 1; /* 입력 필드가 텍스트 위에 오도록 설정 */
+	background: transparent; /* 배경 투명 설정 */
+	color: transparent; /* 텍스트 투명 설정 */
+}
+</style>
 	<div class="floating-container">
 		<table class="floating-table">
 			<thead>
@@ -35,7 +57,7 @@
 			<button
 				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns?scrollToSection=section1'">基本情報</button>
 			<button
-				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns?scrollToSection=section2'">扶養家族</button>
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns?scrollToSection=section6'">扶養家族</button>
 			<button
 				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns?scrollToSection=section3'">学歴</button>
 		</div>
@@ -49,22 +71,22 @@
 		<h3 style="text-align: left;">社員情報2</h3>
 		<div class="button-container-top">
 			<button
-				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns2?scrollToSection=section6'">資格免許</button>
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/register?scrollToSection=section6'">資格免許</button>
 			<button
-				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns2?scrollToSection=section7'">教育訓練</button>
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/register?scrollToSection=section7'">教育訓練</button>
 			<button
-				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns2?scrollToSection=section8'">賞罰</button>
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/register?scrollToSection=section8'">賞罰</button>
 		</div>
 		<div class="button-container-bottom">
 			<button
-				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns2?scrollToSection=section9'">発令</button>
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/register?scrollToSection=section9'">発令</button>
 			<button
-				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns2?scrollToSection=section10'">推奨身元保証</button>
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/register?scrollToSection=section10'">推奨身元保証</button>
 		</div>
 	</div>
-	
-	
-	
+
+
+
 	<div class="table-container">
 		<div class="header-container">
 			<img
@@ -75,9 +97,7 @@
 		<h4>社員情報を登録するメニューです。該当する項目だけを入力してください。 （*表示は必須入力事項)</h4>
 		<hr>
 		<br>
-		<form id="registerForm"
-			action="${pageContext.request.contextPath}/employeeregistration"
-			method="post" onsubmit="return validateForm()">
+		<form id="registerForm2" action="/employeeregistration" method="post">
 
 
 
@@ -87,13 +107,17 @@
 			</div>
 			<table class="empRegister">
 				<tr>
-					<th class="empRegister-head1"><label for="employeeId">社員番号</label></th>
-					<th class="empRegister-body"><input type="number"
-						id="employeeId" name="EmployeeEntity.employeeId" class="reginputhide" required></th>
-					<th class="empRegister-head1"><span style="color: #FE0000">*</span><label
-						for="employmentType">雇用形態</label></th>
+					<th class="empRegister-head1">社員番号</th>
+					<th class="empRegister-body">
+						<div class="input-container">
+							<input type="number" id="employeeId" name="employeeId"
+								class="reginputhide" readonly> <span
+								class="placeholder-text">自動入力されます</span>
+						</div>
+					</th>
+					<th class="empRegister-head1"><span style="color: #FE0000">*</span>雇用形態</th>
 					<th class="empRegister-body"><select id="employmentType"
-						name="EmployeeEntity.employmentType" class="reginput-select">
+						name="employmentType" class="reginput-select">
 							<option value="">選択してください。</option>
 							<option value="정규직">正社員</option>
 							<option value="계약직">契約職</option>
@@ -104,93 +128,81 @@
 					</select></th>
 				</tr>
 				<tr>
-					<td class="empRegister-head1"><span style="color: #FE0000">*</span><label
-						for="koreanName">日本名</label></td>
+					<td class="empRegister-head1"><span style="color: #FE0000">*</span>日本名</td>
 					<td class="empRegister-body"><input type="text"
-						id="koreanName" name="EmployeeEntity.koreanName" class="reginputhide" required></td>
-					<td class="empRegister-head1"><label for="englishName">英語名</label></td>
+						id="koreanName" name="koreanName" class="reginputhide1" required></td>
+					<td class="empRegister-head1">英語名</td>
 					<td class="empRegister-body"><input type="text"
-						id="englishName" name="EmployeeEntity.englishName" class="reginputhide"></td>
+						id="englishName" name="englishName" class="reginputhide1"></td>
 				</tr>
 				<tr>
-					<td class="empRegister-head1"><span style="color: #FE0000">*</span><label
-						for="hireDate">入社日</label></td>
+					<td class="empRegister-head1"><span style="color: #FE0000">*</span>入社日</td>
 					<td class="empRegister-body"><input type="date" id="hireDate"
-						name="EmployeeEntity.hireDate" class="reginput-select"></td>
-					<td class="empRegister-head1"><label for="resignationDate">退社日</label></td>
+						name="hireDate" class="reginput-select"></td>
+					<td class="empRegister-head1">退社日</td>
 					<td class="empRegister-body"><input type="date"
-						id="resignationDate" name="EmployeeEntity.resignationDate"
+						id="resignationDate" name="resignationDate"
 						class="reginput-select"></td>
 				</tr>
 				<tr>
-					<td class="empRegister-head1"><label for="departmentName">부서</label></td>
-					<td class="empRegister-body"><select id="department"
-						name="DepartmentEntity.departmentName" class="reginput-select">
-							<option value="">選択してください。</option>
-							<option value="사장실">社長室</option>
-							<option value="개발팀">開発チーム</option>
-							<option value="콘텐츠팀">コンテンツチーム</option>
-							<option value="업무지원팀">業務支援チーム</option>
-							<option value="디자인팀">デザインチーム</option>
-							<option value="관리팀">管理チーム</option>
-							<option value="기획전략팀">企画戦略チーム</option>
+					<td class="empRegister-head1">部署</td>
+					<td class="empRegister-body"><select id="departmentId"
+						name="departmentId" class="reginput-select">
+							<option value="">選択</option>
+							<c:forEach items="${department}" var="dept">
+								<option value="${dept.departmentId}">${dept.departmentName}</option>
+							</c:forEach>
 					</select></td>
-					<td class="empRegister-head1"><label for="position">役職</label></td>
-					<td class="empRegister-body"><select id="positionName"
-						name="PositionEntity.positionName" class="reginput-select">
-							<option value="">選択してください。</option>
-							<option value="이사">取締役</option>
-							<option value="차장">次長</option>
-							<option value="사장">社長</option>
-							<option value="부장">部長</option>
-							<option value="과장">課長</option>
-							<option value="대리">代理</option>
-							<option value="주임">主任</option>
-							<option value="사원">社員</option>
-							<option value="실장">室長</option>
+					<td class="empRegister-head1">役職</td>
+					<td class="empRegister-body"><select id="positionId"
+						name="positionId" class="reginput-select">
+							<option value="">選択</option>
+							<c:forEach items="${position}" var="posi">
+								<option value="${posi.positionId}">${posi.positionName}</option>
+							</c:forEach>
 					</select></td>
 				</tr>
 				<tr>
-					<td class="empRegister-head1"><label for="foreignOrDomestic">内/外国人</label></td>
+					<td class="empRegister-head1">内/外国人</td>
 					<td class="empRegister-body"><select id="foreignOrDomestic"
-						name="EmployeeEntity.foreignOrDomestic" class="reginput-select">
+						name="foreignOrDomestic" class="reginput-select">
 							<option value="">選択してください。</option>
 							<option value="내국인">内国人</option>
 							<option value="외국인">外国人</option>
 					</select></td>
-					<td class="empRegister-head1"><label for="residentNumber1">個人別固有番号</label></td>
+					<td class="empRegister-head1">個人別固有番号</td>
 					<td class="empRegister-body"><input type="text"
-						id="residentNumber1" name="EmployeeEntity.residentNumber1" class="reginput">-<input
-						type="text" id="residentNumber2" name="EmployeeEntity.residentNumber2"
+						id="residentNumber1" name="residentNumber1" class="reginput">-<input
+						type="text" id="residentNumber2" name="residentNumber2"
 						class="reginput"></td>
 				</tr>
 				<tr>
-					<td class="empRegister-head2"><label for="address">住所</label></td>
+					<td class="empRegister-head2">住所</td>
 					<td class="empRegister-body" colspan="3"><input type="text"
-						id="address" name="EmployeeEntity.address" class="reginputhide"></td>
+						id="address" name="address" class="reginputhide1"></td>
 				</tr>
 				<tr>
-					<td class="empRegister-head2"><label for="telPhone">電話番号</label></td>
+					<td class="empRegister-head2">電話番号</td>
 					<td class="empRegister-body"><input type="text" id="telPhone"
-						name="EmployeeEntity.telPhone" class="reginputhide"></td>
-					<td class="empRegister-head2"><label for="mobile">携帯電話番号</label></td>
+						name="telPhone" class="reginputhide1"></td>
+					<td class="empRegister-head2">携帯電話番号</td>
 					<td class="empRegister-body"><input type="text" id="mobile"
-						name="EmployeeEntity.mobile" class="reginputhide"></td>
+						name="mobile" class="reginputhide1"></td>
 				</tr>
 				<tr>
-					<td class="empRegister-head2"><label for="email">メール</label></td>
-					<td class="empRegister-body"><input type="email" id="email"
-						name="EmployeeEntity.email" class="reginputhide"></td>
-					<td class="empRegister-head2"><label for="sns">SNS</label></td>
+					<td class="empRegister-head2">メール</td>
+					<td class="empRegister-body"><input type="text" id="email"
+						name="email" class="reginputhide1"></td>
+					<td class="empRegister-head2">SNS</td>
 					<td class="empRegister-body"><input type="text" id="sns"
-						name="EmployeeEntity.sns" class="reginputhide"></td>
+						name="sns" class="reginputhide1"></td>
 				</tr>
 				<tr>
-					<td class="empRegister-head2"><label for="otherDetails">その他 詳細情報</label></td>
+					<td class="empRegister-head2">その他 詳細情報</td>
 					<td class="empRegister-body"><input type="text"
-						id="otherDetails" name="EmployeeEntity.otherDetails" class="reginputhide"></td>
-					<td class="empRegister-head2"><label for="status">状態</label></td>
-					<td class="empRegister-body"><select id="status" name="EmployeeEntity.status"
+						id="otherDetails" name="otherDetails" class="reginputhide1"></td>
+					<td class="empRegister-head2">状態</td>
+					<td class="empRegister-body"><select id="status" name="status"
 						class="reginput-select">
 							<option value="재직">在職</option>
 							<option value="퇴사">退社</option>
@@ -199,20 +211,23 @@
 			</table>
 			<br> <br>
 			<hr>
-
-			<h2>社員情報1</h2>
+			<div class="table-container">
+			<div class="grey-box" style="height: 30px;">
+				<h2>社員情報1</h2>
+			</div>
+			</div>
 			<div class="table-container">
 				<div class="header-container">
 					<!-- Dependents Table -->
-					<h3 id="section2">扶養家族</h3>
+					<h3 id="section6">扶養家族</h3>
 				</div>
 				<table class="empRegister1">
 					<thead>
 						<tr>
-							<th class="empRegister-head1" style="width: 90px;">関係</th>
+							<th class="empRegister-head1" style="width: 100px;">関係</th>
 							<th class="empRegister-head1" style="width: 100px;">氏名</th>
-							<th class="empRegister-head1" style="width: 90px;">区分</th>
-							<th class="empRegister-head1" style="width: 300px;">個人別固有番号</th>
+							<th class="empRegister-head1" style="width: 100px;">区分</th>
+							<th class="empRegister-head1" style="width: 270px;">個人別固有番号</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -238,9 +253,8 @@
 							</select></td>
 							<td class="empRegister-body"><input type="text"
 								id="parentsName" name="parentsName" class="reginputhide1"></td>
-							<td class="empRegister-body"><select
-								id="foreignOrDomesticDependent"
-								name="foreignOrDomesticDependent" class="reginput-select">
+							<td class="empRegister-body"><select id="foreignOrDomestic1"
+								name="foreignOrDomestic1" class="reginput-select">
 									<option value="">選択してください。</option>
 									<option value="국내">国内</option>
 									<option value="외국인">外国人</option>
@@ -259,8 +273,8 @@
 					<thead>
 						<tr>
 							<th class="empRegister-head1" style="width: 85px;">区分</th>
-							<th class="empRegister-head1" style="width: 120px;">入学年月</th>
-							<th class="empRegister-head1" style="width: 120px;">卒業年月</th>
+							<th class="empRegister-head1" style="width: 140px;">入学年月</th>
+							<th class="empRegister-head1" style="width: 140px;">卒業年月</th>
 							<th class="empRegister-head1">学校名</th>
 							<th class="empRegister-head1">専攻</th>
 							<th class="empRegister-head1" style="width: 75px;">履修</th>
@@ -290,10 +304,10 @@
 							<td class="empRegister-body"><select id="completion"
 								name="completion" class="reginput-select">
 									<option value="">選択</option>
-									<option value="">卒業</option>
-									<option value="">修了</option>
-									<option value="">自退</option>
-									<option value="">在学中</option>
+									<option value="卒業">卒業</option>
+									<option value="修了">修了</option>
+									<option value="自退">自退</option>
+									<option value="在学中">在学中</option>
 							</select></td>
 						</tr>
 					</tbody>
@@ -303,12 +317,13 @@
 				<!-- Career Table -->
 				<h3 id="section4">経歴</h3>
 
-				<table class="empRegister1"> <!-- 입사일 퇴사일 안눌려요 센빠이 -->
+				<table class="empRegister1">
+					<!-- 입사일 퇴사일 안눌려요 센빠이 -->
 					<thead>
 						<tr>
-							<th class="empRegister-head1">会社名</th>
-							<th class="empRegister-head1">入社日</th>
-							<th class="empRegister-head1">退社日</th>
+							<th class="empRegister-head1" style="width: 85px;">会社名</th>
+							<th class="empRegister-head1" style="width: 140px;">入社日</th>
+							<th class="empRegister-head1" style="width: 140px;">退社日</th>
 							<th class="empRegister-head1">勤務期間</th>
 							<th class="empRegister-head1">最終職位</th>
 							<th class="empRegister-head1">担当職務</th>
@@ -320,9 +335,9 @@
 							<td class="empRegister-body"><input type="text"
 								id="companyName" name="companyName" class="reginputhide1"></td>
 							<td class="empRegister-body"><input type="date"
-								id="startDate" name="startDate"></td>
+								id="startDate" name="startDate" class="reginput-select"></td>
 							<td class="empRegister-body"><input type="date" id="endDate"
-								name="endDate"></td>
+								name="endDate" class="reginput-select"></td>
 							<td class="empRegister-body"><input type="text"
 								id="employmentPeriod" name="employmentPeriod"
 								class="reginputhide1"></td>
@@ -332,7 +347,7 @@
 								id="responsibilities" name="responsibilities"
 								class="reginputhide1"></td>
 							<td class="empRegister-body"><input type="text"
-								id="reasonForLeaving" name="reasonForLeaving"
+								id="reasonForResignation" name="reasonForResignation"
 								class="reginputhide1"></td>
 						</tr>
 					</tbody>
@@ -346,8 +361,8 @@
 						<tr>
 							<th class="empRegister-head1" style="width: 60px;">兵役区分</th>
 							<th class="empRegister-head1" style="width: 70px;">軍の種類</th>
-							<th class="empRegister-head1" style="width: 120px;">服務期間(から)</th>
-							<th class="empRegister-head1" style="width: 120px;">服務期間(まで)</th>
+							<th class="empRegister-head1" style="width: 140px;">服務期間(から)</th>
+							<th class="empRegister-head1" style="width: 140px;">服務期間(まで)</th>
 							<th class="empRegister-head1">最終階級</th>
 							<th class="empRegister-head1">兵科</th>
 							<th class="empRegister-head1">未了の事由</th>
@@ -356,13 +371,13 @@
 					<tbody>
 						<tr>
 							<td class="empRegister-body"><select id="serviceType"
-								name="serviceType">
+								name="serviceType" class="reginput-select">
 									<option value="">選択</option>
 									<option value="군필">転役</option>
 									<option value="미필">未了</option>
 							</select></td>
 							<td class="empRegister-body"><select id="branch"
-								name="branch">
+								name="branch" class="reginput-select">
 									<option value="">選択</option>
 									<option value="육군">陸軍</option>
 									<option value="해군">海軍</option>
@@ -372,15 +387,15 @@
 									<option value="기타">その他</option>
 							</select></td>
 							<td class="empRegister-body"><input type="date"
-								id="servicePeriod1" name="servicePeriod1"></td>
+								id="servicePeriod1" name="servicePeriod1" class="reginput-select"></td>
 							<td class="empRegister-body"><input type="date"
-								id="servicePeriod2" name="servicePeriod2"></td>
+								id="servicePeriod2" name="servicePeriod2" class="reginput-select"></td>
 							<td class="empRegister-body"><input type="text"
-								id="finalRank" name="finalRank" class="reginputhide"></td>
+								id="finalRank" name="finalRank" class="reginputhide1"></td>
 							<td class="empRegister-body"><input type="text"
-								id="militaryClass" name="militaryClass" class="reginputhide"></td>
+								id="department1" name="department1" class="reginputhide1"></td>
 							<td class="empRegister-body"><input type="text"
-								id="exemptionReason" name="exemptionReason" class="reginputhide"></td>
+								id="exemptionReason" name="exemptionReason" class="reginputhide1"></td>
 						</tr>
 					</tbody>
 				</table>

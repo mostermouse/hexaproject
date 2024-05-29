@@ -11,27 +11,26 @@ import org.spring.domain.vacation.model.VacationTypeEntity;
 
 
 public interface VacationMapper {
-	 List<VacationDetailsEntity> getAllVacationDetails();
-	    List<VacationDaysEntity> getAllVacationDays();
-	    List<VacationTypeEntity> getAllVacationTypes();
-	    List<DepartmentEntity> getAllDepartments();
-	    List<PositionEntity> getAllPositions();
-	    List<String> getAllStatuses();
-	    List<String> getAllEmploymentTypes();
+	List<VacationDetailsEntity> getFilteredVacationDetails(@Param("status") String status,
+            @Param("employmentType") String employmentType,
+            @Param("departmentId") Long departmentId,
+            @Param("positionId") Long positionId,
+            @Param("vacationTypeName") String vacationTypeName,
+            @Param("searchKeyword") String searchKeyword,
+            @Param("offset") int offset,
+            @Param("limit") int limit);
+int countFilteredVacationDetails(@Param("status") String status,
+@Param("employmentType") String employmentType,
+@Param("departmentId") Long departmentId,
+@Param("positionId") Long positionId,
+@Param("vacationTypeName") String vacationTypeName,
+@Param("searchKeyword") String searchKeyword);
 
-	    List<VacationDetailsEntity> getFilteredVacationDetails(@Param("status") String status,
-	                                                           @Param("employmentType") String employmentType,
-	                                                           @Param("departmentId") Long departmentId,
-	                                                           @Param("positionId") Long positionId,
-	                                                           @Param("vacationTypeName") String vacationTypeName,
-	                                                           @Param("searchKeyword") String searchKeyword,
-	                                                           @Param("offset") int offset,
-	                                                           @Param("limit") int limit);
+List<VacationDetailsEntity> getVacationUsageByEmployeeId(@Param("employeeId") Long employeeId);
 
-	    int countFilteredVacationDetails(@Param("status") String status,
-	                                     @Param("employmentType") String employmentType,
-	                                     @Param("departmentId") Long departmentId,
-	                                     @Param("positionId") Long positionId,
-	                                     @Param("vacationTypeName") String vacationTypeName,
-	                                     @Param("searchKeyword") String searchKeyword);
-	}
+List<VacationTypeEntity> getAllVacationTypes();
+List<String> getAllStatuses();
+List<String> getAllEmploymentTypes();
+List<DepartmentEntity> getAllDepartments();
+List<PositionEntity> getAllPositions();
+}

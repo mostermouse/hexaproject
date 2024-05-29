@@ -17,7 +17,7 @@ public class LanguageAbilityEntity extends EmployeeEntity {
     private String testName;
     private Long officialScore;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate acquisitionDate;
+    private LocalDate acquisitionDate1;
     private String readingAbility;
     private String writingAbility;
     private String speakingAbility;

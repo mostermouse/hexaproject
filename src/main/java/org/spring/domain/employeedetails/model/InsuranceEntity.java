@@ -21,6 +21,6 @@ public class InsuranceEntity extends EmployeeEntity
     private LocalDate insuranceStartDate;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate insuranceEndDate;
-    private String remarks;
+    private String remarks4;
 
 }

@@ -56,6 +56,13 @@ public class AttController {
 
 		return "managementOfAtt/dayWorkerMnt";
 	}
+	@GetMapping("/diligenceSearchMonth") // 근태 상세 조회
+    public String diligenceSearchMonth(Model model) {
+        List<AttendanceEntityRequest> attendanceList = service.getEmployeeAttendance();
+        model.addAttribute("attendanceList", attendanceList);
+        log.info(model.toString());
+        return "/managementOfAtt/diligenceSearchMonth";
+	}
 	
 	 @PostMapping("/saveDayWorkerMnt")
 	    public String saveDayWorkerMnt(@RequestParam("employeeId") List<Long> employeeIds,
@@ -84,6 +91,7 @@ public class AttController {
 		log.info("koreanName : " + model.addAttribute("dayworkerAttlist", service.getDayWorkerAttendance(employeeId)));
 		return "redirect:/dayWorkerMnt";
 	}
+	
 
 	private boolean isDepartmentName(String searchKeyword) {
 		// 예시: "팀", "부", "과", "실" 등으로 끝나는지 확인

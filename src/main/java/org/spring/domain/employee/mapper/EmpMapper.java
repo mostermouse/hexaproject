@@ -3,18 +3,17 @@ package org.spring.domain.employee.mapper;
 import java.util.List;
 
 import org.spring.domain.employee.controller.model.EmployeeRegistrationForm;
-import org.spring.domain.employee.model.CareerEntity;
-import org.spring.domain.employee.model.DegreeEntity;
-import org.spring.domain.employee.model.DependentsEntity;
-import org.spring.domain.employee.model.EmployeeEntity;
-import org.spring.domain.employee.model.MilitaryServiceEntity;
+import org.spring.domain.employee.model.*;
 import org.spring.domain.wage.model.WageEntity;
 
 public interface EmpMapper {
 
     // 사원현황판
     List<EmployeeEntity> getAllEmployee();
-    long countByStatusEmployed();
+    List<DepartmentEntity> getDepartment();
+    List<PositionEntity> getPosition();
+    Long getEmployeeId();
+     long countByStatusEmployed();
     long countByEmploymentTypeRegular();
     long countByEmploymentTypeContract();
     long countByEmploymentTypeTemporary();
@@ -28,7 +27,6 @@ public interface EmpMapper {
     public List<WageEntity> getYearWage(Long year);
     
     // 사원등록 1페이지
-    void registerEmployee(EmployeeRegistrationForm registrationForm);
     void insertEmployee(EmployeeEntity employeeEntity);
 
     void insertDependent(DependentsEntity dependentsEntity);
@@ -38,5 +36,28 @@ public interface EmpMapper {
     void insertCareer(CareerEntity careerEntity);
 
     void insertMilitaryService(MilitaryServiceEntity militaryServiceEntity);
+
+    //회사정보 등록 페이지
+    void insertCompany(CompanyEntity companyEntity);
+    void insertContact(ContactEntity contactEntity);
+    void insertSalaryAccount(EmployeeSalaryAccountEntity employeeSalaryAccountEntity);
+
+    Long getNextSeqVal();
+    Long getCompanySeqCurrVal();
+    Long getEmpSeqVal();
+    Long getEmpSeqCurrval();
+    CompanyEntity getCompany();
+
+    Long getCompanyId();
+    Long getContactId();
+    Long getAcountId();
+
+    Long getDependentSeq();
+    Long getDegreeSeq();
+    Long getCareerSeq();
+    Long getMilitarySeq();
+
+    DepartmentEntity getEmpInfo(EmployeeEntity employeeEntity , PositionEntity positionEntity , DepartmentEntity departmentEntity);
+
 
 }

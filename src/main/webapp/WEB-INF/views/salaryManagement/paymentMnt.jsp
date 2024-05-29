@@ -72,66 +72,66 @@
 					<tbody>
 						<tr>
 							<td>基本給</td>
-							<td><input type="text" style="width: 95%;"></td>
+							<td><input type="text" class="reginput-input" style="width: 95%;"></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="text" placeholder="計算方法" style="width: 97%;"></td>
+							<td colspan="2"><input type="text" class="reginput-input" placeholder="計算方法" style="width: 97%;"></td>
 						</tr>
 						<tr>
 							<td>食費</td>
-							<td><input type="text" style="width: 95%;"></td>
+							<td><input type="text" class="reginput-input" style="width: 95%;"></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="text" placeholder="計算方法" style="width: 97%;"></td>
+							<td colspan="2"><input type="text" class="reginput-input" placeholder="計算方法" style="width: 97%;"></td>
 						</tr>
 						<tr>
 							<td>保育手当</td>
-							<td><input type="text" style="width: 95%;"></td>
+							<td><input type="text" class="reginput-input" style="width: 95%;"></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="text" placeholder="計算方法" style="width: 97%;"></td>
+							<td colspan="2"><input type="text" class="reginput-input" placeholder="計算方法" style="width: 97%;"></td>
 						</tr>
 						<tr>
 							<td>職責手当</td>
-							<td><input type="text" style="width: 95%;"></td>
+							<td><input type="text" class="reginput-input" style="width: 95%;"></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="text" placeholder="計算方法" style="width: 97%;"></td>
+							<td colspan="2"><input type="text" class="reginput-input" placeholder="計算方法" style="width: 97%;"></td>
 						</tr>
 						<tr>
 							<td>車両維持費</td>
-							<td><input type="text" style="width: 95%;"></td>
+							<td><input type="text" class="reginput-input" style="width: 95%;"></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="text" placeholder="計算方法" style="width: 97%;"></td>
+							<td colspan="2"><input type="text" class="reginput-input" placeholder="計算方法" style="width: 97%;"></td>
 						</tr>
 						<tr>
 							<td>勤続手当</td>
-							<td><input type="text" style="width: 95%;"></td>
+							<td><input type="text" class="reginput-input" style="width: 95%;"></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="text" placeholder="計算方法" style="width: 97%;"></td>
+							<td colspan="2"><input type="text" class="reginput-input" placeholder="計算方法" style="width: 97%;"></td>
 						</tr>
 						<tr>
 							<td>当直手当</td>
-							<td><input type="text" style="width: 95%;"></td>
+							<td><input type="text" class="reginput-input" style="width: 95%;"></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="text" placeholder="計算方法" style="width: 97%;"></td>
+							<td colspan="2"><input type="text" class="reginput-input" placeholder="計算方法" style="width: 97%;"></td>
 						</tr>
 						<tr>
 							<td>賞与金</td>
-							<td><input type="text" style="width: 95%;"></td>
+							<td><input type="text" class="reginput-input" style="width: 95%;"></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="text" placeholder="計算方法" style="width: 97%;"></td>
+							<td colspan="2"><input type="text" class="reginput-input" placeholder="計算方法" style="width: 97%;"></td>
 						</tr>
 						<tr>
 							<td>休日手当</td>
-							<td><input type="text" style="width: 95%;"></td>
+							<td><input type="text" class="reginput-input" style="width: 95%;"></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="text" placeholder="計算方法" style="width: 97%;"></td>
+							<td colspan="2"><input type="text" class="reginput-input" placeholder="計算方法" style="width: 97%;"></td>
 						</tr>
 						<tr style="background-color: #f1f1f1">
 							<td colspan="1">支払総額</td>

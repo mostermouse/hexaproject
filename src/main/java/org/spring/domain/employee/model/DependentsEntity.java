@@ -12,7 +12,7 @@ public class DependentsEntity extends EmployeeEntity {
     private Long dependentId;
     private String relationship;
     private String parentsName;
-    private String foreignOrDomestic;
+    private String foreignOrDomestic1;
     private String parentsNumber1;
     private String parentsNumber2;
 

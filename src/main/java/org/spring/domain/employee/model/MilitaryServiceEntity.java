@@ -19,7 +19,7 @@ public class MilitaryServiceEntity extends EmployeeEntity {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate servicePeriod2;
     private String finalRank;
-    private String department;
+    private String department1;
     private String exemptionReason;
 
 }

@@ -1,48 +1,54 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper
-	namespace="org.spring.domain.vacation.mapper.VacationTypeMapper">
+<mapper namespace="org.spring.domain.vacation.mapper.VacationTypeMapper">
 
-	<resultMap id="VacationTypeResultMap"
-		type="org.spring.domain.vacation.model.VacationTypeEntity">
-		<id property="vacationTypeId" column="vacation_type_id" />
-		<result property="vacationTypeName" column="vacation_type_name" />
-		<result property="applyPeriod1" column="apply_period1" />
-		<result property="applyPeriod2" column="apply_period2" />
-		<result property="usage" column="usage" />
-	</resultMap>
+  <!-- Result Map for VacationTypeEntity -->
+  <resultMap id="VacationTypeResultMap" type="org.spring.domain.vacation.model.VacationTypeEntity">
+    <id property="vacationTypeId" column="vacation_type_id" />
+    <result property="vacationTypeName" column="vacation_type_name" />
+    <result property="applyPeriod1" column="apply_period1" />
+    <result property="applyPeriod2" column="apply_period2" />
+    <result property="usage" column="usage" />
+  </resultMap>
 
-	<select id="getAllVacationType"
-		resultMap="VacationTypeResultMap">
-		SELECT * FROM vacation_type
-	</select>
+  <!-- Select all VacationTypeEntities -->
+  <select id="getAllVacationType" resultMap="VacationTypeResultMap">
+    SELECT vacation_type_id, vacation_type_name, apply_period1, apply_period2, usage
+    FROM vacation_type
+  </select>
 
+  <!-- Select VacationTypeEntity by ID -->
+  <select id="getVacationTypeById" parameterType="long" resultMap="VacationTypeResultMap">
+    SELECT vacation_type_id, vacation_type_name, apply_period1, apply_period2, usage
+    FROM vacation_type
+    WHERE vacation_type_id = #{vacationTypeId}
+  </select>
 
-	<select id="getVacationTypeById" parameterType="long"
-		resultMap="VacationTypeResultMap">
-		SELECT * FROM vacation_type WHERE vacation_type_id = #{vacationTypeId}
-	</select>
+  <!-- Insert a new VacationTypeEntity -->
+  <insert id="createVacationType" parameterType="org.spring.domain.vacation.model.VacationTypeEntity">
+    <selectKey keyProperty="vacationTypeId" order="BEFORE" resultType="long">
+      SELECT vacation_type_seq.NEXTVAL FROM DUAL
+    </selectKey>
+    INSERT INTO vacation_type (vacation_type_id, vacation_type_name, apply_period1, apply_period2, usage)
+    VALUES (#{vacationTypeId}, #{vacationTypeName}, #{applyPeriod1}, #{applyPeriod2}, #{usage})
+  </insert>
 
-	<insert id="createVacationType"
-		parameterType="org.spring.domain.vacation.model.VacationTypeEntity">
-		INSERT INTO vacation_type (vacation_type_id, vacation_type_name, apply_period1, apply_period2,
-		usage)
-		VALUES (vacation_type_seq.nextval, #{vacationTypeName}, #{applyPeriod1}, #{applyPeriod2}, #{usage})
-	</insert>
+  <!-- Update an existing VacationTypeEntity -->
+  <update id="updateVacationType" parameterType="org.spring.domain.vacation.model.VacationTypeEntity">
+    UPDATE vacation_type
+    SET vacation_type_name = #{vacationTypeName}, 
+        apply_period1 = #{applyPeriod1}, 
+        apply_period2 = #{applyPeriod2}, 
+        usage = #{usage}
+    WHERE vacation_type_id = #{vacationTypeId}
+  </update>
 
-	<update id="updateVacationType"
-		parameterType="org.spring.domain.vacation.model.VacationTypeEntity">
-		UPDATE vacation_type
-		SET vacation_type_name = #{vacationTypeName}, apply_period1 =
-		#{applyPeriod1}, apply_period2 = #{applyPeriod2}, usage = #{usage}
-		WHERE vacation_type_id = #{vacationTypeId}
-	</update>
-
-	<delete id="deleteVacationType" parameterType="long">
-		DELETE FROM vacation_type WHERE vacation_type_id = #{vacationTypeId}
-	</delete>
+  <!-- Delete a VacationTypeEntity by ID -->
+  <delete id="deleteVacationType" parameterType="long">
+    DELETE FROM vacation_type
+    WHERE vacation_type_id = #{vacationTypeId}
+  </delete>
 
 </mapper>

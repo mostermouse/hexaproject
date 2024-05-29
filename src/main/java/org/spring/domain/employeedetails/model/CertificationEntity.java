@@ -15,9 +15,9 @@ public class CertificationEntity extends EmployeeEntity {
     private Long certificationId;
     private String certificationName;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate certificationDate;
+    private LocalDate acquisitionDate;
     private String issuingOrganization;
     private String certificationNumber;
-    private String remarks;
+    private String remarks1;
 
 }

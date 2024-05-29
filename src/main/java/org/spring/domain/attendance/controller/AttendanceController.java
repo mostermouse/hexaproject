@@ -53,12 +53,7 @@ public class AttendanceController {
 		log.info("Attendance created: " + model.toString());
         return "redirect:/diligenceMnt";
     }
-	@GetMapping("/diligenceSearchMonth") // 근태 상세 조회
-	public String diligenceSearchMonth(Model model){
-		//TODO 내용물 비어 있음
-		log.info(model.toString());
-		return "/managementOfAtt/diligenceSearchMonth";
-	}
+    
 
 	@GetMapping("/dayWorkerSearchMonth") //일용직 상세 조회
 	public String dayWorkerSearchMonth(Model model){

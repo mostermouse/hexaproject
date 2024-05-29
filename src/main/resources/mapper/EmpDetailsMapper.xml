@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="org.spring.domain.employee.mapper.EmpDetailsMapper">
+	<!-- 사원 아이디 불러오기 -->
+	<select id="searchEmployeeId" resultType="long">
+		 SELECT employee_id 
+    FROM (
+        SELECT employee_id 
+        FROM employee 
+        ORDER BY employee_id DESC
+    ) 
+    WHERE ROWNUM = 1
+	</select>
+
+	<!-- 사원등록2페이지 -->
+	<!-- Insert Certification -->
+	<insert id="insertCertification"
+		parameterType="org.spring.domain.employeedetails.model.CertificationEntity">
+		INSERT INTO certification (
+		certification_id,
+		employee_id, certification_name, acquisition_date,
+		issuing_organization, certification_number, remarks1
+		) VALUES (
+		certification_seq.NEXTVAL, #{employeeId}, #{certificationName},
+		#{acquisitionDate},
+		#{issuingOrganization}, #{certificationNumber},
+		#{remarks1}
+		)
+	</insert>
+	<!-- Insert LanguageAbility -->
+	<insert id="insertLanguageAbility"
+		parameterType="org.spring.domain.employeedetails.model.LanguageAbilityEntity">
+		INSERT INTO language_ability (
+		language_ability_id,
+		employee_id, language, test_name, official_score, acquisition_date1,
+		reading_ability, writing_ability, speaking_ability
+		) VALUES (
+		language_ability_seq.NEXTVAL, #{employeeId}, #{language}, #{testName},
+		#{officialScore},
+		#{acquisitionDate1}, #{readingAbility},
+		#{writingAbility},
+		#{speakingAbility}
+		)
+	</insert>
+	<!-- Insert Training -->
+	<insert id="insertTraining"
+		parameterType="org.spring.domain.employeedetails.model.TrainingEntity">
+		INSERT INTO training (
+		training_id, employee_id,
+		training_type, training_name, training_start_date,
+		training_end_date,
+		training_organization, training_cost,
+		refundable_training_cost
+		) VALUES
+		(
+		training_seq.NEXTVAL, #{employeeId}, #{trainingType},
+		#{trainingName},
+		#{trainingStartDate}, #{trainingEndDate},
+		#{trainingOrganization},
+		#{trainingCost}, #{refundableTrainingCost}
+		)
+	</insert>
+	<!-- Insert RewardPenalty -->
+	<insert id="insertRewardPenalty"
+		parameterType="org.spring.domain.employeedetails.model.RewardPenaltyEntity">
+		INSERT INTO reward_penalty (
+		reward_penalty_id,
+		employee_id, reward_penalty_type, reward_penalty_name,
+		reward_penalty_giver, reward_penalty_date, reward_penalty_description,
+		remarks2
+		) VALUES (
+		rewardpenalty_seq.NEXTVAL, #{employeeId},
+		#{rewardPenaltyType}, #{rewardPenaltyName},
+		#{rewardPenaltyGiver},
+		#{rewardPenaltyDate},
+		#{rewardPenaltyDescription}, #{remarks2}
+		)
+	</insert>
+	<!-- Insert Appointment -->
+	<insert id="insertAppointment"
+		parameterType="org.spring.domain.employeedetails.model.AppointmentEntity">
+		INSERT INTO appointment (
+		appointment_id, employee_id,
+		appointment_type, appointment_date, department_id,
+		position_id,
+		position_type, remarks3
+		) VALUES (
+		appointment_seq.NEXTVAL,
+		#{employeeId}, #{appointmentType}, #{appointmentDate}, #{departmentId},
+		#{positionId}, #{positionType}, #{remarks3}
+		)
+	</insert>
+	<!-- Insert Referrer -->
+	<insert id="insertReferrer"
+		parameterType="org.spring.domain.employeedetails.model.ReferrerEntity">
+		INSERT INTO referrer (
+		referrer_id, employee_id,
+		referrer_name, referrer_relationship,
+		referrer_company_name,
+		referrer_position, referrer_phone_number
+		) VALUES (
+		referrer_seq.NEXTVAL, #{employeeId}, #{referrerName},
+		#{referrerRelationship},
+		#{referrerCompanyName}, #{referrerPosition},
+		#{referrerPhoneNumber}
+		)
+	</insert>
+	<!-- Insert Insurance -->
+	<insert id="insertInsurance"
+		parameterType="org.spring.domain.employeedetails.model.InsuranceEntity">
+		INSERT INTO insurance (
+		insurance_id, employee_id,
+		insurance_agency, insurance_number, insurance_amount,
+		insurance_start_date, insurance_end_date, remarks4
+		) VALUES (
+		insurance_seq.NEXTVAL, #{employeeId}, #{insuranceAgency},
+		#{insuranceNumber},
+		#{insuranceAmount}, #{insuranceStartDate},
+		#{insuranceEndDate},
+		#{remarks4}
+		)
+	</insert>
+	<!-- Insert Guarantor -->
+	<insert id="insertGuarantor"
+		parameterType="org.spring.domain.employeedetails.model.GuarantorEntity">
+		INSERT INTO guarantor (
+		guarantor_id, employee_id,
+		guarantor_name, guarantor_relationship,
+		guarantor_resident_number,
+		guarantee_amount, guarantee_date, guarantee_expiration_date,
+		guarantor_phone_number
+		) VALUES (
+		guarantor_seq.NEXTVAL, #{employeeId},
+		#{guarantorName}, #{guarantorRelationship},
+		#{guarantorResidentNumber},
+		#{guaranteeAmount}, #{guaranteeDate},
+		#{guaranteeExpirationDate}, #{guarantorPhoneNumber}
+		)
+	</insert>
+
+</mapper>

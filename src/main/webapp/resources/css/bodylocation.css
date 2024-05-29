@@ -695,6 +695,10 @@
 	cursor: pointer;
 }
 
+.highlighted {
+	background-color: #f0faff;
+}
+
 .search-container {
 	display: flex;
 	gap: 40px; /* 간격 설정 */

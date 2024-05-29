@@ -3,7 +3,30 @@
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<script>
+	document.addEventListener('DOMContentLoaded', (event) => {
+		let highlightedRow = null; // 강조된 행을 추적하기 위한 변수
 
+		const table = document.querySelector('tbody');
+
+		table.addEventListener('click', (event) => {
+			if (event.target.tagName === 'TD') {
+				const td = event.target;
+				const row = td.parentElement;
+
+				// 이전 강조된 행의 색상을 원래대로 되돌리기
+				if (highlightedRow) {
+					highlightedRow.classList.remove('highlighted');
+				}
+
+				// 새로운 행을 강조
+				row.classList.add('highlighted');
+				highlightedRow = row; // 현재 강조된 행을 추적
+			}
+		});
+	});
+
+</script>
 <div id="content">
 	<div class="table-container">
 		<div class="header-container">
@@ -29,18 +52,18 @@
 					</thead>
 					<tbody>
 						<c:forEach var="vacationType" items="${vacationTypes}">
-							<tr class="table-row" data-id="${vacationType.vacationTypeId}"
+							<tr class="table-row holiday-body" data-id="${vacationType.vacationTypeId}"
 								data-name="${vacationType.vacationTypeName}"
 								data-period1="${vacationType.applyPeriod1}"
 								data-period2="${vacationType.applyPeriod2}"
 								data-usage="${vacationType.usage}" data-type="vacation">
-								<td class="empRegister-body">${vacationType.vacationTypeName}</td>
-								<td class="empRegister-body">${vacationType.applyPeriod1}~${vacationType.applyPeriod2}</td>
-								<td class="empRegister-body" style="text-align: center;">
+								<td class="empRegister-body holiday-body">${vacationType.vacationTypeName}</td>
+								<td class="empRegister-body holiday-body">${vacationType.applyPeriod1}~${vacationType.applyPeriod2}</td>
+								<td class="empRegister-body holiday-body" style="text-align: center;">
 									<button type="button"
 										onclick="manageEmployeeVacation('${vacationType.vacationTypeId}')">管理</button>
 								</td>
-								<td class="empRegister-body" style="text-align: center;">
+								<td class="empRegister-body holiday-body" style="text-align: center;">
 									${vacationType.usage ? 'O' : 'X'}</td>
 							</tr>
 						</c:forEach>
@@ -160,7 +183,7 @@
 					</thead>
 					<tbody>
 						<c:forEach var="attendanceType" items="${attendanceTypes}">
-							<tr class="table-row"
+							<tr class="table-row holiday-body"
 								data-id="${attendanceType.attendanceTypeId}"
 								data-name="${attendanceType.attendanceTypeName}"
 								data-unit="${attendanceType.unit}"
@@ -168,11 +191,11 @@
 								data-usage="${attendanceType.usage}"
 								data-attendanceGroupId="${attendanceType.attendanceGroupId}"
 								data-type="attendance">
-								<td class="empRegister-body">${attendanceType.attendanceTypeName}</td>
-								<td class="empRegister-body">${attendanceType.unit}</td>
-								<td class="empRegister-body">${attendanceType.attendanceGroupId}</td>
-								<td class="empRegister-body">${vacationType.vacationTypeId}</td>
-								<td class="empRegister-body" style="text-align: center;"><c:choose>
+								<td class="empRegister-body holiday-body">${attendanceType.attendanceTypeName}</td>
+								<td class="empRegister-body holiday-body">${attendanceType.unit}</td>
+								<td class="empRegister-body holiday-body">${attendanceType.attendanceGroupId}</td>
+								<td class="empRegister-body holiday-body">${vacationType.vacationTypeId}</td>
+								<td class="empRegister-body holiday-body" style="text-align: center;"><c:choose>
 										<c:when test="${attendanceType.usage}">O</c:when>
 										<c:otherwise>X</c:otherwise>
 									</c:choose></td>

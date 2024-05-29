@@ -71,11 +71,18 @@ public class AttendanceImpl implements AttendanceService {
 
 
 	@Override
-	public List<AttendanceEntity> getDayWorkerAttendance(Long employeeId) {
-		log.info("getDayWorkerAttendance : " + mapper.getDayWorkerAttendance(employeeId));
+	public AttendanceEntity getDayWorkerAttendance(Long employeeId) {
+		//FeildOrProjectIdEntity feildOrProjectIdEntity = new FeildOrProjectIdEntity();
+		//feildOrProjectIdEntity.setEmployeeId(employeeId);
+		log.info(employeeId + " getDayWorkerAttendance : " + mapper.getDayWorkerAttendance(employeeId));
 		return mapper.getDayWorkerAttendance(employeeId);
 	}
 
+	/*
+	 * @Override public AttendanceEntity dayWorkerAttendanceList(Long employeeId) {
+	 * 
+	 * return mapper.dayWorkerAttendanceList(employeeId); }
+	 */
 
 
 }

@@ -2,7 +2,30 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
 <div id="content">
+<style>
+	.input-container {
+		position: relative; /* 부모 요소를 기준으로 자식 요소 위치를 설정하기 위해 사용 */
+	}
 
+	.placeholder-text {
+		color: red;         /* 빨간색 */
+		opacity: 0.5;       /* 희미하게 */
+		font-size: 12px;    /* 텍스트 크기 */
+		position: absolute; /* 절대 위치 지정 */
+		top: 50%;           /* 수직 중앙 정렬 */
+		left: 10px;         /* 좌측 패딩 */
+		transform: translateY(-50%); /* 수직 중앙 정렬 */
+		pointer-events: none; /* 텍스트가 클릭되지 않도록 설정 */
+	}
+
+	.reginputhide {
+		position: relative; /* 상대 위치 지정 */
+		z-index: 1;         /* 입력 필드가 텍스트 위에 오도록 설정 */
+		background: transparent; /* 배경 투명 설정 */
+		color: transparent; /* 텍스트 투명 설정 */
+	}
+
+</style>
 	<div class="floating-container">
 		<table class="floating-table">
 			<thead>
@@ -49,17 +72,17 @@
 		<h3 style="text-align: left;">社員情報2</h3>
 		<div class="button-container-top">
 			<button
-				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns2?scrollToSection=section6'">資格免許</button>
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/register?scrollToSection=section6'">資格免許</button>
 			<button
-				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns2?scrollToSection=section7'">教育訓練</button>
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/register?scrollToSection=section7'">教育訓練</button>
 			<button
-				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns2?scrollToSection=section8'">賞罰</button>
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/register?scrollToSection=section8'">賞罰</button>
 		</div>
 		<div class="button-container-bottom">
 			<button
-				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns2?scrollToSection=section9'">発令</button>
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/register?scrollToSection=section9'">発令</button>
 			<button
-				onclick="window.location.href='<%=request.getContextPath()%>/personnel/employeeIns2?scrollToSection=section10'">推奨身元保証</button>
+				onclick="window.location.href='<%=request.getContextPath()%>/personnel/register?scrollToSection=section10'">推奨身元保証</button>
 		</div>
 	</div>
 
@@ -88,8 +111,12 @@
 			<table class="empRegister">
 				<tr>
 					<th class="empRegister-head1">社員番号</th>
-					<th class="empRegister-body"><input type="number"
-						id="employeeId" name="employeeId" class="reginputhide" readonly></th>
+					<th class="empRegister-body">
+						<div class="input-container">
+							<input type="number" id="employeeId" name="employeeId" class="reginputhide" readonly>
+							<span class="placeholder-text">自動入力されます</span>
+						</div>
+					</th>
 					<th class="empRegister-head1"><span style="color: #FE0000">*</span>雇用形態</th>
 					<th class="empRegister-body"><select id="employmentType"
 						name="employmentType" class="reginput-select">
@@ -200,10 +227,10 @@
 				<table class="empRegister1">
 					<thead>
 						<tr>
-							<th class="empRegister-head1" style="width: 90px;">関係</th>
+							<th class="empRegister-head1" style="width: 100px;">関係</th>
 							<th class="empRegister-head1" style="width: 100px;">氏名</th>
-							<th class="empRegister-head1" style="width: 90px;">区分</th>
-							<th class="empRegister-head1" style="width: 300px;">個人別固有番号</th>
+							<th class="empRegister-head1" style="width: 100px;">区分</th>
+							<th class="empRegister-head1" style="width: 270px;">個人別固有番号</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -250,8 +277,8 @@
 					<thead>
 						<tr>
 							<th class="empRegister-head1" style="width: 85px;">区分</th>
-							<th class="empRegister-head1" style="width: 120px;">入学年月</th>
-							<th class="empRegister-head1" style="width: 120px;">卒業年月</th>
+							<th class="empRegister-head1" style="width: 140px;">入学年月</th>
+							<th class="empRegister-head1" style="width: 140px;">卒業年月</th>
 							<th class="empRegister-head1">学校名</th>
 							<th class="empRegister-head1">専攻</th>
 							<th class="empRegister-head1" style="width: 75px;">履修</th>
@@ -297,9 +324,9 @@
 				<table class="empRegister1"> <!-- 입사일 퇴사일 안눌려요 센빠이 -->
 					<thead>
 						<tr>
-							<th class="empRegister-head1">会社名</th>
-							<th class="empRegister-head1">入社日</th>
-							<th class="empRegister-head1">退社日</th>
+							<th class="empRegister-head1" style="width: 85px;">会社名</th>
+							<th class="empRegister-head1" style="width: 140px;">入社日</th>
+							<th class="empRegister-head1" style="width: 140px;">退社日</th>
 							<th class="empRegister-head1">勤務期間</th>
 							<th class="empRegister-head1">最終職位</th>
 							<th class="empRegister-head1">担当職務</th>
@@ -337,8 +364,8 @@
 						<tr>
 							<th class="empRegister-head1" style="width: 60px;">兵役区分</th>
 							<th class="empRegister-head1" style="width: 70px;">軍の種類</th>
-							<th class="empRegister-head1" style="width: 120px;">服務期間(から)</th>
-							<th class="empRegister-head1" style="width: 120px;">服務期間(まで)</th>
+							<th class="empRegister-head1" style="width: 140px;">服務期間(から)</th>
+							<th class="empRegister-head1" style="width: 140px;">服務期間(まで)</th>
 							<th class="empRegister-head1">最終階級</th>
 							<th class="empRegister-head1">兵科</th>
 							<th class="empRegister-head1">未了の事由</th>

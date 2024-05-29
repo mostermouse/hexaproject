@@ -126,16 +126,9 @@ public class EmpController {
  // 사원등록 2페이지
     @GetMapping("/personnel/register")
     public String showDetailsRegistrationForm(Model model) {
-        model.addAttribute("certification", new CertificationEntity());
-        model.addAttribute("languageability", new CertificationEntity());
-        model.addAttribute("training", new CertificationEntity());
-        model.addAttribute("rewardpenalty", new CertificationEntity());
-        model.addAttribute("appointment", new CertificationEntity());
-        model.addAttribute("referrer", new CertificationEntity());
-        model.addAttribute("insurance", new CertificationEntity());
-        model.addAttribute("guarantor", new CertificationEntity());
-        model.addAttribute("retirement", new CertificationEntity());
-
+       model.addAttribute("employee" , employeeService.getAllEmployee());
+       model.addAttribute("department" , employeeService.getDepartment());
+       model.addAttribute("position" , employeeService.getPosition());
         return "defaultPreferences/employeeRegistration2";
     }
 

@@ -12,6 +12,7 @@ public interface EmpMapper {
     List<EmployeeEntity> getAllEmployee();
     List<DepartmentEntity> getDepartment();
     List<PositionEntity> getPosition();
+
      long countByStatusEmployed();
     long countByEmploymentTypeRegular();
     long countByEmploymentTypeContract();

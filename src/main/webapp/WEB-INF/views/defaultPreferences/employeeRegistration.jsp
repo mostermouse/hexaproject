@@ -130,10 +130,10 @@
 				<tr>
 					<td class="empRegister-head1"><span style="color: #FE0000">*</span>日本名</td>
 					<td class="empRegister-body"><input type="text"
-						id="koreanName" name="koreanName" class="reginput" required></td>
+						id="koreanName" name="koreanName" class="reginputhide1" required></td>
 					<td class="empRegister-head1">英語名</td>
 					<td class="empRegister-body"><input type="text"
-						id="englishName" name="englishName" class="reginput"></td>
+						id="englishName" name="englishName" class="reginputhide1"></td>
 				</tr>
 				<tr>
 					<td class="empRegister-head1"><span style="color: #FE0000">*</span>入社日</td>
@@ -145,7 +145,7 @@
 						class="reginput-select"></td>
 				</tr>
 				<tr>
-					<td class="empRegister-head1">部署</label></td>
+					<td class="empRegister-head1">部署</td>
 					<td class="empRegister-body"><select id="departmentId"
 						name="departmentId" class="reginput-select">
 							<option value="">選択</option>
@@ -153,8 +153,7 @@
 								<option value="${dept.departmentId}">${dept.departmentName}</option>
 							</c:forEach>
 					</select></td>
-					<td class="empRegister-head1">役職</label>
-					</td>
+					<td class="empRegister-head1">役職</td>
 					<td class="empRegister-body"><select id="positionId"
 						name="positionId" class="reginput-select">
 							<option value="">選択</option>
@@ -180,28 +179,28 @@
 				<tr>
 					<td class="empRegister-head2">住所</td>
 					<td class="empRegister-body" colspan="3"><input type="text"
-						id="address" name="address" class="reginput"></td>
+						id="address" name="address" class="reginputhide1"></td>
 				</tr>
 				<tr>
 					<td class="empRegister-head2">電話番号</td>
 					<td class="empRegister-body"><input type="text" id="telPhone"
-						name="telPhone" class="reginput"></td>
+						name="telPhone" class="reginputhide1"></td>
 					<td class="empRegister-head2">携帯電話番号</td>
 					<td class="empRegister-body"><input type="text" id="mobile"
-						name="mobile" class="reginput"></td>
+						name="mobile" class="reginputhide1"></td>
 				</tr>
 				<tr>
 					<td class="empRegister-head2">メール</td>
 					<td class="empRegister-body"><input type="text" id="email"
-						name="email" class="reginput"></td>
+						name="email" class="reginputhide1"></td>
 					<td class="empRegister-head2">SNS</td>
 					<td class="empRegister-body"><input type="text" id="sns"
-						name="sns" class="reginput"></td>
+						name="sns" class="reginputhide1"></td>
 				</tr>
 				<tr>
 					<td class="empRegister-head2">その他 詳細情報</td>
 					<td class="empRegister-body"><input type="text"
-						id="otherDetails" name="otherDetails" class="reginput"></td>
+						id="otherDetails" name="otherDetails" class="reginputhide1"></td>
 					<td class="empRegister-head2">状態</td>
 					<td class="empRegister-body"><select id="status" name="status"
 						class="reginput-select">
@@ -392,11 +391,11 @@
 							<td class="empRegister-body"><input type="date"
 								id="servicePeriod2" name="servicePeriod2" class="reginput-select"></td>
 							<td class="empRegister-body"><input type="text"
-								id="finalRank" name="finalRank" class="reginput"></td>
+								id="finalRank" name="finalRank" class="reginputhide1"></td>
 							<td class="empRegister-body"><input type="text"
-								id="department1" name="department1" class="reginput"></td>
+								id="department1" name="department1" class="reginputhide1"></td>
 							<td class="empRegister-body"><input type="text"
-								id="exemptionReason" name="exemptionReason" class="reginput"></td>
+								id="exemptionReason" name="exemptionReason" class="reginputhide1"></td>
 						</tr>
 					</tbody>
 				</table>

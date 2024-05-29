@@ -1,6 +1,7 @@
 package org.spring.domain.wage.service;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -10,10 +11,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
+import org.aspectj.ajdt.internal.compiler.ast.AddAtAspectJAnnotationsVisitor;
+import org.spring.domain.employee.model.DepartmentEntity;
 import org.spring.domain.wage.controller.model.WageRecordDetailsRequest;
 import org.spring.domain.wage.controller.model.WageRecordRequest;
 import org.spring.domain.wage.mapper.WageMapper;
 import org.spring.domain.wage.model.WageEntity;
+import org.spring.domain.wage.model.WageTypeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -113,6 +117,29 @@ public class WageImpl implements WageService {
 		return wageRecordRequests;
 	}
 
+	//급여대장 정보반환
+	@Override
+	public List<String> listWageRecordInfo (Long yearMonth, Long wagePeriod) {
+		List<WageRecordDetailsRequest> yearWageEntities = mapper.getYearMonthPeriodWage(yearMonth, wagePeriod);
+		List<String> finalReturnList = new ArrayList<String>();
+		finalReturnList.add(String.valueOf(yearWageEntities.get(1).getSettlementPeriodStartDate()));
+		finalReturnList.add(String.valueOf(yearWageEntities.get(1).getSettlementPeriodEndDate()));
+		finalReturnList.add(String.valueOf(yearWageEntities.get(1).getWagePaymentDate()));
+		return finalReturnList;
+	}
+	
+	//급여항목 반환
+	@Override
+	public List<WageTypeEntity> getWageIdTypeList(){
+		return mapper.getWageIdType();
+	}
+	
+	//부서 반환
+	@Override
+	public List<DepartmentEntity> getDepartmentList () {
+		return mapper.getDepartment();
+	}
+	
 	// 급여대장 세부목록 분류 및 반환
 	@Override
 	public List<List<String>> listWageRecordYMP(Long yearMonth, Long wagePeriod) {
@@ -224,7 +251,7 @@ public class WageImpl implements WageService {
 			}
 
 			// i번째 사원의 급여총합 저장
-			rowsPersonWage.add(String.valueOf(total) + "(円)");
+			rowsPersonWage.add(String.valueOf(total) + "円");
 
 			// i번째 사원의 급여 행을 최종반환형에 저장
 			finalReturnList.add(rowsPersonWage);
@@ -235,7 +262,7 @@ public class WageImpl implements WageService {
 		int totalTotal = 0;
 		for (int i = ROWS; i < ROWS + uniqueWageTypes.size(); i++)
 			totalTotal += Long.parseLong(lastRow.get(i));
-		lastRow.set(firstRow.size() - 1, String.valueOf(totalTotal) + "(円)");
+		lastRow.set(firstRow.size() - 1, String.valueOf(totalTotal) + "円");
 
 		// 합계행 저장
 		finalReturnList.add(lastRow);
@@ -290,18 +317,18 @@ public class WageImpl implements WageService {
 		firstRow.add("급여월(차수)");
 
 		// 연,월,차수에 해당하는 급여정보 불러오기
-		List<WageRecordDetailsRequest> WageValues = mapper.getWageValue(stringToLong(settlementPeriodStartDate),
-				stringToLong(settlementPeriodEndDate), employeeId);
+		List<WageRecordDetailsRequest> WageValues = mapper.getWageValue(stringToLongYMDtoYM(settlementPeriodStartDate),
+				stringToLongYMDtoYM(settlementPeriodEndDate), employeeId);
 		log.info("WageValues: " + WageValues.size());
 
 		// 중복되지 않는 연,월,차수 저장하기
 		List<WageRecordDetailsRequest> uniqueYearMonthPeriods = mapper.getYearMonthPeriod(
-				stringToLong(settlementPeriodStartDate), stringToLong(settlementPeriodEndDate), employeeId);
+				stringToLongYMDtoYM(settlementPeriodStartDate), stringToLongYMDtoYM(settlementPeriodEndDate), employeeId);
 		log.info("uniqueYearMonthPeriods: " + uniqueYearMonthPeriods.size());
 
 		// 중복되지 않는 급여 종류를 저장하기
-		List<WageRecordDetailsRequest> uniqueWageTypes = mapper.getWageType(stringToLong(settlementPeriodStartDate),
-				stringToLong(settlementPeriodEndDate), employeeId);
+		List<WageRecordDetailsRequest> uniqueWageTypes = mapper.getWageType(stringToLongYMDtoYM(settlementPeriodStartDate),
+				stringToLongYMDtoYM(settlementPeriodEndDate), employeeId);
 		log.info("uniqueWageTypes: " + uniqueWageTypes);
 		for (int i = 0; i < uniqueWageTypes.size(); i++) {
 			firstRow.add(uniqueWageTypes.get(i).getWageTypeName());
@@ -404,13 +431,13 @@ public class WageImpl implements WageService {
 
 		// 기간,항목별 직원목록 불러오기
 		List<WageRecordDetailsRequest> uniqueEmployees = mapper.getWageTypeEmployeeInfo(
-				stringToLong(settlementPeriodStartDate), stringToLong(settlementPeriodEndDate), wageTypeId);
+				stringToLongYMtoYM(settlementPeriodStartDate), stringToLongYMtoYM(settlementPeriodEndDate), wageTypeId);
 		log.info(uniqueEmployees.size() + " uniqueEmployees found");
 		// 1번째 열에 저장하기
 
 		// 기간,항목별 연월차수 불러오기
 		List<WageRecordDetailsRequest> uniqueYearMonthPeriods2 = mapper.getWageTypeYearMonthPeriod(
-				stringToLong(settlementPeriodStartDate), stringToLong(settlementPeriodEndDate), wageTypeId);
+				stringToLongYMtoYM(settlementPeriodStartDate), stringToLongYMtoYM(settlementPeriodEndDate), wageTypeId);
 		log.info(uniqueYearMonthPeriods2.size() + " uniqueYearMonthPeriods2 found");
 		for (int i = 0; i < uniqueYearMonthPeriods2.size(); i++) {
 			firstRow.add(String
@@ -420,8 +447,8 @@ public class WageImpl implements WageService {
 		}
 
 		// 기간,항목별 급여정보 불러오기
-		List<WageRecordDetailsRequest> WageValues2 = mapper.getWageTypeValue(stringToLong(settlementPeriodStartDate),
-				stringToLong(settlementPeriodEndDate), wageTypeId);
+		List<WageRecordDetailsRequest> WageValues2 = mapper.getWageTypeValue(stringToLongYMtoYM(settlementPeriodStartDate),
+				stringToLongYMtoYM(settlementPeriodEndDate), wageTypeId);
 		log.info(WageValues2.size() + " WageValues2 found");
 
 		// 마지막에 지급총액 저장
@@ -522,8 +549,15 @@ public class WageImpl implements WageService {
 				.collect(Collectors.toList());
 	}
 
-	public Long stringToLong(String dateStr) {
+	public Long stringToLongYMDtoYM(String dateStr) {
 		LocalDate date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		String yyyymmStr = date.format(DateTimeFormatter.ofPattern("yyyyMM"));
+		Long yyyymm = Long.parseLong(yyyymmStr);
+		return yyyymm;
+	}
+	
+	public Long stringToLongYMtoYM(String dateStr) {
+		YearMonth date = YearMonth.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM"));
 		String yyyymmStr = date.format(DateTimeFormatter.ofPattern("yyyyMM"));
 		Long yyyymm = Long.parseLong(yyyymmStr);
 		return yyyymm;

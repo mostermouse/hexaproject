@@ -48,12 +48,11 @@ public class WageController {
 	// 급여대장
 	@GetMapping("/payment/paymentRegisterList")
 	public String getPaymentRegisterList(
-			@RequestParam(name = "year", required = false, defaultValue = "2024") Long year, Model model) {
+			@RequestParam(name = "year", required = false, defaultValue = "2010") Long year, Model model) {
 
 		log.info("paymentRegisterList..............");
 
 		model.addAttribute("listWageRecord", wageService.listWageRecord(year));
-		log.info("getWageList...........");
 
 		return "salaryManagement/paymentRegisterList";
 	}
@@ -61,13 +60,18 @@ public class WageController {
 	// 급여대장 - 차수
 	@GetMapping("/payment/paymentRegisterPeriodList")
 	public String getPaymentRegisterPeriodList(Model model,
-			@RequestParam(name = "yearMonth", required = false, defaultValue = "2024") String yearMonth,
+			@RequestParam(name = "yearMonth", required = false, defaultValue = "2022") String yearMonth,
 			@RequestParam(name = "wagePeriod", required = false, defaultValue = "1") Long wagePeriod) {
 
 		log.info("paymentRegisterPeriodList..............");
 
+		model.addAttribute("listWageRecordInfo",
+				wageService.listWageRecordInfo(Long.parseLong(yearMonth.replace("-", "")), wagePeriod));
+		model.addAttribute("department", wageService.getDepartmentList());
 		model.addAttribute("listWageRecordYMP",
 				wageService.listWageRecordYMP(Long.parseLong(yearMonth.replace("-", "")), wagePeriod));
+		
+		
 		log.info("getWageListYMP...........");
 
 		return "salaryManagement/paymentRegisterPeriodList";
@@ -93,12 +97,13 @@ public class WageController {
 	// 항목별 급여 조회
 	@GetMapping("/paymentPayItemPart")
 	public String paymentPayItem(
-			@RequestParam(name = "settlementPeriodStartDate", required = false, defaultValue = "2022-01-01") String settlementPeriodStartDate,
-			@RequestParam(name = "settlementPeriodEndDate", required = false, defaultValue = "2022-12-31") String settlementPeriodEndDate,
+			@RequestParam(name = "settlementPeriodStartDate", required = false, defaultValue = "2022-01") String settlementPeriodStartDate,
+			@RequestParam(name = "settlementPeriodEndDate", required = false, defaultValue = "2024-12") String settlementPeriodEndDate,
 			@RequestParam(name = "wageTypeId", required = false, defaultValue = "1") Long wageTypeId, Model model) {
 
 		model.addAttribute("listWageRecordWT",
 				wageService.listWageRecordWT(settlementPeriodStartDate, settlementPeriodEndDate, wageTypeId));
+		model.addAttribute("wageType",wageService.getWageIdTypeList());
 
 		// TODO 검색변수 받아서 검색하도록 해야 함
 		return "salaryManagement/paymentPayItemPart";

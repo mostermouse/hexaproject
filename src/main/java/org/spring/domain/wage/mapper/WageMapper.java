@@ -3,8 +3,10 @@ package org.spring.domain.wage.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.spring.domain.employee.model.DepartmentEntity;
 import org.spring.domain.wage.controller.model.WageRecordDetailsRequest;
 import org.spring.domain.wage.model.WageEntity;
+import org.spring.domain.wage.model.WageTypeEntity;
 
 public interface WageMapper {
 
@@ -65,5 +67,9 @@ public interface WageMapper {
 			@Param("settlementPeriodEndDate") Long settlementPeriodEndDate,
 			@Param("wageTypeId") Long wageTypeId
 			);
+	
+	public List<DepartmentEntity> getDepartment();
+	
+	public List<WageTypeEntity> getWageIdType();
 	
 }

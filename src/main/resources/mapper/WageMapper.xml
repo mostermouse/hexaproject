@@ -233,7 +233,7 @@
 
 
 	<!-- 항목별 급여 조회 -->
-	<!-- 정산기간, 급여항목별 직원 및 정보 목록  -->
+	<!-- 정산기간, 급여항목별 직원 및 정보 목록 -->
 	<select id="getWageTypeEmployeeInfo"
 		resultType="org.spring.domain.wage.controller.model.WageRecordDetailsRequest">
     <![CDATA[
@@ -253,8 +253,8 @@
 	ORDER BY employee_id
 	    ]]>
 	</select>
-	
-	<!-- 정산기간, 급여항목별 연월, 차수  -->
+
+	<!-- 정산기간, 급여항목별 연월, 차수 -->
 	<select id="getWageTypeYearMonthPeriod"
 		resultType="org.spring.domain.wage.controller.model.WageRecordDetailsRequest">
     <![CDATA[
@@ -268,7 +268,7 @@
 	ORDER BY settlement_period_start_date, wage_period
 	    ]]>
 	</select>
-	
+
 	<!-- 급여항목별 급여 -->
 	<select id="getWageTypeValue"
 		resultType="org.spring.domain.wage.controller.model.WageRecordDetailsRequest">
@@ -286,6 +286,20 @@
 	AND TO_CHAR(w.settlement_period_end_date, 'YYYYMM') <= #{settlementPeriodEndDate}
 	AND w.wage_type_id = #{wageTypeId}
 	    ]]>
+	</select>
+
+	<!-- 급여대장 관련정보 불러오기 -->
+
+	<!-- 부서 -->
+	<select id="getDepartment"
+		resultType="org.spring.domain.employee.model.DepartmentEntity">
+		select * from department
+	</select>
+
+	<!-- 급여종류 -->
+	<select id="getWageIdType"
+		resultType="org.spring.domain.wage.model.WageTypeEntity">
+		select * from wage_type
 	</select>
 
 </mapper>

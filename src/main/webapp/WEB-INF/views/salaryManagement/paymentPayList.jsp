@@ -16,8 +16,9 @@
 		<form>
 			<div class="search-container grey-box"
 				style="margin-top: 30px; display: inline-block; width: 100%;">
-				<span>*기간선택</span> <input type="date"><span>~</span><input
-					type="date"> <span>*사원선택</span> <input>
+				<span>*기간선택</span> <input type="date" name="settlementPeriodStartDate" value="${param.settlementPeriodStartDate}">
+				<span>~</span> <input type="date" name="settlementPeriodEndDate" value="${param.settlementPeriodEndDate}"> 
+				<span>*사원선택</span> <input>
 				<button class="all-button" type="submit">급여내역조회</button>
 			</div>
 		</form>

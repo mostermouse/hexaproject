@@ -164,6 +164,21 @@
 	background-color: #5a6268; /* hover 시 어두운 회색 */
 }
 
+.cancel-btnn {
+	background-color: #a6a6a6; /* 회색 배경 */
+	color: #fff;
+	border: none;
+	padding: 5px 15px;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	margin: 0 2px;
+}
+
+.cancel-btnn:hover {
+	background-color: #5a6268; /* hover 시 어두운 회색 */
+}
+
 .divtitle {
 	display: flex;
 	justify-content: center;
@@ -585,6 +600,17 @@
 }
 
 .reginput-select:focus {
+	outline: none;
+	border-color: #696969;
+}
+
+.reginput-input {
+	border: 1px solid #c0c0c0;
+	border-radius: 4px;
+	padding: 4px;
+}
+
+.reginput-input:focus {
 	outline: none;
 	border-color: #696969;
 }

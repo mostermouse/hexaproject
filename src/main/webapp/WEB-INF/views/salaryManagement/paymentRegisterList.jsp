@@ -51,14 +51,14 @@ tr a {
 		<hr>
 		<%-- 년도 선택 창 --%>
 		<form action="/payment/paymentRegisterList" method="get">
-			<label for="year">Select Year:</label> <select name="year" id="year">
+			<label for="year">Select Year:</label> <select name="year" id="year" class="reginput-select">
 				<%-- 2010년부터 현재 연도까지의 년도를 선택할 수 있도록 --%>
 				<c:forEach var="y" begin="2010"
 					end="<%=java.time.LocalDate.now().getYear()%>">
 					<option value="${y}"
 						<c:if test="${y eq param.year}">selected</c:if>>${y}</option>
 				</c:forEach>
-			</select> <input type="submit" value="Submit">
+			</select> <input type="submit" value="Submit" class="cancel-btnn">
 		</form>
 	</div>
 

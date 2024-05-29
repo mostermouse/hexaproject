@@ -16,9 +16,9 @@
 		<form>
 			<div class="search-container grey-box" style="margin-top: 30px; display: inline-block; width: 100%;">
 				<span>*기간선택</span>
-				<input type="date"><span>~</span><input type="date">
-				<span>*사원선택</span>
-				<input>
+				<input type="date" class="reginput-select"><span>~</span><input type="date" class="reginput-select">
+				<span>*사원입력</span>
+				<input type="text" class="reginput-input">
 				<button class="all-button" type="submit">급여내역조회</button>
 			</div>
 		</form>

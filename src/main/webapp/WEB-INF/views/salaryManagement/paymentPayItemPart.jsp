@@ -14,8 +14,9 @@
 		<form id="dateForm">
 			<div class="search-container grey-box"
 				style="margin-top: 30px; display: inline-block; width: 100%;">
-				<span>*기간선택</span> <input type="month"> <span>~</span> <input
-					type="month"> <span>*항목선택</span> <select>
+				<span>*기간선택</span> <input type="month" class="reginput-select"> <span>~</span> <input
+					type="month" class="reginput-select"> <span>*항목선택</span> 
+				<select class="reginput-select">
 					<option value="">급여항목 선택</option>
 					<option value="기본급">기본급</option>
 					<option value="식비">식비</option>

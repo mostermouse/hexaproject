@@ -336,9 +336,9 @@
 							<td class="empRegister-body"><input type="text"
 								id="companyName" name="companyName" class="reginputhide1"></td>
 							<td class="empRegister-body"><input type="date"
-								id="startDate" name="startDate"></td>
+								id="startDate" name="startDate" class="reginput-select"></td>
 							<td class="empRegister-body"><input type="date" id="endDate"
-								name="endDate"></td>
+								name="endDate" class="reginput-select"></td>
 							<td class="empRegister-body"><input type="text"
 								id="employmentPeriod" name="employmentPeriod"
 								class="reginputhide1"></td>
@@ -372,13 +372,13 @@
 					<tbody>
 						<tr>
 							<td class="empRegister-body"><select id="serviceType"
-								name="serviceType">
+								name="serviceType" class="reginput-select">
 									<option value="">選択</option>
 									<option value="군필">転役</option>
 									<option value="미필">未了</option>
 							</select></td>
 							<td class="empRegister-body"><select id="branch"
-								name="branch">
+								name="branch" class="reginput-select">
 									<option value="">選択</option>
 									<option value="육군">陸軍</option>
 									<option value="해군">海軍</option>
@@ -388,9 +388,9 @@
 									<option value="기타">その他</option>
 							</select></td>
 							<td class="empRegister-body"><input type="date"
-								id="servicePeriod1" name="servicePeriod1"></td>
+								id="servicePeriod1" name="servicePeriod1" class="reginput-select"></td>
 							<td class="empRegister-body"><input type="date"
-								id="servicePeriod2" name="servicePeriod2"></td>
+								id="servicePeriod2" name="servicePeriod2" class="reginput-select"></td>
 							<td class="empRegister-body"><input type="text"
 								id="finalRank" name="finalRank" class="reginputhide"></td>
 							<td class="empRegister-body"><input type="text"

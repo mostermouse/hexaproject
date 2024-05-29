@@ -107,13 +107,13 @@
                 <div class="form-containerr">
                     <form action="/" method="get">
                         <label for="year">選択年:</label>
-                        <select name="year" id="year">
+                        <select name="year" class="reginput-select" id="year">
                             <!-- 2010년부터 현재 연도까지의 년도를 선택할 수 있도록 -->
                             <c:forEach var="y" begin="2010" end="<%=java.time.LocalDate.now().getYear()%>">
                                 <option value="${y}" <c:if test="${y eq param.year}">selected</c:if>>${y}</option>
                             </c:forEach>
                         </select>
-                        <input type="submit" value="照会">
+                        <input type="submit" class="cancel-btnn" value="照会">
                     </form>
                 </div>
             </div>

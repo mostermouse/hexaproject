@@ -54,7 +54,7 @@
 					<thead>
 						<tr>
 							<th style="width: 70px;"><label for="vacationTypeName">有休項目</label></th>
-							<th><input type="text" id="vacationTypeName"
+							<th><input type="text" class="reginput-input" id="vacationTypeName"
 								name="vacationTypeName" required></th>
 						</tr>
 					</thead>
@@ -62,13 +62,13 @@
 						<tr>
 							<td><label for="applyPeriod1">適用期間</label></td>
 							<td style="display: flex; align-items: center;"><input
-								type="date" id="applyPeriod1" name="applyPeriod1" required>
-								~ <input type="date" id="applyPeriod2" name="applyPeriod2"
+								type="date" class="reginput-select" id="applyPeriod1" name="applyPeriod1" required>
+								~ <input type="date" class="reginput-select" id="applyPeriod2" name="applyPeriod2"
 								required></td>
 						</tr>
 						<tr>
 							<td><label for="usage">使用可否</label></td>
-							<td><select id="usage" name="usage">
+							<td><select id="usage" name="usage" class="reginput-select">
 									<option value="true">使用</option>
 									<option value="false">使用不可</option>
 							</select></td>
@@ -188,14 +188,14 @@
 					<thead>
 						<tr>
 							<th style="width: 70px;"><label for="attendanceTypeName">出勤項目</label></th>
-							<th><input type="text" id="attendanceTypeName"
+							<th><input type="text" class="reginput-input" id="attendanceTypeName"
 								name="attendanceTypeName" required></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td><label for="unit">単位</label></td>
-							<td><select id="unit" name="unit">
+							<td><select id="unit" name="unit" class="reginput-select">
 									<option value="">選んでください。</option>
 									<option value="日">日</option>
 									<option value="時間">時間</option>
@@ -203,16 +203,16 @@
 						</tr>
 						<tr>
 							<td><label for="attendanceGroupId">グループ管理</label></td>
-							<td><select id="attendanceGroupId" name="attendanceGroupId">
+							<td><select id="attendanceGroupId" name="attendanceGroupId" class="reginput-select">
 									<c:forEach var="attendanceGroup" items="${attendanceGroups}">
 										<option value="${attendanceGroup.attendanceGroupId}">${attendanceGroup.attendanceGroupName}</option>
 									</c:forEach>
 							</select>
-								<button type="button" onclick="manageGroup()">管理</button></td>
+								<button type="button" class="cancel-btnn" onclick="manageGroup()">管理</button></td>
 						</tr>
 						<tr>
 							<td><label for="vacationTypeId">休暇控除</label></td>
-							<td><select id="vacationTypeId" name="vacationTypeId">
+							<td><select id="vacationTypeId" name="vacationTypeId" class="reginput-select">
 									<c:forEach var="vacationType" items="${vacationTypes}">
 										<option value="${vacationType.vacationTypeId}">${vacationType.vacationTypeName}</option>
 									</c:forEach>
@@ -220,7 +220,7 @@
 						</tr>
 						<tr>
 							<td><label for="usage">使用可否</label></td>
-							<td><select id="usage" name="usage">
+							<td><select id="usage" name="usage" class="reginput-select">
 									<option value="true">使用</option>
 									<option value="false">使用不可</option>
 							</select></td>

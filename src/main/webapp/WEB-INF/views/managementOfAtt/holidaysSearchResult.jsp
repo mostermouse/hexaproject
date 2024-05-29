@@ -17,7 +17,7 @@
 		<form method="get"
 			action="${pageContext.request.contextPath}/holidaysSearchResult">
 			<div class="search-container" style="margin-top: 30px;">
-				    <select name="vacationTypeName" id="vacationTypeName" onchange="handleSelectChange(this)">
+				    <select name="vacationTypeName" class="reginput-select" id="vacationTypeName" onchange="handleSelectChange(this)">
                    
                     <option value="">休暇選択 </option>
                     <c:forEach items="${vacTypeList}" var="vacType">
@@ -25,35 +25,35 @@
                     </c:forEach>
                      <option value="navigateToDnLItemSet">休暇項目 設定</option>
                 </select> 
-				<input type="text" name="searchKeyword" placeholder="検索項目　入力"
-					value="${searchKeyword}"> <select name="status" id="status"
+				<input type="text" class="reginput-input" name="searchKeyword" placeholder="検索項目　入力"
+					value="${searchKeyword}"> <select name="status" class="reginput-select" id="status"
 					style="margin-left: auto;">
 					<option value="">在職</option>
 					<c:forEach items="${statusList}" var="status">
 						<option value="${status}">${status}</option>
 					</c:forEach>
 				</select> 
-				<select name="employmentType" id="employmentType">
+				<select name="employmentType" class="reginput-select" id="employmentType">
 					<option value="">区分別</option>
 					<c:forEach items="${employmentTypeList}" var="employmentType">
 						<option value="${employmentType}">${employmentType}</option>
 					</c:forEach>
-				</select> <select name="departmentId" id="departmentId">
+				</select> <select name="departmentId" class="reginput-select" id="departmentId">
 					<option value="">部署別</option>
 					<c:forEach items="${departmentList}" var="department">
 						<option value="${department.departmentId}">${department.departmentName}</option>
 					</c:forEach>
-				</select> <select name="positionId" id="positionId">
+				</select> <select name="positionId" class="reginput-select" id="positionId">
 					<option value="">職級別</option>
 					<c:forEach items="${positionList}" var="position">
 						<option value="${position.positionId}">${position.positionName}</option>
 					</c:forEach>
-				</select> <select name="viewCount">
+				</select> <select name="viewCount" class="reginput-select">
 					<option value="30" <c:if test="${viewCount == 30}">selected</c:if>>30個ずつ</option>
 					<option value="50" <c:if test="${viewCount == 50}">selected</c:if>>50個ずつ</option>
 					<option value="100"<c:if test="${viewCount == 100}">selected</c:if>>100個ずつ</option>
 				</select>
-				<button type="submit">照会</button>
+				<button type="submit" class="cancel-btnn">照会</button>
 			</div>
 		</form>
 		<table class="empRegister" style="width: 100%; margin-top: 10px;">

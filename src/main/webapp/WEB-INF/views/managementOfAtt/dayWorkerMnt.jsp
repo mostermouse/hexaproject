@@ -395,7 +395,7 @@ function updateFeildOrProject(button) {
 					<tr>
 						<td>근무일자</td>
 						<td><input type="date" name="inputDate" id="workDate"
-							class="input-field"></td>
+							 class="reginput-select"></td>
 					</tr>
 					<tr>
 						<td>현장/프로젝트</td>
@@ -415,7 +415,7 @@ function updateFeildOrProject(button) {
 					<tr>
 						<td>일당</td>
 						<td colspan="2"><input type="text" name="amount"
-							class="reginputhide" placeholder="일당을 입력해주세요" style="width: 80%;"><span>원</span></td>
+							class="reginputhide" placeholder="일당을 입력해주세요" style="width: 80%; text-align: right;"><span>원</span></td>
 					</tr>
 				</table>
 				<div class=divbtnsml style="margin-top: 10px; margin-left: 120px;">

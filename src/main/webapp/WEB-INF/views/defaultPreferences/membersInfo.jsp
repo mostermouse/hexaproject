@@ -68,7 +68,7 @@
 						</tr>
 						<tr>
 							<td class="empRegister-head1">設立日</td>
-							<td class="empRegister-body"><input type="date" id="CompanyEntity.establishmentDate" name="establishmentDate" class="reginputhide"></td>
+							<td class="empRegister-body"><input type="date" id="CompanyEntity.establishmentDate" name="establishmentDate"  class="reginput-select"></td>
 							<td class="empRegister-head1">ホームページ</td>
 							<td class="empRegister-body"><input type="text" id="CompanyEntity.website" name="website" class="reginputhide"></td>
 						</tr>
@@ -146,18 +146,18 @@
 		<div class="search-container">
 			<div class="title-table-left">
 				<h3>給与支払情報</h3>
-				<table style="max-width: 850px" class="empRegister1">
+				<table style="max-width: 800px" class="empRegister1">
 					<thead>
 						<tr>
 							<th class="empRegister-head1">給与計算期間</th>
-							<th class="empRegister-body" colspan="2" style="width: 350px;">
-								<input type="date" id="EmployeeSalaryAccountEntity.salaryCalculation1" name="salaryCalculation1" class="reginput">
+							<th class="empRegister-body" colspan="2" style="width: 300px;">
+								<input type="date" id="EmployeeSalaryAccountEntity.salaryCalculation1" name="salaryCalculation1" class="reginput-select">
 								~
-								<input type="date" id="EmployeeSalaryAccountEntity.salaryCalculation2" name="salaryCalculation2" class="reginput">
+								<input type="date" id="EmployeeSalaryAccountEntity.salaryCalculation2" name="salaryCalculation2" class="reginput-select">
 							</th>
 							<th class="empRegister-head1">給与支払日</th>
 							<th class="empRegister-body" colspan="2">
-								<input type="date" id="EmployeeSalaryAccountEntity.salaryPaymentDate" name="salaryPaymentDate" class="reginput">
+								<input type="date" id="EmployeeSalaryAccountEntity.salaryPaymentDate" name="salaryPaymentDate" class="reginput-select">
 							</th>
 
 						</tr>

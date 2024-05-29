@@ -413,7 +413,7 @@ CREATE TABLE dependents (
                             employee_id Number,  -- 직원 ID (외래 키)
                             relationship VARCHAR2(100),  -- 관계
                             parents_name VARCHAR2(100),  -- 이름
-                            foreign_or_domestic VARCHAR2(20),  -- 국내 또는 외국인
+                            foreign_or_domestic1 VARCHAR2(20),  -- 국내 또는 외국인
                             parents_number1 VARCHAR2(20),  -- 가족 주민등록번호 1
                             parents_number2 VARCHAR2(20)  -- 가족 주민등록번호 2
 
@@ -455,7 +455,7 @@ CREATE TABLE military_service (
                                   service_period1 DATE,  -- 복무 기간
                                   service_period2 DATE,  -- 복무 기간
                                   final_rank VARCHAR2(100),  -- 최종 계급
-                                  department VARCHAR2(100), --병과
+                                  department1 VARCHAR2(100), --병과
                                   exemption_reason VARCHAR2(4000)  -- 면제 사유
 
 );
@@ -689,35 +689,35 @@ commit;
 --basic datas
 
 -- 기본 급여 종류 입력하기
-INSERT INTO wage_type VALUES (wage_type_seq.nextval, '기본급', NULL, NULL, NULL, 'T');
-INSERT INTO wage_type VALUES (wage_type_seq.nextval, '식비', NULL, '일괄지급','200000', 'T');
-INSERT INTO wage_type VALUES (wage_type_seq.nextval, '보육수당', NULL, NULL, NULL, 'T');
-INSERT INTO wage_type VALUES (wage_type_seq.nextval, '직책수당', NULL, NULL, NULL, 'T');
-INSERT INTO wage_type VALUES (wage_type_seq.nextval, '차량유지비', NULL, NULL, NULL, 'T');
-INSERT INTO wage_type VALUES (wage_type_seq.nextval, '근속수당', NULL, NULL, NULL, 'T');
-INSERT INTO wage_type VALUES (wage_type_seq.nextval, '당직수당', NULL, '근태연결', '연장근무', 'T');
-INSERT INTO wage_type VALUES (wage_type_seq.nextval, '상여금', NULL, NULL, NULL, 'T');
-INSERT INTO wage_type VALUES (wage_type_seq.nextval, '휴일수당', NULL, '근태연결', '휴일근무', 'T');
+INSERT INTO wage_type VALUES (wage_type_seq.nextval, '基本給', NULL, NULL, NULL, 'T');
+INSERT INTO wage_type VALUES (wage_type_seq.nextval, '食費', NULL, '一括払い','200000', 'T');
+INSERT INTO wage_type VALUES (wage_type_seq.nextval, '保育手当', NULL, NULL, NULL, 'T');
+INSERT INTO wage_type VALUES (wage_type_seq.nextval, '職責手当', NULL, NULL, NULL, 'T');
+INSERT INTO wage_type VALUES (wage_type_seq.nextval, '車両維持費', NULL, NULL, NULL, 'T');
+INSERT INTO wage_type VALUES (wage_type_seq.nextval, '勤続手当', NULL, NULL, NULL, 'T');
+INSERT INTO wage_type VALUES (wage_type_seq.nextval, '当直手当', NULL, '勤怠連結', '延長勤務', 'T');
+INSERT INTO wage_type VALUES (wage_type_seq.nextval, '賞与金', NULL, NULL, NULL, 'T');
+INSERT INTO wage_type VALUES (wage_type_seq.nextval, '休日手当', NULL, '勤怠連結', '休日勤務', 'T');
 
 -- 기본 근태 그룹 종류 입력
-INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '휴가');
-INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '연장근무');
-INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '지각조퇴');
-INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '특근');
-INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '기타');
+INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '休暇');
+INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '延長勤務');
+INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '遅刻早退');
+INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '特別勤務');
+INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, 'その他');
 
 -- 기본 근태 항목(종류) 입력
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '연차', '일', '1', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '반차', '일', '1', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '지각', '시간', '3', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '조퇴', '시간', '3', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '외근', '시간', '5', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '휴일근무', '시간', '2', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '연장근무', '시간', '2', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '포상휴가', '일', '1', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '야간근무', '시간', '2', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '청원휴가', '일', '1', NULL, 'T');
-INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '외근', '시간', '5', '1', 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '年次', '日', '1', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '半次', '日', '1', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '遅刻', '時間', '3', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '早退', '時間', '3', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '外勤', '時間', '5', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '休日勤務', '時間', '2', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '延長勤務', '時間', '2', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '褒賞休暇', '日', '1', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '夜間勤務', '時間', '2', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '請願休暇', '日', '1', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '外勤', '時間', '5', '1', 'T');
 
 -- department 테이블에 값 삽입
 INSERT ALL

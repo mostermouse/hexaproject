@@ -6,7 +6,13 @@
 	namespace="org.spring.domain.employee.mapper.EmpDetailsMapper">
 	<!-- 사원 아이디 불러오기 -->
 	<select id="searchEmployeeId" resultType="long">
-		SELECT employee_id FROM employee ORDER BY employee_id DESC FETCH FIRST 1 ROW ONLY
+		 SELECT employee_id 
+    FROM (
+        SELECT employee_id 
+        FROM employee 
+        ORDER BY employee_id DESC
+    ) 
+    WHERE ROWNUM = 1
 	</select>
 
 	<!-- 사원등록2페이지 -->

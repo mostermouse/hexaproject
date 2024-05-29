@@ -288,8 +288,6 @@
 	    ]]>
 	</select>
 
-	<!-- 급여대장 관련정보 불러오기 -->
-
 	<!-- 부서 -->
 	<select id="getDepartment"
 		resultType="org.spring.domain.employee.model.DepartmentEntity">
@@ -301,5 +299,24 @@
 		resultType="org.spring.domain.wage.model.WageTypeEntity">
 		select * from wage_type
 	</select>
-
+	
+	<!-- 직원목록 가져오기  -->
+	<select id="getEmployee"
+		resultType="org.spring.domain.wage.controller.model.WageRecordDetailsRequest">
+    SELECT DISTINCT
+        e.employee_id as employee_id,
+        e.employment_type as employment_type,
+        e.korean_name as korean_name,
+        e.hire_date as hire_date,
+        e.department_id as department_id,
+        d.department_name as department_name,
+        p.position_id as position_id,
+        p.position_name as position_name,
+        e.status as status
+    FROM wage w
+    JOIN employee e ON e.employee_id = w.employee_id
+    JOIN wage_type wt ON wt.wage_type_id = w.wage_type_id
+    JOIN department d ON d.department_id = e.department_id
+    JOIN position p ON p.position_id = e.position_id
+	</select>
 </mapper>

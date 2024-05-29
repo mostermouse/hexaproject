@@ -21,6 +21,7 @@ public class WageRecordDetailsRequest {
     private String departmentName;
     private Long positionId;
 	private String positionName;
+    private String status;
 	private Long wageId;
 	private String wagePeriod;
 	private Long wageTypeId;

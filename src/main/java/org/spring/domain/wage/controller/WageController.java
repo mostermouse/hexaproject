@@ -82,17 +82,33 @@ public class WageController {
 	public String paymentPayList(
 			@RequestParam(name = "settlementPeriodStartDate", required = false, defaultValue = "2022-01-01") String settlementPeriodStartDate,
 			@RequestParam(name = "settlementPeriodEndDate", required = false, defaultValue = "2022-12-31") String settlementPeriodEndDate,
-			@RequestParam(name = "employeeId", required = false, defaultValue = "1") Long employeeId, Model model) {
-
-		// TODO 검색변수 받아서 검색하도록 해야 함
+			@RequestParam(name = "employeeId", required = false, defaultValue = "1") Long employeeId, 
+			@RequestParam(name = "employeeName", required = false, defaultValue = "") String employeeName, Model model) {
 
 		log.info("paymentPayList..........................");
 
 		model.addAttribute("listWageRecordEMP",
 				wageService.listWageRecordEMP(settlementPeriodStartDate, settlementPeriodEndDate, employeeId));
-
+		model.addAttribute("employeeList", wageService.getEmployeeList());
+		model.addAttribute("employeeName", employeeName);
+		
 		return "salaryManagement/paymentPayList";
 	}
+	
+//	// 사원별 급여 내용 - 검색
+//	@GetMapping("/paymentPayList")
+//	public String paymentPayListSearch(
+//			@RequestParam(name = "settlementPeriodStartDate", required = false, defaultValue = "2022-01-01") String settlementPeriodStartDate,
+//			@RequestParam(name = "settlementPeriodEndDate", required = false, defaultValue = "2022-12-31") String settlementPeriodEndDate,
+//			@RequestParam(name = "employeeId", required = false, defaultValue = "1") Long employeeId, Model model) {
+//		
+//		log.info("paymentPayList..........................");
+//		
+//		model.addAttribute("listWageRecordEMP",
+//				wageService.listWageRecordEMP(settlementPeriodStartDate, settlementPeriodEndDate, employeeId));
+//		
+//		return "salaryManagement/paymentPayList";
+//	}
 
 	// 항목별 급여 조회
 	@GetMapping("/paymentPayItemPart")

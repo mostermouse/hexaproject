@@ -10,8 +10,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.apache.log4j.Logger;
-import org.aspectj.ajdt.internal.compiler.ast.AddAtAspectJAnnotationsVisitor;
 import org.spring.domain.employee.model.DepartmentEntity;
 import org.spring.domain.wage.controller.model.WageRecordDetailsRequest;
 import org.spring.domain.wage.controller.model.WageRecordRequest;
@@ -127,19 +125,7 @@ public class WageImpl implements WageService {
 		finalReturnList.add(String.valueOf(yearWageEntities.get(1).getWagePaymentDate()));
 		return finalReturnList;
 	}
-	
-	//급여항목 반환
-	@Override
-	public List<WageTypeEntity> getWageIdTypeList(){
-		return mapper.getWageIdType();
-	}
-	
-	//부서 반환
-	@Override
-	public List<DepartmentEntity> getDepartmentList () {
-		return mapper.getDepartment();
-	}
-	
+
 	// 급여대장 세부목록 분류 및 반환
 	@Override
 	public List<List<String>> listWageRecordYMP(Long yearMonth, Long wagePeriod) {
@@ -529,6 +515,24 @@ public class WageImpl implements WageService {
 
 		// 반환
 		return finalReturnList;
+	}
+	
+	//급여항목 반환
+	@Override
+	public List<WageTypeEntity> getWageIdTypeList(){
+		return mapper.getWageIdType();
+	}
+	
+	//부서목록 반환
+	@Override
+	public List<DepartmentEntity> getDepartmentList () {
+		return mapper.getDepartment();
+	}
+	
+	//직원목록 반환
+	@Override
+	public List<WageRecordDetailsRequest> getEmployeeList(){
+		return mapper.getEmployee();
 	}
 
 	public List<WageRecordDetailsRequest> getUniqueWageTypes(List<WageRecordDetailsRequest> wageRecords) {

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.spring.domain.employee.model.DepartmentEntity;
+import org.spring.domain.employee.model.EmployeeEntity;
 import org.spring.domain.wage.controller.model.WageRecordDetailsRequest;
 import org.spring.domain.wage.model.WageEntity;
 import org.spring.domain.wage.model.WageTypeEntity;
@@ -71,5 +72,7 @@ public interface WageMapper {
 	public List<DepartmentEntity> getDepartment();
 	
 	public List<WageTypeEntity> getWageIdType();
+	
+	public List<WageRecordDetailsRequest> getEmployee();
 	
 }

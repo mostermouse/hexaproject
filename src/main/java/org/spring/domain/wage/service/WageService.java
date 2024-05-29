@@ -3,6 +3,7 @@ package org.spring.domain.wage.service;
 import java.util.List;
 
 import org.spring.domain.employee.model.DepartmentEntity;
+import org.spring.domain.wage.controller.model.WageRecordDetailsRequest;
 import org.spring.domain.wage.controller.model.WageRecordRequest;
 import org.spring.domain.wage.model.WageEntity;
 import org.spring.domain.wage.model.WageTypeEntity;
@@ -35,4 +36,6 @@ public interface WageService {
 	public List<DepartmentEntity> getDepartmentList ();
 	
 	public List<WageTypeEntity> getWageIdTypeList();
+	
+	public List<WageRecordDetailsRequest> getEmployeeList();
 }

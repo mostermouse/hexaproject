@@ -130,17 +130,5 @@
 		#{guaranteeExpirationDate}, #{guarantorPhoneNumber}
 		)
 	</insert>
-	<!-- Insert Retirement -->
-	<insert id="insertRetirement"
-		parameterType="org.spring.domain.employeedetails.model.RetirementEntity">
-		INSERT INTO retirement (
-		retirement_id, employee_id, retirement_type, retirement_date,
-		retirement_reason, contact_after_retirement, retirement_pay
-		) VALUES (
-		retirement_seq.NEXTVAL, #{employeeId}, #{retirementType}, #{retirementDate},
-		#{retirementReason}, #{contactAfterRetirement}, #{retirementPay}
-		)
-	</insert>
-
 
 </mapper>

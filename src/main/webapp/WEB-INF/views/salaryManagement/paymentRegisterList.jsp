@@ -46,7 +46,7 @@ tr a {
 			<img
 				src="<%=request.getContextPath()%>/resources/images/contentimages/paymentRegisterList.png"
 				width="50" height="50">
-			<h1>급여대장</h1>
+			<h1>給与台帳</h1>
 		</div>
 		<hr>
 		<%-- 년도 선택 창 --%>
@@ -67,12 +67,12 @@ tr a {
 		<table class="empRegisterr">
 			<thead>
 				<tr>
-					<th class="empRegister-head1" style="width: 100px;">귀속연월</th>
-					<th class="empRegister-head1" style="width: 80px; color: blue;">급여차수</th>
-					<th class="empRegister-head1">정산기간</th>
-					<th class="empRegister-head1">지급일</th>
-					<th class="empRegister-head1">인원</th>
-					<th class="empRegister-head1" style="color: blue;">총지급액</th>
+					<th class="empRegister-head1" style="width: 100px;">帰属年月</th>
+					<th class="empRegister-head1" style="width: 80px; color: blue;">給与次数</th>
+					<th class="empRegister-head1">精算期間</th>
+					<th class="empRegister-head1">支払日</th>
+					<th class="empRegister-head1">人員</th>
+					<th class="empRegister-head1" style="color: blue;">総支払額</th>
 				</tr>
 			</thead>
 			<tbody>

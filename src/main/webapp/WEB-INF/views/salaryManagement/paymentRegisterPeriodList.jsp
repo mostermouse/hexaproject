@@ -26,7 +26,7 @@ th {
 			<img
 				src="<%=request.getContextPath()%>/resources/images/contentimages/paymentRegisterList.png"
 				width="50" height="50">
-			<h1>급여대장</h1>
+			<h1>給与台帳</h1>
 		</div>
 		<hr>
 		<form method="get">
@@ -49,12 +49,12 @@ th {
 			</div>
 			<div class="rectanglee dark-grayy"
 				style="margin-bottom: 20px; width: 95%;">
-				<span>*귀속연월</span> <input type="text" value="${param.yearMonth}"
-					name="yearMonth" readonly="readonly"> <span>*급여차수</span> <input
+				<span>*帰属年月</span> <input type="text" value="${param.yearMonth}"
+					name="yearMonth" readonly="readonly"> <span>*給与次数</span> <input
 					type="text" value="${param.wagePeriod}" name="wagePeriod"
-					readonly="readonly"> <span>*정산기간</span> <input type="text"
+					readonly="readonly"> <span>*精算期間</span> <input type="text"
 					value="${listWageRecordInfo[0]} ~ ${listWageRecordInfo[1]}"
-					readonly="readonly"> <span>*지급일</span> <input type="text"
+					readonly="readonly"> <span>*支払日</span> <input type="text"
 					value="${listWageRecordInfo[2]}" readonly="readonly">
 			</div>
 		</form>

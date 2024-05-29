@@ -731,6 +731,7 @@ INTO department (department_id, department_name)VALUES (2, '開発部')         
 SELECT * FROM dual;
 select * from department;
 
+
 -- position 테이블에 값 삽입
 INSERT ALL
 INTO position (position_id, position_name)VALUES (1, '社長')     -- 사장

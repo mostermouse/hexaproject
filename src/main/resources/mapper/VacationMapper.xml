@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.domain.vacation.mapper.VacationMapper">
 
-   <select id="getFilteredVacationDetails" resultType="org.spring.domain.vacation.model.VacationDetailsEntity">
+<select id="getFilteredVacationDetails" resultType="org.spring.domain.vacation.model.VacationDetailsEntity">
         <![CDATA[
         SELECT * FROM (
             SELECT 

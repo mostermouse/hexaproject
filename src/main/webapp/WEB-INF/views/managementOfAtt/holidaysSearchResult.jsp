@@ -195,6 +195,6 @@ $('#vacationModal').on('show.bs.modal', function (event) {
     });
 });
 </script>
-</div>
+
 
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>

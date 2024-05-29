@@ -14,23 +14,32 @@
 		<form id="dateForm">
 			<div class="search-container grey-box"
 				style="margin-top: 30px; display: inline-block; width: 100%;">
-				<span>*기간선택</span> <input type="month" class="reginput-select"> <span>~</span> <input
-					type="month" class="reginput-select"> <span>*항목선택</span> 
-				<select class="reginput-select">
+				<span>*기간선택</span> 
+				<input type="month" name="settlementPeriodStartDate" value="${param.settlementPeriodStartDate}"> 
+				<span>~</span> 
+				<input type="month" name="settlementPeriodEndDate" value="${param.settlementPeriodEndDate}">
+				<span>*항목선택</span> 
+				<select name="wageTypeId">
 					<option value="">급여항목 선택</option>
-					<option value="기본급">기본급</option>
-					<option value="식비">식비</option>
-					<option value="보육수당">보육수당</option>
-					<option value="직책수당">직책수당</option>
-					<option value="차량유지비">차량유지비</option>
-					<option value="근속수당">근속수당</option>
-					<option value="당직수당">당직수당</option>
-					<option value="근태수당">근태수당</option>
-					<option value="휴일수당">휴일수당</option>
+					<c:forEach items="${wageType}" var="wt">
+						<option value="${wt.wageTypeId}" ${wt.wageTypeId == param.wageTypeId ? 'selected' : ''}>${wt.wageTypeName}</option>
+					</c:forEach>
 				</select>
 				<button class="all-button" type="submit">급여내역조회</button>
 			</div>
 		</form>
+
+		<table class="empRegisterr">
+			<tbody class="empRegister-body">
+				<c:forEach var="row" items="${listWageRecordWT}">
+					<tr>
+						<c:forEach var="cell" items="${row}">
+							<td style="text-align: center;">${cell}</td>
+						</c:forEach>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 
 	</div>
 </div>

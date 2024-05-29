@@ -50,7 +50,7 @@
 			<form id="vacationForm" method="post">
 				<input type="hidden" id="vacationTypeId" name="vacationTypeId">
 				<table class="empRegisterblack"
-					style="margin-bottom: 20px; width: 300px;">
+					style="margin-bottom: 20px; margin-top: 61px; width: 300px;">
 					<thead>
 						<tr>
 							<th style="width: 70px;"><label for="vacationTypeName">有休項目</label></th>
@@ -184,7 +184,7 @@
 			<form id="attendanceForm" method="post">
 				<input type="hidden" id="attendanceTypeId" name="attendanceTypeId">
 				<table class="empRegisterblack"
-					style="margin-bottom: 20px; width: 300px;">
+					style="margin-bottom: 20px; margin-top: 61px; width: 300px;">
 					<thead>
 						<tr>
 							<th style="width: 70px;"><label for="attendanceTypeName">出勤項目</label></th>

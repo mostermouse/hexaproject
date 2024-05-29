@@ -107,10 +107,10 @@
 			</form>
 
 			<div>
-				<table class="empRegister1e" style="margin-top: 60px; width: 100%;">
+				<table class="empRegister1" style="margin-top: 60px; width: 100%;">
 					<thead class="empRegister-head1">
 						<tr>
-							<th style="width: 100px;">入力日</th>
+							<th style="width: 80px;">入力日</th>
 							<th style="width: 50px;">区分</th>
 							<th style="width: 50px;">氏名</th>
 							<th style="width: 85px;">部署</th>
@@ -123,7 +123,7 @@
 						</tr>
 					</thead>
 
-					<tbody class="empRegister-body">
+					<tbody class="empRegister-body" style="text-align: center;">
 						<c:forEach var="attendance" items="${attendanceList}">
 							<tr>
 								<td style="height: 30px;">${attendance.inputDate}</td>

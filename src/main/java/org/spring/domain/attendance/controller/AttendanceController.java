@@ -1,11 +1,16 @@
 package org.spring.domain.attendance.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.spring.domain.attendance.model.AttendanceEntity;
 import org.spring.domain.attendance.model.AttendanceTypeEntity;
+import org.spring.domain.attendance.model.FeildOrProjectIdEntity;
+import org.spring.domain.attendance.service.AttendanceService;
 import org.spring.domain.attendance.service.AttendanceService2;
+import org.spring.domain.attendance.service.DjDetailsService;
 import org.spring.domain.employee.model.DepartmentEntity;
+import org.spring.domain.vacation.service.VacationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +21,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -25,9 +29,17 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @AllArgsConstructor
 public class AttendanceController {
-
-	@Autowired
-	private AttendanceService2 attendanceService2;
+	 @Autowired
+		private DjDetailsService DjDetailsService;
+	    
+	    @Autowired
+	    private VacationService vacationService;
+	    
+	    @Autowired
+	    private AttendanceService attendanceService;
+	
+    @Autowired
+    private AttendanceService2 attendanceService2;
 
 	// 모든 출석 정보를 조회합니다.
 	@GetMapping("/diligenceMnt")
@@ -61,27 +73,30 @@ public class AttendanceController {
     }
     
 
-	/*
-	 * @GetMapping("/diligenceSearchMonth") public String diligenceSearchMonth(Model
-	 * model) { // 여기서는 테이블에 표시할 출석 정보를 가져오는 로직을 작성해야 합니다. // 예를 들어,
-	 * AttendanceEntity의 리스트를 가져오는 메서드를 호출하여 출석 정보를 가져올 수 있습니다.
-	 * List<DepartmentEntity> attendanceList =
-	 * attendanceService2.getAllAttendance();
-	 * 
-	 * // 모델에 출석 정보 리스트를 추가합니다. model.addAttribute("attendanceList",
-	 * attendanceList);
-	 * 
-	 * // 해당 뷰로 이동합니다. return "/managementOfAtt/diligenceSearchMonth"; }
-	 */
+    @GetMapping("/dayWorkerSearchMonth") //일용직 상세 조회
+	public String DjDetailsList(@RequestParam(value = "inputDate", required = false) LocalDate inputDate,
+			@RequestParam(value = "koreanName", required = false) String koreanName,
+			@RequestParam(value = "departmentName", required = false) String departmentName,
+			@RequestParam(value = "name", required = false) String name, Model model) {
 
-	@GetMapping("/dayWorkerSearchMonth") // 일용직 상세 조회
-	public String dayWorkerSearchMonth(Model model) {
-		// TODO 내용물 비어 있음
-		return "/managementOfAtt/dayWorkerSearchMonth";
+		log.info(inputDate);
+		log.info(koreanName);
+		log.info(departmentName);
+		log.info(name);
+		log.info("getDjdetailsList: employeeId........................");
+		List<FeildOrProjectIdEntity> filteredList = DjDetailsService.getDjDetailsList(inputDate, koreanName, departmentName,
+				name);
+
+		log.info(attendanceService.getFeildOrProject());
+		
+		model.addAttribute("departmentList", vacationService.getAllDepartments());
+		model.addAttribute("feildOrProjectList", attendanceService.getFeildOrProject());
+		model.addAttribute("Dj", filteredList);
+		// TODO log.info test
+		log.info("테스트테스트................................................." + model.toString());
+		return "managementOfAtt/dayWorkerSearchMonth";
 	}
 
-	
-	
 	/*
 	 * // 특정 ID의 출석 정보를 업데이트합니다.
 	 * 
@@ -97,4 +112,8 @@ public class AttendanceController {
 	 * attendanceService2.deleteAttendance(id); return
 	 * ResponseEntity.status(204).build(); // }
 	 */
+	
+	
+	
+	
 }

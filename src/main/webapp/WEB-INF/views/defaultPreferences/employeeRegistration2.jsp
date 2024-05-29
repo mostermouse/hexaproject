@@ -336,8 +336,8 @@
 						<span style="color: blue;"> 資格·免許</span>
 					</h5>
 					<div style="margin-left: auto;">
-						<button onclick="add1(event)">追加</button>
-						<button onclick="delete1(event)">削除</button>
+						<button class="cancel-btnn" onclick="add1(event)">追加</button>
+						<button class="cancel-btnn" onclick="delete1(event)">削除</button>
 					</div>
 				</div>
 				<table class="empRegister1" id="table1">
@@ -369,8 +369,8 @@
 						<span style="color: blue;"> 語学能力</span>
 					</h5>
 					<div style="margin-left: auto;">
-						<button onclick="add2(event)">追加</button>
-						<button onclick="delete2(event)">削除</button>
+						<button class="cancel-btnn" onclick="add2(event)">追加</button>
+						<button class="cancel-btnn" onclick="delete2(event)">削除</button>
 					</div>
 				</div>
 				<table class="empRegister1" id="table2">
@@ -424,8 +424,8 @@
         <div class="header-container">
             <h3 id="section7">教育訓練</h3>
             <div style="margin-left: auto;">
-                <button onclick="add3(event)">追加</button>
-                <button onclick="delete3(event)">削除</button>
+                <button class="cancel-btnn" onclick="add3(event)">追加</button>
+                <button class="cancel-btnn" onclick="delete3(event)">削除</button>
             </div>
         </div>
         <table class="empRegister1" id="table3">
@@ -467,8 +467,8 @@
         <div class="header-container">
             <h3 id="section8">賞罰</h3>
             <div style="margin-left: auto;">
-                <button onclick="add4(event)">追加</button>
-                <button onclick="delete4(event)">削除</button>
+                <button class="cancel-btnn" onclick="add4(event)">追加</button>
+                <button class="cancel-btnn" onclick="delete4(event)">削除</button>
             </div>
         </div>
         <table class="empRegister1" id="table4">
@@ -514,8 +514,8 @@
         <div class="header-container">
             <h3 id="section9">発令</h3>
             <div style="margin-left: auto;">
-                <button onclick="add4(event)">追加</button>
-                <button onclick="delete4(event)">削除</button>
+                <button class="cancel-btnn" onclick="add4(event)">追加</button>
+                <button class="cancel-btnn" onclick="delete4(event)">削除</button>
             </div>
         </div>
         <table class="empRegister1" id="table5">

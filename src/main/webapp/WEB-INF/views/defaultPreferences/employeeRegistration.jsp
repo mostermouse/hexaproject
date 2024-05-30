@@ -119,12 +119,12 @@
 					<th class="empRegister-body"><select id="employmentType"
 						name="employmentType" class="reginput-select">
 							<option value="">選択してください。</option>
-							<option value="정규직">正社員</option>
-							<option value="계약직">契約職</option>
-							<option value="임시직">臨時職</option>
-							<option value="파견직">派遣職</option>
-							<option value="위촉직">委嘱職</option>
-							<option value="일용직">日雇い</option>
+							<option value="正社員">正社員</option>
+							<option value="契約職">契約職</option>
+							<option value="臨時職">臨時職</option>
+							<option value="派遣職">派遣職</option>
+							<option value="委嘱職">委嘱職</option>
+							<option value="日雇い">日雇い</option>
 					</select></th>
 				</tr>
 				<tr>
@@ -167,8 +167,8 @@
 					<td class="empRegister-body"><select id="foreignOrDomestic"
 						name="foreignOrDomestic" class="reginput-select">
 							<option value="">選択してください。</option>
-							<option value="내국인">内国人</option>
-							<option value="외국인">外国人</option>
+							<option value="内国人">内国人</option>
+							<option value="外国人">外国人</option>
 					</select></td>
 					<td class="empRegister-head1">個人別固有番号</td>
 					<td class="empRegister-body"><input type="text"
@@ -204,8 +204,8 @@
 					<td class="empRegister-head2">状態</td>
 					<td class="empRegister-body"><select id="status" name="status"
 						class="reginput-select">
-							<option value="재직">在職</option>
-							<option value="퇴사">退社</option>
+							<option value="在職">在職</option>
+							<option value="退社">退社</option>
 					</select></td>
 				</tr>
 			</table>
@@ -235,29 +235,29 @@
 							<td class="empRegister-body"><select id="relationship"
 								name="relationship" class="reginput-select">
 									<option value="">選択してください。</option>
-									<option value="부">配偶者</option>
-									<option value="모">息子</option>
-									<option value="배우자">娘</option>
-									<option value="자녀">父</option>
-									<option value="부">母</option>
-									<option value="모">兄弟</option>
-									<option value="배우자">姉妹</option>
-									<option value="자녀">妻の父</option>
-									<option value="부">妻の母</option>
-									<option value="모">夫の父</option>
-									<option value="배우자">夫の母</option>
-									<option value="자녀">祖父</option>
-									<option value="자녀">祖母</option>
-									<option value="자녀">孫</option>
-									<option value="자녀">孫娘</option>
+									<option value="配偶者">配偶者</option>
+									<option value="息子">息子</option>
+									<option value="娘">娘</option>
+									<option value="父">父</option>
+									<option value="母">母</option>
+									<option value="兄弟">兄弟</option>
+									<option value="姉妹">姉妹</option>
+									<option value="妻の父">妻の父</option>
+									<option value="妻の母">妻の母</option>
+									<option value="夫の父">夫の父</option>
+									<option value="夫の母">夫の母</option>
+									<option value="祖父">祖父</option>
+									<option value="祖母">祖母</option>
+									<option value="孫">孫</option>
+									<option value="孫娘">孫娘</option>
 							</select></td>
 							<td class="empRegister-body"><input type="text"
 								id="parentsName" name="parentsName" class="reginputhide1"></td>
 							<td class="empRegister-body"><select id="foreignOrDomestic1"
 								name="foreignOrDomestic1" class="reginput-select">
 									<option value="">選択してください。</option>
-									<option value="국내">国内</option>
-									<option value="외국인">外国人</option>
+									<option value="国内">国内</option>
+									<option value="外国人">外国人</option>
 							</select></td>
 							<td class="empRegister-body"><input type="text"
 								id="parentsNumber1" name="parentsNumber1" class="reginput">
@@ -285,12 +285,12 @@
 							<td class="empRegister-body"><select id="graduate"
 								name="graduate" class="reginput-select">
 									<option value="">選択</option>
-									<option value="초등학교">小学校</option>
-									<option value="중학교">中学校</option>
-									<option value="고등학교">高校</option>
-									<option value="대학교">大学</option>
-									<option value="석사">修士</option>
-									<option value="박사">博士</option>
+									<option value="小学校">小学校</option>
+									<option value="中学校">中学校</option>
+									<option value="高校">高校</option>
+									<option value="大学">大学</option>
+									<option value="修士">修士</option>
+									<option value="博士">博士</option>
 							</select></td>
 							<td class="empRegister-body"><input type="date"
 								id="admissionDate" name="admissionDate" class="reginput-select"></td>
@@ -373,18 +373,18 @@
 							<td class="empRegister-body"><select id="serviceType"
 								name="serviceType" class="reginput-select">
 									<option value="">選択</option>
-									<option value="군필">転役</option>
-									<option value="미필">未了</option>
+									<option value="転役">転役</option>
+									<option value="未了">未了</option>
 							</select></td>
 							<td class="empRegister-body"><select id="branch"
 								name="branch" class="reginput-select">
 									<option value="">選択</option>
-									<option value="육군">陸軍</option>
-									<option value="해군">海軍</option>
-									<option value="공군">空軍</option>
-									<option value="상비군">常備軍</option>
-									<option value="면제">免除</option>
-									<option value="기타">その他</option>
+									<option value="陸軍">陸軍</option>
+									<option value="海軍">海軍</option>
+									<option value="空軍">空軍</option>
+									<option value="常備軍">常備軍</option>
+									<option value="免除">免除</option>
+									<option value="その他">その他</option>
 							</select></td>
 							<td class="empRegister-body"><input type="date"
 								id="servicePeriod1" name="servicePeriod1" class="reginput-select"></td>

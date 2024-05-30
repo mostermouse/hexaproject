@@ -4,6 +4,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sound.midi.MidiDevice.Info;
+
 import org.spring.domain.employee.controller.model.WageRecordRequest;
 import org.spring.domain.employee.mapper.EmpMapper;
 import org.spring.domain.employee.model.CareerEntity;
@@ -104,6 +106,7 @@ import lombok.extern.log4j.Log4j;
         public List<EmployeeEntity> getAllEmployee() {
             log.info("getEmployee..........");
 
+            log.info("getEmployees: " + mapper.getAllEmployee().size());
 
             return mapper.getAllEmployee();
         }

@@ -33,6 +33,8 @@ public class AttendanceImpl implements AttendanceService {
    
     @Override
     public List<EmployeeEntity> getDayWorkerList(DepartmentEntity departmentEntity) {
+    	log.info("getDayWorkerList....: " + mapper.getDayWorkerList(departmentEntity).size());
+    	
         return mapper.getDayWorkerList(departmentEntity);
     }
 

@@ -6,15 +6,26 @@
 	<!-- 전직원 정보 -->
 	<select id="getAllEmployee"
 		resultType="org.spring.domain.employee.model.DepartmentEntity">
-		SELECT e.employee_id, e.employment_type, e.hire_date,
-		e.korean_name, e.department_id, e.position_id,
-		e.resident_number1, e.resident_number2, e.tel_phone, e.email, e.resignation_date,
+		SELECT 
+		e.employee_id, 
+		e.employment_type, 
+		e.hire_date,
+		e.korean_name, 
+		e.department_id, 
+		e.position_id,
+		e.resident_number1, 
+		e.resident_number2, 
+		e.tel_phone, 
+		e.email, 
+		e.resignation_date,
 		e.status,
-		d.department_name, p.position_name
+		d.department_name, 
+		p.position_name
 		FROM employee e
 		JOIN department d ON e.department_id = d.department_id
 		JOIN position p ON e.position_id = p.position_id
 	</select>
+	
 	<select id="getDepartment"
 		resultType="org.spring.domain.employee.model.DepartmentEntity">
 		select * from department
@@ -27,49 +38,49 @@
 	재직자 인원수
 	 --><select id="countByStatusEmployed" resultType="long">
 		SELECT COUNT(*)
-		FROM employee WHERE status = '재직'
+		FROM employee WHERE status = '在職'
 	</select>
 
 	<!-- 정규직 인원수 -->
 	<select id="countByEmploymentTypeRegular" resultType="long">
 		SELECT
-		COUNT(*) FROM employee WHERE employment_type = '정규직'
+		COUNT(*) FROM employee WHERE employment_type = '正社員'
 	</select>
 
 	<!-- 계약직 인원수 -->
 	<select id="countByEmploymentTypeContract" resultType="long">
 		SELECT
-		COUNT(*) FROM employee WHERE employment_type = '계약직'
+		COUNT(*) FROM employee WHERE employment_type = '契約職'
 	</select>
 
 	<!-- 임시직 인원수 -->
 	<select id="countByEmploymentTypeTemporary" resultType="long">
 		SELECT
-		COUNT(*) FROM employee WHERE employment_type = '임시직'
+		COUNT(*) FROM employee WHERE employment_type = '臨時職'
 	</select>
 
 	<!-- 파견직 인원수 -->
 	<select id="countByEmploymentTypeDispatched" resultType="long">
 		SELECT
-		COUNT(*) FROM employee WHERE employment_type = '파견직'
+		COUNT(*) FROM employee WHERE employment_type = '派遣職'
 	</select>
 
 	<!-- 위촉직 인원수 -->
 	<select id="countByEmploymentTypeAppointed" resultType="long">
 		SELECT
-		COUNT(*) FROM employee WHERE employment_type = '위촉직'
+		COUNT(*) FROM employee WHERE employment_type = '委嘱職'
 	</select>
 
 	<!-- 일용직 인원수 -->
 	<select id="countByEmploymentTypeDaily" resultType="long">
 		SELECT
-		COUNT(*) FROM employee WHERE employment_type = '일용직'
+		COUNT(*) FROM employee WHERE employment_type = '日雇い'
 	</select>
 
 <!-- 	퇴사자 인원수 -->
 	<select id="countByStatusResigned" resultType="long">
 		SELECT COUNT(*)
-		FROM employee WHERE status = '퇴사'
+		FROM employee WHERE status = '退社'
 	</select>
 
 	<!-- 전체 인원수 -->
@@ -114,7 +125,6 @@
 		#{foreignOrDomestic}, #{residentNumber1},
 		#{residentNumber2},
 		#{address}, #{telPhone}, #{mobile}, #{email},
-		#{sns}, #{otherDetails},
 		#{status}
 		)
 	</insert>

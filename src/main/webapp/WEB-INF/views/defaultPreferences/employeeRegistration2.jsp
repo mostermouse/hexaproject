@@ -59,25 +59,25 @@
 				<td class="empRegister-body">
 					<select class="reginput-select">
 						<option value="">選択</option>
-						<option value="상">上</option>
-						<option value="중">中</option>
-						<option value="하">下</option>
+						<option value="上">上</option>
+						<option value="中">中</option>
+						<option value="下">下</option>
 					</select>
 				</td>
 				<td class="empRegister-body">
 					<select class="reginput-select">
 						<option value="">選択</option>
-						<option value="상">上</option>
-						<option value="중">中</option>
-						<option value="하">下</option>
+						<option value="上">上</option>
+						<option value="中">中</option>
+						<option value="下">下</option>
 					</select>
 				</td>
 				<td class="empRegister-body">
 					<select class="reginput-select">
 						<option value="">選択</option>
-						<option value="상">上</option>
-						<option value="중">中</option>
-						<option value="하">下</option>
+						<option value="上">上</option>
+						<option value="中">中</option>
+						<option value="下">下</option>
 					</select>
 				</td>
             `;
@@ -399,21 +399,21 @@
 								class="reginput-select"></td>
 							<td class="empRegister-body"><select class="reginput-select" id="readingAbility" name="readingAbility">
 									<option value="">選択</option>
-									<option value="상">上</option>
-									<option value="중">中</option>
-									<option value="하">下</option>
+									<option value="上">上</option>
+									<option value="中">中</option>
+									<option value="下">下</option>
 							</select></td>
 							<td class="empRegister-body"><select class="reginput-select" id="writingAbility" name="writingAbility">
 									<option value="">選択</option>
-									<option value="상">上</option>
-									<option value="중">中</option>
-									<option value="하">下</option>
+									<option value="上">上</option>
+									<option value="中">中</option>
+									<option value="下">下</option>
 							</select></td>
 							<td class="empRegister-body"><select class="reginput-select" id="speakingAbility" name="speakingAbility">
 									<option value="">選択</option>
-									<option value="상">上</option>
-									<option value="중">中</option>
-									<option value="하">下</option>
+									<option value="上">上</option>
+									<option value="中">中</option>
+									<option value="下">下</option>
 							</select></td>
 						</tr>
 					</tbody>
@@ -446,11 +446,11 @@
                     <td class="empRegister-body"></td>
                     <td class="empRegister-body"><select class="reginput-select" id="trainingType" name="trainingType">
                             <option value="">選択</option>
-                            <option value="사내직무">社内職務</option>
-                            <option value="사외직무">社外職務</option>
-                            <option value="계층교육">階層教育</option>
-                            <option value="어학교육">語学教育</option>
-                            <option value="기타">その他</option>
+                            <option value="社内職務">社内職務</option>
+                            <option value="社外職務">社外職務</option>
+                            <option value="階層教育">階層教育</option>
+                            <option value="語学教育">語学教育</option>
+                            <option value="その他">その他</option>
                     </select></td>
                     <td class="empRegister-body"><input type="text" class="reginputhide" id="trainingName" name="trainingName"></td>
                     <td class="empRegister-body"><input type="date" class="reginput-select" id="trainingStartDate" name="trainingStartDate"></td>

@@ -131,13 +131,6 @@ public class WageController {
 		return "salaryManagement/paymentMntDayWorker";
 	}
 
-	@GetMapping("/payItem") // 급여 항목 설정
-	public String payItem(Model model) {
-		log.info("payItem.................");
-		// TODO 값 넣어야함
-		return "defaultPreferences/payItemSet";
-	}
-
 	@GetMapping("/payment/paymentMnt") // 급여입력
 	public String paymentMnt(Model model) {
 		// TODO wageList 대성이형 이거 옮겨놔

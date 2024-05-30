@@ -655,7 +655,7 @@ function attendanceModal(employeeId) {
 											<option value="${feildOrProject.feildOrProjectId}">${feildOrProject.name}</option>
 										</c:forEach>
 									</select>
-									<button id="modal_btn" type="button" class="all-button">リスト管理</button>
+<!-- 									<button id="modal_btn" type="button" class="all-button">リスト管理</button> -->
 								</div>
 							</td>
 						</tr>

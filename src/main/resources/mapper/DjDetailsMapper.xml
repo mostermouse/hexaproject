@@ -2,42 +2,38 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.spring.domain.attendance.mapper.DjDetailsMapper">
+<mapper
+	namespace="org.spring.domain.attendance.mapper.DjDetailsMapper">
 
-    <select id="getDjDetailsList" resultType="org.spring.domain.attendance.model.FeildOrProjectIdEntity">
-        SELECT
-        att.input_date,
-        emp.employee_id,
-        emp.korean_name,
-        dep.department_name,
-        fop.name AS feild_or_project_name,
-        att.amount
-        FROM
-        attendance att
-        JOIN
-        employee emp ON att.employee_id = emp.employee_id
-        JOIN
-        department dep ON emp.department_id = dep.department_id
-        LEFT JOIN
-        feild_or_project fop ON att.feild_or_project_id = fop.feild_or_project_id
-        <where>
+	<select id="getDjDetailsList"
+		resultType="org.spring.domain.attendance.model.FeildOrProjectIdEntity">
+		SELECT
+		att.input_date,
+		emp.employee_id,
+		emp.korean_name,
+		dep.department_name,
+		fop.name AS feild_or_project_name,
+		att.amount
+		FROM
+		attendance att
+		JOIN employee emp ON att.employee_id = emp.employee_id
+		JOIN department dep ON emp.department_id = dep.department_id
+		LEFT JOIN feild_or_project fop ON att.feild_or_project_id =
+		fop.feild_or_project_id
+		WHERE
+		emp.employment_type = '日雇い'
+		<if test="inputDate != null and inputDate != ''">
+			AND TO_CHAR(att.input_date, 'YYYY') = #{inputDate}
+		</if>
+		<if test="koreanName != null and koreanName != ''">
+			AND emp.korean_name = #{koreanName}
+		</if>
+		<if test="departmentName != null and departmentName != ''">
+			AND dep.department_name = #{departmentName}
+		</if>
+		<if test="name != null and name != ''">
+			AND fop.name = #{name}
+		</if>
+	</select>
 
-            <if test="inputDate != null and inputDate != ''">
-                AND TO_CHAR(att.input_date, 'YYYY') = #{inputDate}
-            </if>
-
-            <if test="koreanName != null and koreanName != ''">
-                AND emp.korean_name = #{koreanName}
-            </if>
-            
-            <if test="departmentName != null and departmentName != ''">
-                AND dep.department_name = #{departmentName}
-            </if>
-            
-            <if test="name != null and name != ''">
-                AND fop.name = #{name}
-            </if>
-
-        </where>
-    </select>
 </mapper>

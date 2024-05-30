@@ -57,7 +57,7 @@ tr a {
 					<option value="${y}"
 						<c:if test="${y eq param.year}">selected</c:if>>${y}</option>
 				</c:forEach>
-			</select> <input type="submit" value="Submit" class="cancel-btnn">
+			</select> <input type="submit" value="照会" class="cancel-btnn">
 		</form>
 	</div>
 

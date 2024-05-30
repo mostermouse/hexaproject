@@ -4,186 +4,204 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.domain.attendance.mapper.AttMapper">
 
- 	<resultMap id="DepartmentResultMap" type="org.spring.domain.employee.model.DepartmentEntity">
-        <result property="departmentId" column="department_id"/>
-        <result property="departmentName" column="department_name"/>
-    </resultMap>
+	<resultMap id="DepartmentResultMap"
+		type="org.spring.domain.employee.model.DepartmentEntity">
+		<result property="departmentId" column="department_id" />
+		<result property="departmentName" column="department_name" />
+	</resultMap>
 
-  <resultMap id="EmployeeResultMap" type="org.spring.domain.employee.model.EmployeeEntity">
-    <id property="employeeId" column="employee_id"/>
-    <result property="employmentType" column="employment_type"/>
-    <result property="koreanName" column="korean_name"/>
-    <result property="englishName" column="english_name"/>
-    <result property="hireDate" column="hire_date"/>
-    <result property="resignationDate" column="resignation_date"/>
-    <result property="foreignOrDomestic" column="foreign_or_domestic"/>
-    <result property="residentNumber1" column="resident_number1"/>
-    <result property="residentNumber2" column="resident_number2"/>
-    <result property="address" column="address"/>
-    <result property="telPhone" column="tel_phone"/>
-    <result property="mobile" column="mobile"/>
-    <result property="email" column="email"/>
-    <result property="sns" column="sns"/>
-    <result property="otherDetails" column="other_details"/>
-    <result property="status" column="status"/>
-    <!-- Join하여 가져온 departmentName과 positionName을 직접 매핑 -->
-    <result property="department.departmentName" column="department_name"/>
-    <result property="position.positionName" column="position_name"/>
-</resultMap>
+	<resultMap id="EmployeeResultMap"
+		type="org.spring.domain.employee.model.EmployeeEntity">
+		<id property="employeeId" column="employee_id" />
+		<result property="employmentType" column="employment_type" />
+		<result property="koreanName" column="korean_name" />
+		<result property="englishName" column="english_name" />
+		<result property="hireDate" column="hire_date" />
+		<result property="resignationDate" column="resignation_date" />
+		<result property="foreignOrDomestic"
+			column="foreign_or_domestic" />
+		<result property="residentNumber1" column="resident_number1" />
+		<result property="residentNumber2" column="resident_number2" />
+		<result property="address" column="address" />
+		<result property="telPhone" column="tel_phone" />
+		<result property="mobile" column="mobile" />
+		<result property="email" column="email" />
+		<result property="sns" column="sns" />
+		<result property="otherDetails" column="other_details" />
+		<result property="status" column="status" />
+		<!-- Join하여 가져온 departmentName과 positionName을 직접 매핑 -->
+		<result property="department.departmentName"
+			column="department_name" />
+		<result property="position.positionName" column="position_name" />
+	</resultMap>
 
-<resultMap id="attendanceEntityResultMap" type="org.spring.domain.attendance.model.AttendanceEntity">
-        <id property="attendanceId" column="attendance_id"/>
-        <result property="employeeId" column="employee_id"/>
-        <result property="koreanName" column="korean_name"/>
-        <result property="departmentId" column="department_id"/>
-        <result property="positionId" column="position_id"/>
-        <result property="inputDate" column="input_date"/>
-        <result property="attendanceTypeId" column="attendance_type_id"/>
-        <result property="feildOrProjectId" column="feild_or_project_id"/>
-        <result property="startDate" column="start_date"/>
-        <result property="endDate" column="end_date"/>
-        <result property="attendanceDays" column="attendance_days"/>
-        <result property="amount" column="amount"/>
-        <result property="summary" column="summary"/>
-        <result property="feildOrProjectIdEntity.name" column="name"/>
-    </resultMap>
+	<resultMap id="attendanceEntityResultMap"
+		type="org.spring.domain.attendance.model.AttendanceEntity">
+		<id property="attendanceId" column="attendance_id" />
+		<result property="employeeId" column="employee_id" />
+		<result property="koreanName" column="korean_name" />
+		<result property="departmentId" column="department_id" />
+		<result property="positionId" column="position_id" />
+		<result property="inputDate" column="input_date" />
+		<result property="attendanceTypeId" column="attendance_type_id" />
+		<result property="feildOrProjectId"
+			column="feild_or_project_id" />
+		<result property="startDate" column="start_date" />
+		<result property="endDate" column="end_date" />
+		<result property="attendanceDays" column="attendance_days" />
+		<result property="amount" column="amount" />
+		<result property="summary" column="summary" />
+		<result property="feildOrProjectIdEntity.name" column="name" />
+	</resultMap>
 
-    <select id="getEmployeeAttendance" resultType="org.spring.domain.attendance.controller.AttendanceEntityRequest">
-       SELECT
-		    ad.input_date AS input_date,
-		    ep.employment_type AS employment_type,
-		    ep.korean_name AS korean_name,
-		    dp.department_name AS department_name,
-		    po.position_name AS position_name,
-		    adt.attendance_type_name AS attendance_type_name,
-		    ad.start_date AS start_date,
-		    ad.end_date AS end_date,
-		    ad.attendance_days AS attendance_days,
-		    ad.amount AS amount,
-		    ad.summary AS summary
+	<select id="getEmployeeAttendance"
+		resultType="org.spring.domain.attendance.controller.AttendanceEntityRequest">
+		SELECT
+		ad.input_date AS input_date,
+		ep.employment_type AS employment_type,
+		ep.korean_name AS korean_name,
+		dp.department_name AS department_name,
+		po.position_name AS position_name,
+		adt.attendance_type_name AS attendance_type_name,
+		ad.start_date AS start_date,
+		ad.end_date AS end_date,
+		ad.attendance_days AS attendance_days,
+		ad.amount AS amount,
+		ad.summary AS summary
 		FROM
-		    attendance ad
+		attendance ad
 		JOIN
-		    employee ep ON ad.employee_id = ep.employee_id
+		employee ep ON ad.employee_id = ep.employee_id
 		JOIN
-		    attendance_type adt ON ad.attendance_type_id = adt.attendance_type_id
-	
+		attendance_type adt ON ad.attendance_type_id = adt.attendance_type_id
 		JOIN
-		    department dp ON ep.department_id = dp.department_id
+		department dp ON ep.department_id = dp.department_id
 		JOIN
-		    position po ON ep.position_id = po.position_id
-		    
-		 <where>
-            <if test="inputDate != null">
-                AND ad.input_date = #{inputDate}
-            </if>
-            <if test="startDate != null and endDate != null">
-                AND ad.start_date BETWEEN #{startDate} AND #{endDate}
-            </if>
-            <if test="departmentName != null and departmentName != ''">
-                AND dp.department_name = #{departmentName}
-            </if>
-            <if test="koreanName != null and koreanName != ''">
-                AND ep.korean_name = #{koreanName}
-            </if>
-            <if test="attendanceTypeName != null and attendanceTypeName != ''">
-                AND adt.attendance_type_name = #{attendanceTypeName}
-            </if>
-            <if test="vacationTypeName != null and vacationTypeName != ''">
-                AND vt.vacation_type_name = #{vacationTypeName}
-            </if>
-            <if test="attendanceGroupName != null and attendanceGroupName != ''">
-                AND ag.attendance_group_name = #{attendanceGroupName}
-            </if>
-            <if test="summary != null and summary != ''">
-                AND ad.summary = #{summary}
-            </if>
-        </where>
-		    
-    </select>
-	
-	<select id="getDayWorkerList" parameterType="org.spring.domain.employee.model.DepartmentEntity" resultType="org.spring.domain.employee.model.DepartmentEntity">
-    SELECT e.employee_id, e.employment_type, e.korean_name, e.english_name, e.hire_date, e.resignation_date, 
-           e.department_id, e.position_id, p.position_name, e.foreign_or_domestic, e.resident_number1, e.resident_number2, 
-           e.address, e.tel_phone, e.mobile, e.email, e.sns, e.other_details, e.status, d.department_name
-    FROM employee e
-    JOIN department d ON e.department_id = d.department_id
-    JOIN position p ON e.position_id = p.position_id
-    <where>
-        e.employment_type = '일용직'
-        <if test="status != null and status != ''">
-            AND e.status = #{status}
-        </if>
-        <if test="employeeId != null">
-            AND e.employee_id = #{employeeId}
-        </if>
-        <if test="koreanName != null and koreanName != ''">
-            AND e.korean_name LIKE '%' || #{koreanName} || '%'
-        </if>
-        <if test="departmentName != null and departmentName != ''">
-            AND d.department_name LIKE '%' || #{departmentName} || '%'
-        </if>
-    </where>
-    ORDER BY e.employee_id DESC
-</select>
+		position po ON ep.position_id = po.position_id
+
+		WHERE ep.employment_type != '日雇い'
+
+		<if test="inputDate != null">
+			AND ad.input_date = #{inputDate}
+		</if>
+		<if test="startDate != null and endDate != null">
+			AND ad.start_date BETWEEN #{startDate} AND #{endDate}
+		</if>
+		<if test="departmentName != null and departmentName != ''">
+			AND dp.department_name = #{departmentName}
+		</if>
+		<if test="koreanName != null and koreanName != ''">
+			AND ep.korean_name = #{koreanName}
+		</if>
+		<if test="attendanceTypeName != null and attendanceTypeName != ''">
+			AND adt.attendance_type_name = #{attendanceTypeName}
+		</if>
+		<if test="vacationTypeName != null and vacationTypeName != ''">
+			AND vt.vacation_type_name = #{vacationTypeName}
+		</if>
+		<if
+			test="attendanceGroupName != null and attendanceGroupName != ''">
+			AND ag.attendance_group_name = #{attendanceGroupName}
+		</if>
+		<if test="summary != null and summary != ''">
+			AND ad.summary = #{summary}
+		</if>
+	</select>
+
+
+	<select id="getDayWorkerList"
+		parameterType="org.spring.domain.employee.model.DepartmentEntity"
+		resultType="org.spring.domain.employee.model.DepartmentEntity">
+		SELECT e.employee_id, e.employment_type, e.korean_name,
+		e.english_name, e.hire_date, e.resignation_date,
+		e.department_id,
+		e.position_id, p.position_name, e.foreign_or_domestic,
+		e.resident_number1, e.resident_number2,
+		e.address, e.tel_phone,
+		e.mobile, e.email, e.sns, e.other_details, e.status,
+		d.department_name
+		FROM employee e
+		JOIN department d ON e.department_id = d.department_id
+		JOIN position p ON e.position_id = p.position_id
+		<where>
+			e.employment_type = '日雇い'
+			<if test="status != null and status != ''">
+				AND e.status = #{status}
+			</if>
+			<if test="employeeId != null">
+				AND e.employee_id = #{employeeId}
+			</if>
+			<if test="koreanName != null and koreanName != ''">
+				AND e.korean_name LIKE '%' || #{koreanName} || '%'
+			</if>
+			<if test="departmentName != null and departmentName != ''">
+				AND d.department_name LIKE '%' || #{departmentName} ||
+				'%'
+			</if>
+		</where>
+		ORDER BY e.employee_id DESC
+	</select>
 
 
 
 
 
-	
-	<select id="selectFeildOrProject" resultType="org.spring.domain.attendance.model.FeildOrProjectIdEntity">
-        SELECT * FROM feild_or_project
-    </select>
-   <!--  
-    <select id="getEmployeeStatus" parameterType="string" resultType="org.spring.domain.employee.model.EmployeeEntity">
-    	SELECT * FROM employee 
-    	WHERE employment_type = '일용직'
-    	<if test="value != null and value != ''">
-            AND status = #{status}
-        </if>
-        ORDER BY employee_id DESC
-    </select>
-	 -->
-	<select id="getDayWorkertatus" resultType="org.spring.domain.employee.model.EmployeeEntity">
+
+	<select id="selectFeildOrProject"
+		resultType="org.spring.domain.attendance.model.FeildOrProjectIdEntity">
+		SELECT * FROM feild_or_project
+	</select>
+	<!-- <select id="getEmployeeStatus" parameterType="string" resultType="org.spring.domain.employee.model.EmployeeEntity"> 
+		SELECT * FROM employee WHERE employment_type = '일용직' <if test="value != null 
+		and value != ''"> AND status = #{status} </if> ORDER BY employee_id DESC 
+		</select> -->
+	<select id="getDayWorkertatus"
+		resultType="org.spring.domain.employee.model.EmployeeEntity">
 		SELECT status FROM employee WHERE employment_type = '일용직'
 	</select>
-	
-	<!-- 일용직 근태 관리 리스트 --> 
-	<select id="getDayWorkerAttendance" resultType="org.spring.domain.attendance.model.AttendanceEntity">
-    SELECT
-            a.employee_id,
-            e.korean_name,
-            e.department_id,
-            e.position_id,
-            a.attendance_id,
-            a.input_date,
-            a.feild_or_project_id,
-            f.name,
-            a.amount
-        FROM
-            attendance a
-        JOIN
-            employee e ON e.employee_id = a.employee_id
-        JOIN
-            feild_or_project f ON a.feild_or_project_id = f.feild_or_project_id
-        JOIN
-            department d ON e.department_id = d.department_id
-        WHERE
-            a.employee_id = #{employeeId}
-        ORDER BY
-            a.input_date DESC 
-</select>
+
+	<!-- 일용직 근태 관리 리스트 -->
+	<select id="getDayWorkerAttendance"
+		resultType="org.spring.domain.attendance.model.AttendanceEntity">
+		SELECT
+		a.employee_id,
+		e.korean_name,
+		e.department_id,
+		e.position_id,
+		a.attendance_id,
+		a.input_date,
+		a.feild_or_project_id,
+		f.name,
+		a.amount
+		FROM
+		attendance a
+		JOIN
+		employee e ON e.employee_id =
+		a.employee_id
+		JOIN
+		feild_or_project f ON a.feild_or_project_id =
+		f.feild_or_project_id
+		JOIN
+		department d ON e.department_id =
+		d.department_id
+		WHERE
+		a.employee_id = #{employeeId}
+		ORDER BY
+		a.input_date
+		DESC
+	</select>
 
 
-	
-	
-	<!-- <update id="updateFeildOrProject">
-		
-	</update>
-	-->
-	 <insert id="saveDayWorker" parameterType="org.spring.domain.attendance.model.AttendanceEntity">
-        INSERT INTO attendance (attendance_id, employee_id, input_date, feild_or_project_id, amount)
-        VALUES (attendance_seq.nextval, #{employeeId}, #{inputDate}, #{feildOrProjectId}, #{amount})
-    </insert>
+
+
+	<!-- <update id="updateFeildOrProject"> </update> -->
+	<insert id="saveDayWorker"
+		parameterType="org.spring.domain.attendance.model.AttendanceEntity">
+		INSERT INTO attendance (attendance_id, employee_id,
+		input_date,
+		feild_or_project_id, amount)
+		VALUES (attendance_seq.nextval,
+		#{employeeId}, #{inputDate},
+		#{feildOrProjectId}, #{amount})
+	</insert>
 </mapper>

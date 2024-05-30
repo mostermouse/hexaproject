@@ -28,14 +28,14 @@
 						</thead>
 						<tbody>
 							<tr>
-								
+
 								<td>氏名</td>
 								<td style="height: 20px;"><input type="text"
 									placeholder="氏名を入力してください" class="reginputhide1"
 									name="koreanName"></td>
 							</tr>
 							<tr>
-								
+
 								<td>部署</td>
 								<td><select class="reginput-select" name="departmentName">
 										<option value="0">選択してください</option>
@@ -45,7 +45,7 @@
 								</select></td>
 							</tr>
 							<tr>
-								
+
 								<td>現場 / プロジェクト</td>
 								<td><select class="reginput-select" name="name">
 										<option value="0">選択してください</option>
@@ -64,39 +64,41 @@
 				</form>
 			</div>
 
-			<table class="empRegister1" style="margin-top: 60px;">
-				<thead class="empRegister-head1">
-					<tr>
-						<th>勤務日</th>
-						<th>社員ID</th>
-						<th>氏名</th>
-						<th>部署名</th>
-						<th>現場  / プロジェクト</th>
-						<th>給与</th>
-					</tr>
-				</thead>
-
-				<tbody class="empRegister-body">
-					<c:forEach items="${Dj}" var="dj">
+			<div>
+				<table class="empRegister1" style="margin-top: 60px;">
+					<thead class="empRegister-head1">
 						<tr>
-							<td>${dj.inputDate}</td>
-							<td>${dj.employeeId}</td>
-							<td>${dj.koreanName}</td>
-							<td>${dj.departmentName}</td>
-							<td>${dj.name}</td>
-							<td>${dj.amount}</td>
+							<th>勤務日</th>
+							<th>社員ID</th>
+							<th>氏名</th>
+							<th>部署名</th>
+							<th>現場 / プロジェクト</th>
+							<th>給与</th>
 						</tr>
+					</thead>
+
+					<tbody class="empRegister-body">
+						<c:forEach items="${Dj}" var="dj">
+							<tr>
+								<td>${dj.inputDate}</td>
+								<td>${dj.employeeId}</td>
+								<td>${dj.koreanName}</td>
+								<td>${dj.departmentName}</td>
+								<td>${dj.name}</td>
+								<td>${dj.amount}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+			<div class="pagination">
+				<div class="page-buttons">
+					<c:forEach begin="1" end="${totalPages}" var="i">
+						<button onclick="goToPage(${i})"
+							<c:if test="${currentPage == i}">class="active"</c:if>>${i}</button>
 					</c:forEach>
-				</tbody>
-			</table>
-		<div class="pagination">
-    <div class="page-buttons">
-        <c:forEach begin="1" end="${totalPages}" var="i">
-            <button onclick="goToPage(${i})"
-                <c:if test="${currentPage == i}">class="active"</c:if>>${i}</button>
-        </c:forEach>
-    </div>
-   <%--  <div class="navigation-buttons">
+				</div>
+				<%--  <div class="navigation-buttons">
         <button onclick="goToPage(${currentPage - 1})"
             <c:if test="${currentPage == 1}">disabled</c:if>>
             <span style="color: red;">&lt;</span> Prev
@@ -106,7 +108,7 @@
             Next <span style="color: red;">&gt;</span>
         </button>
     </div> --%>
-</div>
+			</div>
 		</div>
 	</div>
 </div>

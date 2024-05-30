@@ -78,6 +78,7 @@ public class EmpController {
         return "redirect:/personnel/register"; // 페이지 경로 수정
     }
 
+    //사원목록
     @GetMapping("/employeeMnt")
     public String employeeMnt(Model model) {
         model.addAttribute("list", employeeService.getAllEmployee());

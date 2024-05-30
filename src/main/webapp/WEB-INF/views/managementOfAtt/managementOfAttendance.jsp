@@ -81,7 +81,7 @@
 				<table class="empRegister1">
 					<thead class="empRegister-head1">
 						<tr>
-							<th style="width: 20px;"><input type="checkbox" id="selectAll"></th>
+							<th style="width: 100px;"><input type="checkbox" id="selectAll">全体選択</th>
 							<th>区分</th>
 							<th>社員番号</th>
 							<th>氏名</th>

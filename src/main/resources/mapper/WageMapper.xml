@@ -31,6 +31,7 @@
 
 
 
+
 	<!-- 이름, 급여, 급여유형을 불러 오는 쿼리 -->
 	<select id="getWageTypeList"
 		resultType="org.spring.domain.wage.model.WageEntity">
@@ -49,33 +50,29 @@
 	</select>
 
 
+
 	<!-- employee_id로 한국이름을 찾는쿼리 -->
 	<select id="getNamebyId" parameterType="long"
 		resultType="string">
 		select KOREAN_NAME
 		from employee
 		where employee_id =
-		#{employee_id};
+		#{employee_id}
 	</select>
 
 
 	<!-- departmentId로 departmentName을 가져오는 쿼리 -->
-
 	<select id="getDepartmentNameById" parameterType="long"
 		resultType="string">
-		SELECT
-		department_name
-		FROM
-		department
-		WHERE
-		department_id =
+		SELECT department_name
+		FROM department
+		WHERE department_id =
 		#{departmentId}
 	</select>
 
 
 
 	<!-- wageTypeId로 wageTypeName을 가져오는 쿼리 -->
-
 	<select id="getWageTypeNameById" parameterType="long"
 		resultType="string">
 		SELECT
@@ -88,16 +85,117 @@
 	</select>
 
 
-	<!-- 급여를 업데이트하는 쿼리문 -->
-	<update id="updateWage">
-		UPDATE wage
-		SET wage_value =
-		CASE wage_type_id
-		<foreach item='value' collection="wageTypeNames" index="key">
-			<if test="key != null">WHEN #{key} THEN #{value}</if>
+
+	<!-- 급여를 업데이트하는 쿼리문 <update id="updateWage"> UPDATE wage SET wage_value 
+		= CASE wage_type_id <foreach item='value' collection="wageTypeNames" index="key"> 
+		<if test="key != null">WHEN #{key} THEN #{value}</if> </foreach> WHERE employee_id 
+		= #{employeeId} </update> -->
+
+	<!-- 특정 조건에 따라 급여 값을 업데이트하는 쿼리 -->
+	<update id="updateWageValues">
+		<foreach collection="wageValues" item="wage"
+			index="wageTypeId" separator=";">
+			UPDATE wage
+			SET wage_value = #{wage}
+			WHERE employee_id = #{employeeId}
+			AND wage_period = #{wagePeriod}
+			AND settlement_period_start_date = #{settlementStartDate}
+			AND settlement_period_end_date = #{settlementEndDate}
+			AND wage_payment_date = #{wagePaymentDate}
+			AND wage_type_id = #{wageTypeId}
 		</foreach>
-		WHERE employee_id = #{employeeId}
 	</update>
+
+
+	<!-- employeeId로 급여 정보 가져오기 -->
+	<select id="getWagesByEmployeeId" parameterType="long"
+		resultType="map">
+		SELECT
+		e.employee_id AS employeeId,
+		wt.wage_type_id AS
+		wageTypeId,
+		wt.wage_type_name AS wageTypeName,
+		w.wage_value AS wageValue
+		FROM
+		wage w
+		JOIN
+		employee e ON w.employee_id = e.employee_id
+		JOIN
+		wage_type wt ON w.wage_type_id = wt.wage_type_id
+		WHERE
+		e.employee_id =
+		#{employeeId}
+	</select>
+
+	<!-- 급여항목이름 불러오는것 -->
+	<select id="getAllWageTypes"
+		resultType="org.spring.domain.wage.model.WageTypeEntity">
+		SELECT wage_type_id AS wageTypeId, wage_type_name AS
+		wageTypeName
+		FROM wage_type
+	</select>
+
+
+	<!-- 급여 조회 쿼리 -->
+	<select id="searchWagesByCriteria" parameterType="map"
+		resultType="org.spring.domain.wage.model.WageEntity">
+		SELECT
+		e.employee_id AS employeeId,
+		e.employment_type AS
+		employmentType,
+		e.korean_name AS koreanName,
+		e.department_id AS
+		departmentId,
+		e.position_id AS positionId,
+		e.status AS status,
+		COALESCE(SUM(w.wage_value), 0) AS wageValue,
+		w.wage_period AS
+		wagePeriod,
+		w.settlement_period_start_date AS
+		settlementPeriodStartDate,
+		w.settlement_period_end_date AS
+		settlementPeriodEndDate,
+		w.wage_payment_date AS wagePaymentDate
+		FROM
+		employee e
+		LEFT JOIN wage w ON e.employee_id = w.employee_id
+		WHERE
+		(#{wagePeriod} IS NULL OR w.wage_period = #{wagePeriod})
+		AND
+		(#{settlementStartDate} IS NULL OR w.settlement_period_start_date
+		&gt;= TO_DATE(#{settlementStartDate}, 'YYYY-MM-DD'))
+		AND
+		(#{settlementEndDate} IS NULL OR w.settlement_period_end_date &lt;=
+		TO_DATE(#{settlementEndDate}, 'YYYY-MM-DD'))
+		AND (#{wagePaymentDate} IS
+		NULL OR w.wage_payment_date =
+		TO_DATE(#{wagePaymentDate},
+		'YYYY-MM-DD'))
+		GROUP BY
+		e.employee_id,
+		e.employment_type,
+		e.korean_name,
+		e.department_id,
+		e.position_id,
+		e.status,
+		w.wage_period,
+		w.settlement_period_start_date,
+		w.settlement_period_end_date,
+		w.wage_payment_date
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	<!-- 급여대장 출력 -->
@@ -299,24 +397,27 @@
 		resultType="org.spring.domain.wage.model.WageTypeEntity">
 		select * from wage_type
 	</select>
-	
-	<!-- 직원목록 가져오기  -->
+
+	<!-- 직원목록 가져오기 -->
 	<select id="getEmployee"
 		resultType="org.spring.domain.wage.controller.model.WageRecordDetailsRequest">
-    SELECT DISTINCT
-        e.employee_id as employee_id,
-        e.employment_type as employment_type,
-        e.korean_name as korean_name,
-        e.hire_date as hire_date,
-        e.department_id as department_id,
-        d.department_name as department_name,
-        p.position_id as position_id,
-        p.position_name as position_name,
-        e.status as status
-    FROM wage w
-    JOIN employee e ON e.employee_id = w.employee_id
-    JOIN wage_type wt ON wt.wage_type_id = w.wage_type_id
-    JOIN department d ON d.department_id = e.department_id
-    JOIN position p ON p.position_id = e.position_id
+		SELECT DISTINCT
+		e.employee_id as employee_id,
+		e.employment_type as employment_type,
+		e.korean_name as korean_name,
+		e.hire_date as hire_date,
+		e.department_id as department_id,
+		d.department_name as department_name,
+		p.position_id as position_id,
+		p.position_name as position_name,
+		e.status as status
+		FROM wage w
+		JOIN
+		employee e ON e.employee_id = w.employee_id
+		JOIN wage_type wt ON
+		wt.wage_type_id = w.wage_type_id
+		JOIN department d ON d.department_id =
+		e.department_id
+		JOIN position p ON p.position_id = e.position_id
 	</select>
 </mapper>

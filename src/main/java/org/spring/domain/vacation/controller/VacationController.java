@@ -19,45 +19,49 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class VacationController {
 
-	@Autowired
-    private VacationService service;
+	 @Autowired
+	    private VacationService service;
 
-    @GetMapping("/holidaysSearchResult")
-    public String vacList(
-            @RequestParam(value = "status", required = false) String status,
-            @RequestParam(value = "employmentType", required = false) String employmentType,
-            @RequestParam(value = "departmentId", required = false) Long departmentId,
-            @RequestParam(value = "positionId", required = false) Long positionId,
-            @RequestParam(value = "vacationTypeName", required = false) String vacationTypeName,
-            @RequestParam(value = "searchKeyword", required = false) String searchKeyword,
-            @RequestParam(value = "viewCount", required = false, defaultValue = "30") int viewCount,
-            @RequestParam(value = "page", required = false, defaultValue = "1") int page,
-            Model model) {
+	    @GetMapping("/holidaysSearchResult")
+	    public String vacList(
+	            @RequestParam(value = "status", required = false) String status,
+	            @RequestParam(value = "employmentType", required = false) String employmentType,
+	            @RequestParam(value = "departmentId", required = false) Long departmentId,
+	            @RequestParam(value = "positionId", required = false) Long positionId,
+	            @RequestParam(value = "vacationTypeName", required = false) String vacationTypeName,
+	            @RequestParam(value = "searchKeyword", required = false) String searchKeyword,
+	            @RequestParam(value = "viewCount", required = false, defaultValue = "30") int viewCount,
+	            @RequestParam(value = "page", required = false, defaultValue = "1") int page,
+	            Model model) {
 
-        int offset = (page - 1) * viewCount;
-        List<VacationDetailsEntity> vacList = service.getFilteredVacationDetails(
-                status, employmentType, departmentId, positionId, vacationTypeName, searchKeyword, offset, viewCount);
-        int totalRecords = service.countFilteredVacationDetails(status, employmentType, departmentId, positionId, vacationTypeName, searchKeyword);
-        int totalPages = (int) Math.ceil((double) totalRecords / viewCount);
+	        int offset = (page - 1) * viewCount;
+	        List<VacationDetailsEntity> vacList = service.getFilteredVacationDetails(
+	                status, employmentType, departmentId, positionId, vacationTypeName, searchKeyword, offset, viewCount);
+	        int totalRecords = service.countFilteredVacationDetails(status, employmentType, departmentId, positionId, vacationTypeName, searchKeyword);
+	        int totalPages = (int) Math.ceil((double) totalRecords / viewCount);
 
-        model.addAttribute("vacList", vacList);
-        model.addAttribute("vacTypeList", service.getAllVacationTypes());
-        model.addAttribute("statusList", service.getAllStatuses());
-        model.addAttribute("employmentTypeList", service.getAllEmploymentTypes());
-        model.addAttribute("departmentList", service.getAllDepartments());
-        model.addAttribute("positionList", service.getAllPositions());
-        model.addAttribute("currentPage", page);
-        model.addAttribute("totalPages", totalPages);
-        model.addAttribute("viewCount", viewCount);
-        model.addAttribute("searchKeyword", searchKeyword);
-        return "managementOfAtt/holidaysSearchResult";
-    }
-	
-    @GetMapping("/vacationUsage")
-    @ResponseBody
-    public List<VacationDetailsEntity> getVacationUsage(@RequestParam("employeeId") Long employeeId) {
-        return service.getVacationUsageByEmployeeId(employeeId);
-    }
+	        model.addAttribute("vacList", vacList);
+	        model.addAttribute("vacTypeList", service.getAllVacationTypes());
+	        model.addAttribute("statusList", service.getAllStatuses());
+	        model.addAttribute("employmentTypeList", service.getAllEmploymentTypes());
+	        model.addAttribute("departmentList", service.getAllDepartments());
+	        model.addAttribute("positionList", service.getAllPositions());
+	        model.addAttribute("currentPage", page);
+	        model.addAttribute("totalPages", totalPages);
+	        model.addAttribute("viewCount", viewCount);
+	        model.addAttribute("searchKeyword", searchKeyword);
+	        return "managementOfAtt/holidaysSearchResult";
+	    }
 
+	    @GetMapping("/vacationUsage")
+	    @ResponseBody
+	    public List<VacationDetailsEntity> getVacationUsage(@RequestParam("employeeId") Long employeeId) {
+	        return service.getVacationUsageByEmployeeId(employeeId);
+	    }
 
-}
+	    @GetMapping("/dnLItem") //휴가/근태설정
+	    public String dnLItemSet(Model model){
+	        log.info(model.toString());
+	        return "defaultPreferences/dnLItemSet";
+	    }
+	}

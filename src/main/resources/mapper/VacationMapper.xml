@@ -4,7 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.domain.vacation.mapper.VacationMapper">
 
-<select id="getFilteredVacationDetails" resultType="org.spring.domain.vacation.model.VacationDetailsEntity">
+
+    <select id="getFilteredVacationDetails" resultType="org.spring.domain.vacation.model.VacationDetailsEntity">
         <![CDATA[
         SELECT * FROM (
             SELECT 
@@ -15,29 +16,29 @@
                 p.position_name AS positionName,
                 vt.vacation_type_name AS vacationTypeName,
                 vd.vacation_value AS totalVacationDays,
-                (SELECT NVL(SUM(at.attendance_days), 0)
-                 FROM attendance at
-                 JOIN attendance_type att ON at.attendance_type_id = att.attendance_type_id
-                 WHERE at.employee_id = e.employee_id
-                   AND att.vacation_type_id = vt.vacation_type_id
-                   AND att.attandance_group_id = 1) AS usedVacationDays,
+                COALESCE((SELECT SUM(at.attendance_days)
+                          FROM attendance at
+                          JOIN attendance_type att ON at.attendance_type_id = att.attendance_type_id
+                          WHERE at.employee_id = e.employee_id
+                            AND att.vacation_type_id = vt.vacation_type_id
+                            AND att.attandance_group_id = 1), 0) AS usedVacationDays,
                 (vd.vacation_value - 
-                (SELECT NVL(SUM(at.attendance_days), 0)
-                 FROM attendance at
-                 JOIN attendance_type att ON at.attendance_type_id = att.attendance_type_id
-                 WHERE at.employee_id = e.employee_id
-                   AND att.vacation_type_id = vt.vacation_type_id
-                   AND att.attandance_group_id = 1)) AS remainingVacationDays,
-                ROW_NUMBER() OVER (ORDER BY e.employee_id) AS rnum
+                COALESCE((SELECT SUM(at.attendance_days)
+                          FROM attendance at
+                          JOIN attendance_type att ON at.attendance_type_id = att.attendance_type_id
+                          WHERE at.employee_id = e.employee_id
+                            AND att.vacation_type_id = vt.vacation_type_id
+                            AND att.attandance_group_id = 1), 0)) AS remainingVacationDays,
+                ROW_NUMBER() OVER (ORDER BY e.employee_id ASC) AS rnum
             FROM 
                 vacation_days vd
             JOIN 
                 vacation_type vt ON vd.vacation_type_id = vt.vacation_type_id
             JOIN 
                 employee e ON vd.employee_id = e.employee_id
-            JOIN 
+            LEFT JOIN 
                 department d ON e.department_id = d.department_id
-            JOIN 
+            LEFT JOIN 
                 position p ON e.position_id = p.position_id
             WHERE 
                 (#{status} IS NULL OR e.status = #{status})
@@ -64,9 +65,9 @@
             vacation_type vt ON vd.vacation_type_id = vt.vacation_type_id
         JOIN 
             employee e ON vd.employee_id = e.employee_id
-        JOIN 
+        LEFT JOIN 
             department d ON e.department_id = d.department_id
-        JOIN 
+        LEFT JOIN 
             position p ON e.position_id = p.position_id
         WHERE 
             (#{status} IS NULL OR e.status = #{status})

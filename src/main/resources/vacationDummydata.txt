@@ -1,0 +1,303 @@
+INSERT INTO employee (account_id, company_id, person_id, employee_id, employment_type, korean_name, english_name, hire_date, resignation_date, department_id, position_id, foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile, email, sns, other_details, status) VALUES 
+(1619, company_seq.NEXTVAL, 19978, employee_seq.NEXTVAL, '日雇い', '田中 桜', 'Tanaka Sakura', TO_DATE('2016-01-17', 'YYYY-MM-DD'), NULL, 3, 2, '国内', '258289', '7160583', '住所1', '02-9524-7493', '010-1987-9707', 'user1@example.com', 'sns_account_1', 'その他の情報 1', '退職');
+
+INSERT INTO employee (account_id, company_id, person_id, employee_id, employment_type, korean_name, english_name, hire_date, resignation_date, department_id, position_id, foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile, email, sns, other_details, status) VALUES 
+(1104, company_seq.NEXTVAL, 16230, employee_seq.NEXTVAL, '正社員', '佐藤 健一', 'Sato Kenichi', TO_DATE('2020-06-11', 'YYYY-MM-DD'), NULL, 2, 1, '国内', '962734', '1877844', '住所2', '02-3151-7244', '010-8700-1690', 'user2@example.com', 'sns_account_2', 'その他の情報 2', '在職中');
+
+INSERT INTO employee (account_id, company_id, person_id, employee_id, employment_type, korean_name, english_name, hire_date, resignation_date, department_id, position_id, foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile, email, sns, other_details, status) VALUES 
+(1807, company_seq.NEXTVAL, 19877, employee_seq.NEXTVAL, '正社員', '鈴木 美咲', 'Suzuki Misaki', TO_DATE('2019-09-28', 'YYYY-MM-DD'), TO_DATE('2021-06-07', 'YYYY-MM-DD'), 2, 4, '国内', '652394', '2015959', '住所3', '02-8673-6195', '010-5608-6289', 'user3@example.com', 'sns_account_3', 'その他の情報 3', '退職');
+
+INSERT INTO employee (account_id, company_id, person_id, employee_id, employment_type, korean_name, english_name, hire_date, resignation_date, department_id, position_id, foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile, email, sns, other_details, status) VALUES 
+(1114, company_seq.NEXTVAL, 10072, employee_seq.NEXTVAL, '日雇い', '高橋 隆', 'Takahashi Takashi', TO_DATE('2016-10-05', 'YYYY-MM-DD'), TO_DATE('2021-10-08', 'YYYY-MM-DD'), 4, 2, '外国人', '820510', '6931296', '住所4', '02-4914-3148', '010-2844-6400', 'user4@example.com', 'sns_account_4', 'その他の情報 4', '在職中');
+
+INSERT INTO employee (account_id, company_id, person_id, employee_id, employment_type, korean_name, english_name, hire_date, resignation_date, department_id, position_id, foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile, email, sns, other_details, status) VALUES 
+(1175, company_seq.NEXTVAL, 14118, employee_seq.NEXTVAL, '契約職', '伊藤 彩花', 'Ito Ayaka', TO_DATE('2016-05-30', 'YYYY-MM-DD'), NULL, 4, 3, '外国人', '230075', '5553210', '住所5', '02-6728-6618', '010-4670-9589', 'user5@example.com', 'sns_account_5', 'その他の情報 5', '在職中');
+
+INSERT INTO employee (account_id, company_id, person_id, employee_id, employment_type, korean_name, english_name, hire_date, resignation_date, department_id, position_id, foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile, email, sns, other_details, status) VALUES 
+(1303, company_seq.NEXTVAL, 15863, employee_seq.NEXTVAL, '契約職', '山本 翔太', 'Yamamoto Shota', TO_DATE('2018-04-05', 'YYYY-MM-DD'), TO_DATE('2023-11-26', 'YYYY-MM-DD'), 1, 5, '国内', '333586', '6368067', '住所6', '02-8549-4629', '010-9484-1847', 'user6@example.com', 'sns_account_6', 'その他の情報 6', '退職');
+
+INSERT INTO employee (account_id, company_id, person_id, employee_id, employment_type, korean_name, english_name, hire_date, resignation_date, department_id, position_id, foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile, email, sns, other_details, status) VALUES 
+(1572, company_seq.NEXTVAL, 12734, employee_seq.NEXTVAL, '契約職', '中村 和也', 'Nakamura Kazuya', TO_DATE('2020-11-20', 'YYYY-MM-DD'), TO_DATE('2023-11-18', 'YYYY-MM-DD'), 2, 1, '外国人', '341317', '4724903', '住所7', '02-3639-7187', '010-5610-4809', 'user7@example.com', 'sns_account_7', 'その他の情報 7', '在職中');
+
+INSERT INTO employee (account_id, company_id, person_id, employee_id, employment_type, korean_name, english_name, hire_date, resignation_date, department_id, position_id, foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile, email, sns, other_details, status) VALUES 
+(1520, company_seq.NEXTVAL, 12933, employee_seq.NEXTVAL, '臨時職', '小林 明美', 'Kobayashi Akemi', TO_DATE('2017-05-13', 'YYYY-MM-DD'), TO_DATE('2021-08-19', 'YYYY-MM-DD'), 4, 3, '国内', '448948', '9153216', '住所8', '02-9786-5608', '010-4285-1801', 'user8@example.com', 'sns_account_8', 'その他の情報 8', '退職');
+
+INSERT INTO employee (account_id, company_id, person_id, employee_id, employment_type, korean_name, english_name, hire_date, resignation_date, department_id, position_id, foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile, email, sns, other_details, status) VALUES 
+(1223, company_seq.NEXTVAL, 15168, employee_seq.NEXTVAL, '正社員', '加藤 真司', 'Kato Shinji', TO_DATE('2016-03-05', 'YYYY-MM-DD'), NULL, 2, 2, '外国人', '310815', '7756983', '住所9', '02-4181-1231', '010-7867-7667', 'user9@example.com', 'sns_account_9', 'その他の情報 9', '在職中');
+
+INSERT INTO employee (account_id, company_id, person_id, employee_id, employment_type, korean_name, english_name, hire_date, resignation_date, department_id, position_id, foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile, email, sns, other_details, status) VALUES 
+(1074, company_seq.NEXTVAL, 14751, employee_seq.NEXTVAL, '正社員', '吉田 絵里', 'Yoshida Eri', TO_DATE('2016-02-18', 'YYYY-MM-DD'), NULL, 1, 4, '国内', '169880', '8224438', '住所10', '02-7636-3190', '010-9315-1245', 'user10@example.com', 'sns_account_10', 'その他の情報 10', '在職中');
+
+INSERT INTO employee (account_id, company_id, person_id, employee_id, employment_type, korean_name, english_name, hire_date, resignation_date, department_id, position_id, foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile, email, sns, other_details, status) VALUES 
+(1619, company_seq.NEXTVAL, 19978, employee_seq.NEXTVAL, '日雇い', '田中 桜', 'Tanaka Sakura', TO_DATE('2016-01-17', 'YYYY-MM-DD'), NULL, 3, 2, '国内', '258289', '7160583', '주소1', '02-9524-7493', '010-1987-9707', 'user1@example.com', 'sns_account_1', '기타 정보 1', '퇴사');
+
+INSERT INTO employee (account_id, company_id, person_id, employee_id, employment_type, korean_name, english_name, hire_date, resignation_date, department_id, position_id, foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile, email, sns, other_details, status) VALUES 
+(1104, company_seq.NEXTVAL, 16230, employee_seq.NEXTVAL, '正社員', '佐藤 健一', 'Sato Kenichi', TO_DATE('2020-06-11', 'YYYY-MM-DD'), NULL, 4, 1, '国内', '962734', '1877844', '주소2', '02-3151-7244', '010-8700-1690', 'user2@example.com', 'sns_account_2', '기타 정보 2', '재직중');
+
+INSERT INTO employee (account_id, company_id, person_id, employee_id, employment_type, korean_name, english_name, hire_date, resignation_date, department_id, position_id, foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile, email, sns, other_details, status) VALUES 
+(1807, company_seq.NEXTVAL, 19877, employee_seq.NEXTVAL, '正社員', '鈴木 美咲', 'Suzuki Misaki', TO_DATE('2019-09-28', 'YYYY-MM-DD'), TO_DATE('2021-06-07', 'YYYY-MM-DD'), 2, 4, '国内', '652394', '2015959', '주소3', '02-8673-6195', '010-5608-6289', 'user3@example.com', 'sns_account_3', '기타 정보 3', '퇴사');
+
+INSERT INTO employee (account_id, company_id, person_id, employee_id, employment_type, korean_name, english_name, hire_date, resignation_date, department_id, position_id, foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile, email, sns, other_details, status) VALUES 
+(1114, company_seq.NEXTVAL, 10072, employee_seq.NEXTVAL, '日雇い', '高橋 隆', 'Takahashi Takashi', TO_DATE('2016-10-05', 'YYYY-MM-DD'), TO_DATE('2021-10-08', 'YYYY-MM-DD'),2, 2, '外国人', '820510', '6931296', '주소4', '02-4914-3148', '010-2844-6400', 'user4@example.com', 'sns_account_4', '기타 정보 4', '재직중');
+
+INSERT INTO employee (account_id, company_id, person_id, employee_id, employment_type, korean_name, english_name, hire_date, resignation_date, department_id, position_id, foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile, email, sns, other_details, status) VALUES 
+(1175, company_seq.NEXTVAL, 14118, employee_seq.NEXTVAL, '契約職', '伊藤 彩花', 'Ito Ayaka', TO_DATE('2016-05-30', 'YYYY-MM-DD'), NULL, 4, 3, '外国人', '230075', '5553210', '주소5', '02-6728-6618', '010-4670-9589', 'user5@example.com', 'sns_account_5', '기타 정보 5', '재직중');
+
+INSERT INTO employee (account_id, company_id, person_id, employee_id, employment_type, korean_name, english_name, hire_date, resignation_date, department_id, position_id, foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile, email, sns, other_details, status) VALUES 
+(1303, company_seq.NEXTVAL, 15863, employee_seq.NEXTVAL, '契約職', '山本 翔太', 'Yamamoto Shota', TO_DATE('2018-04-05', 'YYYY-MM-DD'), TO_DATE('2023-11-26', 'YYYY-MM-DD'), 1, 5, '国内', '333586', '6368067', '주소6', '02-8549-4629', '010-9484-1847', 'user6@example.com', 'sns_account_6', '기타 정보 6', '퇴사');
+
+INSERT INTO employee (account_id, company_id, person_id, employee_id, employment_type, korean_name, english_name, hire_date, resignation_date, department_id, position_id, foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile, email, sns, other_details, status) VALUES 
+(1572, company_seq.NEXTVAL, 12734, employee_seq.NEXTVAL, '契約職', '中村 和也', 'Nakamura Kazuya', TO_DATE('2020-11-20', 'YYYY-MM-DD'), TO_DATE('2023-11-18', 'YYYY-MM-DD'), 2, 1, '外国人', '341317', '4724903', '주소7', '02-3639-7187', '010-5610-4809', 'user7@example.com', 'sns_account_7', '기타 정보 7', '재직중');
+
+INSERT INTO employee (account_id, company_id, person_id, employee_id, employment_type, korean_name, english_name, hire_date, resignation_date, department_id, position_id, foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile, email, sns, other_details, status) VALUES 
+(1520, company_seq.NEXTVAL, 12933, employee_seq.NEXTVAL, '臨時職', '小林 明美', 'Kobayashi Akemi', TO_DATE('2017-05-13', 'YYYY-MM-DD'), TO_DATE('2021-08-19', 'YYYY-MM-DD'), 4, 3, '国内', '448948', '9153216', '주소8', '02-9786-5608', '010-4285-1801', 'user8@example.com', 'sns_account_8', '기타 정보 8', '퇴사');
+
+INSERT INTO employee (account_id, company_id, person_id, employee_id, employment_type, korean_name, english_name, hire_date, resignation_date, department_id, position_id, foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile, email, sns, other_details, status) VALUES 
+(1223, company_seq.NEXTVAL, 15168, employee_seq.NEXTVAL, '正社員', '加藤 真司', 'Kato Shinji', TO_DATE('2016-03-05', 'YYYY-MM-DD'), NULL, 2, 2, '外国人', '310815', '7756983', '주소9', '02-4181-1231', '010-7867-7667', 'user9@example.com', 'sns_account_9', '기타 정보 9', '재직중');
+
+INSERT INTO employee (account_id, company_id, person_id, employee_id, employment_type, korean_name, english_name, hire_date, resignation_date, department_id, position_id, foreign_or_domestic, resident_number1, resident_number2, address, tel_phone, mobile, email, sns, other_details, status) VALUES 
+(1256, company_seq.NEXTVAL, 16784, employee_seq.NEXTVAL, '契約職', '松本 実', 'Matsumoto Minoru', TO_DATE('2018-09-14', 'YYYY-MM-DD'), NULL, 5, 2, '国内', '123456', '7890123', '주소10', '02-1234-5678', '010-1234-5678', 'user10@example.com', 'sns_account_10', '기타 정보 10', '재직중');
+
+select * from employee;
+
+INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '休暇');
+INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '延長勤務');
+INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '遅刻早退');
+INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '特別勤務');
+INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, 'その他');
+
+-- 기본 근태 항목(종류) 입력
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '年次', '日', '1', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '半次', '日', '1', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '遅刻', '時間', '3', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '早退', '時間', '3', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '外勤', '時間', '5', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '休日勤務', '時間', '2', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '延長勤務', '時間', '2', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '褒賞休暇', '日', '1', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '夜間勤務', '時間', '2', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '請願休暇', '日', '1', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '外勤', '時間', '5', '1', 'T');
+
+-- department 테이블에 값 삽입
+INSERT ALL
+INTO department (department_id, department_name)VALUES (5, 'デザイン部')          -- 디자인부
+INTO department (department_id, department_name)VALUES (3, 'コンテンツ部')        -- 콘텐츠부
+INTO department (department_id, department_name)VALUES (4, '業務支援部')          -- 업무지원부
+INTO department (department_id, department_name)VALUES (7, '企画戦略部')          -- 기획전략부
+INTO department (department_id, department_name)VALUES (6, '管理部')              -- 관리부
+INTO department (department_id, department_name)VALUES (1, '社長室')              -- 사장실
+INTO department (department_id, department_name)VALUES (2, '開発部')              -- 개발부
+SELECT * FROM dual;
+select * from department;
+
+
+-- position 테이블에 값 삽입
+INSERT ALL
+INTO position (position_id, position_name)VALUES (1, '社長')     -- 사장
+INTO position (position_id, position_name)VALUES (2, '取締役')     -- 이사
+INTO position (position_id, position_name)VALUES (3, '室長')       -- 실장
+INTO position (position_id, position_name)VALUES  (4, '部長')       -- 부장
+INTO position (position_id, position_name)VALUES (5, '次長')       -- 차장
+INTO position (position_id, position_name)VALUES (6, '課長')       -- 과장
+INTO position (position_id, position_name)VALUES (7, '代理')       -- 대리
+INTO position (position_id, position_name)VALUES (8, '主任')       -- 주임
+INTO position (position_id, position_name)VALUES (9, '社員')       -- 사원
+SELECT * FROM dual;
+
+-- feild 테이블에 값 삽입
+INSERT ALL
+INTO feild_or_project VALUES (1, '開発プロジェクト')
+INTO feild_or_project VALUES (2, '研究所')
+INTO feild_or_project VALUES (3, '工場1')
+INTO feild_or_project VALUES (4, '現場1')
+INTO feild_or_project VALUES (5, '現場2')
+SELECT * FROM dual;
+
+-- 휴가 항목 테이블에 값 삽입
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2015年次', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2016年次', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2017年次', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2018年次', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2019年次', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2020年次', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2021年次', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2022年次', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2023年次', '20240101','20241231','N');
+INSERT INTO vacation_type VALUES (vacation_type_seq.nextval, '2024年次', '20240101','20241231','Y');
+
+commit ;
+
+----------- 휴가 부여 데이터 추가
+insert into vacation_days values (vacation_days_seq.nextval,1 , 1,13);
+insert into vacation_days values (vacation_days_seq.nextval,2 , 1,10);
+insert into vacation_days values (vacation_days_seq.nextval,3 , 1,11);
+
+insert into vacation_days values (vacation_days_seq.nextval,1 , 2,13);
+insert into vacation_days values (vacation_days_seq.nextval,2 , 2,10);
+insert into vacation_days values (vacation_days_seq.nextval,3 , 2,11);
+select * from vacation_days;
+insert into vacation_days values (vacation_days_seq.nextval,1 , 3,13);
+insert into vacation_days values (vacation_days_seq.nextval,2 , 3,10);
+insert into vacation_days values (vacation_days_seq.nextval,3 , 3,11);
+
+insert into vacation_days values (vacation_days_seq.nextval,1 , 4,13);
+insert into vacation_days values (vacation_days_seq.nextval,2 , 4,10);
+insert into vacation_days values (vacation_days_seq.nextval,3 , 4,11);
+
+
+insert into vacation_days values (vacation_days_seq.nextval,1 , 5,13);
+insert into vacation_days values (vacation_days_seq.nextval,2 , 5,5);
+insert into vacation_days values (vacation_days_seq.nextval,3 , 5,11);
+insert into vacation_days values (vacation_days_seq.nextval,4 , 5,15);
+
+insert into vacation_days values (vacation_days_seq.nextval,1 , 6,13);
+insert into vacation_days values (vacation_days_seq.nextval,2 , 6,5);
+insert into vacation_days values (vacation_days_seq.nextval,3 , 6,10);
+insert into vacation_days values (vacation_days_seq.nextval,4 , 6,13);
+
+insert into vacation_days values (vacation_days_seq.nextval,1 , 7,13);
+insert into vacation_days values (vacation_days_seq.nextval,2 , 7,5);
+insert into vacation_days values (vacation_days_seq.nextval,3 , 7,5);
+insert into vacation_days values (vacation_days_seq.nextval,4 , 7,15);
+
+insert into vacation_days values (vacation_days_seq.nextval,1 , 8,11);
+insert into vacation_days values (vacation_days_seq.nextval,2 , 8,9);
+insert into vacation_days values (vacation_days_seq.nextval,3 , 8,9);
+insert into vacation_days values (vacation_days_seq.nextval,4 , 8,15);
+
+insert into vacation_days values (vacation_days_seq.nextval,1 , 9,9);
+insert into vacation_days values (vacation_days_seq.nextval,2 , 9,9);
+insert into vacation_days values (vacation_days_seq.nextval,3 ,9,9);
+insert into vacation_days values (vacation_days_seq.nextval,4 , 9,15);
+
+insert into vacation_days values (vacation_days_seq.nextval,1 , 12,9);
+insert into vacation_days values (vacation_days_seq.nextval,2 , 12,11);
+insert into vacation_days values (vacation_days_seq.nextval,3 ,12,6);
+insert into vacation_days values (vacation_days_seq.nextval,4 , 12,8);
+
+insert into vacation_days values (vacation_days_seq.nextval,1 , 13,15);
+insert into vacation_days values (vacation_days_seq.nextval,2 , 13,9);
+insert into vacation_days values (vacation_days_seq.nextval,3 ,13,6);
+insert into vacation_days values (vacation_days_seq.nextval,4 , 13,8);
+
+insert into vacation_days values (vacation_days_seq.nextval,1 , 14,5);
+insert into vacation_days values (vacation_days_seq.nextval,2 , 14,7);
+insert into vacation_days values (vacation_days_seq.nextval,3 ,14,8);
+insert into vacation_days values (vacation_days_seq.nextval,4 , 14,8);
+
+insert into vacation_days values (vacation_days_seq.nextval,1 , 15,15);
+insert into vacation_days values (vacation_days_seq.nextval,2 , 15,14);
+insert into vacation_days values (vacation_days_seq.nextval,3 ,15,14);
+insert into vacation_days values (vacation_days_seq.nextval,4 , 15,13);
+
+
+insert into vacation_days values (vacation_days_seq.nextval,1 , 16,15);
+insert into vacation_days values (vacation_days_seq.nextval,2 , 16,14);
+insert into vacation_days values (vacation_days_seq.nextval,3 ,16,14);
+insert into vacation_days values (vacation_days_seq.nextval,4 , 16,13);
+
+insert into vacation_days values (vacation_days_seq.nextval,1 , 17,15);
+insert into vacation_days values (vacation_days_seq.nextval,2 , 17,14);
+insert into vacation_days values (vacation_days_seq.nextval,3 ,17,14);
+insert into vacation_days values (vacation_days_seq.nextval,4 , 17,13);
+
+insert into vacation_days values (vacation_days_seq.nextval,1 , 18,15);
+insert into vacation_days values (vacation_days_seq.nextval,2 , 18,14);
+insert into vacation_days values (vacation_days_seq.nextval,3 ,18,14);
+insert into vacation_days values (vacation_days_seq.nextval,4 , 18,13);
+
+insert into vacation_days values (vacation_days_seq.nextval,3 , 19,15);
+insert into vacation_days values (vacation_days_seq.nextval,4 , 19,14);
+insert into vacation_days values (vacation_days_seq.nextval,5 ,19,14);
+insert into vacation_days values (vacation_days_seq.nextval,6 , 19,13);
+
+insert into vacation_days values (vacation_days_seq.nextval,5 , 20,15);
+insert into vacation_days values (vacation_days_seq.nextval,6 , 20,14);
+insert into vacation_days values (vacation_days_seq.nextval,7 ,20,14);
+insert into vacation_days values (vacation_days_seq.nextval,8 , 20,13);
+
+insert into vacation_days values (vacation_days_seq.nextval,3 , 21,15);
+insert into vacation_days values (vacation_days_seq.nextval,4 , 21,14);
+insert into vacation_days values (vacation_days_seq.nextval,5 ,21,14);
+insert into vacation_days values (vacation_days_seq.nextval,6 , 21,13);
+
+insert into vacation_days values (vacation_days_seq.nextval,2 , 22,15);
+insert into vacation_days values (vacation_days_seq.nextval,3 , 22,14);
+insert into vacation_days values (vacation_days_seq.nextval,4 ,22,14);
+insert into vacation_days values (vacation_days_seq.nextval,5 , 22,13);
+
+
+      
+INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '休暇');
+INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '延長勤務');
+INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '遅刻早退');
+INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, '特別勤務');
+INSERT INTO attendance_group VALUES (attendance_group_seq.nextval, 'その他');
+
+-- 기본 근태 항목(종류) 입력
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '年次', '日', '1', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '半次', '日', '1', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '遅刻', '時間', '3', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '早退', '時間', '3', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '外勤', '時間', '5', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '休日勤務', '時間', '2', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '延長勤務', '時間', '2', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '褒賞休暇', '日', '1', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '夜間勤務', '時間', '2', NULL, 'T');
+INSERT INTO attendance_type VALUES (attendance_type_seq.nextval, '請願休暇', '日', '1', NULL, 'T');
+
+
+--
+INSERT INTO attendance_type VALUES (2015, '年次', '日', '1', 1, 'T');
+INSERT INTO attendance_type VALUES (2016, '年次', '日', '1', 2, 'T');
+INSERT INTO attendance_type VALUES (2017, '年次', '日', '1', 3, 'T');
+INSERT INTO attendance_type VALUES (2018, '年次', '日', '1', 4, 'T');
+INSERT INTO attendance_type VALUES (2019, '年次', '日', '1', 5, 'T');
+INSERT INTO attendance_type VALUES (2020, '年次', '日', '1', 6, 'T');
+INSERT INTO attendance_type VALUES (2021, '年次', '日', '1', 7, 'T');
+INSERT INTO attendance_type VALUES (2022, '年次', '日', '1', 8, 'T');
+INSERT INTO attendance_type VALUES (2023, '年次', '日', '1', 9, 'T');
+INSERT INTO attendance_type VALUES (2024, '年次', '日', '1', 10, 'T');
+
+
+--근태 기록 데이터 삽입(휴가)                             근태번호,사원번호, 입력날짜, 휴가항목,프로젝트,시작일,종료일,부여일,?,?
+insert into attendance values (attendance_seq.nextval, 1,'2015-09-21',2015,null,'2015-10-31' ,'2015-11-01',1,null,null);
+insert into attendance values (attendance_seq.nextval, 3,'2015-09-21',2017,null,'2017-10-31' ,'2017-11-01',1,null,null);
+insert into attendance values (attendance_seq.nextval, 5,'2015-02-11',2015,null,'2015-03-21' ,'2018-03-23',3,null,null);
+insert into attendance values (attendance_seq.nextval, 5,'2015-03-11',2015,null,'2015-04-15' ,'2018-04-20',5,null,null);
+insert into attendance values (attendance_seq.nextval, 5,'2015-05-11',2015,null,'2015-05-21' ,'2018-03-25',4,null,null);
+insert into attendance values (attendance_seq.nextval, 6,'2016-06-21',2018,null,'2018-09-21' ,'2018-09-23',2,null,null);
+insert into attendance values (attendance_seq.nextval, 7,'2016-06-21',2017,null,'2017-03-21' ,'2018-03-23',2,null,null);
+insert into attendance values (attendance_seq.nextval, 7,'2018-06-11',2018,null,'2018-08-21' ,'2018-08-23',3,null,null);
+insert into attendance values (attendance_seq.nextval, 9,'2017-06-11',2017,null,'2017-06-15' ,'2017-06-19',5,null,null);
+insert into attendance values (attendance_seq.nextval, 9,'2017-08-11',2017,null,'2017-08-10' ,'2017-06-13',4,null,null);
+
+
+INSERT INTO attendance VALUES (attendance_seq.nextval, 1, '2016-01-01', 2016, '2016-01-05', 4, NULL, 'Dummy data 1');
+
+INSERT INTO attendance VALUES (attendance_seq.nextval, 2, '2017-02-15',2017, NULL,'2017-02-15', '2017-02-20',5, NULL, 'Dummy data 2');
+
+INSERT INTO attendance VALUES (attendance_seq.nextval, 3,'2018-03-10', 2018, NULL, '2018-03-10', '2018-03-15',  5, NULL, 'Dummy data 3');
+
+INSERT INTO attendance VALUES (attendance_seq.nextval, 12, '2019-05-05', 2019, NULL, '2019-04-05', '2019-05-10', 5, NULL, 'Dummy data 4');
+insert into attendance values (attendance_seq.nextval, 1,'2023-09-21',1,null,'2015-10-31' ,'2015-11-01',2,null,null);
+
+insert into attendance values (attendance_seq.nextval, 7,'2017-08-11',2017,null,'2017-08-12' ,'2017-08-13',2,null,null);
+
+
+insert into attendance values (attendance_seq.nextval, 12,'2017-06-11',2017,null,'2017-06-15' ,'2017-06-19',5,null,null);
+insert into attendance values (attendance_seq.nextval, 12,'2017-08-11',2017,null,'2017-08-10' ,'2017-06-13',4,null,null);
+insert into attendance values (attendance_seq.nextval, 13,'2017-06-11',2017,null,'2017-06-15' ,'2017-06-19',5,null,null);
+insert into attendance values (attendance_seq.nextval, 13,'2017-08-11',2017,null,'2017-08-10' ,'2017-06-13',4,null,null);
+
+
+insert into attendance values (attendance_seq.nextval, 16,'2017-06-11',2017,null,'2017-06-15' ,'2017-06-19',5,null,null);
+insert into attendance values (attendance_seq.nextval, 16,'2017-08-11',2017,null,'2017-08-10' ,'2017-06-13',4,null,null);
+INSERT INTO attendance VALUES (attendance_seq.nextval, 16, '2019-05-20', 2019, NULL, '2019-05-20', '2019-05-22', 3, NULL, 'Dummy data 4');
+
+insert into attendance values (attendance_seq.nextval, 14,'2017-06-11',2017,null,'2017-06-15' ,'2017-06-19',5,null,null);
+insert into attendance values (attendance_seq.nextval, 14,'2016-08-11',2016,null,'2016-08-10' ,'2016-08-13',4,null,null);
+
+insert into attendance values (attendance_seq.nextval, 18,'2015-06-11',2015,null,'2015-06-15' ,'2015-06-28',13,null,null);
+insert into attendance values (attendance_seq.nextval, 18,'2016-07-11',2016,null,'2016-08-10' ,'2016-06-24',14,null,null);

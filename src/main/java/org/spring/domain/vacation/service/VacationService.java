@@ -11,7 +11,7 @@ import org.spring.domain.vacation.model.VacationTypeEntity;
 
 
 public interface VacationService {
-	 List<VacationDetailsEntity> getFilteredVacationDetails(String status, String employmentType, Long departmentId, Long positionId, String vacationTypeName, String searchKeyword, int offset, int limit);
+	  List<VacationDetailsEntity> getFilteredVacationDetails(String status, String employmentType, Long departmentId, Long positionId, String vacationTypeName, String searchKeyword, int offset, int limit);
 	    int countFilteredVacationDetails(String status, String employmentType, Long departmentId, Long positionId, String vacationTypeName, String searchKeyword);
 	    List<VacationDetailsEntity> getVacationUsageByEmployeeId(Long employeeId);
 	    List<VacationTypeEntity> getAllVacationTypes();
